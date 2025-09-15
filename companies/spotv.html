@@ -19,59 +19,157 @@
         <section class="projects-detail">
             <h2>주요 프로젝트</h2>
             
-            <!-- 2024.03 - 2024.06: 결제 시스템 개선 프로젝트 -->
+            <!-- 2024.03 - 2024.04: 첫 결제 할인 시스템 -->
             <div class="project">
-                <h3>💳 결제 시스템 전면 개선</h3>
+                <h3>🎁 첫 결제 할인 시스템</h3>
                 <div class="project-meta">
-                    <span>📅 2024.03 - 2024.06</span>
-                    <span>👥 팀 규모: 6명</span>
+                    <span>📅 2024.03 - 2024.04</span>
+                    <span>👥 팀 규모: 4명</span>
                     <span>🎯 역할: Backend Developer</span>
                 </div>
                 <div class="project-description">
                     <h4>프로젝트 개요</h4>
-                    <p>스포티비 플랫폼의 결제 시스템 안정성 향상 및 사용자 경험 개선을 위한 대규모 개선 프로젝트</p>
+                    <p>신규 고객 유치를 위한 쿠폰 기반 첫달 할인 결제 시스템 구축</p>
                     
-                    <h4>주요 성과</h4>
+                    <h4>주요 업무</h4>
                     <ul>
-                        <li><strong>첫 결제 할인 시스템</strong>
-                            <ul>
-                                <li>쿠폰 기반 이벤트 결제 시스템 구축</li>
-                                <li>첫달 할인가 결제 후 정기 구독 자동 전환 로직</li>
-                                <li>쿠폰 관리 테이블 설계 및 API 개발</li>
-                                <li>기존 서비스 무중단 운영 보장</li>
-                                <li>신규 고객 유치 효과 달성</li>
-                            </ul>
-                        </li>
-                        <li><strong>푸시 알림 개선</strong>
-                            <ul>
-                                <li><strong>기존 문제점</strong>: FCM 토큰 관리 미흡, 중복전송, 라이브 게임 전송 지연 이슈</li>
-                                <li><strong>Golang 기반 토큰 관리 시스템</strong> 신규 개발</li>
-                                <li><strong>Kafka 기반 비동기 처리</strong>: 접속 시 토픽 전솤 → 컴슈머에서 토큰 관리</li>
-                                <li><strong>FCM 토픽 구독 자동화</strong> 및 최신 토큰 유지</li>
-                                <li><strong>라이브 전송 최적화</strong>: 경기시작 15분전 Pub/Sub 방식 도입</li>
-                                <li><strong>만료/문제 토큰 자동 삭제</strong> 시스템 구축</li>
-                                <li><strong>성과</strong>: Firebase 모니터링 열람율 증가, 중복전송 완전 해결</li>
-                            </ul>
-                        </li>
-                        <li><strong>정기 결제 취소 기능</strong> - 사용자 편의성 증대를 위한 셀프 취소 시스템 구축</li>
-                        <li><strong>Apple In-App Purchase v2 업그레이드</strong> - 최신 API 적용으로 결제 안정성 강화</li>
-                        <li><strong>Google Play Billing 업그레이드</strong> - 구글 결제 시스템 최신화</li>
+                        <li>쿠폰 기반 이벤트 결제 시스템 구축</li>
+                        <li>첫달 할인가 결제 후 정기 구독 자동 전환 로직</li>
+                        <li>쿠폰 관리 테이블 설계 및 API 개발</li>
+                        <li>기존 서비스 무중단 운영 보장</li>
+                    </ul>
+                    
+                    <h4>성과</h4>
+                    <ul>
+                        <li>신규 고객 유치 효과 달성</li>
+                        <li>결제 전환율 향상</li>
                     </ul>
                 </div>
                 <div class="tech-stack">
                     <h4>사용 기술</h4>
                     <div class="tech-tags">
                         <span class="tech-tag">Java</span>
-                        <span class="tech-tag">Golang</span>
                         <span class="tech-tag">Spring Boot</span>
                         <span class="tech-tag">MySQL</span>
-                        <span class="tech-tag">Redis</span>
                         <span class="tech-tag">AWS</span>
                         <span class="tech-tag">ECS</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 2024.04 - 2024.05: 1 알림 개선 -->
+            <div class="project">
+                <h3>🔔 푸시 알림 시스템 개선</h3>
+                <div class="project-meta">
+                    <span>📅 2024.04 - 2024.05</span>
+                    <span>👥 팀 규모: 3명</span>
+                    <span>🎯 역할: Backend Developer</span>
+                </div>
+                <div class="project-description">
+                    <h4>프로젝트 개요</h4>
+                    <p>FCM 토큰 관리 미흡, 중복전송, 라이브 전송 지연 등의 문제 해결을 위한 전면 개선</p>
+                    
+                    <h4>기존 문제점</h4>
+                    <ul>
+                        <li>FCM 토큰 관리 미흡으로 인한 중복전송</li>
+                        <li>라이브 게임 알림 전송 지연 이슈</li>
+                        <li>만료된 토큰에 대한 처리 부재</li>
+                    </ul>
+                    
+                    <h4>해결 방안</h4>
+                    <ul>
+                        <li><strong>Golang 기반 토큰 관리 시스템</strong> 신규 개발</li>
+                        <li><strong>Kafka 기반 비동기 처리</strong>: 접속 시 토픽 전송 → 컴슈머에서 토큰 관리</li>
+                        <li><strong>FCM 토픽 구독 자동화</strong> 및 최신 토큰 유지</li>
+                        <li><strong>라이브 전송 최적화</strong>: 경기시작 15분전 Pub/Sub 방식 도입</li>
+                        <li><strong>만료/문제 토큰 자동 삭제</strong> 시스템 구축</li>
+                    </ul>
+                    
+                    <h4>성과</h4>
+                    <ul>
+                        <li>Firebase 모니터링 열람율 증가</li>
+                        <li>중복전송 완전 해결</li>
+                        <li>라이브 전송 지연 해결</li>
+                    </ul>
+                </div>
+                <div class="tech-stack">
+                    <h4>사용 기술</h4>
+                    <div class="tech-tags">
+                        <span class="tech-tag">Golang</span>
+                        <span class="tech-tag">Java</span>
                         <span class="tech-tag">Kafka</span>
                         <span class="tech-tag">Firebase FCM</span>
+                        <span class="tech-tag">AWS</span>
+                        <span class="tech-tag">ECS</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 2024.05 - 2024.06: 정기 결제 취소 -->
+            <div class="project">
+                <h3>❌ 정기 결제 취소 기능</h3>
+                <div class="project-meta">
+                    <span>📅 2024.05 - 2024.06</span>
+                    <span>👥 팀 규모: 2명</span>
+                    <span>🎯 역할: Backend Developer</span>
+                </div>
+                <div class="project-description">
+                    <h4>프로젝트 개요</h4>
+                    <p>사용자 편의성 증대를 위한 셀프 정기 결제 취소 시스템 구축</p>
+                    
+                    <h4>주요 업무</h4>
+                    <ul>
+                        <li>사용자 셀프 취소 기능 API 개발</li>
+                        <li>취소 시 환불 처리 로직 구현</li>
+                        <li>취소 이력 관리 시스템</li>
+                        <li>사용자 알림 및 확인 프로세스</li>
+                    </ul>
+                </div>
+                <div class="tech-stack">
+                    <h4>사용 기술</h4>
+                    <div class="tech-tags">
+                        <span class="tech-tag">Java</span>
+                        <span class="tech-tag">Spring Boot</span>
+                        <span class="tech-tag">MySQL</span>
+                        <span class="tech-tag">AWS</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 2024.06: Apple/Google 인앱 결제 업그레이드 -->
+            <div class="project">
+                <h3>📱 인앱 결제 시스템 업그레이드</h3>
+                <div class="project-meta">
+                    <span>📅 2024.06</span>
+                    <span>👥 팀 규모: 3명</span>
+                    <span>🎯 역할: Backend Developer</span>
+                </div>
+                <div class="project-description">
+                    <h4>프로젝트 개요</h4>
+                    <p>Apple In-App Purchase v2 및 Google Play Billing 최신 API로 업그레이드하여 결제 안정성 강화</p>
+                    
+                    <h4>주요 업무</h4>
+                    <ul>
+                        <li><strong>Apple In-App Purchase v2</strong> API 업그레이드</li>
+                        <li><strong>Google Play Billing</strong> 최신 버전 적용</li>
+                        <li>결제 영수증 검증 로직 개선</li>
+                        <li>인앱 결제 오류 처리 강화</li>
+                    </ul>
+                    
+                    <h4>성과</h4>
+                    <ul>
+                        <li>결제 안정성 향상</li>
+                        <li>인앱 결제 오류율 감소</li>
+                    </ul>
+                </div>
+                <div class="tech-stack">
+                    <h4>사용 기술</h4>
+                    <div class="tech-tags">
+                        <span class="tech-tag">Java</span>
+                        <span class="tech-tag">Spring Boot</span>
                         <span class="tech-tag">Apple StoreKit</span>
                         <span class="tech-tag">Google Play Billing</span>
+                        <span class="tech-tag">AWS</span>
                     </div>
                 </div>
             </div>
