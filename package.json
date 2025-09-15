@@ -1,0 +1,25 @@
+{
+  "name": "logboni-resume",
+  "version": "1.0.0",
+  "description": "김성우 개발자 이력서 웹사이트",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js",
+    "deploy:github": "./deploy.sh github",
+    "deploy:ec2": "./deploy.sh ec2",
+    "build": "echo 'Static files ready for deployment'"
+  },
+  "keywords": ["resume", "portfolio", "developer"],
+  "author": "김성우",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.18.2"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  }
+}
