@@ -97,8 +97,7 @@ section h2 {
 }
 
 .job-card:hover .click-hint {
-    opacity: 1;
-    transform: translateX(0);
+    color: #2980b9;
 }
 
 .job-header {
@@ -141,9 +140,10 @@ section h2 {
     font-size: 0.85rem;
     color: #3498db;
     font-weight: 500;
-    opacity: 0;
-    transform: translateX(-10px);
+    opacity: 1;
+    transform: translateX(0);
     transition: all 0.3s ease;
+    margin-top: 8px;
 }
 
 /* Side Projects Section */
@@ -170,8 +170,7 @@ section h2 {
 }
 
 .project-card:hover .click-hint {
-    opacity: 1;
-    transform: translateX(0);
+    color: #c0392b;
 }
 
 .project-header {
