@@ -11,31 +11,163 @@
         <a href="../main.html" class="back-button">← 메인으로 돌아가기</a>
         
         <div class="company-header">
-            <h1>에스비티엠 (SBTM)</h1>
-            <p class="company-period">2016.05 - 2017.07</p>
-            <p class="position">Software Engineer</p>
+            <h1>에스비티엠주식회사 (SBTM Corporation)</h1>
+            <p class="company-period">2019.08 - 2020.05 (10개월)</p>
+            <div class="company-info">
+                <p class="position">Backend Developer</p>
+                <!-- TODO: 팀 규모 및 회사 규모 정보 추가 필요 -->
+                <p class="team-info">여행·항공·호텔 예약 시스템의 백엔드 개발 및 성능 개선</p>
+            </div>
         </div>
 
         <section class="projects-detail">
-            <h2>프로젝트 상세</h2>
+            <h2>주요 프로젝트</h2>
             
             <div class="project">
-                <h3>프로젝트명 1</h3>
+                <h3>✈️ 항공 자동 발권 시스템 개발</h3>
                 <div class="project-meta">
-                    <span>📅 기간</span>
-                    <span>👥 팀 규모</span>
-                    <span>🎯 역할</span>
+                    <span>📅 2020.03 - 2020.05</span>
+                    <span>👥 API 개발 담당</span>
+                    <span>🎯 백엔드 개발 / API 연동</span>
                 </div>
                 <div class="project-description">
-                    <p>프로젝트 상세 설명</p>
+                    <p><strong>프로젝트 요약:</strong></p>
+                    <ul>
+                        <li>항공 발권 업무 자동화를 위해 <strong>티켓 자동 발권 REST API</strong> 개발</li>
+                        <li>외부 항공사 시스템(트레블스카이 등)과 <strong>API 연동</strong>을 통해 자동 발권 기능 구현</li>
+                    </ul>
+                    
+                    <p><strong>프로젝트 상세:</strong></p>
+                    <ul>
+                        <li>외부 발권 시스템과 실시간 통신을 위한 API 연계 및 데이터 파싱</li>
+                        <li><strong>XML 기반의 응답 데이터를 C#으로 처리</strong>하여 발권 로직에 맞게 변환 및 저장</li>
+                        <li>업무 프로세스에 적합한 로직 개발로 발권 효율성 향상</li>
+                    </ul>
+                    
+                    <p><strong>역할 및 성과:</strong></p>
+                    <ul>
+                        <li>항공 자동 발권 프로세스의 <strong>API 통신 및 데이터 파싱 전담 개발</strong></li>
+                        <li>반복적인 수동 발권 절차를 자동화하여 <strong>운영 효율성 대폭 개선</strong></li>
+                        <li>트래블스카이 등 외부 API와의 안정적 연동 구조 설계</li>
+                    </ul>
+                    
+                    <!-- TODO: 발권 자동화로 인한 시간 단축 효과 수치화 (예: 수동 10분 → 자동 30초) -->
+                    <!-- TODO: 지원 항공사 및 API 종류 명시 -->
+                    <!-- TODO: 일일 발권 건수 또는 처리량 수치 추가 -->
                 </div>
                 <div class="tech-stack">
                     <h4>사용 기술</h4>
                     <div class="tech-tags">
-                        <span class="tech-tag">기술스택</span>
+                        <span class="tech-tag">C#</span>
+                        <span class="tech-tag">Redis</span>
+                        <span class="tech-tag">Database</span>
+                        <span class="tech-tag">Web Communication</span>
+                        <span class="tech-tag">XML Parsing</span>
+                        <span class="tech-tag">REST API</span>
                     </div>
                 </div>
             </div>
+
+            <div class="project">
+                <h3>🏨 호텔 검색 속도 개선 프로젝트</h3>
+                <div class="project-meta">
+                    <span>📅 2019.11 - 2020.03</span>
+                    <span>👥 성능 최적화 담당</span>
+                    <span>🎯 API 성능 개선 / 시스템 리팩토링</span>
+                </div>
+                <div class="project-description">
+                    <p><strong>프로젝트 요약:</strong></p>
+                    <ul>
+                        <li>기존 호텔 검색 서비스의 <strong>검색 속도 및 처리 효율 개선</strong></li>
+                        <li>Redis 캐시 도입 및 병렬 처리 구조 개선을 통한 <strong>API 성능 향상</strong></li>
+                    </ul>
+                    
+                    <p><strong>프로젝트 상세:</strong></p>
+                    <ul>
+                        <li>C# 기반 검색 솔루션의 구조를 리팩토링하여 응답 속도 단축</li>
+                        <li>API 버전 업그레이드 및 XML 파싱 로직 최적화</li>
+                        <li>상속 및 인터페이스 기반 구조로 <strong>유연한 코드 구조 확보</strong></li>
+                    </ul>
+                    
+                    <p><strong>역할 및 성과:</strong></p>
+                    <ul>
+                        <li>Redis 도입으로 API 응답 속도를 <strong>수초 단위에서 밀리초 단위로 개선</strong></li>
+                        <li>병렬 처리 구조 개선을 통해 다중 요청 처리 성능 향상</li>
+                        <li>시스템 리팩토링을 통한 유지보수성 향상</li>
+                    </ul>
+                    
+                    <!-- TODO: 성능 개선 수치 상세화 (예: 5초 → 200ms, TPS 개선율 등) -->
+                    <!-- TODO: 캐시 히트율 및 메모리 사용량 최적화 수치 -->
+                    <!-- TODO: 동시 접속자 수 또는 처리 가능 요청량 수치 -->
+                </div>
+                <div class="tech-stack">
+                    <h4>사용 기술</h4>
+                    <div class="tech-tags">
+                        <span class="tech-tag">C#</span>
+                        <span class="tech-tag">Redis</span>
+                        <span class="tech-tag">Database</span>
+                        <span class="tech-tag">Web Communication</span>
+                        <span class="tech-tag">XML Parsing</span>
+                        <span class="tech-tag">병렬 처리</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project">
+                <h3>🌐 호텔 컨텐츠 확보를 위한 외부 API 연동 개발</h3>
+                <div class="project-meta">
+                    <span>📅 2019.08 - 2020.03</span>
+                    <span>👥 API 통합 개발</span>
+                    <span>🎯 외부 연동 / 데이터 통합</span>
+                </div>
+                <div class="project-description">
+                    <p><strong>프로젝트 요약:</strong></p>
+                    <ul>
+                        <li><strong>Expedia, Hotelbeds 등 글로벌 호텔 API를 연동</strong>하여 호텔 정보 컨텐츠 확보</li>
+                        <li>호텔 조회, 가격 확인, 예약·취소 등의 <strong>REST API</strong>를 자체 서비스에 통합</li>
+                    </ul>
+                    
+                    <p><strong>프로젝트 상세:</strong></p>
+                    <ul>
+                        <li>외부 GDS(Global Distribution System) API 통신 모듈 개발</li>
+                        <li><strong>호텔 정보 데이터를 내부 스키마에 맞게 파싱 및 변환 후 저장</strong></li>
+                        <li>내부 서비스에서 사용할 수 있도록 REST API 형태로 제공</li>
+                    </ul>
+                    
+                    <p><strong>역할 및 성과:</strong></p>
+                    <ul>
+                        <li><strong>Expedia, Hotelbeds 등 외부 API 통합 개발 담당</strong></li>
+                        <li>데이터 파싱 및 캐싱 구조를 최적화하여 조회 성능 향상</li>
+                        <li>안정적인 외부 API 연동을 통해 <strong>호텔 예약 데이터 커버리지 확장</strong></li>
+                    </ul>
+                    
+                    <!-- TODO: 연동된 호텔 수 및 커버리지 증가율 수치화 -->
+                    <!-- TODO: API 응답 시간 및 성공률 지표 추가 -->
+                    <!-- TODO: 데이터 동기화 주기 및 실시간성 수준 명시 -->
+                    <!-- TODO: 지원 국가/지역 및 호텔 등급 범위 정보 -->
+                </div>
+                <div class="tech-stack">
+                    <h4>사용 기술</h4>
+                    <div class="tech-tags">
+                        <span class="tech-tag">C#</span>
+                        <span class="tech-tag">Redis</span>
+                        <span class="tech-tag">Database</span>
+                        <span class="tech-tag">Web Communication</span>
+                        <span class="tech-tag">JSON Parsing</span>
+                        <span class="tech-tag">REST API</span>
+                        <span class="tech-tag">GDS Integration</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- TODO: 추가 개선사항 -->
+            <!-- 1. 여행 업계 도메인 지식 및 비즈니스 이해도 어필 -->
+            <!-- 2. 각 프로젝트별 비즈니스 임팩트 수치화 (매출 증가, 비용 절감 등) -->
+            <!-- 3. 여행사 운영 효율성 개선 사례 및 수치 -->
+            <!-- 4. 외부 API 연동 시 예외 처리 및 안정성 확보 방안 -->
+            <!-- 5. 실시간 데이터 동기화 및 일관성 보장 방법 -->
+            <!-- 6. 사용자 경험 개선 사례 (검색 속도, 예약 편의성 등) -->
+            <!-- 7. 레거시 시스템 개선 및 마이그레이션 경험 -->
         </section>
     </div>
 </body>
