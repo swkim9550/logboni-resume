@@ -15,6 +15,7 @@
             <p class="company-period">2024.03 - 현재 (재직중)</p>
             <div class="company-info">
                 <p class="position">Backend Engineer & Infrastructure</p>
+                <!-- TODO: 회사 규모 및 서비스 소개 추가 (예: OTT 스포츠 스트리밍 서비스, 사용자 수 등) -->
                 <p class="team-info">팀 규모: 6명 | AWS 인프라 관리</p>
             </div>
         </div>
@@ -38,6 +39,9 @@
                         <li>새로운 비즈니스 요구사항 개발</li>
                         <li>코드 품질 개선 및 리팩토링</li>
                     </ul>
+                    
+                    <!-- TODO: 최근 성과 및 진행 중인 프로젝트 구체적 내용 추가 -->
+                    <!-- TODO: 성능 개선 수치 및 비즈니스 임팩트 명시 -->
                 </div>
                 <div class="tech-stack">
                     <h4>사용 기술</h4>
@@ -76,6 +80,9 @@
                         <li>RTDN 처리 정확도 개선</li>
                         <li>환경별 데이터 분리로 운영 효율성 증대</li>
                     </ul>
+                    
+                    <!-- TODO: 구체적인 성과 수치 추가 (예: 결제 성공률 X% 향상, RTDN 처리 오류율 X% 감소) -->
+                    <!-- TODO: 비즈니스 임팩트 명시 (매출 증가, 사용자 만족도 등) -->
                 </div>
                 <div class="tech-stack">
                     <h4>사용 기술</h4>
@@ -113,6 +120,9 @@
                         <li>인앱결제 버그 해결</li>
                         <li>Golang 기반 고성능 영수증 검증 시스템 구축</li>
                     </ul>
+                    
+                    <!-- TODO: Java에서 Golang으로 전환한 이유 및 성능 개선 효과 수치 -->
+                    <!-- TODO: Apple API 업그레이드로 인한 구체적인 개선사항 -->
                 </div>
                 <div class="tech-stack">
                     <h4>사용 기술</h4>
@@ -149,6 +159,9 @@
                         <li>서버 부하 30% 감소</li>
                         <li>글로벌 사용자 접근성 향상</li>
                     </ul>
+                    
+                    <!-- TODO: CDN 도입 전후 구체적인 성능 수치 (예: 3초 → 1.8초) -->
+                    <!-- TODO: 비용 절감 효과 및 인프라 비용 최적화 수치 -->
                 </div>
                 <div class="tech-stack">
                     <h4>사용 기술</h4>
@@ -165,30 +178,50 @@
 
             <!-- 2024.09 - 2024.10: 서버 증설 자동화 시스템 -->
             <div class="project">
-                <h3>🔧 서버 증설 자동화 시스템</h3>
+                <h3>🔧 라이브 스트리밍 대응 서버 사전 증설 자동화 시스템</h3>
                 <div class="project-meta">
                     <span>📅 2024.09 - 2024.10</span>
                 </div>
                 <div class="project-description">
-                    <p>트래픽 증가에 대응하기 위한 서버 자동 확장 시스템 구축</p>
+                    <p>라이브 스포츠 스트리밍 특성상 특정 경기(손흥민 경기 등)에서 급격한 트래픽 증가에 대비한 사전 서버 증설 자동화 시스템 구축</p>
                     
-                    <h4>주요 업무</h4>
+                    <h4>프로젝트 배경</h4>
                     <ul>
-                        <li>Auto Scaling 정책 설계 및 구현</li>
-                        <li>서버 모니터링 및 알림 시스템 구축</li>
-                        <li>로드 밸런싱 최적화</li>
-                        <li>인프라 비용 최적화</li>
+                        <li>손흥민 경기 등 인기 경기 시 <strong>20만~30만 동시 접속자</strong> 발생</li>
+                        <li>일반적인 Auto Scaling은 반응 시간이 있어 급격한 트래픽 증가에 대응 한계</li>
+                        <li>경기 시작 전 <strong>약 1시간 전부터 서버를 미리 증설</strong>하여 "서버 워밍업" 필요</li>
                     </ul>
+                    
+                    <h4>주요 구현 사항</h4>
+                    <ul>
+                        <li><strong>Airflow 기반 스케줄링</strong>: 경기 시간 기준 1시간 전 자동 서버 증설 스크립트 실행</li>
+                        <li><strong>운영팀 친화적 UI 구축</strong>: 특정 경기별로 High/Medium/SuperHigh 등급 설정</li>
+                        <li><strong>등급별 수용 인원 사전 정의</strong>: 각 등급에 따른 서버 증설 규모 자동 결정</li>
+                        <li><strong>Shell Script 자동화</strong>: AWS EC2 인스턴스 생성 및 로드밸런서 등록 자동화</li>
+                        <li>경기 종료 후 자동 스케일 다운으로 비용 최적화</li>
+                    </ul>
+                    
+                    <h4>성과</h4>
+                    <ul>
+                        <li>대규모 라이브 이벤트 시 서버 다운 없이 안정적 서비스 제공</li>
+                        <li>운영팀의 수동 서버 관리 업무 완전 자동화</li>
+                        <li>트래픽 급증 상황에서도 사용자 경험 품질 유지</li>
+                    </ul>
+                    
+                    <!-- TODO: 구체적인 성과 수치 (예: 서버 다운타임 0%, 응답시간 유지율 등) -->
+                    <!-- TODO: 비용 최적화 효과 및 운영 효율성 개선 수치 -->
+                    <!-- TODO: 각 등급별 구체적인 서버 증설 규모 및 수용 인원 수치 -->
                 </div>
                 <div class="tech-stack">
                     <h4>사용 기술</h4>
                     <div class="tech-tags">
+                        <span class="tech-tag">Apache Airflow</span>
                         <span class="tech-tag">AWS EC2</span>
-                        <span class="tech-tag">Auto Scaling</span>
-                        <span class="tech-tag">CloudWatch</span>
+                        <span class="tech-tag">Shell Script</span>
                         <span class="tech-tag">Application Load Balancer</span>
-                        <span class="tech-tag">Terraform</span>
-                        <span class="tech-tag">Docker</span>
+                        <span class="tech-tag">CloudWatch</span>
+                        <span class="tech-tag">Auto Scaling</span>
+                        <span class="tech-tag">운영 UI</span>
                     </div>
                 </div>
             </div>
@@ -209,6 +242,9 @@
                         <li>취소 이력 관리 시스템</li>
                         <li>사용자 알림 및 확인 프로세스</li>
                     </ul>
+                    
+                    <!-- TODO: 취소 기능 도입 효과 수치 (예: 고객센터 문의 X% 감소) -->
+                    <!-- TODO: 사용자 만족도 개선 지표 및 비즈니스 임팩트 -->
                 </div>
                 <div class="tech-stack">
                     <h4>사용 기술</h4>
@@ -252,6 +288,9 @@
                         <li>중복전송 완전 해결</li>
                         <li>라이브 전송 지연 해결</li>
                     </ul>
+                    
+                    <!-- TODO: 구체적인 성과 수치 (예: 열람율 X% → Y% 증가, 전송 지연 X분 → Y초로 개선) -->
+                    <!-- TODO: Kafka 도입 이유 및 Golang 선택 이유 상세 설명 -->
                 </div>
                 <div class="tech-stack">
                     <h4>사용 기술</h4>
@@ -288,6 +327,9 @@
                         <li>신규 고객 유치 효과 달성</li>
                         <li>결제 전환율 향상</li>
                     </ul>
+                    
+                    <!-- TODO: 구체적인 성과 수치 (예: 신규 가입자 X% 증가, 결제 전환율 X% 향상) -->
+                    <!-- TODO: 쿠폰 시스템 설계 및 구현 상세 내용 -->
                 </div>
                 <div class="tech-stack">
                     <h4>사용 기술</h4>
@@ -301,6 +343,18 @@
                 </div>
             </div>
         </section>
+        
+        <!-- TODO: 전체적인 개선사항 -->
+        <!-- 1. 각 프로젝트별 구체적인 성과 수치 및 비즈니스 임팩트 명시 -->
+        <!-- 2. 기술적 도전과제와 해결방안 상세 설명 -->
+        <!-- 3. OTT 스포츠 스트리밍 서비스 특성 및 도메인 전문성 어필 -->
+        <!-- 4. 대용량 트래픽 처리 경험 및 성능 최적화 사례 -->
+        <!-- 5. 다양한 결제 수단 연동 경험 및 전문성 -->
+        <!-- 6. 인프라 비용 최적화 사례 및 절감 효과 -->
+        <!-- 7. 팀 내 역할 및 리더십 경험 (예: 신입 개발자 멘토링, 기술 의사결정 참여 등) -->
+        <!-- 8. 실시간 스포츠 데이터 처리 및 라이브 스트리밍 관련 기술 경험 -->
+        <!-- 9. 보안 및 컴플라이언스 관련 경험 (결제 데이터 보안, 개인정보 처리 등) -->
+        <!-- 10. 사용자 경험 개선을 위한 데이터 분석 및 A/B 테스트 경험 -->
     </div>
 </body>
 </html>
