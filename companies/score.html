@@ -11,31 +11,151 @@
         <a href="../main.html" class="back-button">← 메인으로 돌아가기</a>
         
         <div class="company-header">
-            <h1>에스코어 (S-Core)</h1>
-            <p class="company-period">2019.03 - 2021.05</p>
-            <p class="position">Software Engineer</p>
+            <h1>에스코어주식회사 (S-Core)</h1>
+            <p class="company-period">2021.07 - 2022.04 (10개월)</p>
+            <p class="position">클라우드 로그 수집 및 관리 시스템, MSA 기반 클라우드 서비스 개발</p>
         </div>
 
         <section class="projects-detail">
             <h2>프로젝트 상세</h2>
             
             <div class="project">
-                <h3>프로젝트명 1</h3>
+                <h3>☁️ 삼성 SDS Cloud 방화벽 로그 서비스 개발</h3>
                 <div class="project-meta">
-                    <span>📅 기간</span>
-                    <span>👥 팀 규모</span>
-                    <span>🎯 역할</span>
+                    <span>📅 2021.10 - 2022.04</span>
+                    <span>👥 1인 주도 개발</span>
+                    <span>🎯 백엔드 개발 / 시스템 설계</span>
                 </div>
                 <div class="project-description">
-                    <p>프로젝트 상세 설명</p>
+                    <p><strong>프로젝트 요약:</strong></p>
+                    <ul>
+                        <li>삼성 SDS Cloud 환경의 <strong>VPC 및 Security Group 방화벽 로그를 저장·관리하는 서비스</strong> 개발</li>
+                        <li>rsyslog를 기반으로 <strong>ELK 스택(Elasticsearch, Logstash, Kibana)</strong> 구성</li>
+                        <li><strong>Spring Batch</strong>를 활용해 로그 데이터의 주기적 백업 및 이력 관리</li>
+                        <li>방화벽 로그 데이터를 <strong>S3 Object Storage</strong>에 저장 및 자동 백업 서비스 구현</li>
+                    </ul>
+                    
+                    <p><strong>프로젝트 상세:</strong></p>
+                    <ul>
+                        <li>On-premise 환경에 직접 ELK 스택 설치 및 구성</li>
+                        <li>rsyslog와 Logstash를 이용한 <strong>정확한 로그 패턴 수집 및 전송 파이프라인 구축</strong></li>
+                        <li>Spring Batch로 <strong>로그 데이터 백업 및 모니터링 이력 관리 시스템</strong> 개발</li>
+                        <li>백업 정책 수립을 통해 <strong>데이터 증가 시에도 안정적 시스템 운영</strong> 가능하도록 설계</li>
+                    </ul>
+                    
+                    <p><strong>역할 및 성과:</strong></p>
+                    <ul>
+                        <li>설계부터 백엔드 개발까지 <strong>1인 주도 개발</strong></li>
+                        <li>On-premise ELK 및 Logstash 구성 경험 확보</li>
+                        <li>로그 처리 및 백업 정책 자동화를 통해 <strong>운영 안정성 향상</strong></li>
+                        <li>사내 클라우드 로그 관리 서비스의 <strong>핵심 인프라 구축 기여</strong></li>
+                    </ul>
+                    
+                    <!-- TODO: 아키텍처 다이어그램 이미지 추가 필요 -->
+                    <p><a href="https://drive.google.com/file/d/1JLJw40uYyxG69I42tSyW_M-brUqtCBzm/view?usp=sharing" target="_blank">📎 아키텍처 링크</a></p>
                 </div>
                 <div class="tech-stack">
                     <h4>사용 기술</h4>
                     <div class="tech-tags">
-                        <span class="tech-tag">기술스택</span>
+                        <span class="tech-tag">Java</span>
+                        <span class="tech-tag">Spring</span>
+                        <span class="tech-tag">Spring Batch</span>
+                        <span class="tech-tag">Elasticsearch</span>
+                        <span class="tech-tag">Logstash</span>
+                        <span class="tech-tag">Kibana</span>
+                        <span class="tech-tag">rsyslog</span>
+                        <span class="tech-tag">PostgreSQL</span>
+                        <span class="tech-tag">Kubernetes</span>
+                        <span class="tech-tag">S3</span>
                     </div>
                 </div>
             </div>
+
+            <div class="project">
+                <h3>🧠 전사 기술 세미나 – 리액티브 프로그래밍 발표</h3>
+                <div class="project-meta">
+                    <span>📅 2021.11 - 2021.12</span>
+                    <span>👥 발표자</span>
+                    <span>🎯 기술 공유 / 세미나 진행</span>
+                </div>
+                <div class="project-description">
+                    <p><strong>내용:</strong></p>
+                    <ul>
+                        <li><code>WebFlux</code>를 활용한 프로젝트 경험을 기반으로 사내 기술 세미나 발표 진행</li>
+                        <li>리액티브 프로그래밍의 장점과 적용 사례를 소개하여 사내 기술 확산에 기여</li>
+                    </ul>
+                    
+                    <p><strong>성과:</strong></p>
+                    <ul>
+                        <li>발표를 통해 동료 개발자들이 리액티브 프로그래밍을 실제 프로젝트에 적용하는 계기 제공</li>
+                        <li>사내 기술 공유 문화 형성에 긍정적인 영향</li>
+                    </ul>
+                    
+                    <!-- TODO: 발표 자료 PDF 다운로드 링크로 변경 검토 -->
+                    <p><a href="https://docs.google.com/presentation/d/1XcDAK8gsL248LAFBBIYYKSEgO0gsvm4A/edit" target="_blank">📎 발표 자료 링크</a></p>
+                </div>
+                <div class="tech-stack">
+                    <h4>관련 기술</h4>
+                    <div class="tech-tags">
+                        <span class="tech-tag">WebFlux</span>
+                        <span class="tech-tag">Reactive Programming</span>
+                        <span class="tech-tag">Spring</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project">
+                <h3>🆓 삼성 SDS Cloud Free Trial 서비스 개발</h3>
+                <div class="project-meta">
+                    <span>📅 2021.07 - 2021.10</span>
+                    <span>👥 1인 개발</span>
+                    <span>🎯 풀스택 개발 / 시스템 통합</span>
+                </div>
+                <div class="project-description">
+                    <p><strong>프로젝트 요약:</strong></p>
+                    <ul>
+                        <li>삼성 SDS Cloud의 신규 기능인 <strong>Free Trial(무료 체험판)</strong> 서비스 개발</li>
+                        <li>기존 클라우드 시스템에 MSA(Microservices Architecture) 방식으로 신규 서비스 통합</li>
+                        <li>무료 사용 신청을 위한 <strong>REST API 및 관리자 페이지</strong> 구현</li>
+                    </ul>
+                    
+                    <p><strong>프로젝트 상세:</strong></p>
+                    <ul>
+                        <li>기존 운영 중인 클라우드 서비스의 구조(VPC, Security Group 등)를 학습 및 분석</li>
+                        <li>기존 Legacy 코드와의 연동 영향도를 최소화하도록 <strong>정밀한 통합 설계</strong> 수행</li>
+                        <li>CRUD 기반의 Free Trial 관리용 REST API 개발</li>
+                        <li>신규 서비스 런칭 후에도 <strong>운영 중 서비스에 사이드 이펙트 없이 안정적 통합 성공</strong></li>
+                    </ul>
+                    
+                    <p><strong>역할 및 성과:</strong></p>
+                    <ul>
+                        <li>분석, 설계, 개발 등 전 과정 <strong>단독 수행 및 총괄</strong></li>
+                        <li>서비스 런칭 이후 운영 안정성 확보</li>
+                        <li>성공적인 결과를 바탕으로 이후 주요 프로젝트에 추가 투입 기회 확보</li>
+                    </ul>
+                    
+                    <!-- TODO: 서비스 스크린샷 또는 아키텍처 다이어그램 추가 검토 -->
+                </div>
+                <div class="tech-stack">
+                    <h4>사용 기술</h4>
+                    <div class="tech-tags">
+                        <span class="tech-tag">Java</span>
+                        <span class="tech-tag">Spring</span>
+                        <span class="tech-tag">REST API</span>
+                        <span class="tech-tag">MSA</span>
+                        <span class="tech-tag">Kubernetes</span>
+                        <span class="tech-tag">PostgreSQL</span>
+                        <span class="tech-tag">ELK Stack</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- TODO: 추가 개선사항 -->
+            <!-- 1. 각 프로젝트별 성과 지표 수치화 (예: 처리량, 성능 개선율 등) -->
+            <!-- 2. 프로젝트 관련 이미지/다이어그램 추가 -->
+            <!-- 3. 기술적 도전과제와 해결방안 섹션 추가 -->
+            <!-- 4. 팀원 피드백이나 인정받은 부분 추가 -->
+            <!-- 5. 각 프로젝트의 비즈니스 임팩트 명시 -->
         </section>
     </div>
 </body>
