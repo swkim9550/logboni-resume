@@ -11,31 +11,154 @@
         <a href="../main.html" class="back-button">← 메인으로 돌아가기</a>
         
         <div class="company-header">
-            <h1>인라이플 (enliple)</h1>
-            <p class="company-period">2017.08 - 2019.02</p>
-            <p class="position">Software Engineer</p>
+            <h1>주식회사인라이플 (enliple)</h1>
+            <p class="company-period">2020.06 - 2021.06 (1년 1개월)</p>
+            <div class="company-info">
+                <p class="position">추천 팀 리더 / Backend Developer</p>
+                <!-- TODO: 팀 규모 및 회사 규모 정보 추가 필요 -->
+                <p class="team-info">추천 엔진 및 데이터 파이프라인 개발 | Spring WebFlux 기반 고성능 API 구축</p>
+            </div>
         </div>
 
         <section class="projects-detail">
-            <h2>프로젝트 상세</h2>
+            <h2>주요 프로젝트</h2>
             
             <div class="project">
-                <h3>프로젝트명 1</h3>
+                <h3>🚀 추천 데이터 송출 API 성능 개선</h3>
                 <div class="project-meta">
-                    <span>📅 기간</span>
-                    <span>👥 팀 규모</span>
-                    <span>🎯 역할</span>
+                    <span>📅 2021.03 - 2021.07</span>
+                    <span>👥 추천 팀 리더</span>
+                    <span>🎯 API 설계 및 개발 / 팀 리딩</span>
                 </div>
                 <div class="project-description">
-                    <p>프로젝트 상세 설명</p>
+                    <p><strong>프로젝트 요약:</strong></p>
+                    <ul>
+                        <li>추천 배치에서 생성된 다양한 종류의 추천 데이터를 조합하여 송출 서버에 제공하는 <strong>REST API 개발</strong></li>
+                        <li>광고 노출 시 응답 속도와 추천의 질이 중요한 환경에서, <strong>Spring WebFlux를 활용한 비동기 병렬 호출 API</strong> 개발</li>
+                    </ul>
+                    
+                    <p><strong>프로젝트 상세:</strong></p>
+                    <ul>
+                        <li>웹플럭스를 처음 도입하는 상황에서 레퍼런스 부족으로 새로운 기술 도입에 망설임이 있었지만, <strong>응답 속도 최적화를 위한 새로운 기술이 필요하다는 판단</strong>하에 팀장으로서 팀원들과 함께 웹플럭스 도입 결정</li>
+                        <li>RDB를 사용하고 있어 논블로킹 방식 유지가 어려웠지만, 웹플럭스 도입만으로도 <strong>이벤트 루프 모델로 동작하여 사용자 요청이 빈번하지만 CPU 사용량이 낮은 작업의 API에서 효과 확인</strong></li>
+                        <li>논블로킹을 유지하기 위한 설계 구상을 계획하며, 지속적인 기술 개선을 향한 노력 진행</li>
+                    </ul>
+                    
+                    <p><strong>역할 및 성과:</strong></p>
+                    <ul>
+                        <li>추천 팀 리더로 팀원들과 협업하여 프로젝트 설계 및 개발 담당</li>
+                        <li>ElasticSearch의 유사도 기반 데이터 조회 시 빈번한 호출을 고려하여 <strong>Redis 도입으로 응답 속도 향상</strong></li>
+                        <li>Spring WebFlux 활용하여 비동기 처리를 유지하며 응답 속도 최적화</li>
+                        <li><strong>약 200만 동시 접속자 발생 시 WebFlux의 성능 우위 확인</strong></li>
+                    </ul>
+                    
+                    <!-- TODO: WebFlux 성능 개선 수치 상세화 (응답시간, TPS 등) -->
+                    <!-- TODO: 추천 알고리즘 종류 및 정확도 지표 추가 -->
                 </div>
                 <div class="tech-stack">
                     <h4>사용 기술</h4>
                     <div class="tech-tags">
-                        <span class="tech-tag">기술스택</span>
+                        <span class="tech-tag">Java</span>
+                        <span class="tech-tag">Spring</span>
+                        <span class="tech-tag">WebFlux</span>
+                        <span class="tech-tag">Redis</span>
+                        <span class="tech-tag">ElasticSearch</span>
+                        <span class="tech-tag">MongoDB</span>
                     </div>
                 </div>
             </div>
+
+            <div class="project">
+                <h3>🔧 추천 엔진 파트 모니터링 도입 및 CI/CD 구축</h3>
+                <div class="project-meta">
+                    <span>📅 2021.02 - 2021.04</span>
+                    <span>👥 프로젝트 주도</span>
+                    <span>🎯 인프라 구축 / DevOps</span>
+                </div>
+                <div class="project-description">
+                    <p><strong>프로젝트 내용:</strong></p>
+                    <ul>
+                        <li>팀 내 서비스 배포 및 모니터링이 효율적이지 않아, <strong>자동 배포 시스템과 CI/CD를 도입하는 프로젝트를 계획 및 주도</strong></li>
+                        <li>도커 및 도커 스웜을 활용하여 서비스 관리 체계 구축</li>
+                        <li>그라파나와 프로메테우스를 통한 서비스 모니터링 시스템 구축</li>
+                        <li>Jenkins와 GitLab Runner를 활용하여 CI/CD 파이프라인 구축</li>
+                    </ul>
+                    
+                    <p><strong>역할 및 성과:</strong></p>
+                    <ul>
+                        <li>팀 내 노후화된 서비스의 자동화가 필요한 부분을 개선하고, <strong>자체적으로 프로젝트를 기획하고 주도하여 진행</strong></li>
+                        <li>팀원들이 보다 편리한 환경에서 개발을 진행할 수 있도록 사내 서비스 구축</li>
+                        <li><strong>해당 인프라 구축 후, 다른 팀에서도 이를 적극적으로 채택하여 사용</strong>하게 됨</li>
+                    </ul>
+                    
+                    <!-- TODO: 배포 시간 단축 효과 수치화 (예: 수동 30분 → 자동 5분) -->
+                    <!-- TODO: 모니터링 대시보드 스크린샷 추가 -->
+                    <p><a href="https://drive.google.com/file/d/1dWEUPF28UUCtUsuslro51W4MmwdpMH2M/view?usp=sharing" target="_blank">📎 아키텍처 링크</a></p>
+                </div>
+                <div class="tech-stack">
+                    <h4>사용 기술</h4>
+                    <div class="tech-tags">
+                        <span class="tech-tag">Jenkins</span>
+                        <span class="tech-tag">Grafana</span>
+                        <span class="tech-tag">Prometheus</span>
+                        <span class="tech-tag">Spring Actuator</span>
+                        <span class="tech-tag">GitLab Runner</span>
+                        <span class="tech-tag">Docker</span>
+                        <span class="tech-tag">Docker Swarm</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project">
+                <h3>📊 추천 배치 고도화</h3>
+                <div class="project-meta">
+                    <span>📅 2020.06 - 2021.02</span>
+                    <span>👥 배치 시스템 개발</span>
+                    <span>🎯 성능 최적화 / 알고리즘 개발</span>
+                </div>
+                <div class="project-description">
+                    <p><strong>프로젝트 상세:</strong></p>
+                    <ul>
+                        <li>사내에서 수집한 사용자 구매 로그 데이터를 <strong>카프카 서비스를 활용하여 컨슘</strong></li>
+                        <li><strong>IBCF(아이템 베이스 기반) 추천 알고리즘</strong>을 사용한 추천 배치 서비스의 고도화 및 튜닝</li>
+                        <li>대량의 로그와 데이터로 인한 <strong>메모리 부족(OOM) 문제로 동작하지 않는 배치를 정상적으로 처리</strong>하는 프로젝트</li>
+                        <li>기존 코드의 분석을 통해 문제점과 메모리 누수 확인</li>
+                        <li><strong>Apache Flink 프레임워크를 활용하여 전처리 작업을 추가</strong>하여 배치 완료 시간과 OOM 발생 방지</li>
+                    </ul>
+                    
+                    <p><strong>역할 및 성과:</strong></p>
+                    <ul>
+                        <li>기존 레거시 코드의 문제점을 파악하고, <strong>카프카 컨슈머 서비스, 배치 서비스, API 서비스 등의 분석 및 개발</strong> 담당</li>
+                        <li>동작하지 않던 배치를 정상 동작으로 복구함으로써 새로운 추천 데이터 생성 가능</li>
+                        <li><strong>배치 완료 시간을 12시간에서 3시간으로 단축</strong>하여 새로운 로그에 대한 실시간성 추천 데이터 생성 성능 향상</li>
+                    </ul>
+                    
+                    <!-- TODO: 메모리 사용량 최적화 수치 추가 (예: 16GB → 8GB) -->
+                    <!-- TODO: 추천 정확도 개선 지표 추가 -->
+                    <!-- TODO: 처리 데이터량 규모 명시 (일일 로그 건수 등) -->
+                    <p><a href="https://drive.google.com/file/d/1y0HvBiftAZ7U2hs7dZEhYZroSCNXT8iO/view?usp=sharing" target="_blank">📎 추천 서비스 전체 아키텍처 및 담당 영역</a></p>
+                </div>
+                <div class="tech-stack">
+                    <h4>사용 기술</h4>
+                    <div class="tech-tags">
+                        <span class="tech-tag">Java</span>
+                        <span class="tech-tag">Spring Batch</span>
+                        <span class="tech-tag">Redis</span>
+                        <span class="tech-tag">Apache Flink</span>
+                        <span class="tech-tag">Kafka</span>
+                        <span class="tech-tag">IBCF Algorithm</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- TODO: 추가 개선사항 -->
+            <!-- 1. 추천 시스템의 비즈니스 임팩트 수치화 (CTR 개선율, 매출 기여도 등) -->
+            <!-- 2. 추천 알고리즘별 성능 비교 분석 결과 추가 -->
+            <!-- 3. 대용량 데이터 처리 관련 기술적 도전과제와 해결방안 상세화 -->
+            <!-- 4. 팀 리더십 경험 및 팀원 멘토링 사례 추가 -->
+            <!-- 5. A/B 테스트 결과나 추천 품질 개선 사례 추가 -->
+            <!-- 6. 실시간 추천 vs 배치 추천의 하이브리드 아키텍처 설명 -->
+            <!-- 7. 확장성 고려사항 및 향후 개선 계획 명시 -->
         </section>
     </div>
 </body>
