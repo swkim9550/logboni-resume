@@ -146,6 +146,64 @@ section h2 {
     margin-top: 8px;
 }
 
+/* About Me Section */
+.about-me {
+    margin-bottom: 40px;
+}
+
+.about-card {
+    margin-bottom: 20px;
+    padding: 25px;
+    border: 2px solid #3498db;
+    border-radius: 12px;
+    background: linear-gradient(135deg, #f0f8ff 0%, #e6f3ff 100%);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.about-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(52, 152, 219, 0.2);
+    border-color: #2980b9;
+}
+
+.about-card:hover .click-hint {
+    color: #2980b9;
+}
+
+.about-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    flex-wrap: wrap;
+}
+
+.about-header h3 {
+    font-size: 1.4rem;
+    color: #2980b9;
+    font-weight: 600;
+}
+
+.about-type {
+    font-size: 0.95rem;
+    color: #3498db;
+    font-weight: 500;
+    background-color: rgba(52, 152, 219, 0.1);
+    padding: 4px 12px;
+    border-radius: 20px;
+    border: 1px solid #3498db;
+}
+
+.about-summary {
+    font-size: 0.95rem;
+    color: #7f8c8d;
+    margin-bottom: 15px;
+    line-height: 1.5;
+}
+
 /* Side Projects Section */
 .side-projects {
     margin-bottom: 40px;
