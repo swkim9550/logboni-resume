@@ -3,154 +3,267 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>logboni</title>
+    <title>김성우 | Software Engineer</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="container">
-        <!-- Header Section -->
-        <header class="header">
-            <h1>김성우</h1>
-            <p class="subtitle">Software Engineer</p>
-            <div class="contact-info">
-                <span>📧 kbkkim2@naver.com</span>
-                <span>📱 010-9823-9550</span>
-                <span>🔗 GitHub: <a href="https://github.com/swkim9550" target="_blank">swkim9550</a></span>
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="#" class="nav-logo">logboni</a>
+            <div class="nav-links">
+                <a href="#about">About</a>
+                <a href="#career">Career</a>
+                <a href="#skills">Skills</a>
+                <a href="#projects">Projects</a>
+                <a href="#contact">Contact</a>
+                <button class="theme-toggle" onclick="toggleTheme()" aria-label="테마 변경">
+                    <span class="icon-sun">☀️</span>
+                    <span class="icon-moon">🌙</span>
+                </button>
             </div>
-        </header>
+        </div>
+    </nav>
 
-        <!-- About Me Section -->
-        <section class="about-me">
-            <h2>About Me</h2>
-            
-            <div class="about-card" onclick="location.href='about/about-me.html'">
-                <div class="about-header">
-                    <h3>👨‍💻 About</h3>
-                    <span class="about-type">개인 이야기</span>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <p class="hero-greeting">안녕하세요, 저는</p>
+            <h1 class="hero-name">김성우</h1>
+            <p class="hero-title">Software Engineer</p>
+            <p class="hero-desc">10년차 백엔드 개발자로 Java, Golang, Node.js 기반의 서버 개발과<br>AWS 클라우드 인프라 구축을 전문으로 합니다.</p>
+            <div class="hero-keywords">
+                <span>Backend</span>
+                <span>AWS</span>
+                <span>Microservices</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section">
+        <div class="section-inner">
+            <h2 class="section-title">About</h2>
+            <div class="about-content">
+                <p>스포츠 라이브 스트리밍, 블록체인 지갑, 광고 리타게팅 추천 시스템, 항공/호텔 예약 서비스, 클라우드 사업 등 다양한 도메인에서 백엔드 시스템 설계 및 개발 경험을 쌓아왔습니다.</p>
+                <a href="about/about-me.html" class="link-arrow">더 알아보기 →</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Career Section -->
+    <section id="career" class="section section-alt">
+        <div class="section-inner">
+            <h2 class="section-title">Career</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-date">
+                        <span class="year">2024.03</span>
+                        <span class="status current">현재</span>
+                    </div>
+                    <div class="timeline-content">
+                        <h3>스포티비 (SPOTV)</h3>
+                        <p class="role">Software Engineer</p>
+                        <p class="desc">스포츠 미디어 플랫폼 개발 및 운영</p>
+                        <a href="companies/spotv.html" class="link-arrow">상세보기 →</a>
+                    </div>
                 </div>
-                <p class="about-summary">개발하면서 배운 것들과 일상 이야기</p>
-                <div class="click-hint">클릭하여 자세한 이야기 보기 →</div>
-            </div>
-        </section>
 
-        <!-- Summary Section -->
-        <section class="summary">
-            <h2>Summary</h2>
-            <p>10년차 경력의 백엔드 개발자로, <strong>Java/Golang/Node.js</strong> 기반의 서버 개발 및 <strong>AWS 클라우드 인프라</strong> 구축 경험을 보유하고 있습니다.</p>
-            <p>스포츠 라이브 스트리밍, 블록체인 지갑, 광고 리타게팅 추천 시스템, 항공/호텔 예약 서비스, 클라우드 사업 등 다양한 도메인에서 백엔드 시스템 설계 및 개발 경험을 쌓아왔습니다.</p>
-        </section>
-
-        <!-- Career Section -->
-        <section class="career">
-            <h2>Career History</h2>
-            
-            <div class="job-card" onclick="location.href='companies/spotv.html'">
-                <div class="job-header">
-                    <h3>스포티비 (SPOTV)</h3>
-                    <span class="period">2024.03 - 현재 (재직중)</span>
+                <div class="timeline-item">
+                    <div class="timeline-date">
+                        <span class="year">2022.04</span>
+                        <span class="duration">1년 10개월</span>
+                    </div>
+                    <div class="timeline-content">
+                        <h3>로똔다</h3>
+                        <p class="role">Software Engineer</p>
+                        <p class="desc">블록체인 지갑 서비스 개발</p>
+                        <a href="companies/rotonda.html" class="link-arrow">상세보기 →</a>
+                    </div>
                 </div>
-                <p class="position">Software Engineer</p>
-                <p class="job-summary">스포츠 미디어 플랫폼 개발 및 운영</p>
-                <div class="click-hint">클릭하여 상세 프로젝트 보기 →</div>
-            </div>
 
-            <div class="job-card" onclick="location.href='companies/rotonda.html'">
-                <div class="job-header">
-                    <h3>로똔다</h3>
-                    <span class="period">2022.04 - 2024.02</span>
+                <div class="timeline-item">
+                    <div class="timeline-date">
+                        <span class="year">2021.07</span>
+                        <span class="duration">9개월</span>
+                    </div>
+                    <div class="timeline-content">
+                        <h3>에스코어 (S-Core)</h3>
+                        <p class="role">Software Engineer</p>
+                        <p class="desc">삼성 SDS 자회사 클라우드 사업부</p>
+                        <a href="companies/score.html" class="link-arrow">상세보기 →</a>
+                    </div>
                 </div>
-                <p class="position">Software Engineer</p>
-                <p class="job-summary">블록체인 지갑 개발 서비스 개발</p>
-                <div class="click-hint">클릭하여 상세 프로젝트 보기 →</div>
-            </div>
 
-            <div class="job-card" onclick="location.href='companies/score.html'">
-                <div class="job-header">
-                    <h3>에스코어 (S-Core)</h3>
-                    <span class="period">2021.07 - 2022.04</span>
+                <div class="timeline-item">
+                    <div class="timeline-date">
+                        <span class="year">2020.06</span>
+                        <span class="duration">1년</span>
+                    </div>
+                    <div class="timeline-content">
+                        <h3>인라이플 (Enliple)</h3>
+                        <p class="role">Software Engineer</p>
+                        <p class="desc">광고 리타게팅 추천팀 개발</p>
+                        <a href="companies/enliple.html" class="link-arrow">상세보기 →</a>
+                    </div>
                 </div>
-                <p class="position">Software Engineer</p>
-                <p class="job-summary">삼성 SDS 자회사 클라우드 사업부</p>
-                <div class="click-hint">클릭하여 상세 프로젝트 보기 →</div>
-            </div>
 
-            <div class="job-card" onclick="location.href='companies/enliple.html'">
-                <div class="job-header">
-                    <h3>인라이플 (Inlife)</h3>
-                    <span class="period">2020.06 - 2021.06</span>
+                <div class="timeline-item">
+                    <div class="timeline-date">
+                        <span class="year">2019.08</span>
+                        <span class="duration">9개월</span>
+                    </div>
+                    <div class="timeline-content">
+                        <h3>에스비티엠 (SBTM)</h3>
+                        <p class="role">Software Engineer</p>
+                        <p class="desc">항공/호텔 비즈니스 개발</p>
+                        <a href="companies/sbtm.html" class="link-arrow">상세보기 →</a>
+                    </div>
                 </div>
-                <p class="position">Software Engineer</p>
-                <p class="job-summary">광고 리타게팅 추천팀 개발업무</p>
-                <div class="click-hint">클릭하여 상세 프로젝트 보기 →</div>
-            </div>
 
-            <div class="job-card" onclick="location.href='companies/sbtm.html'">
-                <div class="job-header">
-                    <h3>에스비티엠 (SBTM)</h3>
-                    <span class="period">2019.08 - 2020.05</span>
+                <div class="timeline-item">
+                    <div class="timeline-date">
+                        <span class="year">2015.12</span>
+                        <span class="duration">3년 8개월</span>
+                    </div>
+                    <div class="timeline-content">
+                        <h3>이썸테크 (Esum Tech)</h3>
+                        <p class="role">Software Engineer</p>
+                        <p class="desc">EDI 솔루션 기반 유지보수 개발</p>
+                        <a href="companies/esum.html" class="link-arrow">상세보기 →</a>
+                    </div>
                 </div>
-                <p class="position">Software Engineer</p>
-                <p class="job-summary">항공/호텔 비즈니스 개발 업무</p>
-                <div class="click-hint">클릭하여 상세 프로젝트 보기 →</div>
             </div>
+        </div>
+    </section>
 
-            <div class="job-card" onclick="location.href='companies/esum.html'">
-                <div class="job-header">
-                    <h3>이썸테크 (Esum Tech)</h3>
-                    <span class="period">2015.12 - 2019.08</span>
+    <!-- Skills Section -->
+    <section id="skills" class="section">
+        <div class="section-inner">
+            <h2 class="section-title">Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-group">
+                    <h4>Languages</h4>
+                    <div class="skill-tags">
+                        <span>Java</span>
+                        <span>Golang</span>
+                        <span>Node.js</span>
+                        <span>JavaScript</span>
+                        <span>C#</span>
+                    </div>
                 </div>
-                <p class="position">Software Engineer</p>
-                <p class="job-summary">EDI 솔루션 기반 유지보수 개발</p>
-                <div class="click-hint">클릭하여 상세 프로젝트 보기 →</div>
-            </div>
-        </section>
-
-        <!-- Side Projects Section -->
-        <section class="side-projects">
-            <h2>Side Projects</h2>
-            
-            <div class="project-card" onclick="location.href='projects/side-projects.html'">
-                <div class="project-header">
-                    <h3>🚀 개인 프로젝트 포트폴리오</h3>
-                    <span class="project-type">Mobile Apps & Web Services</span>
+                <div class="skill-group">
+                    <h4>Frameworks</h4>
+                    <div class="skill-tags">
+                        <span>Spring Boot</span>
+                        <span>Express.js</span>
+                        <span>.NET Framework</span>
+                    </div>
                 </div>
-                <p class="project-summary">백엔드 개발자로서 개인적으로 제작한 모바일 앱과 웹 서비스들</p>
-                <div class="click-hint">클릭하여 앱 및 프로젝트 상세 보기 →</div>
+                <div class="skill-group">
+                    <h4>Database</h4>
+                    <div class="skill-tags">
+                        <span>MySQL</span>
+                        <span>Oracle</span>
+                        <span>DocumentDB</span>
+                        <span>OpenSearch</span>
+                        <span>Elasticsearch</span>
+                    </div>
+                </div>
+                <div class="skill-group">
+                    <h4>Cloud & Infra</h4>
+                    <div class="skill-tags">
+                        <span>AWS</span>
+                        <span>Docker</span>
+                        <span>Terraform</span>
+                        <span>EC2</span>
+                        <span>ECS</span>
+                        <span>Lambda</span>
+                        <span>S3</span>
+                        <span>CloudFront</span>
+                    </div>
+                </div>
+                <div class="skill-group">
+                    <h4>Message Queue</h4>
+                    <div class="skill-tags">
+                        <span>Apache Kafka</span>
+                        <span>AWS SQS</span>
+                        <span>AWS SNS</span>
+                    </div>
+                </div>
+                <div class="skill-group">
+                    <h4>Special</h4>
+                    <div class="skill-tags">
+                        <span>Blockchain</span>
+                        <span>Microservices</span>
+                        <span>RESTful API</span>
+                    </div>
+                </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- Skills Section -->
-        <section class="skills">
-            <h2>Technical Skills</h2>
-            <div class="skill-category">
-                <h4>Main Programming Languages</h4>
-                <p>Java, Golang, Node.js, JavaScript, C#</p>
+    <!-- Projects Section -->
+    <section id="projects" class="section section-alt">
+        <div class="section-inner">
+            <h2 class="section-title">Side Projects</h2>
+            <div class="project-featured">
+                <div class="project-info">
+                    <span class="project-label">Featured Project</span>
+                    <h3>요정일기 (Fairy)</h3>
+                    <p>당신의 마음을 돌보는 AI 요정 친구. 일기는 오직 당신만의 비밀로, 요정이 그린 그림은 모두와 함께.</p>
+                    <div class="project-tech">
+                        <span>Flutter</span>
+                        <span>Firebase</span>
+                        <span>Supabase</span>
+                        <span>AI</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://apps.apple.com/kr/app/%EC%9A%94%EC%A0%95%EC%9D%BC%EA%B8%B0/id6755412112" target="_blank">App Store</a>
+                        <a href="https://play.google.com/store/apps/details?id=com.logboni.fairy.fairy&hl=ko" target="_blank">Play Store</a>
+                        <a href="https://swkim9550.github.io/fairy-docs/marketing.html" target="_blank">Website</a>
+                    </div>
+                </div>
             </div>
-            <div class="skill-category">
-                <h4>Frameworks & Libraries</h4>
-                <p>Spring Boot, Express.js, .NET Framework</p>
+            <a href="projects/side-projects.html" class="link-arrow">모든 프로젝트 보기 →</a>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section">
+        <div class="section-inner">
+            <h2 class="section-title">Contact</h2>
+            <div class="contact-content">
+                <p>새로운 기회나 협업에 대해 이야기하고 싶으시다면 연락주세요.</p>
+                <div class="contact-links">
+                    <a href="mailto:kbkkim2@naver.com" class="contact-item">
+                        <span class="contact-label">Email</span>
+                        <span class="contact-value">kbkkim2@naver.com</span>
+                    </a>
+                    <a href="tel:010-9823-9550" class="contact-item">
+                        <span class="contact-label">Phone</span>
+                        <span class="contact-value">010-9823-9550</span>
+                    </a>
+                    <a href="https://github.com/swkim9550" target="_blank" class="contact-item">
+                        <span class="contact-label">GitHub</span>
+                        <span class="contact-value">swkim9550</span>
+                    </a>
+                </div>
             </div>
-            <div class="skill-category">
-                <h4>Databases</h4>
-                <p>MySQL, Oracle, DocumentDB, OpenSearch, Elasticsearch</p>
-            </div>
-            <div class="skill-category">
-                <h4>Cloud & Infrastructure</h4>
-                <p>AWS (EC2, ECS, CloudWatch, CloudFront, S3, Lambda, RDS, VPC, IAM, Route53, ALB/NLB), Docker, Terraform</p>
-            </div>
-            <div class="skill-category">
-                <h4>Message Queue & Streaming</h4>
-                <p>Apache Kafka, AWS SQS, AWS SNS</p>
-            </div>
-            <div class="skill-category">
-                <h4>Monitoring & Logging</h4>
-                <p>CloudWatch, AWS CloudTrail, OpenSearch, Elasticsearch</p>
-            </div>
-            <div class="skill-category">
-                <h4>Special Experience</h4>
-                <p>Blockchain Development, Microservices Architecture, RESTful API Design</p>
-            </div>
-        </section>
-    </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>© 2026 김성우. All rights reserved.</p>
+    </footer>
+
+    <script>
+        function toggleTheme() {
+            document.body.classList.toggle('dark');
+            localStorage.setItem('theme', document.body.classList.contains('dark') ? 'dark' : 'light');
+        }
+        if (localStorage.getItem('theme') === 'dark') document.body.classList.add('dark');
+    </script>
 </body>
 </html>

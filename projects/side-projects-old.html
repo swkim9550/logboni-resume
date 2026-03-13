@@ -3,58 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Side Projects | 김성우</title>
+    <title>사이드 프로젝트 - 개인 앱 포트폴리오</title>
     <link rel="stylesheet" href="../styles.css">
 </head>
 <body>
-    <nav class="nav">
-        <div class="nav-inner">
-            <a href="../main.html" class="nav-logo">김성우</a>
-            <div class="nav-links">
-                <a href="../main.html#about">About</a>
-                <a href="../main.html#career">Career</a>
-                <a href="../main.html#skills">Skills</a>
-                <a href="../main.html#projects">Projects</a>
-                <a href="../main.html#contact">Contact</a>
-                <button class="theme-toggle" onclick="toggleTheme()" aria-label="테마 변경">
-                    <span class="icon-sun">☀️</span>
-                    <span class="icon-moon">🌙</span>
-                </button>
-            </div>
+    <div class="container">
+        <a href="../main.html" class="back-button">← 메인으로 돌아가기</a>
+        
+        <div class="company-header">
+            <h1>🚀 개인 프로젝트 포트폴리오</h1>
+            <p class="company-period">백엔드 개발자가 1인 개발한 AI 일기 앱</p>
+            <p class="position">기획/개발/출시/마케팅 1인 진행</p>
         </div>
-    </nav>
 
-    <main class="section sub-page">
-        <div class="section-inner">
-            <a href="../main.html#projects" class="back-link">← 메인으로 돌아가기</a>
-
-            <header class="page-header">
-                <h1>🚀 개인 프로젝트 포트폴리오</h1>
-                <p class="page-desc">백엔드 개발자가 1인 개발한 AI 일기 앱 | 기획/개발/출시/마케팅 1인 진행</p>
-            </header>
-
-            <section>
-                <h2 class="section-title">출시한 모바일 앱</h2>
-
-                <div class="app-card">
+        <section class="projects-detail">
+            <h2>출시한 모바일 앱</h2>
+            
+            <div class="app-showcase">
+                <div class="app-item">
                     <div class="app-header">
-                        <span class="app-icon">✨</span>
-                        <div class="app-title">
+                        <div class="app-icon">✨</div>
+                        <div class="app-info">
                             <h3>요정일기 (Fairy)</h3>
-                            <span class="platform">iOS / Android</span>
+                            <span class="app-platform">iOS / Android</span>
                         </div>
                     </div>
-
                     <div class="app-links">
-                        <a href="https://apps.apple.com/kr/app/%EC%9A%94%EC%A0%95%EC%9D%BC%EA%B8%B0/id6755412112" target="_blank">App Store</a>
-                        <a href="https://play.google.com/store/apps/details?id=com.logboni.fairy.fairy&hl=ko" target="_blank">Play Store</a>
-                        <a href="https://swkim9550.github.io/fairy-docs/marketing.html" target="_blank">공식 홈페이지</a>
+                        <a href="https://apps.apple.com/kr/app/%EC%9A%94%EC%A0%95%EC%9D%BC%EA%B8%B0/id6755412112" class="app-link" target="_blank">App Store</a>
+                        <a href="https://play.google.com/store/apps/details?id=com.logboni.fairy.fairy&hl=ko" class="app-link" target="_blank">Play Store</a>
+                        <a href="https://swkim9550.github.io/fairy-docs/marketing.html" class="app-link" target="_blank">공식 홈페이지</a>
                     </div>
-
                     <div class="app-description">
                         <p><strong>당신의 마음을 돌보는 AI 요정 친구</strong></p>
                         <p>일기는 오직 당신만의 비밀로, 요정이 그린 그림은 모두와 함께. 완벽한 프라이버시 속에서 따뜻한 성장을 경험하세요.</p>
-
+                        
                         <h4>주요 기능</h4>
                         <ul>
                             <li><strong>4가지 AI 요정</strong>: 루나(위로), 스텔라(조언), 솔라(긍정), 아리아(공감) - 각기 다른 성격의 요정이 맞춤형 응답 제공</li>
@@ -66,7 +48,7 @@
                             <li><strong>타임캡슐</strong>: 미래의 나에게 보내는 특별한 편지</li>
                             <li><strong>음악 추천</strong>: 감정에 맞는 명언과 음악 추천</li>
                         </ul>
-
+                        
                         <h4>기술적 특징</h4>
                         <ul>
                             <li><strong>완벽한 프라이버시</strong>: 모든 일기 데이터는 기기 내 로컬 저장 (외부 서버 전송 없음)</li>
@@ -75,7 +57,7 @@
                             <li><strong>iCloud 백업</strong>: 안전한 데이터 백업 지원</li>
                             <li><strong>크로스 플랫폼</strong>: iOS/Android 동시 지원</li>
                         </ul>
-
+                        
                         <h4>사용자 반응</h4>
                         <ul>
                             <li>⭐ 5.0 평점 (App Store 기준)</li>
@@ -84,24 +66,28 @@
                             <li>"AI가 그려주는 그림이 진짜 예뻐요"</li>
                         </ul>
                     </div>
-
-                    <div class="skill-tags">
-                        <span>Flutter</span>
-                        <span>Dart</span>
-                        <span>Firebase</span>
-                        <span>Supabase</span>
-                        <span>iOS</span>
-                        <span>Android</span>
-                        <span>AI Integration</span>
+                    <div class="tech-stack">
+                        <h4>사용 기술</h4>
+                        <div class="tech-tags">
+                            <span class="tech-tag">Flutter</span>
+                            <span class="tech-tag">Dart</span>
+                            <span class="tech-tag">Firebase</span>
+                            <span class="tech-tag">Supabase</span>
+                            <span class="tech-tag">iOS</span>
+                            <span class="tech-tag">Android</span>
+                            <span class="tech-tag">AI Integration</span>
+                        </div>
                     </div>
                 </div>
+            </div>
 
-                <div class="project-card">
-                    <h3>개발 철학 & 얻은 경험</h3>
+            <div class="project">
+                <h3>개발 철학 & 얻은 경험</h3>
+                <div class="project-description">
                     <p><strong>백엔드 개발자의 풀스택 도전</strong></p>
                     <p>백엔드 개발자로서 서버 사이드에 집중하면서도, 사용자 경험을 직접 이해하고 완성도 높은 서비스를 만들기 위해 1인 개발에 도전했습니다.</p>
-
-                    <h4>얻은 경험과 인사이트</h4>
+                    
+                    <p><strong>얻은 경험과 인사이트</strong></p>
                     <ul>
                         <li><strong>전체 서비스 라이프사이클 이해</strong>: 기획부터 출시, 운영까지 전 과정 경험</li>
                         <li><strong>프라이버시 중심 설계</strong>: 로컬 우선 아키텍처로 사용자 데이터 보호</li>
@@ -111,23 +97,11 @@
                         <li><strong>커뮤니티 기능 구현</strong>: 익명 공유 시스템 설계 및 개발</li>
                         <li><strong>마케팅 및 사용자 피드백</strong>: 실제 사용자의 니즈 파악 및 개선</li>
                     </ul>
-
+                    
                     <p>이러한 경험을 통해 단순한 기술 구현을 넘어서, 사용자 중심의 서비스를 만들기 위한 백엔드 솔루션을 제공할 수 있습니다.</p>
                 </div>
-            </section>
-        </div>
-    </main>
-
-    <footer class="footer">
-        <p>© 2026 김성우. All rights reserved.</p>
-    </footer>
-
-    <script>
-        function toggleTheme() {
-            document.body.classList.toggle('dark');
-            localStorage.setItem('theme', document.body.classList.contains('dark') ? 'dark' : 'light');
-        }
-        if (localStorage.getItem('theme') === 'dark') document.body.classList.add('dark');
-    </script>
+            </div>
+        </section>
+    </div>
 </body>
 </html>
