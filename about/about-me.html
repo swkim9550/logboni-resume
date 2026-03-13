@@ -5,6 +5,130 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About Me | 김성우</title>
     <link rel="stylesheet" href="../styles.css">
+    <style>
+        .quick-facts {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 0;
+            margin: 48px 0;
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            overflow: hidden;
+        }
+        .quick-fact {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px 24px;
+            border-bottom: 1px solid var(--border);
+            background: var(--bg-primary);
+        }
+        .quick-fact:nth-child(odd) {
+            border-right: 1px solid var(--border);
+        }
+        .quick-fact:nth-last-child(-n+2) {
+            border-bottom: none;
+        }
+        .quick-fact dt {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+        .quick-fact dd {
+            font-size: 0.95rem;
+            color: var(--text-primary);
+            font-weight: 600;
+            margin: 0;
+            text-align: right;
+        }
+        @media (max-width: 600px) {
+            .quick-facts {
+                grid-template-columns: 1fr;
+            }
+            .quick-fact:nth-child(odd) {
+                border-right: none;
+            }
+            .quick-fact:nth-last-child(1) {
+                border-bottom: none;
+            }
+            .quick-fact:nth-last-child(2) {
+                border-bottom: 1px solid var(--border);
+            }
+        }
+        .about-content {
+            max-width: 720px;
+            margin: 0 auto;
+        }
+        .about-section {
+            margin-bottom: 56px;
+        }
+        .about-section h3 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            color: var(--text-primary);
+        }
+        .about-section p {
+            font-size: 1.05rem;
+            line-height: 1.9;
+            color: var(--text-secondary);
+            margin-bottom: 16px;
+        }
+        .about-section p:last-child {
+            margin-bottom: 0;
+        }
+        .highlight-box {
+            background: var(--bg-secondary);
+            border-left: 4px solid var(--accent);
+            padding: 20px 24px;
+            margin: 24px 0;
+            border-radius: 0 12px 12px 0;
+        }
+        .highlight-box p {
+            margin: 0;
+            font-style: italic;
+        }
+        .motto-list {
+            list-style: none;
+            padding: 0;
+            margin: 20px 0;
+        }
+        .motto-list li {
+            padding: 16px 20px;
+            background: var(--bg-secondary);
+            border-radius: 12px;
+            margin-bottom: 12px;
+            font-size: 1.05rem;
+            line-height: 1.7;
+            color: var(--text-secondary);
+        }
+        .motto-list li:last-child {
+            margin-bottom: 0;
+        }
+        .motto-list li strong {
+            color: var(--text-primary);
+            display: block;
+            margin-bottom: 4px;
+        }
+        .about-image {
+            margin: 48px 0;
+            text-align: center;
+        }
+        .about-image img {
+            max-width: 100%;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+        .about-image figcaption {
+            margin-top: 12px;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+        .section-divider {
+            height: 1px;
+            background: var(--border);
+            margin: 56px 0;
+        }
+    </style>
 </head>
 <body>
     <nav class="nav">
@@ -29,86 +153,317 @@
             <a href="../main.html" class="back-link">← 메인으로 돌아가기</a>
 
             <header class="page-header">
-                <h1>👋 안녕하세요</h1>
-                <p class="page-desc">개발하면서 배운 것들과 일상 이야기</p>
+                <h1>👋 안녕하세요, 김성우입니다</h1>
+                <p class="page-desc">10년차 백엔드 개발자의 이야기</p>
             </header>
 
-            <section>
-                <div class="about-section">
+            <!-- Quick Facts -->
+            <dl class="quick-facts">
+                <div class="quick-fact">
+                    <dt>닉네임</dt>
+                    <dd>logboni</dd>
+                </div>
+                <div class="quick-fact">
+                    <dt>개발 시작</dt>
+                    <dd>2015년</dd>
+                </div>
+                <div class="quick-fact">
+                    <dt>전공</dt>
+                    <dd>컴퓨터학과</dd>
+                </div>
+                <div class="quick-fact">
+                    <dt>현재</dt>
+                    <dd>스포티비</dd>
+                </div>
+                <div class="quick-fact">
+                    <dt>취미</dt>
+                    <dd>골프, 축구, 낚시</dd>
+                </div>
+                <div class="quick-fact">
+                    <dt>개발자 안 했다면</dt>
+                    <dd>해변가 작은 바 운영</dd>
+                </div>
+            </dl>
+
+            <div class="about-content">
+
+                <!-- 닉네임 이야기 -->
+                <section class="about-section">
                     <h3>🏷️ logboni?</h3>
-                    <p>저연차 시절, CTO님이 "로그는 보니?" 라고 물어보셨던 게 너무 웃겨서 그때부터 닉네임으로 쓰기 시작했습니다. 지금은 GitHub, 사이드 프로젝트 등 여기저기서 logboni로 활동하고 있어요.</p>
-                </div>
+                    <p>
+                        저연차 시절, CTO님이 "로그는 보니?" 라고 물어보셨던 게 너무 웃겨서 
+                        그때부터 닉네임으로 쓰기 시작했습니다.
+                    </p>
+                    <p>
+                        처음엔 그냥 재밌어서 쓴 건데, 어느새 GitHub, 사이드 프로젝트, 
+                        개발 커뮤니티까지 여기저기서 logboni로 활동하고 있어요. 
+                        이제는 본명보다 이 닉네임이 더 익숙한 것 같기도 합니다.
+                    </p>
+                </section>
 
-                <div class="about-section">
+                <div class="section-divider"></div>
+
+                <!-- 개발 시작 계기 -->
+                <section class="about-section">
+                    <h3>🎮 개발을 시작하게 된 계기</h3>
+                    <p>
+                        최근에 카카오로 생활기록부를 조회해봤는데, 놀랍게도 중학교 때부터 
+                        꿈이 "공무원"과 "개발자"가 번갈아가며 적혀있더라고요. 
+                        안정과 도전 사이에서 고민하던 게 그때부터였나 봅니다.
+                    </p>
+                    <p>
+                        어렸을 때 게임 개인서버를 운영해본 경험이 있어요. 
+                        그때는 게임을 잘하는 게 개발인 줄 알았는데, 아니었죠. 
+                        그래도 그때 서버 세팅하고 설정 파일 만지작거리던 게 
+                        지금 생각하면 개발의 시작이었던 것 같아요.
+                    </p>
+                    <p>
+                        컴퓨터학과에 들어가서 처음엔 새로운 것들이 어려웠어요. 
+                        근데 무작정 배우는 게 아니라 직접 만들기 시작하니까 너무 재밌더라고요. 
+                        필요한 걸 만들다 보니 자연스럽게 공부하게 되고, 
+                        그러다 보니 나한테 잘 맞는다는 걸 알게 됐습니다.
+                    </p>
+                    <div class="highlight-box">
+                        <p>
+                            "내가 구현하고자 하는 걸 구현하는 게 너무 재밌고, 
+                            알아도 알아도 새로운 게 많은 느낌이었어요."
+                        </p>
+                    </div>
+                    <p>
+                        한창 개발에 미쳤을 땐 유튜브 개발 영상 보면서 맥주 마시는 게 취미일 정도였습니다. 
+                        지금도 새로운 기술 영상 보면 괜히 설레요.
+                    </p>
+                </section>
+
+                <div class="section-divider"></div>
+
+                <!-- 첫 회사 -->
+                <section class="about-section">
                     <h3>🌱 첫 회사, 이썸테크</h3>
-                    <p>3년 9개월. 제 커리어에서 가장 오래 다닌 회사입니다. 존경하는 선배들이 있었고, 주니어였던 저에게 하나하나 가르쳐주시는 게 너무 재밌었어요. 이쁨도 많이 받았고요.</p>
-                    <p>개발자로서의 기초를 다진 곳이고, 그래서 오래 있게 된 것 같습니다.</p>
-                </div>
+                    <p>
+                        3년 9개월. 제 커리어에서 가장 오래 다닌 회사입니다. 
+                        왜 이렇게 오래 있었냐고요?
+                    </p>
+                    <p>
+                        존경하는 선배들이 있었고, 주니어였던 저에게 하나하나 가르쳐주시는 게 
+                        너무 재밌었어요. 모르는 거 물어보면 귀찮아하지 않고 설명해주시고, 
+                        잘하면 칭찬해주시고. 이쁨도 많이 받았고요.
+                    </p>
+                    <p>
+                        개발자로서의 기초를 다진 곳이에요. 코드 리뷰 문화, 협업하는 방법, 
+                        문제를 해결하는 사고방식 같은 것들을 여기서 배웠습니다. 
+                        첫 회사가 좋으면 오래 다니게 된다는 말이 맞는 것 같아요.
+                    </p>
+                </section>
 
-                <div class="about-section">
-                    <h3>🧑‍💻 사람을 좋아하는 개발자</h3>
-                    <p>10년간 개발하면서 많은 사람들을 만났고, 그 관계들을 소중하게 생각합니다.</p>
-                    <p>지금까지 다닌 모든 회사에서 2-3명씩은 아직도 연락하고 지내요. 덕분에 친구가 많아서 경조사도 많습니다.</p>
-                    <p>예전보다 조용해졌지만, 오히려 사람을 더 잘 이해하게 된 것 같아요. 다양한 직군의 입장을 이해하게 된 건 사이드 프로젝트 하면서 모든 역할을 직접 해본 덕분인 것 같습니다.</p>
-                </div>
+                <div class="section-divider"></div>
 
-                <div class="about-section">
-                    <h3>🎣 개발 외의 시간</h3>
-                    <p>활동적인 걸 좋아해서 골프, 축구 등 웬만한 스포츠는 다 좋아합니다. 지금 회사가 스포티비라 취향에 딱 맞기도 하고요.</p>
-                    <p>반면에 가끔 낚시하면서 조용히 있는 것도 좋아해요. 동과 정 둘 다 즐기는 편입니다.</p>
-                </div>
-
-                <div class="about-section">
-                    <h3>👥 짧았지만 의미 있던 팀 리더 경험</h3>
-                    <p>인라이플에서 파트장님 부재 시 잠깐 팀을 이끌었던 적이 있어요. 짧은 기간이었지만 팀원들과 알고리즘 스터디도 하고, 코딩테스트 준비도 같이 하면서 여러 도전을 했습니다.</p>
-                    <p>제가 하자는 걸 다 좋아하진 않았을 텐데 따라와 줘서 고마웠어요. 이때 배운 건, 사람마다 성향이 다르니 각자의 강점을 끌어내는 게 중요하다는 거였습니다.</p>
-                </div>
-
-                <div class="about-section">
+                <!-- 스타트업 경험 -->
+                <section class="about-section">
                     <h3>🚀 스타트업 초기 멤버 경험</h3>
-                    <p>로똔다는 제 커리어에서 특별한 도전이었습니다. 에스코어에서 만난 동료들과 뜻이 맞아 함께 초기 멤버로 합류했고, 블록체인 지갑 서비스를 처음부터 만들어갔어요.</p>
-                    <p>결과적으로 팀이 흩어지게 됐지만, 동료들과 밤낮으로 몰입하며 서비스를 만들었던 그 시간이 가장 행복했습니다. 기술만으로는 안 되는 것들, 사업이 얼마나 어려운지도 배웠고요.</p>
-                    <p>이 경험 덕분에 지금은 비즈니스 관점에서 기술을 바라보게 됐고, 언젠가 다시 도전해보고 싶다는 마음도 있습니다.</p>
-                </div>
+                    <p>
+                        로똔다(빗썸 자회사)는 제 커리어에서 특별한 도전이었습니다. 
+                        에스코어에서 만난 동료들과 뜻이 맞아 함께 초기 멤버로 합류했어요. 
+                        "우리끼리 한번 해보자"는 마음으로 뛰어들었습니다.
+                    </p>
+                    <p>
+                        5명으로 시작해서 30-40명까지 늘어났다가... 결국 팀이 흩어지게 됐습니다. 
+                        블록체인 시장이 얼어붙으면서 회사도 어려워졌어요.
+                    </p>
+                    <p>
+                        그때는 무슨 열정이었는지 집에 가질 않고 엄청나게 개발에 몰두했어요. 
+                        개발 자체가 즐거웠고, 다들 성공할 거라는 자부심에 취해있었습니다. 
+                        새벽까지 코딩하고, 라면 먹고, 또 코딩하고. 힘들었지만 행복했어요.
+                    </p>
+                    <div class="highlight-box">
+                        <p>
+                            "솔직히 성취감은 없었지만, 이로 인해 깨달은 것이 너무 많아요. 
+                            기술만으로는 안 되는 것들, 사업이 얼마나 어려운지도 배웠고요."
+                        </p>
+                    </div>
+                    <p>
+                        이 경험 덕분에 지금은 비즈니스 관점에서 기술을 바라보게 됐어요. 
+                        "이 기능이 정말 필요한가?", "사용자에게 가치가 있는가?" 같은 질문을 
+                        먼저 하게 됐습니다. 언젠가 다시 도전해보고 싶다는 마음도 있고요.
+                    </p>
+                </section>
 
-                <div class="about-section">
+                <div class="section-divider"></div>
+
+                <!-- 코로나 시기 -->
+                <section class="about-section">
                     <h3>😔 코로나 시기의 기억</h3>
-                    <p>여행업계에서 일할 때 코로나가 터졌습니다. 함께 일하던 동료들이 권고사직 되는 걸 지켜봐야 했어요.</p>
-                    <p>저는 오히려 연봉을 올려준다는 제안을 받았지만, 남아있는 게 미안하기도 했고 회사의 미래가 불안하기도 해서 결국 이직을 결심했습니다.</p>
-                    <p>그때 느꼈어요. 어떤 업계에 있느냐, 어떤 타이밍이냐도 중요하다는 걸요.</p>
-                </div>
+                    <p>
+                        여행업계에서 일할 때 코로나가 터졌습니다. 
+                        함께 일하던 동료들이 권고사직 되는 걸 지켜봐야 했어요. 
+                        어제까지 같이 점심 먹던 사람들이 하나둘 떠나는 게 마음이 아팠습니다.
+                    </p>
+                    <p>
+                        저는 오히려 연봉을 올려준다는 제안을 받았어요. 
+                        개발자는 필요하니까요. 근데 남아있는 게 미안하기도 했고, 
+                        회사의 미래가 불안하기도 해서 결국 이직을 결심했습니다.
+                    </p>
+                    <p>
+                        그때 느꼈어요. 실력도 중요하지만, 어떤 업계에 있느냐, 
+                        어떤 타이밍이냐도 중요하다는 걸요. 운도 실력이라는 말이 괜히 있는 게 아니더라고요.
+                    </p>
+                </section>
 
-                <div class="about-section">
-                    <h3>🤖 AI와 함께 성장하기</h3>
-                    <p>AI 시대에 맞춰 직접 LLM에 데이터셋도 넣어보고, 나만의 AI 모델도 만들어보며 새로운 기술을 탐구하고 있습니다.</p>
-                    <p>최근에는 AWS Bedrock을 활용해 CS 문의 자동 요약 시스템을 만들었고, 사이드 프로젝트에서도 AI를 적극 활용하고 있어요.</p>
-                </div>
+                <div class="section-divider"></div>
 
-                <div class="about-section">
-                    <h3>💡 만들고 싶은 게 많은 사람</h3>
-                    <p>항상 뭔가 새로운 걸 만들어보고 싶어합니다. 옵시디언에 아이디어 노트를 적어두고, 만들어보고 싶은 앱들도 정리해놓고 있어요.</p>
-                    <p>회사에서도 기존에 안 되던 것들을 되게 만들고, 서비스 품질을 개선하는 일에서 뿌듯함을 느낍니다.</p>
-                </div>
+                <!-- 팀 리더 경험 -->
+                <section class="about-section">
+                    <h3>👥 짧았지만 의미 있던 팀 리더 경험</h3>
+                    <p>
+                        인라이플에서 파트장님 부재 시 잠깐 팀을 이끌었던 적이 있어요. 
+                        짧은 기간이었지만 팀원들과 알고리즘 스터디도 하고, 
+                        코딩테스트 준비도 같이 하면서 여러 도전을 했습니다.
+                    </p>
+                    <p>
+                        솔직히 제가 하자는 걸 다 좋아하진 않았을 거예요. 
+                        퇴근하고 공부하자는 건데 누가 좋아하겠어요. 
+                        그래도 따라와 줘서 고마웠고, 그 경험이 저한테도 많이 남았습니다.
+                    </p>
+                    <div class="highlight-box">
+                        <p>
+                            "이때 배운 건, 사람마다 성향이 다르니 
+                            각자의 강점을 끌어내는 게 중요하다는 거였습니다. 
+                            모두에게 같은 방식이 통하지 않더라고요."
+                        </p>
+                    </div>
+                </section>
 
-                <div class="about-section">
+                <div class="section-divider"></div>
+
+                <!-- 사람을 좋아하는 개발자 -->
+                <section class="about-section">
+                    <h3>🧑‍💻 사람을 좋아하는 개발자</h3>
+                    <p>
+                        10년간 개발하면서 많은 사람들을 만났고, 그 관계들을 소중하게 생각합니다.
+                        개발은 혼자 하는 것 같지만, 결국 사람과 함께 하는 일이니까요.
+                    </p>
+                    <p>
+                        지금까지 다닌 모든 회사에서 최소 2-3명씩은 아직도 연락하고 지내요.
+                        가끔 밥도 먹고, 고민 상담도 하고. 덕분에 친구가 많아서 경조사도 많습니다.
+                        축의금이 좀 나가긴 하지만, 그만큼 받는 것도 있으니까요.
+                    </p>
+                    <p>
+                        예전보다 조용해졌지만, 오히려 사람을 더 잘 이해하게 된 것 같아요. 
+                        다양한 직군의 입장을 이해하게 된 건 사이드 프로젝트 하면서 
+                        기획, 디자인, 마케팅까지 모든 역할을 직접 해본 덕분인 것 같습니다.
+                    </p>
+                </section>
+
+                <div class="section-divider"></div>
+
+                <!-- 사이드 프로젝트 -->
+                <section class="about-section">
                     <h3>📱 사이드 프로젝트, 요정일기</h3>
-                    <p>기획부터 개발, 디자인, 출시, 마케팅까지 A to Z를 혼자 해봤습니다. 너무 힘들었어요.</p>
-                    <p>개발은 그나마 익숙한데, 앱 심사 대응, 스토어 등록, 스크린샷 제작, 홍보 문구 작성... 생각보다 개발 외 작업이 훨씬 오래 걸리더라고요. 홍보는 정말 쉽지 않았습니다.</p>
-                    <p>이 경험 덕분에 기획자, 디자이너, 마케터가 얼마나 힘들게 일하는지 알게 됐어요. 협업할 때 서로의 영역을 이해하는 게 얼마나 중요한지도요.</p>
-                    <p>그래도 유저들이 좋아하는 모습, 다운로드가 늘어나는 걸 볼 때는 정말 뿌듯했습니다. 언젠가는 내 프로덕트로 성공해보고 싶다는 꿈이 있어요.</p>
-                </div>
+                    <p>
+                        기획부터 개발, 디자인, 출시, 마케팅까지 A to Z를 혼자 해봤습니다. 
+                        솔직히 너무 힘들었어요. 근데 그만큼 배운 것도 많았습니다.
+                    </p>
+                    <p>
+                        개발은 그나마 익숙한데, 앱 심사 대응, 스토어 등록, 스크린샷 제작, 홍보 문구 작성... 
+                        생각보다 개발 외 작업이 훨씬 오래 걸리더라고요. 
+                        특히 홍보는 정말 쉽지 않았습니다. 좋은 앱을 만들어도 알려지지 않으면 소용없다는 걸 뼈저리게 느꼈어요.
+                    </p>
+                    <p>
+                        이 경험 덕분에 기획자, 디자이너, 마케터가 얼마나 힘들게 일하는지 알게 됐어요. 
+                        "그거 금방 되는 거 아니야?"라는 말을 이제는 절대 안 합니다. 
+                        협업할 때 서로의 영역을 이해하는 게 얼마나 중요한지도 배웠고요.
+                    </p>
+                    <p>
+                        그래도 유저들이 좋아하는 모습, 다운로드가 늘어나는 걸 볼 때는 정말 뿌듯했습니다.
+                        내가 만든 걸 누군가 쓴다는 게 이렇게 기분 좋은 일인지 몰랐어요.
+                    </p>
+                </section>
 
+                <div class="section-divider"></div>
+
+                <!-- 일할 때 모토 -->
+                <section class="about-section">
+                    <h3>💭 일할 때 생각하는 것들</h3>
+                    <ul class="motto-list">
+                        <li>
+                            <strong>"은탄환은 없다"</strong>
+                            어떤 기술을 써도 상황에 따라 다를 수 있어요. 
+                            최신 기술이 항상 정답은 아니고, 상황에 맞는 선택이 중요한 것 같습니다.
+                        </li>
+                        <li>
+                            <strong>"A to Z 직접 완성해보기"</strong>
+                            요즘 AI AI 하는데 다들 말뿐인 것 같아요. 
+                            끝까지 경험해봐야 뭐가 잘못됐는지 알 수 있습니다. 
+                            중간에 멈추면 진짜 어려운 부분을 모르고 넘어가게 되더라고요.
+                        </li>
+                        <li>
+                            <strong>"말보다 구현"</strong>
+                            말로만 하는 개발보단 실제 구현하는 게 더 중요한 것 같아요.
+                            일단 만들어보면 생각지 못한 문제들이 보이거든요.
+                        </li>
+                    </ul>
+                </section>
+
+                <div class="section-divider"></div>
+
+                <!-- 개발 외의 시간 -->
+                <section class="about-section">
+                    <h3>🎣 개발 외의 시간</h3>
+                    <p>
+                        활동적인 걸 좋아해서 골프, 축구 등 웬만한 스포츠는 다 좋아합니다. 
+                        지금 회사가 스포티비라 취향에 딱 맞기도 하고요. 
+                        스포츠 중계 보면서 일하는 게 이렇게 좋을 줄 몰랐어요.
+                    </p>
+                    <p>
+                        반면에 가끔 낚시하면서 조용히 있는 것도 좋아해요. 
+                        물멍하면서 아무 생각 안 하는 시간이 필요하더라고요. 
+                        동과 정 둘 다 즐기는 편입니다.
+                    </p>
+                    <p>
+                        만약 개발자가 아니었다면? 한적한 해변가에서 아늑한 바를 운영하면서 
+                        매번 새로운 사람을 만나는 상상을 해봅니다. 
+                        사람 만나는 건 여전히 좋아하니까요.
+                    </p>
+                </section>
+
+                <div class="section-divider"></div>
+
+                <!-- 동료들의 메시지 -->
                 <figure class="about-image">
                     <img src="about-me.png" alt="함께 일했던 동료들의 메시지">
                     <figcaption>함께 일했던 동료들의 메시지</figcaption>
                 </figure>
 
-                <div class="about-section">
-                    <h3>🚀 앞으로의 방향</h3>
-                    <p>10년간 스포츠 OTT, 블록체인, 광고 추천, 여행 예약, 유통 등 다양한 도메인을 경험하면서 많이 배웠습니다.</p>
-                    <p>앞으로도 새로운 도전을 계속하고 싶어요. 사람과의 관계를 소중히 여기고, 새로운 것에 대한 호기심을 잃지 않는 개발자가 되겠습니다.</p>
-                </div>
-            </section>
+                <div class="section-divider"></div>
+
+                <!-- 앞으로의 목표 -->
+                <section class="about-section">
+                    <h3>🎯 앞으로의 목표</h3>
+                    <p>
+                        목표라는 게 정말 어렵지만, 솔직하게 적어볼게요.
+                    </p>
+                    <p>
+                        누구나 꿈꾸는 경제적 자유를 얻고 싶어요. 
+                        근데 그렇다고 개발을 포기하진 않을 것 같습니다. 
+                        만드는 게 좋으니까요.
+                    </p>
+                    <p>
+                        아직 결혼도 안 했지만, 좋은 남편이자 좋은 아빠가 되고 싶어요. 
+                        회사에서는 같이 일하고 싶은 동료가 되고 싶고요.
+                    </p>
+                    <div class="highlight-box">
+                        <p>
+                            "프로페셔널해야 좋은 사람이 될 수 있겠죠. 
+                            프로페셔널하다는 건 결국 도전을 즐긴다는 뜻이기도 하고요."
+                        </p>
+                    </div>
+                    <p>
+                        이상한 꿈 같지만, 이게 제 꿈인 것 같습니다. 
+                        거창하진 않아도, 제가 하는 일에 자부심을 갖고 살고 싶어요.
+                    </p>
+                </section>
+
+            </div>
         </div>
     </main>
 
