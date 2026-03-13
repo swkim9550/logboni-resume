@@ -199,11 +199,18 @@
                     <h3>🔧 라이브 스트리밍 대응 서버 사전 증설 자동화</h3>
                     <p class="project-period">2024.09 - 2024.10</p>
                     <p>손흥민 경기 등 20만~30만 동시 접속자 대비 사전 서버 증설 자동화 시스템 구축</p>
-                    <h4>주요 업무</h4>
+                    <h4>프로젝트 배경</h4>
                     <ul>
-                        <li>Airflow 기반 스케줄링: 경기 1시간 전 자동 서버 증설</li>
-                        <li>운영팀 친화적 UI 구축: High/Medium/SuperHigh 등급 설정</li>
-                        <li>Shell Script 자동화: EC2 인스턴스 생성 및 로드밸런서 등록</li>
+                        <li>AWS Auto Scaling 자체 기능은 트래픽 증가 후 반응하기 때문에 급격한 동시접속에 대응 한계</li>
+                        <li>라이브 스포츠 특성상 경기 시작 직전 트래픽이 급증하므로 사전 증설 필요</li>
+                    </ul>
+                    <h4>주요 구현</h4>
+                    <ul>
+                        <li>Airflow 기반 스케줄링: 경기 시작 1시간 전 자동 서버 증설</li>
+                        <li>축구, 농구, 야구, 골프 등 종목별 경기 시간 연동</li>
+                        <li>게임 정보 API 연동으로 경기 일정 자동 수집</li>
+                        <li>운영팀 친화적 UI: 경기별 등급(High/Medium/SuperHigh) 간편 등록</li>
+                        <li>Slack 연동: 서버 증설/축소 시 운영팀에 실시간 알림</li>
                         <li>경기 종료 후 자동 스케일 다운으로 비용 최적화</li>
                     </ul>
                     <h4>성과</h4>
@@ -212,7 +219,7 @@
                         <li>운영팀의 수동 서버 관리 업무 완전 자동화</li>
                     </ul>
                     <div class="skill-tags">
-                        <span>Apache Airflow</span><span>AWS EC2</span><span>Shell Script</span><span>ALB</span><span>Auto Scaling</span>
+                        <span>Apache Airflow</span><span>AWS EC2</span><span>Shell Script</span><span>ALB</span><span>Auto Scaling</span><span>Slack API</span>
                     </div>
                 </div>
 
