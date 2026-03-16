@@ -87,6 +87,33 @@
             .stay-images img { width: 240px; height: 170px; }
             .room { flex-direction: column; align-items: flex-start; gap: 4px; }
             .room-price { text-align: left; }
+            .transport-table { overflow-x: auto; }
+            .transport-table table { min-width: 600px; }
+        }
+
+        .transport-table { margin-bottom: 16px; }
+        .transport-table table {
+            width: 100%; border-collapse: collapse; background: #fff;
+            border-radius: 12px; overflow: hidden; border: 1px solid #ece8e3;
+        }
+        .transport-table th {
+            background: #f5f0eb; padding: 12px 16px; text-align: left;
+            font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.5px; color: #8b7355;
+        }
+        .transport-table td {
+            padding: 16px; border-top: 1px solid #f0ece7; vertical-align: top;
+        }
+        .transport-table td strong { display: block; font-size: 1rem; }
+        .transport-table td .sub { display: block; font-size: 0.8rem; color: #999; margin-top: 2px; }
+        .transport-table .route { font-size: 0.85rem; color: #666; margin-bottom: 4px; }
+        .transport-table .route strong { display: inline; font-size: 0.85rem; color: #2d2d2d; }
+        .transport-table .cost { color: #b08968; font-size: 0.8rem; }
+        .transport-table .total {
+            margin-top: 8px; padding-top: 8px; border-top: 1px dashed #e8e4df;
+            font-size: 0.88rem; font-weight: 600; color: #2d2d2d;
+        }
+        .table-note {
+            font-size: 0.82rem; color: #999; margin-top: 8px; padding-left: 4px;
         }
     </style>
 </head>
@@ -261,6 +288,72 @@
     </div>
 
 
+
+    <!-- 교통 비교 -->
+    <div class="region">
+        <div class="region-title">교통 비교 (인천/서울 출발)</div>
+
+        <div class="transport-table">
+            <table>
+                <thead>
+                    <tr>
+                        <th>숙소</th>
+                        <th>기차</th>
+                        <th>차</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <strong>고성</strong>
+                            <span class="sub">스테이 해돋 / 설레다</span>
+                        </td>
+                        <td>
+                            <div class="route">서울 → 강릉역 KTX <strong>1시간 50분</strong></div>
+                            <div class="route">강릉역 → 숙소 택시 40~45분 <span class="cost">약 3.5~4만원</span></div>
+                            <div class="total">총 약 2시간 30~40분</div>
+                        </td>
+                        <td>
+                            <div class="route">영동고속도로</div>
+                            <div class="total">총 약 3~3시간 30분</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <strong>태백</strong>
+                            <span class="sub">여여한사생활</span>
+                        </td>
+                        <td>
+                            <div class="route">청량리 → 태백역 무궁화호 <strong>3시간 30분</strong></div>
+                            <div class="route">태백역 → 숙소 택시 4분 <span class="cost">기본요금</span></div>
+                            <div class="total">총 약 3시간 40분</div>
+                        </td>
+                        <td>
+                            <div class="route">중앙고속도로</div>
+                            <div class="total">총 약 2시간 30분~3시간</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <strong>경주</strong>
+                            <span class="sub">쪽샘집</span>
+                        </td>
+                        <td>
+                            <div class="route">서울역 → 경주역 KTX <strong>2시간 10분</strong></div>
+                            <div class="route">경주역 → 숙소 택시 20분 <span class="cost">약 1.5~2만원</span></div>
+                            <div class="total">총 약 2시간 30분</div>
+                        </td>
+                        <td>
+                            <div class="route">경부고속도로</div>
+                            <div class="total">총 약 3시간 30분~4시간</div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <p class="table-note">인천 출발 시 기차는 +40분~1시간, 차는 +30분~1시간 추가</p>
+            <p class="table-note">태백은 KTX 노선이 없어 무궁화호만 운행 — 기차 여행이면 고성이나 경주가 편리</p>
+        </div>
+    </div>
 
 </div>
 
