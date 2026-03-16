@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3월 여행 숙소</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #faf8f5;
+            color: #2d2d2d;
+            line-height: 1.6;
+        }
+        .header {
+            text-align: center;
+            padding: 60px 24px 40px;
+            background: linear-gradient(135deg, #fef9ef 0%, #fdf2f8 50%, #eff6ff 100%);
+        }
+        .header h1 { font-size: 2rem; font-weight: 700; letter-spacing: -1px; margin-bottom: 6px; }
+        .header p { color: #999; font-size: 0.95rem; }
+        .container { max-width: 860px; margin: 0 auto; padding: 40px 24px 80px; }
+        .region { margin-bottom: 48px; }
+        .region-title {
+            font-size: 1.3rem; font-weight: 700; margin-bottom: 20px;
+            padding-bottom: 12px; border-bottom: 2px solid #e8e4df;
+        }
+
+        .stay-card {
+            background: #fff; border-radius: 16px; overflow: hidden;
+            margin-bottom: 20px; border: 1px solid #ece8e3;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .stay-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+        }
+
+        .stay-images {
+            display: flex; overflow-x: auto; scroll-snap-type: x mandatory;
+            -webkit-overflow-scrolling: touch; scrollbar-width: none;
+        }
+        .stay-images::-webkit-scrollbar { display: none; }
+        .stay-images img {
+            width: 280px; height: 200px; object-fit: cover; flex-shrink: 0;
+            scroll-snap-align: start;
+        }
+
+        .stay-body { padding: 24px 28px 28px; }
+        .stay-name { font-size: 1.2rem; font-weight: 600; margin-bottom: 4px; }
+        .stay-date { font-size: 0.85rem; color: #b08968; font-weight: 500; margin-bottom: 14px; }
+        .stay-info { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 16px; }
+        .info-item { font-size: 0.88rem; color: #666; }
+        .info-item .label { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.5px; color: #aaa; display: block; margin-bottom: 2px; }
+
+        .stay-features { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 16px; }
+        .feature { padding: 4px 10px; background: #f5f0eb; border-radius: 100px; font-size: 0.78rem; color: #8b7355; }
+
+        .rooms { margin-bottom: 16px; }
+        .rooms-title { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.5px; color: #aaa; margin-bottom: 8px; }
+        .room {
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 10px 14px; background: #faf8f5; border-radius: 8px; margin-bottom: 6px; font-size: 0.88rem;
+        }
+        .room-name { font-weight: 500; }
+        .room-detail { color: #888; font-size: 0.82rem; }
+        .room-price { text-align: right; }
+        .room-price .original { text-decoration: line-through; color: #bbb; font-size: 0.78rem; }
+        .room-price .sale { color: #c0392b; font-weight: 600; }
+        .room-price .discount { background: #fdecea; color: #c0392b; font-size: 0.7rem; padding: 2px 6px; border-radius: 4px; font-weight: 600; margin-left: 4px; }
+
+        .btn-book {
+            display: inline-block; padding: 10px 24px; background: #2d2d2d; color: #fff;
+            border-radius: 8px; font-size: 0.88rem; font-weight: 500; text-decoration: none; transition: background 0.2s;
+        }
+        .btn-book:hover { background: #555; }
+
+        .stay-note {
+            margin-top: 12px; padding: 12px 16px; background: #fef9ef; border-radius: 8px;
+            font-size: 0.82rem; color: #b08968; border-left: 3px solid #deb887;
+        }
+
+        @media (max-width: 600px) {
+            .header h1 { font-size: 1.5rem; }
+            .stay-body { padding: 20px; }
+            .stay-info { grid-template-columns: 1fr; }
+            .stay-images img { width: 240px; height: 170px; }
+            .room { flex-direction: column; align-items: flex-start; gap: 4px; }
+            .room-price { text-align: left; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="header">
+    <h1>3월 여행 숙소</h1>
+    <p>2026.03.29 ~ 03.31</p>
+</div>
+
+<div class="container">
+
+    <!-- 고성 -->
+    <div class="region">
+        <div class="region-title">고성</div>
+
+        <div class="stay-card">
+            <div class="stay-images">
+                <img src="https://images.stayfolio.com/system/pictures/images/000/217/832/original/626188002ed068bfc7fb6e2ddbbdca9f839a5401.jpg?1708418714" alt="스테이 해돋 외관">
+                <img src="https://images.stayfolio.com/system/pictures/images/000/247/140/original/5c774b1cbf509884dae6407ddf70a0b3c9b13b39.jpg?1734510351" alt="스테이 해돋 바다">
+                <img src="https://images.stayfolio.com/system/pictures/images/000/247/143/original/654685bb3811544ebd6b8f135bf3d08f1794c6a2.jpg?1734510373" alt="스테이 해돋 해돋이">
+                <img src="https://images.stayfolio.com/system/pictures/images/000/247/138/original/3eccae8d773dd91ef7652b8c39304eb184bc27d0.jpg?1734510344" alt="스테이 해돋 낚시">
+            </div>
+            <div class="stay-body">
+                <div class="stay-name">스테이 해돋</div>
+                <div class="stay-date">03.29 (일) — 03.30 (월) · 1박</div>
+                <div class="stay-info">
+                    <div class="info-item"><span class="label">위치</span>강릉역(KTX)에서 약 38km (차로 45분)</div>
+                    <div class="info-item"><span class="label">특징</span>아야진 해변 인근 · 해돋이 명소</div>
+                </div>
+                <div class="stay-features">
+                    <span class="feature">조식</span>
+                    <span class="feature">반신욕</span>
+                    <span class="feature">빔프로젝터/TV</span>
+                    <span class="feature">취사</span>
+                </div>
+                <div class="rooms">
+                    <div class="rooms-title">객실 · 가격 (할인가 기준)</div>
+                    <div class="room">
+                        <div><span class="room-name">2F SUN</span><span class="room-detail"> · 기준 2명 (최대 2명)</span></div>
+                        <div class="room-price"><span class="original">₩180,000</span> <span class="sale">₩144,000</span><span class="discount">20%</span></div>
+                    </div>
+                    <div class="room">
+                        <div><span class="room-name">3F BLUE</span><span class="room-detail"> · 기준 2명 (최대 4명)</span></div>
+                        <div class="room-price"><span class="original">₩230,000</span> <span class="sale">₩172,500</span><span class="discount">25%</span></div>
+                    </div>
+                    <div class="room">
+                        <div><span class="room-name">4F LIGHT</span><span class="room-detail"> · 기준 2명 (최대 4명)</span></div>
+                        <div class="room-price"><span class="original">₩230,000</span> <span class="sale">₩184,000</span><span class="discount">20%</span></div>
+                    </div>
+                    <div class="room">
+                        <div><span class="room-name">5F EAST</span><span class="room-detail"> · 기준 2명 (최대 4명)</span></div>
+                        <div class="room-price"><span class="original">₩230,000</span> <span class="sale">₩184,000</span><span class="discount">20%</span></div>
+                    </div>
+                </div>
+                <a class="btn-book" href="https://www.stayfolio.com/findstay/stay-haedot" target="_blank">예약하러 가기</a>
+            </div>
+        </div>
+
+        <div class="stay-card">
+            <div class="stay-images">
+                <img src="https://images.stayfolio.com/system/pictures/images/000/077/127/original/66c29d30b1982c4f9c2f97ad1675c11a18987306.jpg?1623562401" alt="설레다 외관">
+                <img src="https://images.stayfolio.com/system/pictures/images/000/257/694/original/404a510905ee13898f786ce56e76f1c1824d3680.jpg?1740402270" alt="설레다 테라스">
+                <img src="https://images.stayfolio.com/system/pictures/images/000/247/941/original/b30426c74382059fc540229ac8da7c141eed7330.jpg?1734672623" alt="설레다 노천탕">
+                <img src="https://images.stayfolio.com/system/pictures/images/000/257/693/original/6ecdb13a8bc8dc50ba11ec3cb1d17cb25bfd2206.JPG?1740402197" alt="설레다 수영장">
+            </div>
+            <div class="stay-body">
+                <div class="stay-name">설레다</div>
+                <div class="stay-date">03.29 (일) — 03.30 (월) · 1박</div>
+                <div class="stay-info">
+                    <div class="info-item"><span class="label">위치</span>강릉역(KTX)에서 약 35km (차로 40분)</div>
+                    <div class="info-item"><span class="label">특징</span>울산바위 조망권 · 조용한 마을</div>
+                </div>
+                <div class="stay-features">
+                    <span class="feature">수영장/노천탕</span>
+                    <span class="feature">반신욕</span>
+                    <span class="feature">빔프로젝터/TV</span>
+                    <span class="feature">취사</span>
+                </div>
+                <div class="rooms">
+                    <div class="rooms-title">객실 · 가격 (할인가 기준)</div>
+                    <div class="room">
+                        <div><span class="room-name">어제도</span><span class="room-detail"> · 기준 2명 (최대 2명) · 테라스+노천탕</span></div>
+                        <div class="room-price"><span class="original">₩220,000</span> <span class="sale">₩176,000</span><span class="discount">20%</span></div>
+                    </div>
+                    <div class="room">
+                        <div><span class="room-name">오늘도</span><span class="room-detail"> · 기준 2명 (최대 4명) · 수영장</span></div>
+                        <div class="room-price"><span class="original">₩390,000</span> <span class="sale">₩312,000</span><span class="discount">20%</span></div>
+                    </div>
+                    <div class="room">
+                        <div><span class="room-name">내일도</span><span class="room-detail"> · 기준 2명 (최대 2명) · 테라스+노천탕</span></div>
+                        <div class="room-price"><span class="original">₩220,000</span> <span class="sale">₩176,000</span><span class="discount">20%</span></div>
+                    </div>
+                </div>
+                <div class="stay-note">연박 할인: 어제도/내일도 2박 시 3만원 할인, 3박 시 6만원 할인</div>
+                <br>
+                <a class="btn-book" href="https://www.stayfolio.com/findstay/seolreda" target="_blank">예약하러 가기</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- 경주 -->
+    <div class="region">
+        <div class="region-title">경주</div>
+
+        <div class="stay-card">
+            <div class="stay-images">
+                <img src="https://images.stayfolio.com/system/pictures/images/000/108/085/original/0613f122e6154d0814f1ae525813121d16b38dab.jpg?1641263789" alt="쪽샘집 외관">
+                <img src="https://images.stayfolio.com/system/pictures/images/000/249/205/original/c2215843ae8fa3c212289b4b3e6b5abf1bdc8ec0.jpg?1735798367" alt="쪽샘집 수영장">
+                <img src="https://images.stayfolio.com/system/pictures/images/000/249/207/original/c4be1b7fe38397cc418ce32b026a7bfca793e740.jpg?1735798372" alt="쪽샘집 빅테이블">
+                <img src="https://images.stayfolio.com/system/pictures/images/000/249/208/original/3cafd8fc308878a08eb0038b3aea1ceb3e550ab6.jpg?1735798377" alt="쪽샘집 침실">
+            </div>
+            <div class="stay-body">
+                <div class="stay-name">쪽샘집</div>
+                <div class="stay-date">03.30 (월) — 03.31 (화) · 1박</div>
+                <div class="stay-info">
+                    <div class="info-item"><span class="label">위치</span>경주역(KTX)에서 약 13km (차로 20분)</div>
+                    <div class="info-item"><span class="label">특징</span>황리단길 인근 · 독채형 한옥</div>
+                </div>
+                <div class="stay-features">
+                    <span class="feature">수영장</span>
+                    <span class="feature">빔프로젝터/TV</span>
+                    <span class="feature">바베큐</span>
+                    <span class="feature">취사</span>
+                </div>
+                <div class="rooms">
+                    <div class="rooms-title">객실 · 가격 (할인가 기준)</div>
+                    <div class="room">
+                        <div><span class="room-name">쪽샘집 독채</span><span class="room-detail"> · 기준 4명 (최대 4명) · 침구 2</span></div>
+                        <div class="room-price"><span class="original">₩350,000</span> <span class="sale">₩280,000</span><span class="discount">20%</span></div>
+                    </div>
+                </div>
+                <a class="btn-book" href="https://www.stayfolio.com/findstay/jjok-sam-jip" target="_blank">예약하러 가기</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- 태백 -->
+    <div class="region">
+        <div class="region-title">태백</div>
+
+        <div class="stay-card">
+            <div class="stay-body">
+                <div class="stay-name">스테이 해돋</div>
+                <div class="stay-date">03.29 (일) — 03.30 (월) · 1박</div>
+                <div class="stay-info">
+                    <div class="info-item"><span class="label">위치</span>태백역에서 약 1.5km (차로 4분)</div>
+                    <div class="info-item"><span class="label">특징</span>시내 중심이라 접근성 최상</div>
+                </div>
+                <div class="stay-note">고성 소재 '스테이 해돋'과 동일 이름 — 태백 숙소가 별도로 있는지 확인 필요</div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>
