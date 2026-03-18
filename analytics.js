@@ -1,5 +1,7 @@
 // 페이지 조회수 + 행동 분석 트래킹 (Supabase)
 (function() {
+  if (location.hostname === 'localhost' || location.hostname === '127.0.0.1') return;
+
   var SUPABASE_URL = 'https://vuzwljbxwwlgegwzlxuc.supabase.co';
   var SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZ1endsamJ4d3dsZ2Vnd3pseHVjIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjcxMzMyOTAsImV4cCI6MjA4MjcwOTI5MH0.FK7-h-PLlSv1JIpXcCONRiFZZmBEUEmc8tHXWLOBpYk';
   var API = SUPABASE_URL + '/rest/v1/page_views?apikey=' + SUPABASE_ANON_KEY;

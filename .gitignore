@@ -57,3 +57,8 @@ Thumbs.db
 
 # PM2
 ecosystem.config.js
+
+# 개인 면접 자료
+*.md
+!README.md
+*.txt

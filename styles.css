@@ -731,6 +731,11 @@ body.dark .floating-btn:hover {
     margin-bottom: 24px;
 }
 
+.project-card.summary-highlight {
+    background: #e8f4fd;
+    border-left: 4px solid #2563eb;
+}
+
 .project-card h3 {
     font-size: 1.25rem;
     font-weight: 600;
@@ -925,6 +930,11 @@ body.dark .page-desc {
 
 body.dark .project-card {
     background: #1a1a1a;
+}
+
+body.dark .project-card.summary-highlight {
+    background: #1a2332;
+    border-left-color: #3b82f6;
 }
 
 body.dark .project-card h3 {
