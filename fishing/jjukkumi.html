@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>쭈꾸미 낚시여행 가이드</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,'Noto Sans KR',sans-serif;background:#fafafa;color:#333;line-height:1.7;font-size:15px}
+.container{max-width:720px;margin:0 auto;padding:24px 16px}
+header{text-align:center;padding:40px 0 32px}
+header h1{font-size:1.6em;font-weight:700;color:#1a1a1a}
+header p{color:#888;margin-top:6px;font-size:.95em}
+.compare{overflow-x:auto;margin:0 0 32px;border:1px solid #e5e5e5;border-radius:12px;background:#fff}
+.compare table{width:100%;border-collapse:collapse;min-width:560px;font-size:.85em}
+.compare th{padding:12px;text-align:left;background:#f8f8f8;color:#666;font-weight:600;border-bottom:1px solid #eee}
+.compare td{padding:10px 12px;border-bottom:1px solid #f0f0f0;color:#444;vertical-align:top}
+.compare tr:last-child td{border-bottom:none}
+.compare .price{color:#2563eb;font-weight:700}
+.card{background:#fff;border:1px solid #e5e5e5;border-radius:12px;padding:24px;margin-bottom:20px}
+.card-header{display:flex;align-items:center;gap:10px;margin-bottom:16px}
+.card-header h2{font-size:1.15em;font-weight:700;color:#1a1a1a}
+.label{display:inline-block;background:#f0f4ff;color:#2563eb;padding:2px 8px;border-radius:6px;font-size:.75em;font-weight:600}
+.label.green{background:#ecfdf5;color:#059669}
+.label.orange{background:#fff7ed;color:#c2410c}
+dl.info{display:grid;grid-template-columns:80px 1fr;gap:6px 12px;font-size:.9em}
+dl.info dt{color:#999;font-weight:500}
+dl.info dd{color:#333}
+.price-row{background:#f8fafc;border-radius:8px;padding:12px 16px;margin:14px 0}
+.price-row .name{font-size:.8em;color:#888}
+.price-row .val{font-size:1.15em;font-weight:700;color:#2563eb}
+.price-row .note{font-size:.78em;color:#999;margin-top:2px}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin:12px 0}
+.tag{font-size:.78em;padding:4px 10px;border-radius:6px;background:#f5f5f5;color:#555}
+.tag.g{background:#ecfdf5;color:#059669}
+.tag.w{background:#fffbeb;color:#b45309}
+.note-box{background:#f8fafc;border-left:3px solid #2563eb;padding:12px 16px;border-radius:0 8px 8px 0;margin:12px 0;font-size:.85em;color:#555}
+.links{margin-top:14px;display:flex;gap:8px;flex-wrap:wrap}
+.links a{display:inline-block;padding:8px 16px;border-radius:8px;text-decoration:none;font-size:.85em;font-weight:600;transition:opacity .2s}
+.links a.primary{background:#2563eb;color:#fff}
+.links a.secondary{background:#f0f0f0;color:#555}
+.links a:hover{opacity:.8}
+.section{margin:36px 0 16px;font-size:1.1em;font-weight:700;color:#1a1a1a}
+.checklist{list-style:none;padding:0}
+.checklist li{padding:4px 0;font-size:.9em}
+footer{text-align:center;color:#bbb;padding:40px 0 20px;font-size:.8em}
+</style>
+</head>
+<body>
+<div class="container">
+
+<header>
+  <h1>🐙 쭈꾸미 낚시여행 가이드</h1>
+  <p>인천 선상낚시 업체 비교 · 초보도 OK</p>
+</header>
+
+<div class="section">📅 은아낚시 예약현황</div>
+<div class="card" style="font-size:.85em">
+  <p style="color:#888;margin-bottom:12px">2026.3.23 기준 · 실시간 변동 가능 · 주중 45,000원 / 🔴주말 50,000원</p>
+  <div style="display:flex;gap:8px;margin-bottom:16px">
+    <button onclick="document.getElementById('m3').style.display='block';document.getElementById('m4').style.display='none';this.style.background='#2563eb';this.style.color='#fff';this.nextElementSibling.style.background='#f1f5f9';this.nextElementSibling.style.color='#333'" style="padding:8px 20px;border:none;border-radius:8px;font-weight:700;cursor:pointer;background:#2563eb;color:#fff">3월</button>
+    <button onclick="document.getElementById('m4').style.display='block';document.getElementById('m3').style.display='none';this.style.background='#2563eb';this.style.color='#fff';this.previousElementSibling.style.background='#f1f5f9';this.previousElementSibling.style.color='#333'" style="padding:8px 20px;border:none;border-radius:8px;font-weight:700;cursor:pointer;background:#f1f5f9;color:#333">4월</button>
+  </div>
+  <!-- 3월 -->
+  <div id="m3">
+    <p style="margin-bottom:8px"><strong>🐙 쭈꾸미(은아3호) 3/25~3/31</strong></p>
+    <div class="compare"><table>
+      <tr><th>날짜</th><th>시간</th><th>남은자리</th><th>예약</th><th>비고</th></tr>
+      <tr><td><strong>3/25(수)</strong></td><td>오전</td><td>48명</td><td>-</td><td>여유</td></tr>
+      <tr><td></td><td>오후</td><td>48명</td><td>-</td><td>여유</td></tr>
+      <tr><td><strong>3/26(목)</strong></td><td>오전</td><td>48명</td><td>-</td><td>여유</td></tr>
+      <tr><td></td><td>오후</td><td>43명</td><td>5명</td><td></td></tr>
+      <tr><td><strong>3/27(금)</strong></td><td>오전</td><td>48명</td><td>-</td><td>여유</td></tr>
+      <tr><td></td><td>오후</td><td>48명</td><td>-</td><td>여유</td></tr>
+      <tr style="background:#fff7ed"><td><strong>3/28(토)🔴</strong></td><td>오전</td><td>35명</td><td>13명</td><td></td></tr>
+      <tr style="background:#fef2f2"><td></td><td>오후</td><td style="color:#c2410c;font-weight:700">16명</td><td>34명</td><td>⚠️ 거의 마감!</td></tr>
+      <tr style="background:#fff7ed"><td><strong>3/29(일)🔴</strong></td><td>오전</td><td>41명</td><td>7명</td><td></td></tr>
+      <tr style="background:#fff7ed"><td></td><td>오후</td><td>43명</td><td>7명</td><td></td></tr>
+      <tr><td><strong>3/30(월)</strong></td><td>오전</td><td>46명</td><td>2명</td><td>여유</td></tr>
+      <tr><td></td><td>오후</td><td>46명</td><td>2명</td><td>여유</td></tr>
+      <tr><td><strong>3/31(화)</strong></td><td>오전</td><td>48명</td><td>-</td><td>여유</td></tr>
+      <tr><td></td><td>오후</td><td>48명</td><td>-</td><td>여유</td></tr>
+    </table></div>
+    <p style="margin-top:12px"><strong>🎣 먼바다 우럭 인기 날짜</strong></p>
+    <div class="compare"><table>
+      <tr><th>날짜</th><th>선박</th><th>남은자리</th><th>상태</th></tr>
+      <tr><td>3/25(수)</td><td>썬스타호</td><td>0명</td><td style="color:#c2410c;font-weight:700">예약마감</td></tr>
+      <tr><td>3/28(토)</td><td>테슬란호</td><td>7명</td><td>⚠️ 얼마 안 남음</td></tr>
+      <tr><td>3/28(토)</td><td>썬스타호</td><td>11명</td><td></td></tr>
+      <tr><td>3/29(일)</td><td>테슬란호</td><td>6명</td><td>⚠️ 얼마 안 남음</td></tr>
+      <tr><td>3/29(일)</td><td>썬스타호</td><td>0명</td><td style="color:#c2410c;font-weight:700">예약마감</td></tr>
+    </table></div>
+    <div class="note-box" style="margin-top:12px">🔥 <strong>3/28(토) 오후 쭈꾸미 16자리!</strong> 주말 쭈꾸미 노리면 서두르세요.</div>
+  </div>
+  <!-- 4월 -->
+  <div id="m4" style="display:none">
+    <p style="margin-bottom:8px"><strong>🐙 쭈꾸미(은아3호) 4월 주말 — 금토일</strong></p>
+    <div class="compare"><table>
+      <tr><th>날짜</th><th>시간</th><th>남은자리</th><th>예약</th><th>비고</th></tr>
+      <tr><td><strong>4/3(금)</strong></td><td>오전</td><td>48명</td><td>-</td><td>여유</td></tr>
+      <tr><td></td><td>오후</td><td>48명</td><td>-</td><td>여유</td></tr>
+      <tr style="background:#fff7ed"><td><strong>4/4(토)🔴</strong></td><td>오전</td><td>48명</td><td>-</td><td>여유</td></tr>
+      <tr style="background:#fff7ed"><td></td><td>오후</td><td>48명</td><td>-</td><td>여유</td></tr>
+      <tr style="background:#fff7ed"><td><strong>4/5(일)🔴</strong></td><td>오전</td><td>48명</td><td>-</td><td>여유</td></tr>
+      <tr style="background:#fff7ed"><td></td><td>오후</td><td>50명</td><td>-</td><td>여유</td></tr>
+      <tr><td><strong>4/10(금)</strong></td><td>오전</td><td>48명</td><td>-</td><td>여유</td></tr>
+      <tr><td></td><td>오후</td><td>48명</td><td>-</td><td>여유</td></tr>
+      <tr style="background:#fff7ed"><td><strong>4/11(토)🔴</strong></td><td>오전</td><td>42명</td><td>6명</td><td></td></tr>
+      <tr style="background:#fff7ed"><td></td><td>오후</td><td>50명</td><td>-</td><td></td></tr>
+      <tr style="background:#fff7ed"><td><strong>4/12(일)🔴</strong></td><td>오전</td><td>44명</td><td>4명</td><td></td></tr>
+      <tr style="background:#fff7ed"><td></td><td>오후</td><td>43명</td><td>7명</td><td></td></tr>
+      <tr><td><strong>4/17(금)</strong></td><td>오전</td><td>48명</td><td>-</td><td>여유</td></tr>
+      <tr><td></td><td>오후</td><td>48명</td><td>-</td><td>여유</td></tr>
+      <tr style="background:#fef2f2"><td><strong>4/18(토)🔴</strong></td><td>오전</td><td style="color:#c2410c;font-weight:700">30명</td><td>18명</td><td>⚠️ 인기!</td></tr>
+      <tr style="background:#fff7ed"><td></td><td>오후</td><td>46명</td><td>4명</td><td></td></tr>
+      <tr style="background:#fff7ed"><td><strong>4/19(일)🔴</strong></td><td>오전</td><td>48명</td><td>-</td><td>여유</td></tr>
+      <tr style="background:#fff7ed"><td></td><td>오후</td><td>50명</td><td>-</td><td>여유</td></tr>
+      <tr><td><strong>4/24(금)</strong></td><td>오전</td><td>48명</td><td>-</td><td>여유</td></tr>
+      <tr><td></td><td>오후</td><td>48명</td><td>-</td><td>여유</td></tr>
+      <tr style="background:#fff7ed"><td><strong>4/25(토)🔴</strong></td><td>오전</td><td>48명</td><td>-</td><td>여유</td></tr>
+      <tr style="background:#fff7ed"><td></td><td>오후</td><td>50명</td><td>-</td><td>여유</td></tr>
+      <tr style="background:#fff7ed"><td><strong>4/26(일)🔴</strong></td><td>오전</td><td>48명</td><td>-</td><td>여유</td></tr>
+      <tr style="background:#fff7ed"><td></td><td>오후</td><td>50명</td><td>-</td><td>여유</td></tr>
+    </table></div>
+    <p style="margin-top:12px"><strong>🎣 먼바다 우럭 인기 날짜</strong></p>
+    <div class="compare"><table>
+      <tr><th>날짜</th><th>선박</th><th>남은자리</th><th>상태</th></tr>
+      <tr><td>4/5(일)</td><td>테슬란호</td><td>19명</td><td></td></tr>
+      <tr><td>4/11(토)</td><td>테슬란호</td><td>18명</td><td></td></tr>
+      <tr><td>4/11(토)</td><td>썬스타호</td><td>12명</td><td>⚠️ 줄어드는 중</td></tr>
+      <tr><td>4/12(일)</td><td>테슬란호</td><td>19명</td><td></td></tr>
+      <tr><td>4/12(일)</td><td>썬스타호</td><td>19명</td><td></td></tr>
+      <tr><td>4/18(토)</td><td>썬스타호</td><td>11명</td><td>⚠️ 줄어드는 중</td></tr>
+      <tr><td>4/25(토)</td><td>테슬란호</td><td>18명</td><td></td></tr>
+      <tr><td>4/26(일)</td><td>테슬란호</td><td>15명</td><td></td></tr>
+      <tr><td>4/26(일)</td><td>썬스타호</td><td>18명</td><td></td></tr>
+    </table></div>
+    <div class="note-box" style="margin-top:12px">🔥 <strong>4/18(토) 오전 쭈꾸미 30자리!</strong> 4월 중 가장 인기 많은 날.<br>📌 4월은 아직 여유 있지만 주말은 빨리 차니 서두르세요.</div>
+  </div>
+  <div class="note-box" style="margin-top:12px">
+    💡 광복낚시 예약현황은 <a href="https://www.815fish.co.kr/niabbs5/inc.php?inc=sub2&s=s" target="_blank" style="color:#2563eb">여기서 직접 확인</a> (날짜 클릭) · <a href="https://bluefc.sunsang24.com/ship/schedule_fleet/202604" target="_blank" style="color:#2563eb">은아낚시 실시간 확인</a>
+  </div>
+</div>
+
+<div class="section">한눈에 비교</div>
+<div class="compare">
+<table>
+<tr><th></th><th>은아낚시</th><th>광복낚시</th><th>명낚시</th></tr>
+<tr><td>위치</td><td>남항부두</td><td>남항부두</td><td>만석부두</td></tr>
+<tr><td>시간배</td><td class="price">평일 4.5 / 주말 5만</td><td class="price">평일 4.5 / 주말 5만</td><td>-</td></tr>
+<tr><td>종일배</td><td>-</td><td class="price">평일 8 / 주말 9만</td><td>사이트 확인</td></tr>
+<tr><td>출항</td><td>06:30 / 12:10</td><td>06:30 / 12:10</td><td>04:00~04:30</td></tr>
+<tr><td>초보</td><td>⭐⭐⭐⭐⭐</td><td>⭐⭐⭐⭐⭐</td><td>⭐⭐⭐</td></tr>
+<tr><td>특징</td><td>도우미 동반, 회 무료</td><td>상해보험 3억, 식사 포함</td><td>선박 6척, 조황 관리</td></tr>
+</table>
+</div>
+
+<!-- 은아낚시 -->
+<div class="card">
+  <div class="card-header">
+    <h2>은아낚시</h2>
+    <span class="label green">초보 추천</span>
+  </div>
+  <dl class="info">
+    <dt>위치</dt><dd>인천 중구 항동7가 27-171 남항부두</dd>
+    <dt>전화</dt><dd>010-8654-1714</dd>
+    <dt>입금</dt><dd>수협 1010-2437-0763 (원인숙)</dd>
+    <dt>오전배</dt><dd>06:30 ~ 11:20</dd>
+    <dt>오후배</dt><dd>12:10 ~ 17:00</dd>
+  </dl>
+  <div class="price-row">
+    <div class="name">쭈꾸미 체험배 (오전/오후)</div>
+    <div class="val">평일 45,000원 · 주말 50,000원</div>
+    <div class="note">초등 35,000/40,000원 · 예약금 1인 5만원</div>
+  </div>
+  <div class="tags">
+    <span class="tag g">초보도우미 동반</span>
+    <span class="tag g">채비·봉돌·장갑 무료</span>
+    <span class="tag g">떡볶이·커피·생수 무료</span>
+    <span class="tag g">잡은 고기 회 무료</span>
+    <span class="tag">낚시대 대여 1만원</span>
+    <span class="tag">라면 4천원</span>
+  </div>
+  <div class="note-box">몸만 오면 됨! 출항 1시간 전 낚시샵 도착. 신분증 지참.</div>
+  <div class="links">
+    <a href="https://bluefc.sunsang24.com/ship/schedule_fleet/" target="_blank" class="primary">예약하기</a>
+    <a href="https://bluefc.sunsang24.com" target="_blank" class="secondary">홈페이지</a>
+  </div>
+</div>
+
+<!-- 광복낚시 -->
+<div class="card">
+  <div class="card-header">
+    <h2>광복낚시</h2>
+    <span class="label">상해보험 3억</span>
+  </div>
+  <dl class="info">
+    <dt>위치</dt><dd>인천 중구 항동7가 27-171 (축항대로 150)</dd>
+    <dt>전화</dt><dd>010-3000-8155 / 032-883-6628</dd>
+    <dt>대표</dt><dd>김창일</dd>
+    <dt>오전배</dt><dd>06:30 ~ 11:20</dd>
+    <dt>오후배</dt><dd>12:10 ~ 17:00</dd>
+    <dt>종일배</dt><dd>05:30 ~ 16:00</dd>
+  </dl>
+  <div class="price-row">
+    <div class="name">시간배 (오전/오후)</div>
+    <div class="val">평일 45,000원 · 주말 50,000원</div>
+    <div class="note">소인 35,000/40,000원 · 미취학 평일 무료</div>
+  </div>
+  <div class="price-row">
+    <div class="name">종일배</div>
+    <div class="val">평일 80,000원 · 주말 90,000원</div>
+    <div class="note">아침(라면) + 점심(백반) 포함</div>
+  </div>
+  <div class="tags">
+    <span class="tag g">1인당 3억 상해보험</span>
+    <span class="tag g">지퍼백·장갑·양파망 무료</span>
+    <span class="tag g">종일배 식사 포함</span>
+    <span class="tag">낚시대 대여 1만원</span>
+    <span class="tag">채비 매장 구매 가능</span>
+  </div>
+  <div class="note-box">인천대교 & 팔미도 관광 겸 가능. 종일배는 식사 포함 가성비 좋음. 출항 1시간 전 도착.</div>
+  <div class="links">
+    <a href="https://www.815fish.co.kr/niabbs5/inc.php?inc=sub3-2" target="_blank" class="primary">상세정보</a>
+    <a href="https://www.815fish.co.kr" target="_blank" class="secondary">홈페이지</a>
+  </div>
+</div>
+
+<!-- 명낚시 -->
+<div class="card">
+  <div class="card-header">
+    <h2>인천 명낚시</h2>
+    <span class="label orange">조황 관리 깔끔</span>
+  </div>
+  <dl class="info">
+    <dt>위치</dt><dd>인천 동구 만석부두로 7-1</dd>
+    <dt>전화</dt><dd>010-5234-9476</dd>
+    <dt>입금</dt><dd>국민 201-24-0269-479 (장융부)</dd>
+    <dt>출항</dt><dd>04:00~04:30 (5~8월)</dd>
+    <dt>선박</dt><dd>순영호(40인) 현주호(20인) 외 4척</dd>
+  </dl>
+  <div class="price-row">
+    <div class="name">낚시 요금</div>
+    <div class="val">우럭 70,000원 · 루어 80,000원</div>
+    <div class="note">붕장어 100,000원 · 쭈꾸미 시즌 가격 사이트 확인 · 예약금 1인 5만원</div>
+  </div>
+  <div class="tags">
+    <span class="tag">미끼·채비 출조점 구매</span>
+    <span class="tag">낚시대 대여 가능</span>
+    <span class="tag w">출항 30분 전 도착 필수</span>
+    <span class="tag w">신분증 미지참 시 승선 불가</span>
+  </div>
+  <div class="links">
+    <a href="https://mfish.sunsang24.com/ship/schedule_fleet/" target="_blank" class="primary">예약하기</a>
+    <a href="https://mfish.sunsang24.com" target="_blank" class="secondary">홈페이지</a>
+  </div>
+</div>
+
+<!-- 선상24 -->
+<div class="card">
+  <div class="card-header">
+    <h2>선상24</h2>
+    <span class="label">통합 플랫폼</span>
+  </div>
+  <dl class="info">
+    <dt>기능</dt><dd>인천 전체 낚시배 실시간 빈자리 확인</dd>
+    <dt>활용</dt><dd>날짜 정하고 빈자리 비교 후 예약</dd>
+  </dl>
+  <div class="links">
+    <a href="https://www.sunsang24.com" target="_blank" class="primary">빈자리 확인</a>
+  </div>
+</div>
+
+<div class="section">🎒 초보 준비물</div>
+<div class="card">
+  <ul class="checklist">
+    <li>✅ 신분증 — 없으면 승선 불가</li>
+    <li>✅ 멀미약 — 출항 30분~1시간 전 복용</li>
+    <li>✅ 따뜻한 옷 — 바다 위는 훨씬 추움</li>
+    <li>✅ 여벌 옷 — 물 튈 수 있음</li>
+    <li>✅ 선글라스 / 모자</li>
+    <li>✅ 아이스박스 — 잡은 거 가져갈 때</li>
+    <li>⬜ 낚시대 — 대여 가능 (1만원)</li>
+  </ul>
+</div>
+
+<div class="section">⚠️ 주의사항</div>
+<div class="card">
+  <ul class="checklist">
+    <li>🔸 예약금 이틀 이내 입금 (미입금 시 자동 취소)</li>
+    <li>🔸 취소: 개인 3~4일 전, 단체 일주일 전</li>
+    <li>🔸 기상 악화 시 출항 취소 가능 (전날 확인)</li>
+    <li>🔸 쭈꾸미 시즌: 봄 3~5월, 가을 9~12월</li>
+    <li>🔸 금어기: 매년 5/11 ~ 8/31</li>
+    <li>🔸 출항 1시간 전 도착 권장</li>
+  </ul>
+</div>
+
+<footer>가격·일정은 변동될 수 있으니 예약 전 사이트에서 확인하세요.</footer>
+
+</div>
+</body>
+</html>
