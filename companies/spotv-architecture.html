@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Architecture | 스포티비</title>
+    <link rel="stylesheet" href="../styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
+    <style>
+        .arch-section { margin-bottom: 48px; }
+        .arch-section h3 {
+            font-size: 1.2rem;
+            margin-bottom: 12px;
+            color: var(--text-primary, #1a1a1a);
+        }
+        .arch-section p {
+            font-size: 0.95rem;
+            line-height: 1.8;
+            color: var(--text-secondary, #666);
+            margin-bottom: 12px;
+        }
+        .arch-diagram {
+            background: var(--bg-secondary, #f8f9fa);
+            border-radius: 12px;
+            padding: 20px;
+            margin: 16px 0;
+            overflow-x: auto;
+        }
+        .arch-diagram .mermaid { display: flex; justify-content: center; }
+        .arch-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 12px;
+            margin: 24px 0;
+        }
+        .arch-info-card {
+            background: var(--bg-secondary, #f8f9fa);
+            border-radius: 10px;
+            padding: 14px 18px;
+        }
+        .arch-info-card dt { font-size: 0.8rem; color: var(--text-secondary, #666); margin-bottom: 2px; }
+        .arch-info-card dd { font-size: 0.95rem; color: var(--text-primary, #1a1a1a); font-weight: 600; margin: 0; }
+        .note {
+            border-left: 3px solid var(--accent, #2563eb);
+            padding: 12px 16px;
+            margin: 12px 0;
+            font-size: 0.9rem;
+            color: var(--text-secondary, #666);
+            background: var(--bg-secondary, #f8f9fa);
+            border-radius: 0 8px 8px 0;
+        }
+        .section-divider { height: 1px; background: var(--border, #eee); margin: 48px 0; }
+    </style>
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="../main.html" class="nav-logo">김성우</a>
+            <div class="nav-links">
+                <a href="../main.html#about">About</a>
+                <a href="../main.html#career">Career</a>
+                <a href="../main.html#skills">Skills</a>
+                <a href="../main.html#projects">Projects</a>
+                <a href="../main.html#contact">Contact</a>
+                <button class="theme-toggle" onclick="toggleTheme()" aria-label="테마 변경">
+                    <span class="icon-sun">☀️</span>
+                    <span class="icon-moon">🌙</span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <main class="section sub-page">
+        <div class="section-inner">
+            <a href="spotv.html" class="back-link">← 스포티비 상세로 돌아가기</a>
+
+            <header class="page-header">
+                <h1>스포티비 아키텍처</h1>
+                <p class="page-desc">SPOTV NOW / GOLF / NOW JP — AWS 기반 멀티 서비스 인프라</p>
+            </header>
+
+            <dl class="arch-info">
+                <div class="arch-info-card">
+                    <dt>팀 구성</dt>
+                    <dd>서버파트 5명</dd>
+                </div>
+                <div class="arch-info-card">
+                    <dt>내 역할</dt>
+                    <dd>백엔드 + 인프라</dd>
+                </div>
+                <div class="arch-info-card">
+                    <dt>메인 인프라</dt>
+                    <dd>AWS ECS (+ EC2)</dd>
+                </div>
+                <div class="arch-info-card">
+                    <dt>IaC</dt>
+                    <dd>Terraform</dd>
+                </div>
+                <div class="arch-info-card">
+                    <dt>CI/CD</dt>
+                    <dd>AWS CodePipeline</dd>
+                </div>
+                <div class="arch-info-card">
+                    <dt>계정 관리</dt>
+                    <dd>AWS Identity Center</dd>
+                </div>
+            </dl>
+
+            <div class="note">
+                NOW, GOLF, NOW JP가 각각 별도 AWS 계정/인프라로 분리되어 있으며, Identity Center를 통해 계정 간 접근을 관리합니다.
+            </div>
+
+            <div class="section-divider"></div>
+
+            <!-- 전체 아키텍처 -->
+            <section class="arch-section">
+                <h3>전체 서비스 구조</h3>
+                <div class="arch-diagram">
+                    <pre class="mermaid">
+graph TB
+    subgraph Client
+        APP[iOS / Android]
+        WEB[Web]
+    end
+
+    subgraph DNS & CDN
+        R53[Route 53]
+        CF[CloudFront]
+    end
+
+    subgraph AWS - SPOTV NOW
+        ALB[ALB]
+
+        subgraph ECS Cluster
+            JAVA_SVCS[Java Services\nSpring Boot\nAPI, 결제, 구독 등 다수]
+            GO_SVCS[Go Services\n푸시, 영수증 검증,\n유저, 알림 등 다수]
+            NODE_SVCS[Node.js Services]
+        end
+
+        EC2[EC2 일부]
+        LAMBDA[Lambda 다수]
+
+        subgraph Data
+            AURORA[(Aurora MySQL)]
+            PG[(PostgreSQL)]
+            REDIS[(ElastiCache)]
+            OS[OpenSearch]
+        end
+
+        MSK[Amazon MSK\nKafka]
+
+        subgraph Infra & Ops
+            AIRFLOW[Airflow]
+            CODEPIPELINE[CodePipeline]
+            CW[CloudWatch]
+            ATHENA[Athena]
+            S3[S3]
+        end
+    end
+
+    subgraph External
+        FCM[FCM]
+        APNS[APNs]
+        TOSS[토스페이먼츠]
+        INICIS[이니시스]
+        APPLE_IAP[Apple IAP]
+        GOOGLE_BP[Google Billing]
+    end
+
+    APP --> R53
+    WEB --> CF
+    CF --> ALB
+    R53 --> ALB
+
+    ALB --> JAVA_SVCS
+    ALB --> GO_SVCS
+    ALB --> NODE_SVCS
+    ALB --> EC2
+
+    JAVA_SVCS --> AURORA
+    JAVA_SVCS --> REDIS
+    JAVA_SVCS --> MSK
+    JAVA_SVCS --> PG
+    JAVA_SVCS --> OS
+    JAVA_SVCS --> TOSS
+    JAVA_SVCS --> INICIS
+    JAVA_SVCS --> GOOGLE_BP
+
+    GO_SVCS --> MSK
+    GO_SVCS --> FCM
+    GO_SVCS --> APNS
+    GO_SVCS --> APPLE_IAP
+    GO_SVCS --> AURORA
+    GO_SVCS --> REDIS
+
+    MSK --> GO_SVCS
+    MSK --> LAMBDA
+
+    AIRFLOW --> JAVA_SVCS
+    AIRFLOW --> GO_SVCS
+                    </pre>
+                </div>
+            </section>
+
+            <div class="section-divider"></div>
+
+            <!-- Kafka -->
+            <section class="arch-section">
+                <h3>Kafka (MSK) 활용</h3>
+                <p>토픽 기반으로 여러 용도로 사용 중. FCM 토큰 관리, 서비스 이벤트 처리, 유저 접속 정보 등 비동기 작업이 필요한 곳에서 produce하고, 필요한 서비스에서 consume하는 구조.</p>
+                <div class="arch-diagram">
+                    <pre class="mermaid">
+graph LR
+    subgraph Producers
+        API[Java API Server]
+        SCHEDULER[경기 스케줄러]
+        APP2[App Client]
+    end
+
+    subgraph Kafka Topics
+        T1[fcm-token]
+        T2[push-request]
+        T3[user-activity]
+        T4[service-event]
+    end
+
+    subgraph Consumers
+        TOKEN[토큰 관리\nGo]
+        SENDER[푸시 발송\nGo]
+        LOGGER[로그 처리]
+        EVENT[이벤트 처리]
+    end
+
+    API --> T2
+    API --> T4
+    SCHEDULER --> T2
+    APP2 --> T1
+    APP2 --> T3
+
+    T1 --> TOKEN
+    T2 --> SENDER
+    T3 --> LOGGER
+    T4 --> EVENT
+
+    SENDER --> FCM2[FCM / APNs]
+    TOKEN --> DB2[(Token DB)]
+                    </pre>
+                </div>
+            </section>
+
+            <div class="section-divider"></div>
+
+            <!-- 라이브 트래픽 -->
+            <section class="arch-section">
+                <h3>라이브 트래픽 사전 증설</h3>
+                <p>경기 시작 전 Airflow가 자동으로 ECS 서비스를 증설하고, 종료 후 축소. 운영팀이 경기별 등급을 설정하면 그에 맞게 동적 스케일링.</p>
+                <div class="arch-diagram">
+                    <pre class="mermaid">
+sequenceDiagram
+    participant GAME as 경기 정보 API
+    participant AF as Airflow
+    participant ECS as ECS Cluster
+    participant SLACK as Slack
+
+    GAME->>AF: 경기 일정 동기화
+    Note over AF: 경기 1시간 전 트리거
+    AF->>ECS: 등급별 증설 요청
+    ECS-->>AF: 증설 완료
+    AF->>SLACK: 증설 완료 알림
+    Note over ECS: 경기 진행 중
+    Note over AF: 경기 종료 감지
+    AF->>ECS: 스케일 다운
+    AF->>SLACK: 축소 완료 알림
+                    </pre>
+                </div>
+            </section>
+
+            <div class="section-divider"></div>
+
+            <!-- 멀티 서비스 -->
+            <section class="arch-section">
+                <h3>멀티 서비스 인프라 분리</h3>
+                <p>NOW, GOLF, NOW JP가 각각 독립된 AWS 계정으로 운영. GOLF는 신규 프로젝트라 90% 이상 Terraform으로 관리 중.</p>
+                <div class="arch-diagram">
+                    <pre class="mermaid">
+graph TB
+    IC[AWS Identity Center] --> NOW[SPOTV NOW\nAWS Account]
+    IC --> GOLF[SPOTV GOLF\nAWS Account]
+    IC --> JP[SPOTV NOW JP\nAWS Account]
+
+    NOW --> NOW_ECS[ECS + EC2\n콘솔 + Terraform 혼용]
+    GOLF --> GOLF_ECS[ECS\nTerraform 90%+]
+    JP --> JP_ECS[ECS\n별도 인프라]
+                    </pre>
+                </div>
+                <div class="note">
+                    GOLF 프로젝트는 처음부터 Terraform으로 인프라를 구성하여 코드 기반 관리. NOW는 기존 콘솔 기반 리소스와 Terraform이 혼용된 상태.
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <footer class="footer">
+        <p>© 2026 김성우. All rights reserved.</p>
+    </footer>
+
+    <script>
+        function toggleTheme() {
+            document.body.classList.toggle('dark');
+            localStorage.setItem('theme', document.body.classList.contains('dark') ? 'dark' : 'light');
+        }
+        if (localStorage.getItem('theme') === 'dark') document.body.classList.add('dark');
+
+        mermaid.initialize({
+            startOnLoad: true,
+            theme: localStorage.getItem('theme') === 'dark' ? 'dark' : 'default',
+            flowchart: { useMaxWidth: true, htmlLabels: true },
+            sequence: { useMaxWidth: true }
+        });
+    </script>
+    <script src="../analytics.js"></script>
+</body>
+</html>
