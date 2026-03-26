@@ -61,4 +61,5 @@ ecosystem.config.js
 # 개인 면접 자료
 *.md
 !README.md
+!audio-sports/proposal.md
 *.txt
