@@ -25,6 +25,19 @@ header h1 span{color:var(--accent)}
 .dday .label{font-size:11px;color:var(--sub);margin-top:6px}
 .dday-start{font-size:10px;color:var(--accent);margin-top:4px;font-weight:600;opacity:.7}
 
+/* Water tracker */
+.water-card{background:var(--card);border:1px solid rgba(59,130,246,.15);border-radius:14px;padding:16px;margin-bottom:16px}
+.water-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
+.water-title{font-size:14px;font-weight:700}
+.water-goal{font-size:11px;color:var(--accent2);font-weight:600;background:rgba(59,130,246,.1);padding:3px 10px;border-radius:10px}
+.water-cups{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px}
+.water-cup{width:40px;height:40px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:18px;cursor:pointer;border:1px solid var(--border);background:rgba(255,255,255,.02);transition:.2s}
+.water-cup.filled{background:rgba(59,130,246,.15);border-color:rgba(59,130,246,.3)}
+.water-cup:active{transform:scale(.9)}
+.water-bar-wrap{height:8px;background:var(--border);border-radius:4px;overflow:hidden;margin-bottom:8px}
+.water-bar{height:100%;background:linear-gradient(90deg,var(--accent2),#60a5fa);border-radius:4px;transition:width .3s;width:0}
+.water-info{font-size:12px;color:var(--sub);text-align:center}
+
 /* Best records */
 .best-records{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:16px}
 .best-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:12px 14px}
@@ -163,6 +176,17 @@ header h1 span{color:var(--accent)}
 <div class="dday"><div class="emoji">💧</div><div class="days" id="dd-water">-</div><div class="label">물 마시기</div><div class="dday-start">시작일 : 3월 26일</div></div>
 </div>
 
+<!-- Water tracker -->
+<div class="water-card">
+<div class="water-header">
+<span class="water-title">💧 오늘 물 마시기</span>
+<span class="water-goal">목표 2.5L</span>
+</div>
+<div class="water-cups" id="water-cups"></div>
+<div class="water-bar-wrap"><div class="water-bar" id="water-bar"></div></div>
+<div class="water-info"><span id="water-amount">0ml</span> / 2,500ml</div>
+</div>
+
 <!-- Best Records -->
 <div class="best-records" id="best-records"></div>
 
@@ -292,6 +316,31 @@ function renderSavings(){
   document.getElementById('savings-sub').textContent=`${days}일 × ₩4,500 = 안 피운 담배 ${notSmoked}개비`;
 }
 renderSavings();
+
+// Water tracker (localStorage per day)
+const WATER_GOAL=2500;
+const CUP_ML=250;
+const CUP_COUNT=Math.ceil(WATER_GOAL/CUP_ML);
+function getWaterKey(){return 'water_'+new Date().toISOString().slice(0,10)}
+function getWaterCount(){return parseInt(localStorage.getItem(getWaterKey())||'0')}
+function setWaterCount(n){localStorage.setItem(getWaterKey(),n)}
+function renderWater(){
+  const count=getWaterCount();
+  const cups=document.getElementById('water-cups');
+  cups.innerHTML='';
+  for(let i=0;i<CUP_COUNT;i++){
+    const c=document.createElement('div');
+    c.className='water-cup'+(i<count?' filled':'');
+    c.textContent=i<count?'💧':'🫗';
+    c.onclick=()=>{setWaterCount(i<count?i:i+1);renderWater()};
+    cups.appendChild(c);
+  }
+  const ml=count*CUP_ML;
+  const pct=Math.min(ml/WATER_GOAL*100,100);
+  document.getElementById('water-bar').style.width=pct+'%';
+  document.getElementById('water-amount').textContent=ml>=1000?(ml/1000).toFixed(1)+'L':ml+'ml';
+}
+renderWater();
 
 // Recovery timeline
 const RECOVERY=[
