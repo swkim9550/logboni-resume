@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<title>나의 기록</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0a0a0a;--card:#141414;--border:#222;--text:#e5e5e5;--sub:#666;--accent:#22c55e;--accent2:#3b82f6;--accent3:#f59e0b;--red:#ef4444}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Inter','Noto Sans KR',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;display:flex;justify-content:center}
+.app{width:100%;max-width:480px;padding:0 16px 80px}
+header{padding:24px 0 20px;display:flex;align-items:center;justify-content:space-between}
+header h1{font-size:20px;font-weight:800}
+header h1 span{color:var(--accent)}
+.tab-bar{display:flex;gap:6px;margin-bottom:20px}
+.tab{padding:8px 16px;border-radius:20px;font-size:13px;font-weight:600;border:none;cursor:pointer;background:var(--card);color:var(--sub);border:1px solid var(--border);transition:.2s}
+.tab.active{background:var(--accent);color:#000;border-color:var(--accent)}
+
+/* D-Day */
+.dday-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:24px}
+.dday{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:16px 12px;text-align:center}
+.dday .emoji{font-size:24px;margin-bottom:6px}
+.dday .days{font-size:28px;font-weight:800;color:var(--accent);line-height:1}
+.dday .label{font-size:11px;color:var(--sub);margin-top:6px}
+.dday-start{font-size:10px;color:var(--accent);margin-top:4px;font-weight:600;opacity:.7}
+
+/* Best records */
+.best-records{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:16px}
+.best-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:12px 14px}
+.best-card .best-label{font-size:10px;color:var(--sub);margin-bottom:4px}
+.best-card .best-val{font-size:18px;font-weight:800;color:var(--accent)}
+.best-card .best-date{font-size:10px;color:var(--sub);margin-top:2px}
+
+/* Savings */
+.savings-card{display:flex;align-items:center;gap:14px;background:linear-gradient(135deg,rgba(239,68,68,.08),rgba(245,158,11,.08));border:1px solid rgba(239,68,68,.15);border-radius:14px;padding:16px;margin-bottom:16px}
+.savings-icon{font-size:32px}
+.savings-title{font-size:11px;color:var(--sub)}
+.savings-amount{font-size:24px;font-weight:800;color:var(--accent3)}
+.savings-sub{font-size:10px;color:var(--sub)}
+
+/* Recovery timeline */
+.recovery-item{display:flex;align-items:center;gap:12px;padding:10px 14px;background:var(--card);border:1px solid var(--border);border-radius:12px;margin-bottom:6px}
+.recovery-item.achieved{border-color:rgba(34,197,94,.2);background:rgba(34,197,94,.04)}
+.recovery-item.next{border-color:rgba(245,158,11,.2);background:rgba(245,158,11,.04)}
+.recovery-item .ri-icon{font-size:20px;flex-shrink:0}
+.recovery-item .ri-text{flex:1;font-size:12px;color:var(--sub);line-height:1.5}
+.recovery-item.achieved .ri-text{color:var(--text)}
+.recovery-item .ri-day{font-size:10px;font-weight:700;color:var(--sub);flex-shrink:0;min-width:44px;text-align:right}
+.recovery-item.achieved .ri-day{color:var(--accent)}
+.recovery-item.next .ri-day{color:var(--accent3)}
+.dday:nth-child(2) .days{color:var(--red)}
+.dday:nth-child(3) .days{color:var(--accent2)}
+
+/* Stats summary */
+.summary{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:24px}
+.summary-item{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:14px 8px;text-align:center}
+.summary-item .val{font-size:20px;font-weight:800;color:var(--text)}
+.summary-item .lbl{font-size:10px;color:var(--sub);margin-top:4px}
+
+/* Section */
+.section-title{font-size:12px;font-weight:700;color:var(--sub);letter-spacing:1px;margin-bottom:12px;text-transform:uppercase}
+
+/* Heatmap calendar */
+.month-tabs{display:flex;gap:6px;margin-bottom:12px}
+.month-tab{padding:6px 14px;border-radius:16px;font-size:12px;font-weight:600;border:none;cursor:pointer;background:var(--card);color:var(--sub);border:1px solid var(--border);transition:.2s}
+.month-tab.active{background:var(--accent);color:#000;border-color:var(--accent)}
+.cal-header{display:grid;grid-template-columns:repeat(7,1fr);gap:4px;margin-bottom:4px}
+.cal-header span{text-align:center;font-size:10px;color:var(--sub);font-weight:600}
+.cal-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:4px;margin-bottom:8px}
+.cal-cell{aspect-ratio:1;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:500;color:var(--sub);position:relative;cursor:default}
+.cal-cell.empty{background:transparent}
+.cal-cell.inactive{background:rgba(255,255,255,.02)}
+.cal-cell.run{background:rgba(34,197,94,.2);color:var(--accent);font-weight:700;cursor:pointer}
+.cal-cell.hike{background:rgba(245,158,11,.2);color:var(--accent3);font-weight:700;cursor:pointer}
+.cal-cell.today{border:2px solid var(--accent)}
+.cal-legend{display:flex;gap:14px;justify-content:center;margin:8px 0 20px;font-size:11px;color:var(--sub)}
+.cal-legend span::before{content:'';display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:4px;vertical-align:middle}
+.cal-legend .l-run::before{background:rgba(34,197,94,.3)}
+.cal-legend .l-hike::before{background:rgba(245,158,11,.3)}
+.cal-legend .l-none::before{background:rgba(255,255,255,.04)}
+
+/* Chart */
+.chart-wrap{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:16px;margin-bottom:24px}
+.chart-title{font-size:13px;font-weight:700;margin-bottom:12px}
+.bar-chart{display:flex;align-items:flex-end;gap:3px;height:120px}
+.bar-col{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;height:100%}
+.bar{width:100%;border-radius:4px 4px 0 0;min-height:2px;transition:.3s}
+.bar.run-bar{background:var(--accent)}
+.bar.hike-bar{background:var(--accent3)}
+.bar-label{font-size:9px;color:var(--sub);margin-top:4px}
+
+/* Record list */
+.record{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:14px 16px;margin-bottom:8px;display:flex;align-items:center;gap:12px}
+.record .icon{width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
+.record .icon.run{background:rgba(34,197,94,.1)}
+.record .icon.hike{background:rgba(245,158,11,.1)}
+.record .info{flex:1}
+.record .info .top{display:flex;justify-content:space-between;align-items:center}
+.record .info .date{font-size:13px;font-weight:600}
+.record .info .km{font-size:14px;font-weight:800;color:var(--accent)}
+.record .info .km.hike-km{color:var(--accent3)}
+.record .info .detail{font-size:11px;color:var(--sub);margin-top:2px}
+
+/* Form */
+.form-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:20px;margin-bottom:24px}
+.form-card h3{font-size:15px;font-weight:700;margin-bottom:16px}
+.form-row{margin-bottom:14px}
+.form-row label{display:block;font-size:12px;color:var(--sub);margin-bottom:6px;font-weight:600}
+.form-row input,.form-row select,.form-row textarea{width:100%;padding:12px;border-radius:10px;border:1px solid var(--border);background:#0d0d0d;color:var(--text);font-size:14px;font-family:inherit}
+.form-row textarea{height:60px;resize:none}
+.type-toggle{display:flex;gap:8px;margin-bottom:14px}
+.type-btn{flex:1;padding:10px;border-radius:10px;border:1px solid var(--border);background:var(--card);color:var(--sub);font-size:13px;font-weight:600;cursor:pointer;text-align:center;transition:.2s}
+.type-btn.active-run{background:rgba(34,197,94,.1);color:var(--accent);border-color:var(--accent)}
+.type-btn.active-hike{background:rgba(245,158,11,.1);color:var(--accent3);border-color:var(--accent3)}
+.submit-btn{width:100%;padding:14px;border-radius:12px;border:none;font-size:15px;font-weight:700;cursor:pointer;background:var(--accent);color:#000;transition:.2s}
+
+/* Slider */
+.slider-row{display:flex;align-items:center;gap:10px}
+.slider{flex:1;-webkit-appearance:none;height:6px;border-radius:3px;background:var(--border);outline:none}
+.slider::-webkit-slider-thumb{-webkit-appearance:none;width:28px;height:28px;border-radius:50%;background:var(--accent);cursor:grab;border:3px solid var(--bg)}
+.slider-val{font-size:24px;font-weight:800;color:var(--accent);min-width:40px;text-align:right}
+.slider-unit{font-size:13px;color:var(--sub)}
+.submit-btn:active{transform:scale(.98)}
+.msg{text-align:center;font-size:13px;padding:10px;border-radius:8px;margin-top:10px;display:none}
+.msg.ok{display:block;background:rgba(34,197,94,.1);color:var(--accent)}
+.msg.err{display:block;background:rgba(239,68,68,.1);color:var(--red)}
+
+/* Tooltip */
+.tooltip{position:fixed;background:#1a1a1a;border:1px solid var(--border);border-radius:10px;padding:10px 14px;font-size:12px;color:var(--text);z-index:99;pointer-events:none;display:none;box-shadow:0 4px 20px rgba(0,0,0,.5)}
+
+.loading{text-align:center;padding:40px;color:var(--sub);font-size:13px}
+
+/* Grass heatmap */
+.grass-wrap{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:16px;overflow-x:auto}
+.grass-months{display:flex;gap:0;margin-bottom:4px;margin-left:0;font-size:10px;color:var(--sub)}
+.grass-months span{flex:none}
+.grass-grid{display:grid;grid-template-rows:repeat(7,1fr);grid-auto-flow:column;grid-auto-columns:14px;gap:3px}
+.grass-cell{width:11px;height:11px;border-radius:2px;background:rgba(255,255,255,.04)}
+.grass-cell.g1{background:rgba(34,197,94,.2)}
+.grass-cell.g2{background:rgba(34,197,94,.45)}
+.grass-cell.g3{background:rgba(34,197,94,.75)}
+.grass-cell.hike-g1{background:rgba(245,158,11,.2)}
+.grass-cell.hike-g2{background:rgba(245,158,11,.45)}
+.grass-cell.hike-g3{background:rgba(245,158,11,.75)}
+.grass-cell.future{background:transparent}
+.grass-legend{display:flex;align-items:center;gap:4px;justify-content:flex-end;margin-top:8px;font-size:10px;color:var(--sub)}
+.gl{width:11px;height:11px;border-radius:2px}
+.g0{background:rgba(255,255,255,.04)}.g1{background:rgba(34,197,94,.2)}.g2{background:rgba(34,197,94,.45)}.g3{background:rgba(34,197,94,.75)}
+</style>
+</head>
+<body>
+<div class="app">
+<header>
+<h1>🏃 나의 <span>기록</span></h1>
+<span style="font-size:12px;color:var(--sub)" id="today-label"></span>
+</header>
+
+<!-- D-Day -->
+<div class="dday-grid">
+<div class="dday"><div class="emoji">🏃</div><div class="days" id="dd-run">-</div><div class="label">러닝 시작</div><div class="dday-start">시작일 : 3월 16일</div></div>
+<div class="dday"><div class="emoji">🚭</div><div class="days" id="dd-smoke">-</div><div class="label">금연 (전담)</div><div class="dday-start">시작일 : 3월 23일</div></div>
+<div class="dday"><div class="emoji">💧</div><div class="days" id="dd-water">-</div><div class="label">물 마시기</div><div class="dday-start">시작일 : 3월 26일</div></div>
+</div>
+
+<!-- Best Records -->
+<div class="best-records" id="best-records"></div>
+
+<!-- Savings -->
+<div class="savings-card" id="savings-card">
+<div class="savings-icon">🚭</div>
+<div class="savings-info">
+<div class="savings-title">금연으로 아낀 돈</div>
+<div class="savings-amount" id="savings-amount">₩0</div>
+<div class="savings-sub" id="savings-sub">하루 1갑(₩4,500) 기준</div>
+</div>
+</div>
+
+<!-- Body Recovery Timeline -->
+<details style="margin-bottom:16px">
+<summary style="font-size:12px;font-weight:700;color:var(--sub);letter-spacing:1px;cursor:pointer;padding:4px 0">🫁 금연 후 몸의 변화 ▸</summary>
+<div id="recovery-timeline" style="margin-top:10px"></div>
+</details>
+
+<!-- Summary -->
+<div class="summary" id="summary" style="margin-top:20px">
+<div class="summary-item"><div class="val" id="s-total-km">-</div><div class="lbl">총 거리</div></div>
+<div class="summary-item"><div class="val" id="s-total-cnt">-</div><div class="lbl">총 횟수</div></div>
+<div class="summary-item"><div class="val" id="s-month-km">-</div><div class="lbl">이번 달</div></div>
+<div class="summary-item"><div class="val" id="s-streak">-</div><div class="lbl">연속 주</div></div>
+</div>
+
+<!-- GitHub-style Grass -->
+<div class="section-title">🌱 활동 잔디</div>
+<div class="grass-wrap" id="grass-wrap">
+<div class="grass-months" id="grass-months"></div>
+<div class="grass-grid" id="grass-grid"></div>
+<div class="grass-legend"><span>적음</span><div class="gl g0"></div><div class="gl g1"></div><div class="gl g2"></div><div class="gl g3"></div><span>많음</span></div>
+</div>
+
+<!-- Calendar -->
+<div class="section-title" style="margin-top:24px">📅 활동 캘린더</div>
+<div class="month-tabs" id="month-tabs"></div>
+<div class="cal-header"><span>일</span><span>월</span><span>화</span><span>수</span><span>목</span><span>금</span><span>토</span></div>
+<div class="cal-grid" id="cal-grid"></div>
+<div class="cal-legend"><span class="l-run">러닝</span><span class="l-hike">등산</span><span class="l-none">없음</span></div>
+
+<!-- Weekly bar chart -->
+<div class="chart-wrap">
+<div class="chart-title">📊 주간 거리 (km)</div>
+<div class="bar-chart" id="bar-chart"></div>
+</div>
+
+<!-- Records -->
+<div class="section-title">📋 최근 기록</div>
+<div id="records"><div class="loading">불러오는 중...</div></div>
+
+<!-- Input form -->
+<div style="margin-top:24px">
+<div class="section-title">➕ 기록 추가</div>
+<div class="form-card">
+<div class="type-toggle">
+<div class="type-btn active-run" id="type-run" onclick="setType('run')">🏃 러닝</div>
+<div class="type-btn" id="type-hike" onclick="setType('hike')">⛰️ 등산</div>
+</div>
+<div class="form-row"><label>날짜</label><input type="date" id="f-date"></div>
+<div class="form-row"><label>거리 (km)</label>
+<div class="slider-row"><input type="range" id="f-km" min="0" max="20" step="0.1" value="5" class="slider" oninput="document.getElementById('km-val').textContent=this.value"><span class="slider-val" id="km-val">5</span><span class="slider-unit">km</span></div></div>
+<div class="form-row"><label>시간 (분)</label>
+<div class="slider-row"><input type="range" id="f-min" min="0" max="180" step="1" value="30" class="slider" oninput="document.getElementById('min-val').textContent=this.value"><span class="slider-val" id="min-val">30</span><span class="slider-unit">분</span></div></div>
+<div class="form-row"><label>메모 (선택)</label><textarea id="f-memo" placeholder="오늘 컨디션, 코스 등"></textarea></div>
+<button class="submit-btn" onclick="submitRecord()">저장하기</button>
+<div id="form-msg" class="msg"></div>
+</div>
+</div>
+</div>
+
+<div class="tooltip" id="tooltip"></div>
+
+<script>
+const SUPABASE_URL='https://vuzwljbxwwlgegwzlxuc.supabase.co';
+const SUPABASE_KEY='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZ1endsamJ4d3dsZ2Vnd3pseHVjIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjcxMzMyOTAsImV4cCI6MjA4MjcwOTI5MH0.FK7-h-PLlSv1JIpXcCONRiFZZmBEUEmc8tHXWLOBpYk';
+const API=SUPABASE_URL+'/rest/v1/running_log';
+const HEADERS={'apikey':SUPABASE_KEY,'Authorization':'Bearer '+SUPABASE_KEY,'Content-Type':'application/json'};
+
+const DDAYS=[
+  {id:'dd-run',start:'2026-03-16'},
+  {id:'dd-smoke',start:'2026-03-23'},
+  {id:'dd-water',start:'2026-03-26'}
+];
+
+let records=[];
+let currentMonth=new Date().getMonth();
+let currentYear=new Date().getFullYear();
+let activityType='run';
+
+// Init
+document.getElementById('f-date').value=new Date().toISOString().slice(0,10);
+document.getElementById('today-label').textContent=new Date().toLocaleDateString('ko-KR',{month:'long',day:'numeric',weekday:'short'});
+
+// D-Day
+function updateDDay(){
+  const now=new Date();now.setHours(0,0,0,0);
+  DDAYS.forEach(d=>{
+    const s=new Date(d.start);s.setHours(0,0,0,0);
+    const diff=Math.floor((now-s)/864e5);
+    document.getElementById(d.id).textContent='D+'+diff;
+  });
+}
+updateDDay();
+
+// Best records
+function renderBest(){
+  const runs=records.filter(r=>r.type!=='hike'&&Number(r.km)>0);
+  if(!runs.length){document.getElementById('best-records').innerHTML='';return}
+  const best=runs.reduce((a,b)=>Number(a.km)>Number(b.km)?a:b);
+  const fastest=runs.filter(r=>r.minutes>0).reduce((a,b)=>(a.minutes/a.km)<(b.minutes/b.km)?a:b,runs[0]);
+  const bestPace=fastest.minutes&&fastest.km?(fastest.minutes/fastest.km).toFixed(1)+"'/km":'';
+  document.getElementById('best-records').innerHTML=
+    `<div class="best-card"><div class="best-label">🏆 최장 거리</div><div class="best-val">${Number(best.km).toFixed(2)}km</div><div class="best-date">${best.date}</div></div>`+
+    `<div class="best-card"><div class="best-label">⚡ 최고 페이스</div><div class="best-val">${bestPace}</div><div class="best-date">${fastest.date}</div></div>`;
+}
+
+// Savings calculator
+function renderSavings(){
+  const smokeStart=new Date('2026-03-23');smokeStart.setHours(0,0,0,0);
+  const now=new Date();now.setHours(0,0,0,0);
+  const days=Math.floor((now-smokeStart)/864e5);
+  const saved=days*4500;
+  const notSmoked=days*20;
+  document.getElementById('savings-amount').textContent='₩'+saved.toLocaleString();
+  document.getElementById('savings-sub').textContent=`${days}일 × ₩4,500 = 안 피운 담배 ${notSmoked}개비`;
+}
+renderSavings();
+
+// Recovery timeline
+const RECOVERY=[
+  {day:0,icon:'⏱️',text:'마지막 담배를 피운 순간'},
+  {day:0.008,icon:'❤️',text:'심박수와 혈압이 정상으로 돌아오기 시작 (20분)'},
+  {day:0.5,icon:'🩸',text:'혈중 일산화탄소 수치가 정상으로 회복 (12시간)'},
+  {day:2,icon:'👃',text:'미각과 후각이 살아나기 시작'},
+  {day:3,icon:'🫁',text:'기관지가 이완되어 호흡이 편해짐'},
+  {day:14,icon:'💪',text:'혈액순환 개선, 폐 기능 30%까지 회복'},
+  {day:30,icon:'🏃',text:'기침·피로 감소, 폐 섬모 재생 시작'},
+  {day:90,icon:'🫀',text:'폐 기능 크게 회복, 심장마비 위험 감소 시작'},
+  {day:180,icon:'😮‍💨',text:'기침·호흡곤란 현저히 감소'},
+  {day:365,icon:'💖',text:'관상동맥 심장질환 위험 50% 감소'},
+  {day:1825,icon:'🎉',text:'뇌졸중 위험 비흡연자 수준으로 감소'},
+  {day:3650,icon:'🏆',text:'폐암 사망 위험 50% 감소'}
+];
+function renderRecovery(){
+  const smokeStart=new Date('2026-03-23');smokeStart.setHours(0,0,0,0);
+  const now=new Date();now.setHours(0,0,0,0);
+  const days=Math.floor((now-smokeStart)/864e5);
+  const el=document.getElementById('recovery-timeline');
+  // find next milestone
+  const nextIdx=RECOVERY.findIndex(r=>r.day>days);
+  el.innerHTML=RECOVERY.map((r,i)=>{
+    const achieved=days>=r.day;
+    const isNext=i===nextIdx;
+    const cls=achieved?'achieved':isNext?'next':'';
+    const dayLabel=r.day<1?(r.day*24*60<60?Math.round(r.day*24*60)+'분':Math.round(r.day*24)+'시간'):r.day>=365?(r.day/365)+'년':r.day+'일';
+    return`<div class="recovery-item ${cls}"><span class="ri-icon">${achieved?'✅':isNext?'👉':r.icon}</span><div class="ri-text">${r.text}</div><span class="ri-day">${dayLabel}</span></div>`;
+  }).join('');
+}
+
+// Fetch records
+async function fetchRecords(){
+  try{
+    const r=await fetch(API+'?select=*&order=date.desc&apikey='+SUPABASE_KEY,{headers:HEADERS});
+    if(!r.ok)throw new Error(r.status);
+    records=await r.json();
+    render();
+  }catch(e){
+    document.getElementById('records').innerHTML='<div class="loading">데이터를 불러올 수 없습니다</div>';
+  }
+}
+
+function render(){
+  renderSummary();
+  renderBest();
+  renderSavings();
+  renderRecovery();
+  renderGrass();
+  renderCalendar();
+  renderChart();
+  renderRecords();
+}
+
+// Grass heatmap (GitHub style)
+function renderGrass(){
+  const grid=document.getElementById('grass-grid');
+  const monthsEl=document.getElementById('grass-months');
+  grid.innerHTML='';monthsEl.innerHTML='';
+
+  // date range: Jan 1 of current year to Dec 31
+  const year=currentYear;
+  const start=new Date(year,0,1);
+  const today=new Date();today.setHours(0,0,0,0);
+  const end=new Date(year,11,31);
+
+  // build date->record map
+  const dateMap={};
+  records.forEach(r=>{
+    const k=r.date;
+    if(!dateMap[k])dateMap[k]=[];
+    dateMap[k].push(r);
+  });
+
+  // pad start to Sunday
+  const padDays=start.getDay();
+  for(let i=0;i<padDays;i++){
+    const c=document.createElement('div');
+    c.className='grass-cell future';
+    grid.appendChild(c);
+  }
+
+  // month labels
+  let lastMonth=-1;
+  const monthNames=['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'];
+  const colWidth=14+3; // cell+gap
+
+  const d=new Date(start);
+  let colIdx=0;
+  while(d<=end){
+    const key=d.toISOString().slice(0,10);
+    const recs=dateMap[key];
+    const c=document.createElement('div');
+    const isFuture=d>today;
+
+    if(isFuture){
+      c.className='grass-cell future';
+    }else if(recs&&recs.length){
+      const totalKm=recs.reduce((a,r)=>a+Number(r.km),0);
+      const hasHike=recs.some(r=>r.type==='hike');
+      const prefix=hasHike?'hike-':'';
+      let level='g1';
+      if(totalKm>=5)level='g2';
+      if(totalKm>=8)level='g3';
+      c.className='grass-cell '+prefix+level;
+      c.title=key+': '+totalKm.toFixed(1)+'km';
+    }else{
+      c.className='grass-cell';
+    }
+    grid.appendChild(c);
+
+    // month label
+    if(d.getMonth()!==lastMonth){
+      const col=Math.floor((padDays+Math.floor((d-start)/864e5))/7);
+      const span=document.createElement('span');
+      span.textContent=monthNames[d.getMonth()];
+      span.style.position='absolute';
+      span.style.left=(col*colWidth)+'px';
+      monthsEl.appendChild(span);
+      lastMonth=d.getMonth();
+    }
+
+    d.setDate(d.getDate()+1);
+  }
+  monthsEl.style.position='relative';monthsEl.style.height='16px';
+}
+
+// Summary
+function renderSummary(){
+  const now=new Date();
+  const totalKm=records.reduce((a,r)=>a+Number(r.km),0);
+  const monthKm=records.filter(r=>{const d=new Date(r.date);return d.getMonth()===now.getMonth()&&d.getFullYear()===now.getFullYear()}).reduce((a,r)=>a+Number(r.km),0);
+  document.getElementById('s-total-km').textContent=totalKm.toFixed(1)+'km';
+  document.getElementById('s-total-cnt').textContent=records.length+'회';
+  document.getElementById('s-month-km').textContent=monthKm.toFixed(1)+'km';
+  // streak: consecutive weeks with activity
+  const weeks=new Set();
+  records.forEach(r=>{const d=new Date(r.date);const w=getWeekNum(d);weeks.add(w)});
+  let streak=0,wn=getWeekNum(now);
+  while(weeks.has(wn)){streak++;wn--}
+  document.getElementById('s-streak').textContent=streak+'주';
+}
+
+function getWeekNum(d){const s=new Date(2026,0,1);return Math.floor((d-s)/6048e5)}
+
+// Calendar
+function renderCalendar(){
+  // month tabs: show months that have data + current month
+  const months=new Set([new Date().getMonth()]);
+  records.forEach(r=>months.add(new Date(r.date).getMonth()));
+  const sorted=[...months].sort((a,b)=>a-b);
+  const tabsEl=document.getElementById('month-tabs');
+  tabsEl.innerHTML='';
+  sorted.forEach(m=>{
+    const btn=document.createElement('button');
+    btn.className='month-tab'+(m===currentMonth?' active':'');
+    btn.textContent=(m+1)+'월';
+    btn.onclick=()=>{currentMonth=m;renderCalendar()};
+    tabsEl.appendChild(btn);
+  });
+
+  const grid=document.getElementById('cal-grid');
+  grid.innerHTML='';
+  const first=new Date(currentYear,currentMonth,1);
+  const last=new Date(currentYear,currentMonth+1,0);
+  const today=new Date();today.setHours(0,0,0,0);
+
+  // map date -> record
+  const dateMap={};
+  records.forEach(r=>{const d=new Date(r.date);if(d.getMonth()===currentMonth)dateMap[d.getDate()]=r});
+
+  // empty cells for first day offset
+  for(let i=0;i<first.getDay();i++){const c=document.createElement('div');c.className='cal-cell empty';grid.appendChild(c)}
+
+  for(let d=1;d<=last.getDate();d++){
+    const cell=document.createElement('div');
+    const thisDate=new Date(currentYear,currentMonth,d);
+    const rec=dateMap[d];
+    const isToday=thisDate.getTime()===today.getTime();
+    let cls='cal-cell';
+    if(rec){
+      cls+=' '+(rec.type==='hike'?'hike':'run');
+      cell.title=rec.km+'km · '+rec.minutes+'분'+(rec.memo?' · '+rec.memo:'');
+      cell.onclick=(e)=>showTooltip(e,rec);
+    }else if(thisDate>today){
+      cls+=' empty';
+    }else{
+      cls+=' inactive';
+    }
+    if(isToday)cls+=' today';
+    cell.className=cls;
+    cell.textContent=d;
+    grid.appendChild(cell);
+  }
+}
+
+// Tooltip
+function showTooltip(e,rec){
+  const t=document.getElementById('tooltip');
+  const type=rec.type==='hike'?'⛰️ 등산':'🏃 러닝';
+  const pace=rec.minutes&&rec.km?(rec.minutes/rec.km).toFixed(1)+'분/km':'';
+  t.innerHTML=`<b>${rec.date}</b> ${type}<br>${rec.km}km · ${rec.minutes}분${pace?' · '+pace:''}${rec.memo?'<br>'+rec.memo:''}`;
+  t.style.display='block';
+  const rect=e.target.getBoundingClientRect();
+  t.style.left=Math.min(rect.left,window.innerWidth-180)+'px';
+  t.style.top=(rect.bottom+8)+'px';
+  setTimeout(()=>t.style.display='none',3000);
+}
+
+// Bar chart - last 8 weeks
+function renderChart(){
+  const chart=document.getElementById('bar-chart');
+  chart.innerHTML='';
+  const now=new Date();
+  const weeks=[];
+  for(let i=7;i>=0;i--){
+    const wStart=new Date(now);wStart.setDate(now.getDate()-now.getDay()-i*7);
+    const wEnd=new Date(wStart);wEnd.setDate(wStart.getDate()+6);
+    let km=0;
+    records.forEach(r=>{const d=new Date(r.date);if(d>=wStart&&d<=wEnd)km+=Number(r.km)});
+    const label=(wStart.getMonth()+1)+'/'+wStart.getDate();
+    weeks.push({km,label});
+  }
+  const max=Math.max(...weeks.map(w=>w.km),1);
+  weeks.forEach(w=>{
+    const col=document.createElement('div');col.className='bar-col';
+    const bar=document.createElement('div');bar.className='bar run-bar';
+    bar.style.height=Math.max(w.km/max*100,2)+'%';
+    const lbl=document.createElement('div');lbl.className='bar-label';lbl.textContent=w.label;
+    const val=document.createElement('div');val.style.cssText='font-size:9px;color:#888;margin-bottom:2px';
+    val.textContent=w.km>0?w.km.toFixed(1):'';
+    col.appendChild(val);col.appendChild(bar);col.appendChild(lbl);
+    chart.appendChild(col);
+  });
+}
+
+// Records list
+function renderRecords(){
+  const el=document.getElementById('records');
+  if(!records.length){el.innerHTML='<div class="loading">아직 기록이 없습니다</div>';return}
+  el.innerHTML=records.slice(0,20).map(r=>{
+    const isHike=r.type==='hike';
+    const pace=r.minutes&&r.km?(r.minutes/r.km).toFixed(1)+"'":"";
+    return`<div class="record"><div class="icon ${isHike?'hike':'run'}">${isHike?'⛰️':'🏃'}</div><div class="info"><div class="top"><span class="date">${r.date}</span><span class="km ${isHike?'hike-km':''}">${r.km}km</span></div><div class="detail">${r.minutes}분${pace?' · '+pace+'/km':''}${r.memo?' · '+r.memo:''}</div></div></div>`;
+  }).join('');
+}
+
+// Form
+function setType(t){
+  activityType=t;
+  document.getElementById('type-run').className='type-btn'+(t==='run'?' active-run':'');
+  document.getElementById('type-hike').className='type-btn'+(t==='hike'?' active-hike':'');
+}
+
+async function submitRecord(){
+  const msg=document.getElementById('form-msg');
+  const date=document.getElementById('f-date').value;
+  const km=parseFloat(document.getElementById('f-km').value);
+  const min=parseInt(document.getElementById('f-min').value);
+  const memo=document.getElementById('f-memo').value.trim();
+  if(!date||!km||!min){msg.className='msg err';msg.textContent='날짜, 거리, 시간을 입력해주세요';return}
+  try{
+    const r=await fetch(API+'?apikey='+SUPABASE_KEY,{method:'POST',headers:HEADERS,body:JSON.stringify({date,km,minutes:min,memo:memo||null,type:activityType})});
+    if(!r.ok)throw new Error(r.status);
+    msg.className='msg ok';msg.textContent='✅ 저장 완료!';
+    document.getElementById('f-km').value='5';
+    document.getElementById('km-val').textContent='5';
+    document.getElementById('f-min').value='30';
+    document.getElementById('min-val').textContent='30';
+    document.getElementById('f-memo').value='';
+    setTimeout(()=>msg.style.display='none',2000);
+    fetchRecords();
+  }catch(e){
+    msg.className='msg err';msg.textContent='❌ 저장 실패: '+e.message;
+  }
+}
+
+// Start
+renderRecovery();
+fetchRecords();
+</script>
+</body>
+</html>
