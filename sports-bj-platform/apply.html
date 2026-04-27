@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>NOW CAST 캐스터 모집 — 당신의 스포츠 지식, 수익이 됩니다</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<style>
+.apply-hero{padding:100px 48px 80px;text-align:center;position:relative;overflow:hidden;background:linear-gradient(180deg,rgba(42,255,204,.06) 0%,transparent 50%)}
+.apply-hero::before{content:'';position:absolute;top:-300px;left:50%;transform:translateX(-50%);width:800px;height:800px;background:radial-gradient(circle,rgba(42,255,204,.08) 0%,transparent 70%);pointer-events:none}
+.apply-hero .eyebrow{font-size:13px;font-weight:700;color:var(--mint);letter-spacing:2px;text-transform:uppercase;margin-bottom:16px}
+.apply-hero h1{font-size:48px;font-weight:900;line-height:1.2;letter-spacing:-1.5px;margin-bottom:20px;max-width:700px;margin-left:auto;margin-right:auto}
+.apply-hero h1 em{color:var(--mint);font-style:normal}
+.apply-hero .sub{font-size:17px;color:var(--t3);line-height:1.8;max-width:560px;margin:0 auto 36px}
+.apply-hero .hero-stats{display:flex;gap:40px;justify-content:center;margin-bottom:40px}
+.apply-hero .hs{text-align:center}
+.apply-hero .hs .v{font-size:32px;font-weight:900;color:var(--mint)}
+.apply-hero .hs .l{font-size:12px;color:var(--t4);margin-top:4px}
+.apply-hero .scroll-cta{font-size:14px;color:var(--t4);animation:bounce 2s infinite}
+@keyframes bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(8px)}}
+
+.why-section{max-width:1200px;margin:0 auto;padding:80px 48px}
+.why-section .section-title{font-size:28px;font-weight:900;text-align:center;margin-bottom:12px}
+.why-section .section-title em{color:var(--mint);font-style:normal}
+.why-section .section-sub{text-align:center;font-size:15px;color:var(--t3);margin-bottom:48px}
+.why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.why-card{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius-lg);padding:36px 28px;text-align:center;transition:all .2s}
+.why-card:hover{border-color:rgba(42,255,204,.2);transform:translateY(-3px)}
+.why-card .wi{font-size:48px;margin-bottom:16px}
+.why-card h3{font-size:17px;font-weight:800;margin-bottom:10px}
+.why-card p{font-size:13px;color:var(--t4);line-height:1.7}
+.why-card .highlight{color:var(--mint);font-weight:700}
+
+.process-section{max-width:1200px;margin:0 auto;padding:80px 48px}
+.process-section .section-title{font-size:28px;font-weight:900;text-align:center;margin-bottom:48px}
+.process-section .section-title em{color:var(--mint);font-style:normal}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;position:relative}
+.step{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius-lg);padding:32px 24px;text-align:center;position:relative}
+.step .step-num{width:36px;height:36px;border-radius:50%;background:var(--mint);color:#000;font-size:16px;font-weight:900;display:flex;align-items:center;justify-content:center;margin:0 auto 16px}
+.step h3{font-size:15px;font-weight:800;margin-bottom:8px}
+.step p{font-size:12px;color:var(--t4);line-height:1.7}
+.step .arrow{position:absolute;right:-14px;top:50%;color:var(--mint);font-size:18px;font-weight:900}
+
+.tier-section{max-width:1200px;margin:0 auto;padding:80px 48px}
+.tier-section .section-title{font-size:28px;font-weight:900;text-align:center;margin-bottom:12px}
+.tier-section .section-title em{color:var(--mint);font-style:normal}
+.tier-section .section-sub{text-align:center;font-size:15px;color:var(--t3);margin-bottom:48px}
+.tier-cards{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.tc{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius-lg);padding:32px 20px;text-align:center;transition:all .2s}
+.tc:hover{border-color:rgba(42,255,204,.15)}
+.tc .tc-icon{font-size:40px;margin-bottom:10px}
+.tc .tc-name{font-size:18px;font-weight:900;margin-bottom:6px}
+.tc .tc-range{font-size:12px;color:var(--mint);font-weight:700;margin-bottom:12px}
+.tc ul{list-style:none;text-align:left;font-size:12px;color:var(--t3);line-height:2}
+.tc ul li::before{content:'✓ ';color:var(--mint);font-weight:700}
+
+.form-section{max-width:720px;margin:0 auto;padding:80px 48px}
+.form-section .section-title{font-size:28px;font-weight:900;text-align:center;margin-bottom:12px}
+.form-section .section-title em{color:var(--mint);font-style:normal}
+.form-section .section-sub{text-align:center;font-size:15px;color:var(--t3);margin-bottom:48px}
+.form-group{margin-bottom:24px}
+.form-group label{display:block;font-size:13px;font-weight:700;color:var(--t2);margin-bottom:8px}
+.form-group label .req{color:var(--red);margin-left:2px}
+.form-group input,.form-group select,.form-group textarea{width:100%;background:var(--bg2);border:1px solid var(--border2);border-radius:var(--radius);padding:14px 16px;color:var(--t1);font-size:14px;font-family:inherit;outline:none;transition:border-color .2s}
+.form-group input:focus,.form-group select:focus,.form-group textarea:focus{border-color:var(--mint)}
+.form-group input::placeholder,.form-group textarea::placeholder{color:var(--t5)}
+.form-group textarea{min-height:120px;resize:vertical}
+.form-group select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%236a6a6a' d='M6 8L1 3h10z'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 16px center}
+.form-group select option{background:var(--bg2);color:var(--t1)}
+.form-group .hint{font-size:11px;color:var(--t4);margin-top:6px}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.check-group{display:flex;flex-wrap:wrap;gap:8px}
+.check-item{font-size:13px;padding:8px 16px;border-radius:24px;border:1px solid var(--border2);color:var(--t3);cursor:pointer;transition:all .2s;user-select:none}
+.check-item:hover{border-color:var(--mint);color:var(--t1)}
+.check-item.selected{background:var(--mint-dim);border-color:var(--mint);color:var(--mint);font-weight:700}
+.submit-btn{width:100%;padding:18px;border-radius:28px;border:none;background:var(--mint);color:#000;font-size:17px;font-weight:900;cursor:pointer;font-family:inherit;transition:all .2s;margin-top:16px}
+.submit-btn:hover{box-shadow:0 6px 30px var(--mint-glow);transform:translateY(-2px)}
+.form-note{text-align:center;font-size:12px;color:var(--t4);margin-top:16px;line-height:1.8}
+
+.faq-section{max-width:720px;margin:0 auto;padding:60px 48px}
+.faq-section .section-title{font-size:24px;font-weight:900;text-align:center;margin-bottom:32px}
+.faq-item{border-bottom:1px solid var(--border);padding:20px 0}
+.faq-item .fq{font-size:15px;font-weight:700;cursor:pointer;display:flex;justify-content:space-between;align-items:center}
+.faq-item .fq .arrow{color:var(--mint);transition:transform .2s}
+.faq-item .fa{font-size:13px;color:var(--t3);line-height:1.8;max-height:0;overflow:hidden;transition:max-height .3s,padding .3s}
+.faq-item.open .fa{max-height:200px;padding-top:12px}
+.faq-item.open .fq .arrow{transform:rotate(180deg)}
+
+@media(max-width:1024px){
+  .why-grid{grid-template-columns:1fr 1fr}
+  .steps{grid-template-columns:1fr 1fr}
+  .step .arrow{display:none}
+  .tier-cards{grid-template-columns:1fr 1fr}
+}
+@media(max-width:640px){
+  .apply-hero{padding:60px 20px 40px}
+  .apply-hero h1{font-size:30px}
+  .apply-hero .hero-stats{gap:20px}
+  .apply-hero .hs .v{font-size:24px}
+  .why-grid,.steps,.tier-cards{grid-template-columns:1fr}
+  .form-section,.faq-section,.why-section,.process-section,.tier-section{padding-left:20px;padding-right:20px}
+  .form-row{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<!-- GNB -->
+<header class="gnb">
+  <div class="gnb-logo">
+    <img src="https://cdn.spotvnow.co.kr/dist/asset/now-logo-for-sns.png" alt="SPOTV NOW">
+    <span class="cast-badge">CAST</span>
+  </div>
+  <nav class="gnb-nav">
+    <a href="index.html">홈</a>
+    <a href="index.html#ranking">캐스터 랭킹</a>
+    <a href="caster-park.html">캐스터 샘플</a>
+    <a href="proposal.html">기획서</a>
+  </nav>
+  <div class="gnb-right">
+    <button class="gnb-btn primary" onclick="document.getElementById('apply-form').scrollIntoView({behavior:'smooth'})">지원하기</button>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="apply-hero">
+  <div class="eyebrow">NOW CAST 캐스터 모집</div>
+  <h1>당신의 스포츠 지식,<br><em>수익</em>이 됩니다</h1>
+  <p>축구 전술을 꿰뚫고 있나요? 야구 데이터를 달달 외우나요?<br>친구들 사이에서 경기 예측왕인가요?<br>이제 그 실력으로 캐스터가 되세요.</p>
+  <div class="hero-stats">
+    <div class="hs"><div class="v">₩650만</div><div class="l">상위 캐스터 월 수익</div></div>
+    <div class="hs"><div class="v">12.3K</div><div class="l">최다 서포터 수</div></div>
+    <div class="hs"><div class="v">78%</div><div class="l">1위 캐스터 적중률</div></div>
+  </div>
+  <div class="scroll-cta">↓ 아래에서 자세히 알아보세요</div>
+</section>
+
+<!-- WHY BECOME A CASTER -->
+<section class="why-section">
+  <h2 class="section-title">왜 <em>NOW CAST 캐스터</em>인가요?</h2>
+  <p class="section-sub">아프리카TV, 트위치와는 다릅니다. SPOTV NOW만의 무기가 있습니다.</p>
+  <div class="why-grid">
+    <div class="why-card">
+      <div class="wi">📺</div>
+      <h3>공식 영상 위에 해설</h3>
+      <p>다른 플랫폼은 화면 없이 해설만 가능하지만,<br>NOW CAST는 <span class="highlight">SPOTV 중계 영상 위에 당신의 해설을 입힙니다.</span><br>세계 최초의 듀얼 캐스트.</p>
+    </div>
+    <div class="why-card">
+      <div class="wi">💰</div>
+      <h3>다양한 수익 구조</h3>
+      <p>골(GOAL) 후원 수익의 <span class="highlight">65%</span>가 캐스터 몫.<br>캐스터 구독 수익의 <span class="highlight">70%</span>가 캐스터 몫.<br>후원 + 구독 + 인센티브 = 다층 수익.</p>
+    </div>
+    <div class="why-card">
+      <div class="wi">🏆</div>
+      <h3>예측으로 증명</h3>
+      <p>경기 예측 적중률이 곧 당신의 <span class="highlight">랭킹</span>.<br>실력이 좋으면 자동으로 노출 증가.<br>입담이 아니라 실력으로 승부하는 플랫폼.</p>
+    </div>
+    <div class="why-card">
+      <div class="wi">🎁</div>
+      <h3>퀵뷰 이용권 지급</h3>
+      <p>등급에 따라 SPOTV NOW 이용권을 <span class="highlight">무료로 지급</span>.<br>서포터에게 리워드로 제공하면<br>팬이 늘고, 후원이 늘고, 수익이 늘어납니다.</p>
+    </div>
+    <div class="why-card">
+      <div class="wi">📊</div>
+      <h3>전문가 브랜딩</h3>
+      <p>프리뷰, 리뷰, 전술 분석 글을 작성하면<br><span class="highlight">스포츠 전문가</span>로서의 개인 브랜드 구축.<br>미디어 출연, 콘텐츠 제작 기회까지.</p>
+    </div>
+    <div class="why-card">
+      <div class="wi">🚀</div>
+      <h3>성장 지원</h3>
+      <p>SPOTV NOW 메인 페이지 노출,<br>공식 SNS 프로모션, 방송 장비 지원까지.<br><span class="highlight">혼자가 아닙니다.</span></p>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="process-section">
+  <h2 class="section-title">선발까지 <em>4단계</em></h2>
+  <div class="steps">
+    <div class="step">
+      <div class="step-num">1</div>
+      <h3>온라인 지원</h3>
+      <p>아래 폼에서 기본 정보와<br>스포츠 전문 분야를 작성</p>
+      <div class="arrow">→</div>
+    </div>
+    <div class="step">
+      <div class="step-num">2</div>
+      <h3>스포츠 지식 테스트</h3>
+      <p>지원 종목 관련<br>온라인 퀴즈 (20문항, 30분)</p>
+      <div class="arrow">→</div>
+    </div>
+    <div class="step">
+      <div class="step-num">3</div>
+      <h3>모의 캐스트</h3>
+      <p>실제 경기 영상 보며<br>10분간 라이브 해설 시연</p>
+      <div class="arrow">→</div>
+    </div>
+    <div class="step">
+      <div class="step-num">4</div>
+      <h3>최종 선발</h3>
+      <p>합격 시 루키 캐스터로<br>채널 개설 및 활동 시작</p>
+    </div>
+  </div>
+</section>
+
+<!-- TIER -->
+<section class="tier-section">
+  <h2 class="section-title">성장하면 <em>혜택</em>도 커집니다</h2>
+  <p class="section-sub">루키에서 시작해 레전드까지. 실력이 곧 등급입니다.</p>
+  <div class="tier-cards">
+    <div class="tc">
+      <div class="tc-icon">🥉</div>
+      <div class="tc-name">루키</div>
+      <div class="tc-range">시작 등급</div>
+      <ul>
+        <li>캐스트 채널 개설</li>
+        <li>골 후원 수익 65%</li>
+        <li>경기 예측 참여</li>
+        <li>기본 프로필 페이지</li>
+      </ul>
+    </div>
+    <div class="tc">
+      <div class="tc-icon">🥈</div>
+      <div class="tc-name">프로</div>
+      <div class="tc-range">1,000점+</div>
+      <ul>
+        <li>메인 페이지 노출</li>
+        <li>퀵뷰 이용권 월 20장</li>
+        <li>캐스터 구독 기능 오픈</li>
+        <li>프리뷰/리뷰 작성 가능</li>
+      </ul>
+    </div>
+    <div class="tc">
+      <div class="tc-icon">🥇</div>
+      <div class="tc-name">올스타</div>
+      <div class="tc-range">5,000점+</div>
+      <ul>
+        <li>추천 캐스터 배너 노출</li>
+        <li>퀵뷰 이용권 월 50장</li>
+        <li>골 수수료 30%로 인하</li>
+        <li>SPOTV SNS 프로모션</li>
+      </ul>
+    </div>
+    <div class="tc">
+      <div class="tc-icon">🏆</div>
+      <div class="tc-name">레전드</div>
+      <div class="tc-range">10,000점+</div>
+      <ul>
+        <li>전용 프로모션 캠페인</li>
+        <li>퀵뷰 이용권 무제한</li>
+        <li>골 수수료 25%로 인하</li>
+        <li>SPOTV 공식 콘텐츠 출연</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- APPLICATION FORM -->
+<section class="form-section" id="apply-form">
+  <h2 class="section-title">🎙️ <em>캐스터 지원</em></h2>
+  <p class="section-sub">스포츠를 사랑하는 당신을 기다립니다.<br>경력, 나이, 성별 무관. 실력만 보여주세요.</p>
+
+  <form onsubmit="event.preventDefault();document.getElementById('success-msg').style.display='block';this.style.display='none';">
+    <div class="form-row">
+      <div class="form-group">
+        <label>이름 <span class="req">*</span></label>
+        <input type="text" placeholder="홍길동" required>
+      </div>
+      <div class="form-group">
+        <label>연락처 <span class="req">*</span></label>
+        <input type="tel" placeholder="010-0000-0000" required>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group">
+        <label>이메일 <span class="req">*</span></label>
+        <input type="email" placeholder="email@example.com" required>
+      </div>
+      <div class="form-group">
+        <label>나이대</label>
+        <select>
+          <option value="">선택해주세요</option>
+          <option>10대</option>
+          <option>20대</option>
+          <option>30대</option>
+          <option>40대</option>
+          <option>50대 이상</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>전문 종목 <span class="req">*</span> (복수 선택 가능)</label>
+      <div class="check-group" id="sports-check">
+        <span class="check-item" onclick="this.classList.toggle('selected')">⚽ 해외축구</span>
+        <span class="check-item" onclick="this.classList.toggle('selected')">⚾ MLB</span>
+        <span class="check-item" onclick="this.classList.toggle('selected')">⚾ KBO</span>
+        <span class="check-item" onclick="this.classList.toggle('selected')">⚾ NPB</span>
+        <span class="check-item" onclick="this.classList.toggle('selected')">🏀 NBA</span>
+        <span class="check-item" onclick="this.classList.toggle('selected')">🏀 KBL</span>
+        <span class="check-item" onclick="this.classList.toggle('selected')">🎾 테니스</span>
+        <span class="check-item" onclick="this.classList.toggle('selected')">🏎️ F1</span>
+        <span class="check-item" onclick="this.classList.toggle('selected')">🥊 격투기/UFC</span>
+        <span class="check-item" onclick="this.classList.toggle('selected')">🎮 e스포츠</span>
+        <span class="check-item" onclick="this.classList.toggle('selected')">기타</span>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>캐스터 유형 <span class="req">*</span></label>
+      <div class="check-group">
+        <span class="check-item" onclick="this.classList.toggle('selected')">📊 전술/데이터 분석형</span>
+        <span class="check-item" onclick="this.classList.toggle('selected')">🎤 입담/엔터테이너형</span>
+        <span class="check-item" onclick="this.classList.toggle('selected')">📝 프리뷰/리뷰 작성형</span>
+        <span class="check-item" onclick="this.classList.toggle('selected')">🎯 경기 예측 전문형</span>
+        <span class="check-item" onclick="this.classList.toggle('selected')">🔥 팬 응원/리액션형</span>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>방송/콘텐츠 경험</label>
+      <select>
+        <option value="">선택해주세요</option>
+        <option>없음 (처음입니다)</option>
+        <option>유튜브/블로그 운영 경험</option>
+        <option>아프리카TV/트위치 방송 경험</option>
+        <option>팟캐스트 운영 경험</option>
+        <option>스포츠 기자/해설 경력</option>
+        <option>기타 미디어 경험</option>
+      </select>
+      <div class="hint">경험이 없어도 괜찮습니다. 스포츠 지식과 열정이 더 중요합니다.</div>
+    </div>
+
+    <div class="form-group">
+      <label>SNS / 채널 링크</label>
+      <input type="url" placeholder="유튜브, 인스타, 트위터, 블로그 등 (선택)">
+      <div class="hint">기존에 운영 중인 채널이 있다면 알려주세요. 없어도 됩니다.</div>
+    </div>
+
+    <div class="form-group">
+      <label>자기소개 <span class="req">*</span></label>
+      <textarea placeholder="왜 NOW CAST 캐스터가 되고 싶은지, 어떤 스포츠를 얼마나 좋아하는지, 어떤 스타일의 캐스트를 하고 싶은지 자유롭게 작성해주세요." required></textarea>
+    </div>
+
+    <div class="form-group">
+      <label>경기 예측 샘플 <span class="req">*</span></label>
+      <textarea placeholder="가장 최근 본 경기 하나를 골라서, 경기 전에 어떤 예측을 했을지 / 실제 결과는 어땠는지 / 왜 그렇게 됐는지 분석해주세요. (200자 이상)" required></textarea>
+      <div class="hint">이 항목이 가장 중요합니다. 당신의 분석력과 글쓰기 능력을 보여주세요.</div>
+    </div>
+
+    <button type="submit" class="submit-btn">🎙️ 캐스터 지원하기</button>
+    <p class="form-note">지원서 검토 후 3영업일 이내에 연락드립니다.<br>합격 시 스포츠 지식 테스트 → 모의 캐스트 순서로 진행됩니다.</p>
+  </form>
+
+  <div id="success-msg" style="display:none;text-align:center;padding:60px 0">
+    <div style="font-size:64px;margin-bottom:20px">🎉</div>
+    <h2 style="font-size:24px;font-weight:900;margin-bottom:12px">지원이 완료되었습니다!</h2>
+    <p style="color:var(--t3);font-size:15px;line-height:1.8">3영업일 이내에 입력하신 연락처로 안내드리겠습니다.<br>스포츠 지식 테스트 준비해두세요! 💪</p>
+    <button class="submit-btn" style="max-width:300px;margin:32px auto 0" onclick="location.href='index.html'">← 메인으로 돌아가기</button>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq-section">
+  <h2 class="section-title">❓ 자주 묻는 질문</h2>
+
+  <div class="faq-item" onclick="this.classList.toggle('open')">
+    <div class="fq">스포츠 관련 경력이 없어도 지원할 수 있나요?<span class="arrow">▼</span></div>
+    <div class="fa">네, 물론입니다. 경력보다 스포츠에 대한 지식과 열정을 봅니다. 실제로 커뮤니티에서 활발히 활동하거나, 친구들 사이에서 경기 예측을 잘 맞추는 분이라면 충분합니다.</div>
+  </div>
+
+  <div class="faq-item" onclick="this.classList.toggle('open')">
+    <div class="fq">수익은 얼마나 기대할 수 있나요?<span class="arrow">▼</span></div>
+    <div class="fa">캐스터마다 다르지만, 골 후원 수익의 65%, 구독 수익의 70%를 가져갑니다. 상위 캐스터는 월 수백만원의 수익을 올리고 있습니다. 시작은 소소하지만, 서포터가 늘수록 수익도 함께 성장합니다.</div>
+  </div>
+
+  <div class="faq-item" onclick="this.classList.toggle('open')">
+    <div class="fq">방송 장비가 필요한가요?<span class="arrow">▼</span></div>
+    <div class="fa">스마트폰과 이어폰만 있으면 시작할 수 있습니다. 프로 등급 이상부터는 마이크, 웹캠 등 장비 지원 프로그램도 운영합니다.</div>
+  </div>
+
+  <div class="faq-item" onclick="this.classList.toggle('open')">
+    <div class="fq">캐스트는 얼마나 자주 해야 하나요?<span class="arrow">▼</span></div>
+    <div class="fa">의무 방송 횟수는 없습니다. 본인이 원하는 경기에 맞춰 자유롭게 캐스트하면 됩니다. 다만 활동이 많을수록 랭킹 점수와 노출이 올라갑니다.</div>
+  </div>
+
+  <div class="faq-item" onclick="this.classList.toggle('open')">
+    <div class="fq">경기 화면을 직접 송출해도 되나요?<span class="arrow">▼</span></div>
+    <div class="fa">SPOTV가 중계권을 보유한 경기는 공식 영상 위에 해설을 입히는 듀얼 캐스트가 가능합니다. 중계권이 없는 경기는 화면 없이 음성/캠으로만 캐스트합니다. 외부 영상을 무단 송출하면 안 됩니다.</div>
+  </div>
+
+  <div class="faq-item" onclick="this.classList.toggle('open')">
+    <div class="fq">탈락하면 재지원할 수 있나요?<span class="arrow">▼</span></div>
+    <div class="fa">네, 1개월 후 재지원 가능합니다. 피드백을 드리니 보완해서 다시 도전해주세요.</div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <h2>스포츠 전문가, <em>지금 시작하세요</em></h2>
+  <p>당신의 스포츠 지식이 콘텐츠가 되고, 수익이 됩니다.</p>
+  <div class="cta-btns">
+    <button class="btn primary" onclick="document.getElementById('apply-form').scrollIntoView({behavior:'smooth'})">🎙️ 캐스터 지원하기</button>
+    <button class="btn outline" onclick="location.href='index.html'">← 메인으로</button>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="left">
+      <img src="https://cdn.spotvnow.co.kr/dist/asset/now-logo-for-sns.png" alt="SPOTV NOW">
+      <p>SPOTV NOW CAST · 캐스터 모집 · 아이디어 컨셉 데모<br>© 2026 SPOTV</p>
+    </div>
+    <div class="right">
+      <p><a href="index.html" style="color:var(--mint)">← 메인으로 돌아가기</a></p>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
