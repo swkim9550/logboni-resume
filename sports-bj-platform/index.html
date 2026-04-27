@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>SPOTV NOW CAST — 스포츠를 캐스트하다</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- GNB -->
+<header class="gnb">
+  <div class="gnb-logo">
+    <img src="https://cdn.spotvnow.co.kr/dist/asset/now-logo-for-sns.png" alt="SPOTV NOW">
+    <span class="cast-badge">CAST</span>
+  </div>
+  <nav class="gnb-nav">
+    <a href="#schedule" class="active">경기 일정</a>
+    <a href="#ranking">캐스터 랭킹</a>
+    <a href="#cast-preview">캐스트 LIVE</a>
+    <a href="#how">이용 방법</a>
+    <a href="proposal.html">기획서</a>
+  </nav>
+  <div class="gnb-right">
+    <button class="gnb-btn ghost" onclick="alert('🎙️ 캐스터 지원은 준비 중입니다!')">캐스터 지원</button>
+    <button class="gnb-btn primary" onclick="alert('⚽ NOW CAST Coming Soon!')">시작하기</button>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-text">
+      <div class="hero-badges">
+        <span class="hb live">🔴 UCL 준결승 LIVE</span>
+        <span class="hb mint">🎙️ 캐스터 해설</span>
+        <span class="hb">⚽ 골 후원</span>
+        <span class="hb">🏆 예측 랭킹</span>
+      </div>
+      <h1>스포츠를<br><em>캐스트</em>하다</h1>
+      <p>프로 캐스터의 라이브 해설과 경기 예측.<br>
+      중계 영상 위에 캐스터 해설을 입혀 새로운 관전 경험.<br>
+      골(GOAL)로 후원하고, 퀵뷰 이용권을 받으세요.</p>
+      <div class="hero-actions">
+        <button class="btn primary" onclick="alert('⚽ NOW CAST Coming Soon!\n\nUCL 준결승부터 오픈 예정')">🎙️ 캐스트 시작하기</button>
+        <button class="btn outline" onclick="location.href='proposal.html'">📄 기획서 보기</button>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="hero-card">
+        <div class="live-dot">LIVE NOW</div>
+        <div class="league">UEFA 챔피언스리그 · 준결승 1차전</div>
+        <div class="hero-match">
+          <div class="tm"><div class="tm-logo">🔴🔵</div><div class="tm-name">PSG</div></div>
+          <div class="score">2 : 1<span>후반 67분</span></div>
+          <div class="tm"><div class="tm-logo">🔴⚪</div><div class="tm-name">바이에른</div></div>
+        </div>
+        <div class="hero-caster">
+          <div class="avatar">🎙️</div>
+          <div class="info">
+            <div class="name">축구왕 김캐스터 · 🏆 레전드</div>
+            <div class="meta">적중률 78% · 서포터 12.3K</div>
+          </div>
+          <div class="viewers">👁️ 12,847</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SCHEDULE -->
+<section class="section" id="schedule">
+  <div class="section-header">
+    <h2 class="section-title">📅 이번 주 <em>캐스트 일정</em></h2>
+    <span class="section-more">전체 일정 보기 →</span>
+  </div>
+  <div class="section-tabs">
+    <span class="tab active">챔피언스리그</span>
+    <span class="tab">유로파리그</span>
+    <span class="tab">세리에A</span>
+    <span class="tab">MLB</span>
+    <span class="tab">전체</span>
+  </div>
+  <div class="schedule-grid">
+    <div class="sched-card">
+      <div class="date"><strong>04.29</strong> 수 04:00</div>
+      <div class="teams">
+        <span class="logo">🔴🔵</span>
+        <span class="tname">파리 생제르맹</span>
+        <span class="vs">vs</span>
+        <span class="tname">바이에른 뮌헨</span>
+        <span class="logo">🔴⚪</span>
+      </div>
+      <div class="venue">파르크 데 프랭스 · 준결승 1차전</div>
+      <div class="tags">
+        <span class="tag exclusive">독점</span>
+        <span class="tag cast">🎙️ 캐스터 3명</span>
+        <span class="tag predict">📊 예측 오픈</span>
+      </div>
+    </div>
+    <div class="sched-card">
+      <div class="date"><strong>04.30</strong> 목 04:00</div>
+      <div class="teams">
+        <span class="logo">🔴⚪</span>
+        <span class="tname">AT. 마드리드</span>
+        <span class="vs">vs</span>
+        <span class="tname">아스날</span>
+        <span class="logo">🔴⚪</span>
+      </div>
+      <div class="venue">리야드 에어 메트로폴리타노 · 준결승 1차전</div>
+      <div class="tags">
+        <span class="tag exclusive">독점</span>
+        <span class="tag cast">🎙️ 캐스터 4명</span>
+        <span class="tag predict">📊 예측 오픈</span>
+      </div>
+    </div>
+    <div class="sched-card">
+      <div class="date"><strong>05.06</strong> 수 04:00</div>
+      <div class="teams">
+        <span class="logo">🔴⚪</span>
+        <span class="tname">아스날</span>
+        <span class="vs">vs</span>
+        <span class="tname">AT. 마드리드</span>
+        <span class="logo">🔴⚪</span>
+      </div>
+      <div class="venue">에미레이츠 스타디움 · 준결승 2차전</div>
+      <div class="tags">
+        <span class="tag cast">🎙️ 모집중</span>
+        <span class="tag soon">🔜 예측 준비중</span>
+      </div>
+    </div>
+    <div class="sched-card">
+      <div class="date"><strong>05.07</strong> 목 04:00</div>
+      <div class="teams">
+        <span class="logo">🔴⚪</span>
+        <span class="tname">바이에른 뮌헨</span>
+        <span class="vs">vs</span>
+        <span class="tname">파리 생제르맹</span>
+        <span class="logo">🔴🔵</span>
+      </div>
+      <div class="venue">알리안츠 아레나 · 준결승 2차전</div>
+      <div class="tags">
+        <span class="tag cast">🎙️ 모집중</span>
+        <span class="tag soon">🔜 예측 준비중</span>
+      </div>
+    </div>
+    <div class="sched-card mlb">
+      <div class="date"><strong>04.30</strong> 수 10:10</div>
+      <div class="teams">
+        <span class="logo">🔵⚪</span>
+        <span class="tname">LA 다저스</span>
+        <span class="vs">vs</span>
+        <span class="tname">샌디에이고 파드리스</span>
+        <span class="logo">🟤🟡</span>
+      </div>
+      <div class="venue">다저 스타디움 · MLB 정규시즌</div>
+      <div class="tags">
+        <span class="tag exclusive">독점</span>
+        <span class="tag cast">🎙️ 캐스터 2명</span>
+        <span class="tag predict">📊 예측 오픈</span>
+        <span class="tag mlb-tag">⚾ MLB</span>
+      </div>
+    </div>
+    <div class="sched-card mlb">
+      <div class="date"><strong>05.01</strong> 목 10:10</div>
+      <div class="teams">
+        <span class="logo">🔵⚪</span>
+        <span class="tname">LA 다저스</span>
+        <span class="vs">vs</span>
+        <span class="tname">샌디에이고 파드리스</span>
+        <span class="logo">🟤🟡</span>
+      </div>
+      <div class="venue">다저 스타디움 · MLB 정규시즌</div>
+      <div class="tags">
+        <span class="tag cast">🎙️ 모집중</span>
+        <span class="tag soon">🔜 예측 준비중</span>
+        <span class="tag mlb-tag">⚾ MLB</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CASTER RANKING -->
+<section class="section" id="ranking">
+  <div class="section-header">
+    <h2 class="section-title">🏆 캐스터 <em>예측 랭킹</em></h2>
+    <span class="section-more">전체 랭킹 보기 →</span>
+  </div>
+  <div class="section-tabs">
+    <span class="tab active">전체</span>
+    <span class="tab">축구</span>
+    <span class="tab">야구</span>
+    <span class="tab">농구</span>
+    <span class="tab">이번 주</span>
+  </div>
+  <div class="ranking-grid">
+    <div class="rank-card top1">
+      <div class="rank-num">#1</div>
+      <div class="rank-avatar">🎙️</div>
+      <div class="rank-name">축구왕 김캐스터</div>
+      <span class="rank-tier legend">🏆 레전드</span>
+      <div class="rank-rate">78%</div>
+      <div class="rank-stat">서포터 <strong>12.3K</strong></div>
+      <div class="rank-stat">골 <strong>284K</strong></div>
+      <button class="sub-btn active">구독중</button>
+    </div>
+    <div class="rank-card top2">
+      <div class="rank-num">#2</div>
+      <div class="rank-avatar">👩‍🎤</div>
+      <div class="rank-name">유로퀸 소피</div>
+      <span class="rank-tier allstar">🥇 올스타</span>
+      <div class="rank-rate">72%</div>
+      <div class="rank-stat">서포터 <strong>8.1K</strong></div>
+      <div class="rank-stat">골 <strong>156K</strong></div>
+      <button class="sub-btn">구독</button>
+    </div>
+    <div class="rank-card top3">
+      <div class="rank-num">#3</div>
+      <div class="rank-avatar">🧔</div>
+      <div class="rank-name">전술분석관 박프로</div>
+      <span class="rank-tier allstar">🥇 올스타</span>
+      <div class="rank-rate">71%</div>
+      <div class="rank-stat">서포터 <strong>6.7K</strong></div>
+      <div class="rank-stat">골 <strong>132K</strong></div>
+      <button class="sub-btn">구독</button>
+    </div>
+    <div class="rank-card">
+      <div class="rank-num">#4</div>
+      <div class="rank-avatar">😎</div>
+      <div class="rank-name">새벽축구단장</div>
+      <span class="rank-tier pro">🥈 프로</span>
+      <div class="rank-rate">68%</div>
+      <div class="rank-stat">서포터 <strong>4.2K</strong></div>
+      <div class="rank-stat">골 <strong>87K</strong></div>
+      <button class="sub-btn">구독</button>
+    </div>
+    <div class="rank-card">
+      <div class="rank-num">#5</div>
+      <div class="rank-avatar">🎯</div>
+      <div class="rank-name">예측왕 찐팬</div>
+      <span class="rank-tier pro">🥈 프로</span>
+      <div class="rank-rate">66%</div>
+      <div class="rank-stat">서포터 <strong>3.8K</strong></div>
+      <div class="rank-stat">골 <strong>71K</strong></div>
+      <button class="sub-btn">구독</button>
+    </div>
+  </div>
+</section>
+
+<!-- CAST LIVE PREVIEW -->
+<section class="section" id="cast-preview">
+  <div class="section-header">
+    <h2 class="section-title">📺 캐스트 <em>LIVE</em> 미리보기</h2>
+  </div>
+  <div class="cast-section">
+    <div class="cast-main">
+      <div class="cast-video">
+        <div class="overlay">
+          <div class="play-icon">▶</div>
+          <p>PSG vs 바이에른 · 축구왕 김캐스터의 캐스트</p>
+        </div>
+        <div class="cast-pip">🎙️</div>
+        <div class="live-tag">LIVE</div>
+        <div class="viewer-tag">👁️ 12,847명 시청중</div>
+      </div>
+      <div class="cast-info">
+        <div class="avatar">🎙️</div>
+        <div class="detail">
+          <div class="name">축구왕 김캐스터 · 🏆 레전드</div>
+          <div class="desc">경기 예측: PSG 2:1 승리 (음바페 선제골) · 적중률 78%</div>
+        </div>
+        <button class="goal-btn" onclick="alert('⚽ 골(GOAL) 후원!\n\n1골 = 100원\n캐스터에게 응원을 보내세요!')">⚽ 골 후원</button>
+      </div>
+    </div>
+    <div class="cast-chat">
+      <div class="chat-header">
+        <span class="dot"></span>
+        실시간 채팅
+      </div>
+      <div class="chat-body">
+        <div class="chat-msg system">📊 김캐스터의 경기 예측: PSG 2:1 승리 (음바페 선제골)</div>
+        <div class="chat-msg caster-msg"><span class="nick caster">🎙️ 김캐스터</span> 음바페 왼쪽에서 컷인합니다! 이거 슈팅 나올 수 있어요!</div>
+        <div class="chat-msg"><span class="nick">⚽ 축구러버</span> 우와 진짜 골 넣었다!!!</div>
+        <div class="chat-msg"><span class="nick">🔵 PSG팬</span> 음바페 미쳤다 ㅋㅋㅋㅋ</div>
+        <div class="chat-msg goal">🎉 <strong>축구러버</strong>님이 <strong>100골</strong>을 후원했습니다! 🏟️</div>
+        <div class="chat-msg caster-msg"><span class="nick caster">🎙️ 김캐스터</span> 축구러버님 감사합니다! 예측 적중이죠? 퀵뷰 이용권 보내드릴게요 🎁</div>
+        <div class="chat-msg"><span class="nick">⚪ 뮌헨사랑</span> 김뮐러 투입해야 하는데...</div>
+        <div class="chat-msg"><span class="nick">🎯 예측마스터</span> 김캐스터 예측 또 맞추네 ㄷㄷ</div>
+        <div class="chat-msg goal mega">🏆 <strong>PSG광팬</strong>님이 <strong>1,000골</strong>을 후원했습니다! 🎆🎆🎆</div>
+        <div class="chat-msg caster-msg"><span class="nick caster">🎙️ 김캐스터</span> PSG광팬님 대박!! 퀵뷰 3일권 드립니다 🔥</div>
+      </div>
+      <div class="chat-footer">
+        <input type="text" placeholder="채팅을 입력하세요..." disabled>
+        <button class="send-goal" onclick="alert('⚽ 골 후원!')">⚽</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="section" id="how">
+  <div class="section-header">
+    <h2 class="section-title">🎯 NOW CAST <em>이렇게 즐기세요</em></h2>
+  </div>
+  <div class="how-grid">
+    <div class="how-card">
+      <div class="hw-icon">📺</div>
+      <h3>중계 영상 + 캐스터 해설</h3>
+      <p>SPOTV 중계권 보유 경기는 영상 위에 캐스터 해설을 입혀서 시청. 공식 해설 vs 캐스터 해설 자유 전환. 편파 중계, 전술 분석 등 다양한 관점.</p>
+    </div>
+    <div class="how-card">
+      <div class="hw-icon">🎙️</div>
+      <h3>캐스터만으로도 충분</h3>
+      <p>중계권 없는 경기도 캐스터의 실시간 해설 + 스코어보드로 함께 즐길 수 있어요. 라디오 중계처럼, 캐스터의 역량이 곧 콘텐츠.</p>
+    </div>
+    <div class="how-card">
+      <div class="hw-icon">📊</div>
+      <h3>경기 예측 & 랭킹</h3>
+      <p>캐스터들의 경기 예측 적중률이 곧 실력. 랭킹을 보고 내 캐스터를 골라보세요. 적중률 높은 캐스터의 분석을 구독으로 받아보세요.</p>
+    </div>
+    <div class="how-card">
+      <div class="hw-icon">⚽</div>
+      <h3>골(GOAL) 후원</h3>
+      <p>마음에 드는 캐스터에게 골을 넣어주세요. 1골 = 100원. 후원 시 스타디움 함성 효과와 함께 닉네임이 표시됩니다.</p>
+    </div>
+    <div class="how-card">
+      <div class="hw-icon">🎁</div>
+      <h3>퀵뷰 이용권 리워드</h3>
+      <p>캐스터로부터 받은 1일 이용권으로 SPOTV NOW 영상을 무료 체험. 후원이 곧 시청 경험으로 이어지는 선순환.</p>
+    </div>
+    <div class="how-card">
+      <div class="hw-icon">💳</div>
+      <h3>캐스터 구독</h3>
+      <p>월 3,900원으로 좋아하는 캐스터를 구독. 전용 뱃지, 이모티콘, 예측 알림, 구독자 전용 채팅방까지.</p>
+    </div>
+  </div>
+</section>
+
+<!-- REVENUE MODEL -->
+<section class="section" id="revenue">
+  <div class="section-header">
+    <h2 class="section-title">💰 <em>수익 구조</em></h2>
+  </div>
+  <div class="rev-flow">
+    <div class="rev-box">
+      <div class="rv-icon">⚽</div>
+      <div class="rv-label">골 수수료</div>
+      <div class="rv-desc">후원의 35%</div>
+    </div>
+    <div class="rev-arrow">→</div>
+    <div class="rev-box">
+      <div class="rv-icon">💳</div>
+      <div class="rv-label">캐스터 구독</div>
+      <div class="rv-desc">월 3,900원의 30%</div>
+    </div>
+    <div class="rev-arrow">→</div>
+    <div class="rev-box">
+      <div class="rv-icon">📺</div>
+      <div class="rv-label">퀵뷰 전환</div>
+      <div class="rv-desc">체험 → 정기구독</div>
+    </div>
+    <div class="rev-arrow">→</div>
+    <div class="rev-box">
+      <div class="rv-icon">📢</div>
+      <div class="rv-label">캐스트 광고</div>
+      <div class="rv-desc">프리롤 / 미드롤</div>
+    </div>
+  </div>
+  <div class="stats-row">
+    <div class="stat-box"><div class="sv">35%</div><div class="sl">골 수수료</div></div>
+    <div class="stat-box"><div class="sv">₩5,250만</div><div class="sl">월 예상 수익 (초기)</div></div>
+    <div class="stat-box"><div class="sv">78%</div><div class="sl">1위 캐스터 적중률</div></div>
+    <div class="stat-box"><div class="sv">∞</div><div class="sl">중계권 불필요 (토크)</div></div>
+  </div>
+</section>
+
+<!-- CASTER TIER -->
+<section class="section" id="tier">
+  <div class="section-header">
+    <h2 class="section-title">🎖️ 캐스터 <em>등급 시스템</em></h2>
+  </div>
+  <div class="tier-row">
+    <div class="tier-card">
+      <div class="ti">🥉</div>
+      <div class="tn">루키</div>
+      <div class="td">신규 캐스터<br>기본 캐스트 개설<br>예측 참여 가능</div>
+    </div>
+    <div class="tier-card">
+      <div class="ti">🥈</div>
+      <div class="tn">프로</div>
+      <div class="td">메인 페이지 노출<br>퀵뷰 이용권 월 20장<br>구독 기능 오픈</div>
+    </div>
+    <div class="tier-card">
+      <div class="ti">🥇</div>
+      <div class="tn">올스타</div>
+      <div class="td">추천 캐스터 배너<br>퀵뷰 월 50장<br>수수료 30%로 인하</div>
+    </div>
+    <div class="tier-card">
+      <div class="ti">🏆</div>
+      <div class="tn">레전드</div>
+      <div class="td">전용 프로모션<br>퀵뷰 무제한<br>수수료 25% · 공식 출연</div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <h2>스포츠를 <em>캐스트</em>할 준비 되셨나요?</h2>
+  <p>UCL 준결승부터 시작합니다. 캐스터로 지원하거나, 서포터로 참여하세요.</p>
+  <div class="cta-btns">
+    <button class="btn primary" onclick="alert('🎙️ NOW CAST Coming Soon!\n\n2026 UCL 준결승부터 오픈 예정')">🎙️ 캐스트 시작하기</button>
+    <button class="btn outline" onclick="location.href='proposal.html'">📄 기획 제안서 보기</button>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="left">
+      <img src="https://cdn.spotvnow.co.kr/dist/asset/now-logo-for-sns.png" alt="SPOTV NOW">
+      <p>SPOTV NOW CAST · 아이디어 컨셉 데모 · 내부 공유용<br>© 2026 SPOTV · (주)스포티비</p>
+    </div>
+    <div class="right">
+      <p>이 페이지는 서비스 기획 아이디어를 시각화한 데모입니다.<br>실제 서비스가 아닙니다.</p>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

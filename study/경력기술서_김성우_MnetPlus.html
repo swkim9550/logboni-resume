@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>경력기술서 - 김성우</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            color: #1a1a1a;
+            line-height: 1.75;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 32px;
+            font-size: 14px;
+        }
+
+        /* 헤더 */
+        .header { margin-bottom: 24px; border-bottom: 2px solid #1a1a1a; padding-bottom: 16px; }
+        .header h1 { font-size: 24px; font-weight: 700; margin-bottom: 4px; }
+        .header .subtitle { font-size: 15px; color: #555; margin-bottom: 10px; }
+        .contact { display: flex; gap: 20px; font-size: 13px; color: #444; flex-wrap: wrap; }
+        .contact a { color: #2563eb; text-decoration: none; }
+
+        /* 홈페이지 배너 */
+        .homepage-banner {
+            background: #1a1a1a; color: #fff; padding: 12px 20px; border-radius: 8px;
+            margin-bottom: 24px; display: flex; justify-content: space-between; align-items: center;
+        }
+        .homepage-banner .label { font-size: 13px; }
+        .homepage-banner .url { font-size: 13px; color: #93c5fd; font-weight: 600; }
+
+        /* 요약 박스 */
+        .summary { background: #f0f7ff; border-left: 4px solid #2563eb; padding: 16px 20px; margin-bottom: 24px; border-radius: 0 8px 8px 0; }
+        .summary p { font-size: 14px; line-height: 1.8; }
+        .summary strong { color: #1a1a1a; }
+        .keywords { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 10px; }
+        .keywords span { background: #2563eb; color: #fff; padding: 3px 10px; border-radius: 12px; font-size: 12px; font-weight: 500; }
+
+        /* 섹션 */
+        .section { margin-bottom: 22px; }
+        .section-title { font-size: 16px; font-weight: 700; border-bottom: 1px solid #ddd; padding-bottom: 6px; margin-bottom: 14px; }
+
+        /* 회사 */
+        .company { margin-bottom: 18px; page-break-inside: avoid; }
+        .company-header { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 2px; }
+        .company-name { font-size: 15px; font-weight: 700; }
+        .company-period { font-size: 13px; color: #666; }
+        .company-meta { font-size: 13px; color: #555; margin-bottom: 2px; }
+        .company-env { font-size: 12px; color: #888; margin-bottom: 8px; }
+        .company-desc { font-size: 13px; color: #444; margin-bottom: 8px; line-height: 1.7; }
+
+        /* 프로젝트 항목 */
+        .project { margin-bottom: 8px; }
+        .project-title { font-weight: 600; font-size: 13px; margin-bottom: 2px; }
+        .project-desc { font-size: 13px; color: #333; line-height: 1.75; }
+        .highlight { color: #2563eb; font-weight: 600; }
+
+        /* 기술 스택 */
+        .tech-grid { display: grid; grid-template-columns: 100px 1fr; gap: 4px 12px; font-size: 13px; }
+        .tech-label { font-weight: 600; color: #555; }
+
+        /* 사이드 프로젝트 */
+        .side-project { font-size: 13px; line-height: 1.8; }
+        .side-project a { color: #2563eb; text-decoration: none; }
+
+        /* 인쇄 최적화 */
+        @media print {
+            body { padding: 20px; font-size: 13px; }
+            .summary { background: #f0f7ff !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+            .keywords span { background: #2563eb !important; color: #fff !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+            .homepage-banner { background: #1a1a1a !important; color: #fff !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+            .homepage-banner .url { color: #93c5fd !important; }
+            .no-print { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <h1>김성우</h1>
+        <div class="subtitle">Backend Engineer · 10년차 (2015.12~)</div>
+        <div class="contact">
+            <span>📧 kbkkim2@naver.com</span>
+        </div>
+    </div>
+
+    <div class="homepage-banner">
+        <span class="label">📄 회사별 상세 프로젝트 · 시스템 아키텍처 · About Me</span>
+        <span class="url">https://swkim9550.github.io/logboni-resume/main.html</span>
+    </div>
+
+    <div class="summary">
+        <p>
+            <strong>Java/Golang 기반 서버 개발 10년차</strong>입니다. 현재 스포츠 OTT 플랫폼에서
+            <strong>PG 결제·인앱결제(구독)</strong>, <strong>푸시 알림(FCM/APNs)</strong>, <strong>Kafka 기반 이벤트 처리</strong>를 주 담당하고 있으며,
+            <strong>20~30만 동시접속</strong> 라이브 트래픽 환경에서 서비스를 운영하고 있습니다.
+            최근에는 <strong>Golang을 메인 언어</strong>로 고성능 서비스를 개발하고 있고,
+            <strong>광고 리타게팅 추천 시스템</strong> 개발, <strong>AWS 인프라(ECS, Terraform)</strong> 설계·운영 경험이 있습니다.
+            글로벌 팬덤 플랫폼의 대용량 트래픽과 실시간 이벤트 처리, 광고 수익 개선에 기여하고 싶습니다.
+        </p>
+        <div class="keywords">
+            <span>Java</span>
+            <span>Golang</span>
+            <span>Kafka</span>
+            <span>대용량 트래픽</span>
+            <span>실시간 이벤트</span>
+            <span>광고 시스템</span>
+            <span>AWS ECS</span>
+            <span>Terraform</span>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="section-title">경력</div>
+
+        <!-- 스포티비 -->
+        <div class="company">
+            <div class="company-header">
+                <span class="company-name">스포티비 (SPOTV)</span>
+                <span class="company-period">2024.03 - 현재</span>
+            </div>
+            <div class="company-meta">Backend Engineer & Infrastructure · 개발팀 내 서버파트 5명</div>
+            <div class="company-env">Java, Golang, Spring Boot, AWS (ECS, RDS, CloudFront, Lambda), Kafka, Redis, MySQL, Terraform</div>
+            <div class="company-desc">스포츠 OTT 플랫폼(SPOTV NOW) 백엔드 개발 및 AWS 인프라 운영. 서버파트 5명으로 서버 개발과 인프라를 담당 (프론트, 모바일팀은 별도 구성).</div>
+
+            <div class="project">
+                <div class="project-title">▸ 대규모 라이브 트래픽 처리 및 인프라 자동화</div>
+                <div class="project-desc">손흥민 경기 등 인기 경기 시 <span class="highlight">20~30만 동시접속</span> 환경에서 서버 운영. 일반 Auto Scaling으로는 급격한 트래픽 증가에 대응이 어려워, Airflow 기반으로 경기 1시간 전 서버를 미리 증설하는 자동화 시스템을 구축했습니다. 운영팀이 경기별 등급(High/Medium/SuperHigh)을 설정하면 그에 맞게 ECS 서비스가 자동으로 증설되고, 경기 종료 후 자동 축소됩니다.</div>
+            </div>
+            <div class="project">
+                <div class="project-title">▸ 스포티비 골프 서비스 AWS 인프라 구축</div>
+                <div class="project-desc">신규 골프 서비스의 <span class="highlight">AWS 인프라를 처음부터 설계·구축</span>했습니다. ECS 클러스터, RDS, Redis, ALB 등 전체 인프라를 <span class="highlight">Terraform으로 IaC 관리</span>하여 환경 재현성과 운영 효율성을 확보했습니다.</div>
+            </div>
+            <div class="project">
+                <div class="project-title">▸ Kafka 기반 푸시 알림 시스템</div>
+                <div class="project-desc">기존 FCM 토큰 관리 문제(중복전송, 전송 지연)를 해결하기 위해 Golang으로 토큰 관리 시스템을 새로 개발. <span class="highlight">Kafka 비동기 처리</span>로 수십만 동시 발송을 처리하고, 라이브 경기 15분 전 Pub/Sub 방식으로 사전 준비하여 전송 지연 문제를 해결했습니다.</div>
+            </div>
+            <div class="project">
+                <div class="project-title">▸ 결제 시스템 전면 업그레이드</div>
+                <div class="project-desc">Apple IAP deprecated API를 걷어내고 Golang 기반 영수증 검증 시스템으로 전환. Google RTDN 개선으로 구독 갱신 안정성 향상. 토스페이먼츠 PG 연동(브랜드페이, 토스페이, 카드빌링, 퀵계좌이체)으로 결제 수단 확장.</div>
+            </div>
+            <div class="project">
+                <div class="project-title">▸ CDN 도입 및 AI 활용</div>
+                <div class="project-desc">CloudFront 도입으로 웹 로딩 <span class="highlight">40% 개선</span>, 서버 부하 <span class="highlight">30% 감소</span>. AWS Bedrock 활용 CS 문의 자동 요약 시스템 구축으로 운영팀 선제 대응 지원.</div>
+            </div>
+        </div>
+
+        <!-- 로똔다 -->
+        <div class="company">
+            <div class="company-header">
+                <span class="company-name">로똔다 (빗썸 자회사)</span>
+                <span class="company-period">2022.04 - 2024.02</span>
+            </div>
+            <div class="company-meta">Backend Developer</div>
+            <div class="company-env">Golang, Node.js, TypeScript, AWS (ECS, Lambda, OpenSearch), Redis, RabbitMQ, MySQL</div>
+            <div class="company-desc">블록체인 지갑 서비스(Burrito Wallet) 백엔드 개발.</div>
+
+            <div class="project">
+                <div class="project-title">▸ 블록체인 트랜잭션 실시간 Tracker</div>
+                <div class="project-desc">여러 블록체인 네트워크의 트랜잭션을 <span class="highlight">실시간 추적</span>하는 시스템을 Golang으로 개발. Goroutine + 큐 기반으로 대량 트랜잭션을 처리하고, 공통 인터페이스 설계로 신규 네트워크 추가 시 쉽게 확장할 수 있도록 구성했습니다.</div>
+            </div>
+            <div class="project">
+                <div class="project-title">▸ 스테이킹 서비스 및 모니터링 인프라</div>
+                <div class="project-desc">POS 기반 원클릭 스테이킹 서비스 개발 (Golang Tracker + Node.js API). OpenSearch + FluentBit 로그 파이프라인 구축, ECS 오류 시 Lambda + Webhook 실시간 알림 체계 구성.</div>
+            </div>
+        </div>
+
+        <!-- 에스코어 -->
+        <div class="company">
+            <div class="company-header">
+                <span class="company-name">에스코어 (삼성SDS 자회사)</span>
+                <span class="company-period">2021.07 - 2022.04</span>
+            </div>
+            <div class="company-meta">Software Engineer</div>
+            <div class="company-env">Java, Spring, Spring Batch, ELK Stack, Kubernetes</div>
+            <div class="company-desc">삼성 SDS Cloud 서비스 개발.</div>
+
+            <div class="project">
+                <div class="project-title">▸ 방화벽 로그 서비스 (1인 주도)</div>
+                <div class="project-desc">VPC/Security Group 방화벽 로그 수집·관리 서비스를 분석부터 설계, 개발까지 단독 수행. rsyslog + ELK 스택을 On-premise 환경에 직접 구성하고, Spring Batch로 로그 데이터 백업을 자동화했습니다.</div>
+            </div>
+            <div class="project">
+                <div class="project-title">▸ Free Trial 서비스 MSA 통합</div>
+                <div class="project-desc">운영 중인 클라우드 시스템에 영향 없이 무료 체험판 서비스를 MSA 방식으로 안정적으로 통합. 분석·설계·개발 단독 진행.</div>
+            </div>
+        </div>
+
+        <!-- 인라이플 -->
+        <div class="company">
+            <div class="company-header">
+                <span class="company-name">인라이플</span>
+                <span class="company-period">2020.06 - 2021.06</span>
+            </div>
+            <div class="company-meta">추천 팀 리더 · 팀원 3명 관리</div>
+            <div class="company-env">Java, Spring WebFlux, Redis, ElasticSearch, Kafka, Apache Flink</div>
+            <div class="company-desc">광고 리타게팅 추천 시스템 개발. 팀장으로서 기술 의사결정과 팀원 관리를 병행.</div>
+
+            <div class="project">
+                <div class="project-title">▸ 광고 추천 API (WebFlux)</div>
+                <div class="project-desc">추천 데이터를 조합해서 광고 송출 서버에 제공하는 API를 개발. 응답 속도가 핵심이라 Spring WebFlux를 도입했고, <span class="highlight">대규모 트래픽</span> 환경에서 성능 우위를 확인했습니다. 팀장으로서 기술 검토 후 도입을 결정.</div>
+            </div>
+            <div class="project">
+                <div class="project-title">▸ 배치 최적화 및 인프라 구축</div>
+                <div class="project-desc">IBCF 추천 알고리즘 배치가 메모리 부족으로 실패하는 문제를 Apache Flink 전처리 도입으로 <span class="highlight">12시간 → 3시간</span>으로 단축. Docker Swarm + Grafana/Prometheus 모니터링 시스템 구축 (타 팀에서도 채택).</div>
+            </div>
+        </div>
+
+        <!-- 에스비티엠 -->
+        <div class="company">
+            <div class="company-header">
+                <span class="company-name">에스비티엠 (호텔신라 자회사)</span>
+                <span class="company-period">2019.08 - 2020.05</span>
+            </div>
+            <div class="company-meta">Backend Developer</div>
+            <div class="company-env">C#, Redis, REST API</div>
+
+            <div class="project">
+                <div class="project-desc">여행·항공·호텔 예약 시스템 개발. Redis 캐시 도입 + 병렬 처리 개선으로 호텔 검색 API 응답 속도를 수초 → 밀리초로 개선. Expedia, Hotelbeds 등 글로벌 호텔 API 연동.</div>
+            </div>
+        </div>
+
+        <!-- 이썸테크 -->
+        <div class="company">
+            <div class="company-header">
+                <span class="company-name">이썸테크</span>
+                <span class="company-period">2015.12 - 2019.08</span>
+            </div>
+            <div class="company-meta">Backend Developer</div>
+            <div class="company-env">Java, Spring, Oracle, SAP</div>
+
+            <div class="project">
+                <div class="project-desc">유통 EDI 솔루션 개발. 이마트·롯데마트 등 유통사 데이터를 농협 하나로 유통 시스템에 적재하고, 동서식품·동원·남양유업 등 제조사에 제공하는 인터페이스 개발. 3년 9개월간 안정적으로 운영하며 매년 계약 유지.</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="section-title">사이드 프로젝트</div>
+        <div class="side-project">
+            <strong>요정일기</strong> (iOS/Android) — AI 일기 앱을 기획부터 개발, 출시, 마케팅까지 1인으로 수행했습니다.<br>
+            Flutter + Firebase + Supabase + AI API 연동. <strong>App Store 5.0 평점</strong>.<br>
+            <a href="https://apps.apple.com/kr/app/%EC%9A%94%EC%A0%95%EC%9D%BC%EA%B8%B0/id6755412112">App Store</a> ·
+            <a href="https://play.google.com/store/apps/details?id=com.logboni.fairy.fairy&hl=ko">Google Play</a>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="section-title">기술 스택</div>
+        <div class="tech-grid">
+            <span class="tech-label">언어</span><span>Java, Golang, Node.js, C#</span>
+            <span class="tech-label">프레임워크</span><span>Spring Boot, Spring WebFlux, Express.js, Gin</span>
+            <span class="tech-label">DB</span><span>MySQL, Oracle, Redis, ElasticSearch, OpenSearch</span>
+            <span class="tech-label">메시지 큐</span><span>Kafka, RabbitMQ, AWS SQS/SNS</span>
+            <span class="tech-label">인프라</span><span>AWS (ECS, EC2, CloudFront, Lambda, RDS, S3), Docker, Terraform, Kubernetes</span>
+            <span class="tech-label">모니터링</span><span>CloudWatch, Grafana, Prometheus, ELK Stack</span>
+        </div>
+    </div>
+
+    <button class="no-print" onclick="window.print()" style="position:fixed;bottom:20px;right:20px;background:#2563eb;color:#fff;border:none;padding:10px 20px;border-radius:8px;cursor:pointer;font-size:14px;font-weight:600;box-shadow:0 2px 8px rgba(0,0,0,0.2);">📄 PDF 저장</button>
+
+</body>
+</html>
