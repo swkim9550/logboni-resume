@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>전술분석관 박프로 — NOW CAST 캐스터</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<style>
+/* CASTER PAGE SPECIFIC */
+.caster-hero{padding:60px 48px 40px;background:linear-gradient(180deg,rgba(42,255,204,.06) 0%,transparent 50%);max-width:1200px;margin:0 auto}
+.caster-profile{display:flex;gap:32px;align-items:flex-start}
+.caster-avatar-lg{width:100px;height:100px;border-radius:50%;background:var(--mint-dim);border:3px solid var(--mint);display:flex;align-items:center;justify-content:center;font-size:48px;flex-shrink:0}
+.caster-meta{flex:1}
+.caster-meta .tier-badge{display:inline-block;font-size:11px;font-weight:800;padding:4px 12px;border-radius:12px;background:rgba(255,165,0,.12);color:#ffa500;margin-bottom:8px}
+.caster-meta h1{font-size:28px;font-weight:900;margin-bottom:6px}
+.caster-meta .bio{font-size:14px;color:var(--t3);line-height:1.7;margin-bottom:16px}
+.caster-stats{display:flex;gap:24px;flex-wrap:wrap}
+.cs{text-align:center}
+.cs .csv{font-size:24px;font-weight:900;color:var(--mint)}
+.cs .csl{font-size:11px;color:var(--t4);margin-top:2px}
+.caster-actions{display:flex;gap:10px;margin-top:20px}
+.caster-actions .btn{font-size:13px;font-weight:700;padding:10px 24px;border-radius:24px;border:none;cursor:pointer;font-family:inherit;transition:all .2s}
+.caster-actions .btn.mint{background:var(--mint);color:#000}
+.caster-actions .btn.ghost{background:transparent;color:var(--t3);border:1px solid var(--border2)}
+
+/* TABS */
+.page-tabs{max-width:1200px;margin:0 auto;padding:0 48px;border-bottom:1px solid var(--border);display:flex;gap:0}
+.ptab{font-size:14px;font-weight:600;color:var(--t4);padding:14px 24px;cursor:pointer;border-bottom:2px solid transparent;transition:all .2s}
+.ptab:hover{color:var(--t2)}
+.ptab.active{color:var(--mint);border-bottom-color:var(--mint)}
+
+/* PREDICTION CARDS */
+.pred-card{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius-lg);padding:28px;margin-bottom:16px;transition:all .2s}
+.pred-card:hover{border-color:rgba(42,255,204,.15)}
+.pred-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px}
+.pred-header .pred-league{font-size:12px;font-weight:700;color:var(--mint)}
+.pred-header .pred-date{font-size:12px;color:var(--t4)}
+.pred-header .pred-status{font-size:11px;font-weight:800;padding:4px 12px;border-radius:12px}
+.pred-status.hit{background:rgba(42,255,204,.12);color:var(--mint)}
+.pred-status.miss{background:rgba(255,59,48,.1);color:var(--red)}
+.pred-status.pending{background:rgba(39,113,255,.1);color:var(--blue)}
+.pred-match{display:flex;align-items:center;gap:16px;margin-bottom:16px}
+.pred-match .pm-team{display:flex;align-items:center;gap:8px;font-size:15px;font-weight:800;flex:1}
+.pred-match .pm-team .logo{font-size:24px}
+.pred-match .pm-vs{font-size:12px;color:var(--t5);font-weight:700}
+.pred-match .pm-score{font-size:20px;font-weight:900;color:var(--t1);min-width:60px;text-align:center}
+.pred-body{background:var(--bg3);border-radius:var(--radius);padding:16px 20px;margin-bottom:12px}
+.pred-body .pred-label{font-size:11px;color:var(--t4);font-weight:700;margin-bottom:8px;text-transform:uppercase;letter-spacing:1px}
+.pred-body .pred-text{font-size:14px;color:var(--t2);line-height:1.8}
+.pred-detail{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:12px}
+.pd-item{background:var(--bg3);border-radius:var(--radius);padding:12px;text-align:center}
+.pd-item .pdl{font-size:10px;color:var(--t4);margin-bottom:4px}
+.pd-item .pdv{font-size:14px;font-weight:800}
+.pd-item .pdv.hit{color:var(--mint)}
+.pd-item .pdv.miss{color:var(--red)}
+.pred-review{border-top:1px solid var(--border);padding-top:16px}
+.pred-review .rev-label{font-size:11px;color:var(--t4);font-weight:700;margin-bottom:8px}
+.pred-review .rev-text{font-size:13px;color:var(--t3);line-height:1.8}
+.pred-engagement{display:flex;gap:16px;margin-top:12px;font-size:12px;color:var(--t4)}
+.pred-engagement span{cursor:pointer;transition:color .2s}
+.pred-engagement span:hover{color:var(--mint)}
+
+/* REVIEW ARTICLE */
+.review-card{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius-lg);padding:28px;margin-bottom:16px;transition:all .2s}
+.review-card:hover{border-color:rgba(42,255,204,.15)}
+.review-card .rc-tag{font-size:10px;font-weight:800;padding:3px 10px;border-radius:10px;display:inline-block;margin-bottom:10px}
+.rc-tag.analysis{background:rgba(39,113,255,.1);color:var(--blue)}
+.rc-tag.preview{background:rgba(255,149,0,.1);color:var(--orange)}
+.rc-tag.review{background:rgba(42,255,204,.1);color:var(--mint)}
+.review-card h3{font-size:18px;font-weight:900;margin-bottom:8px;line-height:1.4}
+.review-card .rc-excerpt{font-size:14px;color:var(--t3);line-height:1.8;margin-bottom:12px}
+.review-card .rc-meta{font-size:12px;color:var(--t4);display:flex;gap:16px}
+
+@media(max-width:768px){
+  .caster-profile{flex-direction:column;align-items:center;text-align:center}
+  .caster-stats{justify-content:center}
+  .caster-actions{justify-content:center}
+  .pred-detail{grid-template-columns:1fr}
+  .page-tabs{padding:0 20px;overflow-x:auto}
+  .caster-hero{padding:40px 20px 24px}
+}
+</style>
+</head>
+<body>
+
+<!-- GNB -->
+<header class="gnb">
+  <div class="gnb-logo">
+    <img src="https://cdn.spotvnow.co.kr/dist/asset/now-logo-for-sns.png" alt="SPOTV NOW">
+    <span class="cast-badge">CAST</span>
+  </div>
+  <nav class="gnb-nav">
+    <a href="index.html">홈</a>
+    <a href="index.html#ranking">캐스터 랭킹</a>
+    <a href="index.html#cast-preview">캐스트 LIVE</a>
+    <a href="proposal.html">기획서</a>
+  </nav>
+  <div class="gnb-right">
+    <button class="gnb-btn primary" onclick="alert('⚽ NOW CAST Coming Soon!')">시작하기</button>
+  </div>
+</header>
+
+<!-- CASTER PROFILE -->
+<div class="caster-hero">
+  <div class="caster-profile">
+    <div class="caster-avatar-lg">🧔</div>
+    <div class="caster-meta">
+      <span class="tier-badge">🥇 올스타 캐스터</span>
+      <h1>전술분석관 박프로</h1>
+      <p class="bio">전직 스포츠 기자 출신. 유럽 축구 전술 분석 전문. MLB 데이터 분석도 겸업.<br>경기 전 프리뷰와 경기 후 리뷰를 꼼꼼하게 작성하는 것으로 유명.</p>
+      <div class="caster-stats">
+        <div class="cs"><div class="csv">71%</div><div class="csl">예측 적중률</div></div>
+        <div class="cs"><div class="csv">6.7K</div><div class="csl">서포터</div></div>
+        <div class="cs"><div class="csv">132K</div><div class="csl">누적 골</div></div>
+        <div class="cs"><div class="csv">247</div><div class="csl">캐스트 횟수</div></div>
+        <div class="cs"><div class="csv">89</div><div class="csl">리뷰 작성</div></div>
+      </div>
+      <div class="caster-actions">
+        <button class="btn mint">⚽ 골 후원</button>
+        <button class="btn mint">구독 · ₩3,900/월</button>
+        <button class="btn ghost">🔔 알림 설정</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- TABS -->
+<div class="page-tabs">
+  <div class="ptab active" onclick="showTab('predictions')">📊 경기 예측</div>
+  <div class="ptab" onclick="showTab('reviews')">📝 프리뷰 & 리뷰</div>
+  <div class="ptab" onclick="showTab('upcoming')">📅 예정 캐스트</div>
+</div>
+
+<!-- CONTENT -->
+<div class="section" id="tab-predictions">
+
+  <!-- 예측 1: PSG vs 바이에른 -->
+  <div class="pred-card">
+    <div class="pred-header">
+      <span class="pred-league">⚽ UEFA 챔피언스리그 · 준결승 1차전</span>
+      <span class="pred-date">04.29 수 04:00</span>
+      <span class="pred-status pending">⏳ 경기 전</span>
+    </div>
+    <div class="pred-match">
+      <div class="pm-team"><span class="logo">🔴🔵</span> 파리 생제르맹</div>
+      <div class="pm-vs">vs</div>
+      <div class="pm-team"><span class="logo">🔴⚪</span> 바이에른 뮌헨</div>
+    </div>
+    <div class="pred-detail">
+      <div class="pd-item"><div class="pdl">스코어 예측</div><div class="pdv">PSG 2 : 1</div></div>
+      <div class="pd-item"><div class="pdl">첫 득점자</div><div class="pdv">음바페</div></div>
+      <div class="pd-item"><div class="pdl">승부 예측</div><div class="pdv">PSG 승</div></div>
+    </div>
+    <div class="pred-body">
+      <div class="pred-label">📋 박프로의 분석</div>
+      <div class="pred-text">
+        바이에른이 원정에서 약한 모습을 보이고 있고, PSG는 홈에서 이번 시즌 UCL 무패. 음바페의 컨디션이 8강 이후 급상승 중이라 선제골 가능성이 높다고 봅니다.<br><br>
+        다만 바이에른의 하이프레스가 PSG 빌드업을 흔들 수 있어서 전반은 팽팽할 것. 후반 60분 이후 PSG 역습이 터질 타이밍으로 예상합니다. 키플레이어는 음바페 vs 킴미히 매치업.
+      </div>
+    </div>
+    <div class="pred-engagement">
+      <span>👍 342</span>
+      <span>💬 89 댓글</span>
+      <span>🔗 공유</span>
+    </div>
+  </div>
+
+  <!-- 예측 2: AT 마드리드 vs 아스날 -->
+  <div class="pred-card">
+    <div class="pred-header">
+      <span class="pred-league">⚽ UEFA 챔피언스리그 · 준결승 1차전</span>
+      <span class="pred-date">04.30 목 04:00</span>
+      <span class="pred-status pending">⏳ 경기 전</span>
+    </div>
+    <div class="pred-match">
+      <div class="pm-team"><span class="logo">🔴⚪</span> AT. 마드리드</div>
+      <div class="pm-vs">vs</div>
+      <div class="pm-team"><span class="logo">🔴⚪</span> 아스날</div>
+    </div>
+    <div class="pred-detail">
+      <div class="pd-item"><div class="pdl">스코어 예측</div><div class="pdv">1 : 1</div></div>
+      <div class="pd-item"><div class="pdl">첫 득점자</div><div class="pdv">그리즈만</div></div>
+      <div class="pd-item"><div class="pdl">승부 예측</div><div class="pdv">무승부</div></div>
+    </div>
+    <div class="pred-body">
+      <div class="pred-label">📋 박프로의 분석</div>
+      <div class="pred-text">
+        시메오네의 AT 마드리드는 홈에서 수비적으로 나올 가능성이 높음. 아스날도 원정에서 무리하지 않을 것. 양 팀 모두 2차전을 의식한 보수적 경기 운영 예상.<br><br>
+        AT 마드리드가 세트피스에서 한 골, 아스날이 후반 역습으로 한 골. 1:1 무승부가 가장 현실적인 시나리오.
+      </div>
+    </div>
+    <div class="pred-engagement">
+      <span>👍 278</span>
+      <span>💬 67 댓글</span>
+      <span>🔗 공유</span>
+    </div>
+  </div>
+
+  <!-- 예측 3: LA 다저스 (적중) -->
+  <div class="pred-card">
+    <div class="pred-header">
+      <span class="pred-league">⚾ MLB 정규시즌</span>
+      <span class="pred-date">04.26 토 10:10</span>
+      <span class="pred-status hit">✅ 적중</span>
+    </div>
+    <div class="pred-match">
+      <div class="pm-team"><span class="logo">🔵⚪</span> LA 다저스</div>
+      <div class="pm-score">5 : 3</div>
+      <div class="pm-team"><span class="logo">🟠⚫</span> SF 자이언츠</div>
+    </div>
+    <div class="pred-detail">
+      <div class="pd-item"><div class="pdl">스코어 예측</div><div class="pdv hit">다저스 승 ✓</div></div>
+      <div class="pd-item"><div class="pdl">오타니 안타</div><div class="pdv hit">2안타 이상 ✓</div></div>
+      <div class="pd-item"><div class="pdl">총 득점</div><div class="pdv miss">6점 이하 ✗</div></div>
+    </div>
+    <div class="pred-body">
+      <div class="pred-label">📋 박프로의 경기 후 리뷰</div>
+      <div class="pred-text">
+        예상대로 다저스가 중반 이후 화력을 앞세워 역전승. 오타니가 3타수 2안타 1홈런으로 맹활약. 다만 총 득점은 8점으로 예상보다 높았음. 자이언츠 불펜이 생각보다 무너졌네요.<br><br>
+        다저스 선발 뷸러의 컨디션이 좋았고, 5이닝 1실점으로 퀄리티 스타트 달성. 다음 시리즈(파드리스전)에서도 다저스 우세 예상.
+      </div>
+    </div>
+    <div class="pred-engagement">
+      <span>👍 521</span>
+      <span>💬 134 댓글</span>
+      <span>🔗 공유</span>
+    </div>
+  </div>
+
+  <!-- 예측 4: 다저스 실패 -->
+  <div class="pred-card">
+    <div class="pred-header">
+      <span class="pred-league">⚾ MLB 정규시즌</span>
+      <span class="pred-date">04.25 금 10:10</span>
+      <span class="pred-status miss">❌ 실패</span>
+    </div>
+    <div class="pred-match">
+      <div class="pm-team"><span class="logo">🟠⚫</span> SF 자이언츠</div>
+      <div class="pm-score">4 : 2</div>
+      <div class="pm-team"><span class="logo">🔵⚪</span> LA 다저스</div>
+    </div>
+    <div class="pred-detail">
+      <div class="pd-item"><div class="pdl">스코어 예측</div><div class="pdv miss">다저스 승 ✗</div></div>
+      <div class="pd-item"><div class="pdl">오타니 안타</div><div class="pdv hit">1안타 이상 ✓</div></div>
+      <div class="pd-item"><div class="pdl">선발 QS</div><div class="pdv miss">달성 ✗</div></div>
+    </div>
+    <div class="pred-body">
+      <div class="pred-label">📋 박프로의 경기 후 리뷰</div>
+      <div class="pred-text">
+        다저스 선발이 3이닝 만에 무너지면서 예측 실패. 자이언츠 타선이 초반부터 적극적으로 공략했고, 다저스 불펜도 추가 실점을 허용. 오타니는 1안타에 그쳤지만 볼넷 2개로 출루는 했습니다. 선발 로테이션 점검이 필요한 시점.
+      </div>
+    </div>
+    <div class="pred-engagement">
+      <span>👍 189</span>
+      <span>💬 92 댓글</span>
+      <span>🔗 공유</span>
+    </div>
+  </div>
+</div>
+
+<!-- REVIEWS TAB (hidden by default) -->
+<div class="section" id="tab-reviews" style="display:none">
+  <div class="review-card">
+    <span class="rc-tag preview">프리뷰</span>
+    <h3>🔥 PSG vs 바이에른, 준결승 1차전 완벽 프리뷰</h3>
+    <p class="rc-excerpt">양 팀의 8강 퍼포먼스부터 키플레이어 컨디션, 전술 매치업까지 총정리. 음바페 vs 킴미히, 이 매치업이 경기를 결정짓는다. 파르크 데 프랭스의 홈 어드밴티지는 얼마나 클까?</p>
+    <div class="rc-meta">
+      <span>📅 04.28</span>
+      <span>👁️ 4,231 조회</span>
+      <span>💬 67 댓글</span>
+      <span>⏱️ 8분 읽기</span>
+    </div>
+  </div>
+  <div class="review-card">
+    <span class="rc-tag analysis">전술 분석</span>
+    <h3>📊 AT 마드리드의 수비 블록, 아스날은 어떻게 뚫을까</h3>
+    <p class="rc-excerpt">시메오네의 5-3-2 로우블록을 아르테타가 어떻게 공략할지 전술적으로 분석. 아스날의 좌측 오버로드와 AT 마드리드의 전환 역습 패턴을 데이터로 비교합니다.</p>
+    <div class="rc-meta">
+      <span>📅 04.28</span>
+      <span>👁️ 3,892 조회</span>
+      <span>💬 45 댓글</span>
+      <span>⏱️ 12분 읽기</span>
+    </div>
+  </div>
+  <div class="review-card">
+    <span class="rc-tag review">경기 리뷰</span>
+    <h3>⚾ 다저스 vs 자이언츠 2연전 총평 — 오타니 시즌 폼 분석</h3>
+    <p class="rc-excerpt">2연전을 1승 1패로 마친 다저스. 오타니의 타격 데이터(타구 속도, 스윙 각도)를 기반으로 현재 폼을 분석하고, 다음 파드리스 시리즈 전망까지.</p>
+    <div class="rc-meta">
+      <span>📅 04.27</span>
+      <span>👁️ 5,671 조회</span>
+      <span>💬 156 댓글</span>
+      <span>⏱️ 10분 읽기</span>
+    </div>
+  </div>
+  <div class="review-card">
+    <span class="rc-tag preview">프리뷰</span>
+    <h3>🔵 다저스 vs 파드리스 3연전 프리뷰 — 선발 매치업 & 타선 분석</h3>
+    <p class="rc-excerpt">NL West 라이벌 대결. 다저스 선발 로테이션(뷸러-글래스노-야마모토)과 파드리스 타선의 상성을 데이터로 비교. 오타니 vs 다비시 한일 대결도 예고.</p>
+    <div class="rc-meta">
+      <span>📅 04.27</span>
+      <span>👁️ 3,445 조회</span>
+      <span>💬 78 댓글</span>
+      <span>⏱️ 7분 읽기</span>
+    </div>
+  </div>
+</div>
+
+<!-- UPCOMING TAB (hidden by default) -->
+<div class="section" id="tab-upcoming" style="display:none">
+  <div class="sched-card">
+    <div class="date"><strong>04.29</strong> 수 04:00</div>
+    <div class="teams">
+      <span class="logo">🔴🔵</span>
+      <span class="tname">파리 생제르맹</span>
+      <span class="vs">vs</span>
+      <span class="tname">바이에른 뮌헨</span>
+      <span class="logo">🔴⚪</span>
+    </div>
+    <div class="venue">파르크 데 프랭스 · UCL 준결승 1차전</div>
+    <div class="tags">
+      <span class="tag cast">🎙️ 캐스트 예정</span>
+      <span class="tag predict">📊 예측 등록 완료</span>
+    </div>
+  </div>
+  <div class="sched-card">
+    <div class="date"><strong>04.30</strong> 목 04:00</div>
+    <div class="teams">
+      <span class="logo">🔴⚪</span>
+      <span class="tname">AT. 마드리드</span>
+      <span class="vs">vs</span>
+      <span class="tname">아스날</span>
+      <span class="logo">🔴⚪</span>
+    </div>
+    <div class="venue">메트로폴리타노 · UCL 준결승 1차전</div>
+    <div class="tags">
+      <span class="tag cast">🎙️ 캐스트 예정</span>
+      <span class="tag predict">📊 예측 등록 완료</span>
+    </div>
+  </div>
+  <div class="sched-card mlb">
+    <div class="date"><strong>04.30</strong> 수 10:10</div>
+    <div class="teams">
+      <span class="logo">🔵⚪</span>
+      <span class="tname">LA 다저스</span>
+      <span class="vs">vs</span>
+      <span class="tname">샌디에이고 파드리스</span>
+      <span class="logo">🟤🟡</span>
+    </div>
+    <div class="venue">다저 스타디움 · MLB 정규시즌</div>
+    <div class="tags">
+      <span class="tag cast">🎙️ 캐스트 예정</span>
+      <span class="tag predict">📊 예측 준비중</span>
+      <span class="tag mlb-tag">⚾ MLB</span>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="left">
+      <img src="https://cdn.spotvnow.co.kr/dist/asset/now-logo-for-sns.png" alt="SPOTV NOW">
+      <p>SPOTV NOW CAST · 아이디어 컨셉 데모<br>© 2026 SPOTV</p>
+    </div>
+    <div class="right">
+      <p><a href="index.html" style="color:var(--mint)">← 메인으로 돌아가기</a></p>
+    </div>
+  </div>
+</footer>
+
+<script>
+function showTab(id){
+  document.querySelectorAll('[id^="tab-"]').forEach(el=>el.style.display='none');
+  document.getElementById('tab-'+id).style.display='block';
+  document.querySelectorAll('.ptab').forEach(t=>t.classList.remove('active'));
+  event.target.classList.add('active');
+}
+</script>
+</body>
+</html>
