@@ -62,4 +62,5 @@ ecosystem.config.js
 *.md
 !README.md
 !audio-sports/proposal.md
+!sports-bj-platform/proposal.md
 *.txt
