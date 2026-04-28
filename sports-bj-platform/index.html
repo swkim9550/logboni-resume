@@ -21,7 +21,14 @@
     <a href="#schedule">경기 일정</a>
     <a href="#ranking">캐스터 랭킹</a>
     <a href="#how">이용 방법</a>
-    <a href="caster-park.html">캐스터 샘플</a>
+    <div class="gnb-dropdown">
+      <a href="#ranking" class="gnb-dropdown-trigger">캐스터 샘플 ▾</a>
+      <div class="gnb-dropdown-menu">
+        <a href="caster-park.html">🧔 전술분석관 박프로 (축구)</a>
+        <a href="caster-running.html">🏃 새벽런 코치 민수 (러닝)</a>
+        <a href="caster-yoga.html">🧘 모닝요가 지은 (요가)</a>
+      </div>
+    </div>
     <a href="apply.html">캐스터 지원</a>
     <a href="proposal.html">기획서</a>
   </nav>
@@ -90,7 +97,7 @@
   </div>
   <div class="live-grid">
     <!-- 관전형 -->
-    <div class="live-card-v2">
+    <div class="live-card-v2" data-cat="축구">
       <div class="lc-top">
         <span class="lc-type watch">관전</span>
         <span class="lc-live">● LIVE</span>
@@ -102,7 +109,7 @@
         <span>적중 78%</span>
       </div>
     </div>
-    <div class="live-card-v2">
+    <div class="live-card-v2" data-cat="축구">
       <div class="lc-top">
         <span class="lc-type watch">관전</span>
         <span class="lc-live">● LIVE</span>
@@ -115,7 +122,7 @@
       </div>
     </div>
     <!-- 참여형 -->
-    <div class="live-card-v2 join-card">
+    <div class="live-card-v2 join-card" data-cat="러닝">
       <div class="lc-top">
         <span class="lc-type join">참여</span>
         <span class="lc-live">● LIVE</span>
@@ -127,7 +134,7 @@
         <span>평균 4.8km</span>
       </div>
     </div>
-    <div class="live-card-v2 join-card">
+    <div class="live-card-v2 join-card" data-cat="요가">
       <div class="lc-top">
         <span class="lc-type join">참여</span>
         <span class="lc-live">● LIVE</span>
@@ -139,7 +146,7 @@
         <span>⭐ 4.9</span>
       </div>
     </div>
-    <div class="live-card-v2 join-card">
+    <div class="live-card-v2 join-card" data-cat="피트니스">
       <div class="lc-top">
         <span class="lc-type join">참여</span>
         <span class="lc-live">● LIVE</span>
@@ -152,7 +159,7 @@
       </div>
     </div>
     <!-- 교육형 -->
-    <div class="live-card-v2 edu-card">
+    <div class="live-card-v2 edu-card" data-cat="교육">
       <div class="lc-top">
         <span class="lc-type edu">교육</span>
         <span class="lc-live">● LIVE</span>
@@ -182,38 +189,38 @@
     <span class="tab">🧘 요가</span>
   </div>
   <div class="schedule-grid">
-    <div class="sched-card">
+    <div class="sched-card" data-cat="축구">
       <div class="date"><strong>04.29</strong> 수 04:00</div>
       <div class="teams"><span class="logo">🔴🔵</span><span class="tname">파리 생제르맹</span><span class="vs">vs</span><span class="tname">바이에른 뮌헨</span><span class="logo">🔴⚪</span></div>
       <div class="venue">파르크 데 프랭스 · UCL 준결승</div>
       <div class="tags"><span class="tag exclusive">독점</span><span class="tag cast">🎙️ 캐스터 3명</span><span class="tag predict">📊 예측 오픈</span></div>
     </div>
-    <div class="sched-card">
+    <div class="sched-card" data-cat="축구">
       <div class="date"><strong>04.30</strong> 목 04:00</div>
       <div class="teams"><span class="logo">🔴⚪</span><span class="tname">AT. 마드리드</span><span class="vs">vs</span><span class="tname">아스날</span><span class="logo">🔴⚪</span></div>
       <div class="venue">메트로폴리타노 · UCL 준결승</div>
       <div class="tags"><span class="tag exclusive">독점</span><span class="tag cast">🎙️ 캐스터 4명</span><span class="tag predict">📊 예측 오픈</span></div>
     </div>
-    <div class="sched-card mlb">
+    <div class="sched-card mlb" data-cat="야구">
       <div class="date"><strong>04.30</strong> 수 10:10</div>
       <div class="teams"><span class="logo">🔵⚪</span><span class="tname">LA 다저스</span><span class="vs">vs</span><span class="tname">파드리스</span><span class="logo">🟤🟡</span></div>
       <div class="venue">다저 스타디움 · MLB</div>
       <div class="tags"><span class="tag exclusive">독점</span><span class="tag cast">🎙️ 캐스터 2명</span><span class="tag mlb-tag">⚾ MLB</span></div>
     </div>
     <!-- 참여형 일정 -->
-    <div class="sched-card join-sched">
+    <div class="sched-card join-sched" data-cat="러닝">
       <div class="date"><strong>매일</strong> 06:00</div>
       <div class="teams"><span class="logo">🏃</span><span class="tname">새벽 5km 러닝</span></div>
       <div class="venue">새벽런 코치 민수 · 참여형 라이브</div>
       <div class="tags"><span class="tag join-tag">🏃 참여형</span><span class="tag cast">평균 120명 참여</span></div>
     </div>
-    <div class="sched-card join-sched">
+    <div class="sched-card join-sched" data-cat="요가">
       <div class="date"><strong>매일</strong> 07:00</div>
       <div class="teams"><span class="logo">🧘</span><span class="tname">모닝 요가 30분</span></div>
       <div class="venue">모닝요가 지은 · 참여형 라이브</div>
       <div class="tags"><span class="tag join-tag">🧘 참여형</span><span class="tag cast">평균 89명 참여</span></div>
     </div>
-    <div class="sched-card join-sched">
+    <div class="sched-card join-sched" data-cat="피트니스">
       <div class="date"><strong>매일</strong> 12:00</div>
       <div class="teams"><span class="logo">💪</span><span class="tname">점심 20분 HIIT</span></div>
       <div class="venue">점심홈트 현우 · 참여형 라이브</div>
@@ -240,7 +247,7 @@
   </div>
   <div class="ranking-grid">
     <!-- 관전형 캐스터 -->
-    <div class="rank-card top1" onclick="location.href='caster-park.html'" style="cursor:pointer">
+    <div class="rank-card top1" onclick="location.href='caster-park.html'" style="cursor:pointer" data-cat="축구">
       <div class="rank-num">#1</div>
       <div class="rank-avatar">🎙️</div>
       <div class="rank-name">축구왕 김캐스터</div>
@@ -250,7 +257,7 @@
       <div class="rank-stat">서포터 <strong>12.3K</strong></div>
       <button class="sub-btn active">구독중</button>
     </div>
-    <div class="rank-card top2" onclick="location.href='caster-running.html'" style="cursor:pointer">
+    <div class="rank-card top2" onclick="location.href='caster-running.html'" style="cursor:pointer" data-cat="러닝">
       <div class="rank-num">#2</div>
       <div class="rank-avatar">🏃</div>
       <div class="rank-name">새벽런 코치 민수</div>
@@ -260,7 +267,7 @@
       <div class="rank-stat">참여자 <strong>9.2K</strong></div>
       <button class="sub-btn">구독</button>
     </div>
-    <div class="rank-card top3" onclick="location.href='caster-park.html'" style="cursor:pointer">
+    <div class="rank-card top3" onclick="location.href='caster-park.html'" style="cursor:pointer" data-cat="축구 교육">
       <div class="rank-num">#3</div>
       <div class="rank-avatar">🧔</div>
       <div class="rank-name">전술분석관 박프로</div>
@@ -270,7 +277,7 @@
       <div class="rank-stat">서포터 <strong>6.7K</strong></div>
       <button class="sub-btn">구독</button>
     </div>
-    <div class="rank-card" onclick="location.href='caster-yoga.html'" style="cursor:pointer">
+    <div class="rank-card" onclick="location.href='caster-yoga.html'" style="cursor:pointer" data-cat="요가">
       <div class="rank-num">#4</div>
       <div class="rank-avatar">🧘</div>
       <div class="rank-name">모닝요가 지은</div>
@@ -280,7 +287,7 @@
       <div class="rank-stat">참여자 <strong>5.8K</strong></div>
       <button class="sub-btn">구독</button>
     </div>
-    <div class="rank-card">
+    <div class="rank-card" data-cat="피트니스">
       <div class="rank-num">#5</div>
       <div class="rank-avatar">💪</div>
       <div class="rank-name">점심홈트 현우</div>
@@ -290,7 +297,7 @@
       <div class="rank-stat">참여자 <strong>4.1K</strong></div>
       <button class="sub-btn">구독</button>
     </div>
-    <div class="rank-card">
+    <div class="rank-card" data-cat="축구">
       <div class="rank-num">#6</div>
       <div class="rank-avatar">👩‍🎤</div>
       <div class="rank-name">유로퀸 소피</div>
@@ -300,7 +307,7 @@
       <div class="rank-stat">서포터 <strong>8.1K</strong></div>
       <button class="sub-btn">구독</button>
     </div>
-    <div class="rank-card">
+    <div class="rank-card" data-cat="복싱">
       <div class="rank-num">#7</div>
       <div class="rank-avatar">🥊</div>
       <div class="rank-name">복싱핏 수진</div>
@@ -310,7 +317,7 @@
       <div class="rank-stat">참여자 <strong>3.2K</strong></div>
       <button class="sub-btn">구독</button>
     </div>
-    <div class="rank-card">
+    <div class="rank-card" data-cat="축구">
       <div class="rank-num">#8</div>
       <div class="rank-avatar">😎</div>
       <div class="rank-name">새벽축구단장</div>
@@ -320,7 +327,7 @@
       <div class="rank-stat">서포터 <strong>4.2K</strong></div>
       <button class="sub-btn">구독</button>
     </div>
-    <div class="rank-card">
+    <div class="rank-card" data-cat="야구">
       <div class="rank-num">#9</div>
       <div class="rank-avatar">⚾</div>
       <div class="rank-name">MLB데이터 준호</div>
@@ -330,7 +337,7 @@
       <div class="rank-stat">서포터 <strong>3.5K</strong></div>
       <button class="sub-btn">구독</button>
     </div>
-    <div class="rank-card">
+    <div class="rank-card" data-cat="클라이밍">
       <div class="rank-num">#10</div>
       <div class="rank-avatar">🧗</div>
       <div class="rank-name">볼더링 준혁</div>
@@ -482,5 +489,29 @@
     <div class="right"><p>이 페이지는 서비스 기획 아이디어를 시각화한 데모입니다.</p></div>
   </div>
 </footer>
+<script>
+// Tab filtering
+document.querySelectorAll('.section-tabs').forEach(tabGroup => {
+  tabGroup.querySelectorAll('.tab').forEach(tab => {
+    tab.addEventListener('click', function() {
+      tabGroup.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+      this.classList.add('active');
+      const text = this.textContent.trim();
+      const grid = tabGroup.nextElementSibling;
+      if (!grid) return;
+      const cards = grid.children;
+      const map = {'전체':'','⚽ 축구':'축구','⚾ 야구':'야구','🏃 러닝':'러닝','💪 피트니스':'피트니스','🧘 요가':'요가','🥊 복싱':'복싱','📊 교육':'교육','챔피언스리그':'축구','MLB':'야구'};
+      const filter = map[text] !== undefined ? map[text] : '';
+      Array.from(cards).forEach(card => {
+        if (!filter || (card.dataset.cat && card.dataset.cat.includes(filter))) {
+          card.style.display = '';
+        } else if (card.dataset.cat) {
+          card.style.display = 'none';
+        }
+      });
+    });
+  });
+});
+</script>
 </body>
 </html>
