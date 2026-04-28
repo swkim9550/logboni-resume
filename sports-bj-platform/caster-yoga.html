@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>모닝요가 지은 — NOW CAST 캐스터</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="caster-page.css">
+</head>
+<body>
+<header class="gnb">
+  <div class="gnb-logo"><img src="https://cdn.spotvnow.co.kr/dist/asset/now-logo-for-sns.png" alt="SPOTV NOW"><span class="cast-badge">CAST</span></div>
+  <nav class="gnb-nav">
+    <a href="index.html#live">LIVE</a><a href="index.html#schedule">경기 일정</a><a href="index.html#ranking">캐스터 랭킹</a><a href="index.html#how">이용 방법</a><a href="caster-park.html">캐스터 샘플</a><a href="apply.html">캐스터 지원</a><a href="proposal.html">기획서</a>
+  </nav>
+  <div class="gnb-right"><button class="gnb-btn primary" onclick="alert('⚽ NOW CAST Coming Soon!')">시작하기</button></div>
+</header>
+
+<div class="caster-hero">
+  <div class="caster-profile">
+    <div class="caster-avatar-lg" style="border-color:#a855f7">🧘</div>
+    <div class="caster-meta">
+      <span class="tier-badge" style="background:rgba(168,85,247,.12);color:#a855f7">🥇 올스타 캐스터</span>
+      <h1>모닝요가 지은</h1>
+      <p class="bio">요가 지도자 자격증 RYT-500 보유. 매일 아침 7시, 30분 요가 클래스.<br>"하루를 여는 가장 좋은 방법은 몸을 깨우는 것." 초보자도 편하게 따라올 수 있어요.</p>
+      <div class="caster-stats">
+        <div class="cs"><div class="csv" style="color:#a855f7">4.9⭐</div><div class="csl">평점</div></div>
+        <div class="cs"><div class="csv" style="color:#a855f7">5.8K</div><div class="csl">서포터</div></div>
+        <div class="cs"><div class="csv" style="color:#a855f7">312</div><div class="csl">클래스 횟수</div></div>
+        <div class="cs"><div class="csv" style="color:#a855f7">92%</div><div class="csl">재참여율</div></div>
+        <div class="cs"><div class="csv" style="color:#a855f7">89명</div><div class="csl">평균 참여</div></div>
+      </div>
+      <div class="caster-actions">
+        <button class="btn mint" style="background:#a855f7">⚽ 골 후원</button>
+        <button class="btn mint" style="background:#a855f7">구독 · ₩3,900/월</button>
+        <button class="btn ghost">🔔 알림 설정</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="page-tabs">
+  <div class="ptab active" onclick="showTab('classes')">🧘 클래스 일정</div>
+  <div class="ptab" onclick="showTab('programs')">📋 프로그램</div>
+  <div class="ptab" onclick="showTab('reviews')">📝 요가 가이드</div>
+</div>
+
+<div class="section" id="tab-classes">
+  <div class="pred-card" style="border-color:rgba(168,85,247,.15)">
+    <div class="pred-header">
+      <span class="pred-league" style="color:#a855f7">🧘 모닝 요가</span>
+      <span class="pred-date">매일 07:00</span>
+      <span class="pred-status pending">🔁 매일 진행</span>
+    </div>
+    <div class="pred-body">
+      <div class="pred-label">📋 오늘의 클래스</div>
+      <div class="pred-text">
+        <strong>테마:</strong> 전신 스트레칭 + 코어 강화 (30분)<br>
+        <strong>난이도:</strong> ⭐ 초급 (누구나 가능)<br>
+        <strong>준비물:</strong> 요가매트 (없으면 수건도 OK)<br><br>
+        오늘은 어깨·목 집중 스트레칭으로 시작해서 코어 강화 동작으로 마무리합니다. 출근 전 30분이면 하루가 달라져요 🧘
+      </div>
+    </div>
+    <div class="pred-detail">
+      <div class="pd-item"><div class="pdl">오늘 참여</div><div class="pdv" style="color:#a855f7">89명</div></div>
+      <div class="pd-item"><div class="pdl">난이도</div><div class="pdv" style="color:#a855f7">⭐ 초급</div></div>
+      <div class="pd-item"><div class="pdl">소요 시간</div><div class="pdv" style="color:#a855f7">30분</div></div>
+    </div>
+    <div class="pred-engagement"><span>👍 1,234</span><span>💬 345 댓글</span><span>🔗 공유</span></div>
+  </div>
+
+  <div class="pred-card" style="border-color:rgba(168,85,247,.15)">
+    <div class="pred-header">
+      <span class="pred-league" style="color:#a855f7">🧘 심화 요가</span>
+      <span class="pred-date">수·금 20:00</span>
+      <span class="pred-status pending">📅 이번 주 수요일</span>
+    </div>
+    <div class="pred-body">
+      <div class="pred-label">📋 심화 클래스</div>
+      <div class="pred-text">
+        <strong>테마:</strong> 빈야사 플로우 (45분)<br>
+        <strong>난이도:</strong> ⭐⭐⭐ 중급<br><br>
+        호흡과 동작을 연결하는 빈야사 플로우. 모닝 요가 1개월 이상 참여하신 분 추천. 땀 좀 나실 거예요 💦
+      </div>
+    </div>
+    <div class="pred-engagement"><span>👍 678</span><span>💬 123 댓글</span><span>🔗 공유</span></div>
+  </div>
+
+  <div class="pred-card" style="border-color:rgba(168,85,247,.15)">
+    <div class="pred-header">
+      <span class="pred-league" style="color:#a855f7">🧘 4주 프로그램</span>
+      <span class="pred-date">진행중 · 2주차</span>
+      <span class="pred-status hit" style="background:rgba(168,85,247,.12);color:#a855f7">🔥 챌린지</span>
+    </div>
+    <div class="pred-body">
+      <div class="pred-label">📋 "유연성 2배" 4주 챌린지</div>
+      <div class="pred-text">
+        4주 동안 매일 15분 스트레칭 루틴! 1주차: 하체 → 2주차: 상체 → 3주차: 전신 → 4주차: 심화<br>
+        완주하면 <strong>유연성 테스트 비포/애프터</strong> 비교 리포트 제공!<br><br>
+        현재 참여자 <strong>198명</strong> · 2주차 완주율 <strong>85%</strong>
+      </div>
+    </div>
+    <div class="pred-detail">
+      <div class="pd-item"><div class="pdl">참여자</div><div class="pdv" style="color:#a855f7">198명</div></div>
+      <div class="pd-item"><div class="pdl">2주차 완주율</div><div class="pdv" style="color:#a855f7">85%</div></div>
+      <div class="pd-item"><div class="pdl">평균 참여 시간</div><div class="pdv" style="color:#a855f7">18분/일</div></div>
+    </div>
+    <div class="pred-engagement"><span>👍 987</span><span>💬 267 댓글</span><span>🔗 공유</span></div>
+  </div>
+</div>
+
+<div class="section" id="tab-programs" style="display:none">
+  <div class="review-card"><span class="rc-tag" style="background:rgba(168,85,247,.1);color:#a855f7">프로그램</span><h3>🧘 초보자 4주 입문 코스</h3><p class="rc-excerpt">요가를 한 번도 해본 적 없는 분을 위한 코스. 기본 자세부터 호흡법까지 차근차근. 매일 15분이면 충분합니다.</p><div class="rc-meta"><span>⭐ 초급</span><span>🧘 4주 · 매일 15분</span><span>👥 누적 1,234명 수료</span></div></div>
+  <div class="review-card"><span class="rc-tag" style="background:rgba(168,85,247,.1);color:#a855f7">프로그램</span><h3>💆 직장인 목·어깨 케어</h3><p class="rc-excerpt">하루 종일 모니터 앞에 앉아있는 직장인을 위한 목·어깨 집중 스트레칭. 점심시간 10분이면 됩니다.</p><div class="rc-meta"><span>⭐ 초급</span><span>🧘 2주 · 매일 10분</span><span>👥 누적 892명 수료</span></div></div>
+  <div class="review-card"><span class="rc-tag" style="background:rgba(168,85,247,.1);color:#a855f7">프리미엄</span><h3>🔥 빈야사 마스터 클래스 (유료)</h3><p class="rc-excerpt">중급 이상 대상. 60분 풀 빈야사 플로우 + 개인 피드백. 소수 정원 20명.</p><div class="rc-meta"><span>⭐⭐⭐ 중급+</span><span>💰 3,000원/회</span><span>👥 정원 20명</span></div></div>
+</div>
+
+<div class="section" id="tab-reviews" style="display:none">
+  <div class="review-card"><span class="rc-tag" style="background:rgba(168,85,247,.1);color:#a855f7">가이드</span><h3>🧘 요가 초보가 가장 많이 하는 실수 5가지</h3><p class="rc-excerpt">호흡을 멈추는 것, 무리하게 스트레칭하는 것, 비교하는 것... 초보 때 알았으면 좋았을 것들을 정리했어요.</p><div class="rc-meta"><span>📅 04.26</span><span>👁️ 4,567 조회</span><span>💬 178 댓글</span></div></div>
+  <div class="review-card"><span class="rc-tag" style="background:rgba(168,85,247,.1);color:#a855f7">추천</span><h3>🧘 집에서 요가할 때 필요한 것들 (가성비 추천)</h3><p class="rc-excerpt">요가매트, 블록, 스트랩... 꼭 비싼 걸 살 필요 없어요. 가성비 좋은 제품들을 정리했습니다.</p><div class="rc-meta"><span>📅 04.22</span><span>👁️ 3,890 조회</span><span>💬 145 댓글</span></div></div>
+</div>
+
+<footer class="site-footer"><div class="footer-inner"><div class="left"><img src="https://cdn.spotvnow.co.kr/dist/asset/now-logo-for-sns.png" alt="SPOTV NOW"><p>SPOTV NOW CAST · 아이디어 컨셉 데모<br>© 2026 SPOTV</p></div><div class="right"><p><a href="index.html" style="color:var(--mint)">← 메인으로</a></p></div></div></footer>
+<script>function showTab(id){document.querySelectorAll('[id^="tab-"]').forEach(el=>el.style.display='none');document.getElementById('tab-'+id).style.display='block';document.querySelectorAll('.ptab').forEach(t=>t.classList.remove('active'));event.target.classList.add('active')}</script>
+</body>
+</html>

@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>새벽런 코치 민수 — NOW CAST 캐스터</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="caster-page.css">
+</head>
+<body>
+<header class="gnb">
+  <div class="gnb-logo"><img src="https://cdn.spotvnow.co.kr/dist/asset/now-logo-for-sns.png" alt="SPOTV NOW"><span class="cast-badge">CAST</span></div>
+  <nav class="gnb-nav">
+    <a href="index.html#live">LIVE</a><a href="index.html#schedule">경기 일정</a><a href="index.html#ranking">캐스터 랭킹</a><a href="index.html#how">이용 방법</a><a href="caster-park.html">캐스터 샘플</a><a href="apply.html">캐스터 지원</a><a href="proposal.html">기획서</a>
+  </nav>
+  <div class="gnb-right"><button class="gnb-btn primary" onclick="alert('⚽ NOW CAST Coming Soon!')">시작하기</button></div>
+</header>
+
+<div class="caster-hero">
+  <div class="caster-profile">
+    <div class="caster-avatar-lg" style="border-color:#ff9500">🏃</div>
+    <div class="caster-meta">
+      <span class="tier-badge" style="background:rgba(255,165,0,.12);color:#ffa500">🥇 올스타 캐스터</span>
+      <h1>새벽런 코치 민수</h1>
+      <p class="bio">마라톤 서브3 달성. 매일 새벽 6시, 시청자와 함께 달립니다.<br>혼자 뛰기 심심한 당신을 위한 러닝 메이트. "같이 뛰면 더 멀리 갑니다."</p>
+      <div class="caster-stats">
+        <div class="cs"><div class="csv" style="color:#ff9500">4.9⭐</div><div class="csl">평점</div></div>
+        <div class="cs"><div class="csv" style="color:#ff9500">9.2K</div><div class="csl">서포터</div></div>
+        <div class="cs"><div class="csv" style="color:#ff9500">2,847km</div><div class="csl">누적 거리</div></div>
+        <div class="cs"><div class="csv" style="color:#ff9500">365</div><div class="csl">캐스트 횟수</div></div>
+        <div class="cs"><div class="csv" style="color:#ff9500">89%</div><div class="csl">참여자 완주율</div></div>
+      </div>
+      <div class="caster-actions">
+        <button class="btn mint" style="background:#ff9500">⚽ 골 후원</button>
+        <button class="btn mint" style="background:#ff9500">구독 · ₩3,900/월</button>
+        <button class="btn ghost">🔔 알림 설정</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="page-tabs">
+  <div class="ptab active" onclick="showTab('schedule')">📅 러닝 일정</div>
+  <div class="ptab" onclick="showTab('records')">🏃 참여 기록</div>
+  <div class="ptab" onclick="showTab('reviews')">📝 러닝 리뷰</div>
+</div>
+
+<div class="section" id="tab-schedule">
+  <div class="pred-card" style="border-color:rgba(255,149,0,.15)">
+    <div class="pred-header">
+      <span class="pred-league" style="color:#ff9500">🏃 매일 새벽 러닝</span>
+      <span class="pred-date">매일 06:00</span>
+      <span class="pred-status pending">🔁 매일 진행</span>
+    </div>
+    <div class="pred-body">
+      <div class="pred-label">📋 오늘의 러닝</div>
+      <div class="pred-text">
+        <strong>코스:</strong> 한강 여의도 → 반포대교 왕복 5km<br>
+        <strong>페이스:</strong> 6:00/km (초보자 환영)<br>
+        <strong>목표:</strong> 30분 내 완주<br><br>
+        이어폰 꽂고 앱 켜면 제가 옆에서 페이스 잡아드립니다. 중간에 걸어도 괜찮아요. 같이 뛰는 게 중요합니다 🏃
+      </div>
+    </div>
+    <div class="pred-detail">
+      <div class="pd-item"><div class="pdl">오늘 참여</div><div class="pdv" style="color:#ff9500">127명</div></div>
+      <div class="pd-item"><div class="pdl">평균 거리</div><div class="pdv" style="color:#ff9500">4.8km</div></div>
+      <div class="pd-item"><div class="pdl">완주율</div><div class="pdv" style="color:#ff9500">89%</div></div>
+    </div>
+    <div class="pred-engagement"><span>👍 892</span><span>💬 234 댓글</span><span>🔗 공유</span></div>
+  </div>
+
+  <div class="pred-card" style="border-color:rgba(255,149,0,.15)">
+    <div class="pred-header">
+      <span class="pred-league" style="color:#ff9500">🏃 주말 장거리 러닝</span>
+      <span class="pred-date">매주 토요일 07:00</span>
+      <span class="pred-status pending">📅 이번 주 토요일</span>
+    </div>
+    <div class="pred-body">
+      <div class="pred-label">📋 이번 주 장거리</div>
+      <div class="pred-text">
+        <strong>코스:</strong> 올림픽공원 외곽 10km<br>
+        <strong>페이스:</strong> 5:30~6:00/km<br>
+        <strong>목표:</strong> 50분 내 완주<br><br>
+        평일에 5km 뛰셨으면 주말엔 10km 도전! 중간 급수 포인트에서 쉬어가도 됩니다.
+      </div>
+    </div>
+    <div class="pred-engagement"><span>👍 567</span><span>💬 145 댓글</span><span>🔗 공유</span></div>
+  </div>
+
+  <div class="pred-card" style="border-color:rgba(255,149,0,.15)">
+    <div class="pred-header">
+      <span class="pred-league" style="color:#ff9500">🏃 30일 챌린지</span>
+      <span class="pred-date">진행중 · D-18</span>
+      <span class="pred-status hit" style="background:rgba(255,149,0,.12);color:#ff9500">🔥 챌린지</span>
+    </div>
+    <div class="pred-body">
+      <div class="pred-label">📋 5월 100km 챌린지</div>
+      <div class="pred-text">
+        한 달 동안 총 100km 달리기! 하루 3.3km면 됩니다.<br>
+        매일 기록 인증하고, 완주하면 <strong>SPOTV NOW 1개월 이용권</strong> 추첨!<br><br>
+        현재 참여자 <strong>342명</strong> · 평균 진행률 <strong>41%</strong>
+      </div>
+    </div>
+    <div class="pred-detail">
+      <div class="pd-item"><div class="pdl">참여자</div><div class="pdv" style="color:#ff9500">342명</div></div>
+      <div class="pd-item"><div class="pdl">평균 진행률</div><div class="pdv" style="color:#ff9500">41%</div></div>
+      <div class="pd-item"><div class="pdl">완주 예상</div><div class="pdv" style="color:#ff9500">78%</div></div>
+    </div>
+    <div class="pred-engagement"><span>👍 1,203</span><span>💬 456 댓글</span><span>🔗 공유</span></div>
+  </div>
+</div>
+
+<div class="section" id="tab-records" style="display:none">
+  <div class="review-card"><span class="rc-tag" style="background:rgba(255,149,0,.1);color:#ff9500">이번 주 기록</span><h3>🏃 이번 주 참여자 TOP 10</h3><p class="rc-excerpt">1위 러닝맨김 — 38.2km · 2위 새벽러너 — 35.1km · 3위 한강달리기 — 32.7km<br>이번 주 총 참여자 847명 · 총 누적 거리 3,241km</p><div class="rc-meta"><span>📅 04.21~04.27</span><span>🏃 847명 참여</span></div></div>
+  <div class="review-card"><span class="rc-tag" style="background:rgba(255,149,0,.1);color:#ff9500">월간 기록</span><h3>📊 4월 러닝 리포트</h3><p class="rc-excerpt">4월 총 참여자 2,341명 · 총 누적 거리 12,847km · 평균 페이스 5:48/km<br>완주율 89% · 신규 참여자 567명</p><div class="rc-meta"><span>📅 2026년 4월</span><span>🏃 2,341명</span></div></div>
+</div>
+
+<div class="section" id="tab-reviews" style="display:none">
+  <div class="review-card"><span class="rc-tag" style="background:rgba(255,149,0,.1);color:#ff9500">러닝 팁</span><h3>🏃 초보 러너를 위한 페이스 조절법</h3><p class="rc-excerpt">처음 달리는 분들이 가장 많이 하는 실수가 처음부터 빠르게 뛰는 것. 첫 1km는 워밍업이라 생각하고 7:00/km 이상으로 천천히 시작하세요.</p><div class="rc-meta"><span>📅 04.25</span><span>👁️ 3,456 조회</span><span>💬 89 댓글</span></div></div>
+  <div class="review-card"><span class="rc-tag" style="background:rgba(255,149,0,.1);color:#ff9500">장비 리뷰</span><h3>👟 2026 러닝화 추천 TOP 5</h3><p class="rc-excerpt">나이키 페가수스 43, 아식스 젤님버스 27, 뉴발란스 퓨얼셀... 가격대별, 용도별 추천 러닝화를 정리했습니다.</p><div class="rc-meta"><span>📅 04.20</span><span>👁️ 5,678 조회</span><span>💬 234 댓글</span></div></div>
+</div>
+
+<footer class="site-footer"><div class="footer-inner"><div class="left"><img src="https://cdn.spotvnow.co.kr/dist/asset/now-logo-for-sns.png" alt="SPOTV NOW"><p>SPOTV NOW CAST · 아이디어 컨셉 데모<br>© 2026 SPOTV</p></div><div class="right"><p><a href="index.html" style="color:var(--mint)">← 메인으로</a></p></div></div></footer>
+<script>function showTab(id){document.querySelectorAll('[id^="tab-"]').forEach(el=>el.style.display='none');document.getElementById('tab-'+id).style.display='block';document.querySelectorAll('.ptab').forEach(t=>t.classList.remove('active'));event.target.classList.add('active')}</script>
+</body>
+</html>

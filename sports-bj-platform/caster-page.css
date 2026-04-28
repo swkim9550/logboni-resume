@@ -1,0 +1,59 @@
+.caster-hero{padding:60px 48px 40px;max-width:1200px;margin:0 auto;background:linear-gradient(180deg,rgba(42,255,204,.06) 0%,transparent 50%)}
+.caster-profile{display:flex;gap:32px;align-items:flex-start}
+.caster-avatar-lg{width:100px;height:100px;border-radius:50%;background:var(--mint-dim);border:3px solid var(--mint);display:flex;align-items:center;justify-content:center;font-size:48px;flex-shrink:0}
+.caster-meta{flex:1}
+.caster-meta .tier-badge{display:inline-block;font-size:11px;font-weight:800;padding:4px 12px;border-radius:12px;background:rgba(255,165,0,.12);color:#ffa500;margin-bottom:8px}
+.caster-meta h1{font-size:28px;font-weight:900;margin-bottom:6px}
+.caster-meta .bio{font-size:14px;color:var(--t3);line-height:1.7;margin-bottom:16px}
+.caster-stats{display:flex;gap:24px;flex-wrap:wrap}
+.cs{text-align:center}
+.cs .csv{font-size:24px;font-weight:900;color:var(--mint)}
+.cs .csl{font-size:11px;color:var(--t4);margin-top:2px}
+.caster-actions{display:flex;gap:10px;margin-top:20px}
+.caster-actions .btn{font-size:13px;font-weight:700;padding:10px 24px;border-radius:24px;border:none;cursor:pointer;font-family:inherit;transition:all .2s}
+.caster-actions .btn.mint{background:var(--mint);color:#000}
+.caster-actions .btn.ghost{background:transparent;color:var(--t3);border:1px solid var(--border2)}
+.page-tabs{max-width:1200px;margin:0 auto;padding:0 48px;border-bottom:1px solid var(--border);display:flex;gap:0}
+.ptab{font-size:14px;font-weight:600;color:var(--t4);padding:14px 24px;cursor:pointer;border-bottom:2px solid transparent;transition:all .2s}
+.ptab:hover{color:var(--t2)}
+.ptab.active{color:var(--mint);border-bottom-color:var(--mint)}
+.pred-card{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius-lg);padding:28px;margin-bottom:16px;transition:all .2s}
+.pred-card:hover{border-color:rgba(42,255,204,.15)}
+.pred-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;flex-wrap:wrap;gap:8px}
+.pred-header .pred-league{font-size:12px;font-weight:700;color:var(--mint)}
+.pred-header .pred-date{font-size:12px;color:var(--t4)}
+.pred-header .pred-status{font-size:11px;font-weight:800;padding:4px 12px;border-radius:12px}
+.pred-status.hit{background:rgba(42,255,204,.12);color:var(--mint)}
+.pred-status.miss{background:rgba(255,59,48,.1);color:var(--red)}
+.pred-status.pending{background:rgba(39,113,255,.1);color:var(--blue)}
+.pred-match{display:flex;align-items:center;gap:16px;margin-bottom:16px}
+.pred-match .pm-team{display:flex;align-items:center;gap:8px;font-size:15px;font-weight:800;flex:1}
+.pred-match .pm-team .logo{font-size:24px}
+.pred-match .pm-vs{font-size:12px;color:var(--t5);font-weight:700}
+.pred-match .pm-score{font-size:20px;font-weight:900;color:var(--t1);min-width:60px;text-align:center}
+.pred-body{background:var(--bg3);border-radius:var(--radius);padding:16px 20px;margin-bottom:12px}
+.pred-body .pred-label{font-size:11px;color:var(--t4);font-weight:700;margin-bottom:8px;text-transform:uppercase;letter-spacing:1px}
+.pred-body .pred-text{font-size:14px;color:var(--t2);line-height:1.8}
+.pred-detail{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:12px}
+.pd-item{background:var(--bg3);border-radius:var(--radius);padding:12px;text-align:center}
+.pd-item .pdl{font-size:10px;color:var(--t4);margin-bottom:4px}
+.pd-item .pdv{font-size:14px;font-weight:800}
+.pd-item .pdv.hit{color:var(--mint)}
+.pd-item .pdv.miss{color:var(--red)}
+.pred-engagement{display:flex;gap:16px;margin-top:12px;font-size:12px;color:var(--t4)}
+.pred-engagement span{cursor:pointer;transition:color .2s}
+.pred-engagement span:hover{color:var(--mint)}
+.review-card{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius-lg);padding:28px;margin-bottom:16px;transition:all .2s}
+.review-card:hover{border-color:rgba(42,255,204,.15)}
+.review-card .rc-tag{font-size:10px;font-weight:800;padding:3px 10px;border-radius:10px;display:inline-block;margin-bottom:10px}
+.review-card h3{font-size:18px;font-weight:900;margin-bottom:8px;line-height:1.4}
+.review-card .rc-excerpt{font-size:14px;color:var(--t3);line-height:1.8;margin-bottom:12px}
+.review-card .rc-meta{font-size:12px;color:var(--t4);display:flex;gap:16px}
+@media(max-width:768px){
+  .caster-profile{flex-direction:column;align-items:center;text-align:center}
+  .caster-stats{justify-content:center}
+  .caster-actions{justify-content:center}
+  .pred-detail{grid-template-columns:1fr}
+  .page-tabs{padding:0 20px;overflow-x:auto}
+  .caster-hero{padding:40px 20px 24px}
+}
