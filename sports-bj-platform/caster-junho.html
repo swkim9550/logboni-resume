@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>MLB데이터 준호 — NOW CAST</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css"><link rel="stylesheet" href="caster-page.css">
+</head>
+<body>
+<header class="gnb"><div class="gnb-logo"><img src="https://cdn.spotvnow.co.kr/dist/asset/now-logo-for-sns.png" alt="SPOTV NOW"><span class="cast-badge">CAST</span></div><nav class="gnb-nav"><a href="index.html#live">LIVE</a><a href="index.html#schedule">경기 일정</a><a href="index.html#ranking">캐스터 랭킹</a><a href="index.html#how">이용 방법</a><a href="casters.html">캐스터 샘플</a><a href="apply.html">캐스터 지원</a><a href="proposal.html">기획서</a></nav><div class="gnb-right"><button class="gnb-btn primary" onclick="alert('⚾ NOW CAST Coming Soon!')">시작하기</button></div></header>
+
+<div class="caster-hero">
+  <div class="caster-profile">
+    <div class="caster-avatar-lg" style="border-color:var(--blue)">⚾</div>
+    <div class="caster-meta">
+      <span class="tier-badge" style="background:rgba(0,122,255,.12);color:var(--blue)">🥈 프로</span>
+      <h1>MLB데이터 준호</h1>
+      <p class="bio">MLB 데이터 분석 전문. 세이버메트릭스 마니아.<br>"숫자로 보는 야구는 다릅니다." 오타니·다저스 전문 분석가.</p>
+      <div class="caster-stats">
+        <div class="cs"><div class="csv">65%</div><div class="csl">적중률</div></div>
+        <div class="cs"><div class="csv">3.5K</div><div class="csl">서포터</div></div>
+        <div class="cs"><div class="csv">71K</div><div class="csl">누적 골</div></div>
+        <div class="cs"><div class="csv">178</div><div class="csl">캐스트 횟수</div></div>
+      </div>
+      <div class="caster-actions">
+        <button class="btn mint">⚾ 골 후원</button>
+        <button class="btn mint">구독 · ₩3,900/월</button>
+        <button class="btn ghost">🔔 알림 설정</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="page-tabs">
+  <div class="ptab active" onclick="showTab('predictions')">📊 경기 예측</div>
+  <div class="ptab" onclick="showTab('reviews')">📝 데이터 분석</div>
+  <div class="ptab" onclick="showTab('upcoming')">📅 예정 캐스트</div>
+</div>
+
+<div class="section" id="tab-predictions">
+  <div class="pred-card">
+    <div class="pred-header"><span class="pred-league">⚾ MLB 정규시즌</span><span class="pred-date">04.29 수 11:10</span><span class="pred-status pending">⏳ 경기 전</span></div>
+    <div class="pred-body"><div class="pred-label">📋 준호의 분석</div><div class="pred-text">다저스 홈 최근 10경기 7승 3패. 오타니 최근 7경기 타율 .385, OPS 1.120으로 시즌 최고 컨디션. 파드리스 선발 무사그로브 ERA 4.12로 불안정. 다저스 타선이 초반부터 공략할 것으로 예상.<br><br>키 매치업: 오타니 vs 무사그로브. 좌타자 상대 피안타율 .290인 무사그로브를 오타니가 멀티히트로 공략할 가능성 높음.</div></div>
+    <div class="pred-detail">
+      <div class="pd-item"><div class="pdl">스코어 예측</div><div class="pdv">다저스 5 : 3</div></div>
+      <div class="pd-item"><div class="pdl">키 플레이어</div><div class="pdv">오타니 멀티히트 예상</div></div>
+      <div class="pd-item"><div class="pdl">승부 예측</div><div class="pdv">LA 다저스 승</div></div>
+    </div>
+    <div class="pred-engagement"><span>👍 823</span><span>💬 198 댓글</span><span>🔗 공유</span></div>
+  </div>
+  <div class="pred-card">
+    <div class="pred-header"><span class="pred-league">⚾ MLB 정규시즌</span><span class="pred-date">04.25</span><span class="pred-status hit">✅ 적중</span></div>
+    <div class="pred-body"><div class="pred-label">📋 경기 후 리뷰</div><div class="pred-text">다저스 6:2 자이언츠 — 예측대로 다저스 승리. 오타니가 3회 솔로 홈런으로 선제점을 뽑아냈고, 5회 추가 안타로 멀티히트 기록. 다저스 선발 뷸러가 6이닝 2실점 호투.</div></div>
+    <div class="pred-detail">
+      <div class="pd-item"><div class="pdl">승부 예측</div><div class="pdv hit">다저스 승 ✓</div></div>
+      <div class="pd-item"><div class="pdl">오타니 홈런</div><div class="pdv hit">홈런 적중 ✓</div></div>
+      <div class="pd-item"><div class="pdl">스코어</div><div class="pdv miss">4:1 예측 ✗</div></div>
+    </div>
+    <div class="pred-engagement"><span>👍 1,456</span><span>💬 312 댓글</span><span>🔗 공유</span></div>
+  </div>
+</div>
+
+<div class="section" id="tab-reviews" style="display:none">
+  <div class="review-card"><span class="rc-tag" style="background:rgba(0,122,255,.1);color:var(--blue)">데이터</span><h3>📊 오타니 2026 시즌 타격 데이터 심층 분석</h3><p class="rc-excerpt">타율·OPS·배럴%·하드히트율 등 핵심 세이버메트릭스 지표로 오타니의 2026 시즌을 분석합니다. 작년 대비 어떤 변화가 있는지 데이터로 확인.</p><div class="rc-meta"><span>📅 04.27</span><span>👁️ 5,672 조회</span><span>💬 187 댓글</span></div></div>
+  <div class="review-card"><span class="rc-tag" style="background:rgba(0,122,255,.1);color:var(--blue)">데이터</span><h3>📈 다저스 선발 로테이션 ERA 비교</h3><p class="rc-excerpt">뷸러·커쇼·글래스나우·메이·밀러. 다저스 5선발의 ERA·WHIP·K/9 비교 분석. 포스트시즌을 대비한 로테이션 최적화 제안.</p><div class="rc-meta"><span>📅 04.24</span><span>👁️ 4,231 조회</span><span>💬 145 댓글</span></div></div>
+  <div class="review-card"><span class="rc-tag" style="background:rgba(0,122,255,.1);color:var(--blue)">분석</span><h3>🏆 NL West 순위 예측</h3><p class="rc-excerpt">다저스·파드리스·다이아몬드백스·자이언츠·록키스. 팀별 전력 분석과 남은 시즌 일정 난이도를 기반으로 최종 순위를 예측합니다.</p><div class="rc-meta"><span>📅 04.20</span><span>👁️ 3,890 조회</span><span>💬 201 댓글</span></div></div>
+</div>
+
+<div class="section" id="tab-upcoming" style="display:none">
+  <div class="sched-card"><div class="date"><strong>04.29</strong> 수 11:10</div><div class="teams"><span class="tname">LA 다저스 vs 샌디에이고 파드리스</span></div><div class="venue">MLB · 다저스 vs 파드리스 3연전 1차전</div><div class="tags"><span class="tag cast">🎙️ 캐스트 예정</span><span class="tag predict">📊 예측 등록 완료</span></div></div>
+  <div class="sched-card"><div class="date"><strong>04.30</strong> 목 11:10</div><div class="teams"><span class="tname">LA 다저스 vs 샌디에이고 파드리스</span></div><div class="venue">MLB · 다저스 vs 파드리스 3연전 2차전</div><div class="tags"><span class="tag cast">🎙️ 캐스트 예정</span><span class="tag predict">📊 예측 등록 완료</span></div></div>
+  <div class="sched-card"><div class="date"><strong>05.01</strong> 금 11:10</div><div class="teams"><span class="tname">LA 다저스 vs 샌디에이고 파드리스</span></div><div class="venue">MLB · 다저스 vs 파드리스 3연전 3차전</div><div class="tags"><span class="tag cast">🎙️ 캐스트 예정</span></div></div>
+</div>
+
+<footer class="site-footer"><div class="footer-inner"><div class="left"><img src="https://cdn.spotvnow.co.kr/dist/asset/now-logo-for-sns.png" alt="SPOTV NOW"><p>SPOTV NOW CAST · 데모<br>© 2026 SPOTV</p></div><div class="right"><a href="casters.html" style="color:var(--mint)">← 캐스터 목록</a></div></div></footer>
+<script>if(window.self!==window.top)document.body.classList.add("in-iframe");function showTab(id){document.querySelectorAll('[id^="tab-"]').forEach(el=>el.style.display='none');document.getElementById('tab-'+id).style.display='block';document.querySelectorAll('.ptab').forEach(t=>t.classList.remove('active'));event.target.classList.add('active')}</script>
+</body></html>

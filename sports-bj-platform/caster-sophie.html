@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>유로퀸 소피 — NOW CAST</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css"><link rel="stylesheet" href="caster-page.css">
+</head>
+<body>
+<header class="gnb"><div class="gnb-logo"><img src="https://cdn.spotvnow.co.kr/dist/asset/now-logo-for-sns.png" alt="SPOTV NOW"><span class="cast-badge">CAST</span></div><nav class="gnb-nav"><a href="index.html#live">LIVE</a><a href="index.html#schedule">경기 일정</a><a href="index.html#ranking">캐스터 랭킹</a><a href="index.html#how">이용 방법</a><a href="casters.html">캐스터 샘플</a><a href="apply.html">캐스터 지원</a><a href="proposal.html">기획서</a></nav><div class="gnb-right"><button class="gnb-btn primary" onclick="alert('⚽ NOW CAST Coming Soon!')">시작하기</button></div></header>
+
+<div class="caster-hero">
+  <div class="caster-profile">
+    <div class="caster-avatar-lg" style="border-color:var(--mint)">👩‍🎤</div>
+    <div class="caster-meta">
+      <span class="tier-badge" style="background:rgba(255,165,0,.12);color:orange">🥇 올스타</span>
+      <h1>유로퀸 소피</h1>
+      <p class="bio">EPL·UCL 팬 리액션 전문. 여성 축구 팬 대표 캐스터. 경기 중 감정 폭발 리액션으로 유명.<br>'소피의 골 세레모니'가 트레이드마크.</p>
+      <div class="caster-stats">
+        <div class="cs"><div class="csv">72%</div><div class="csl">예측 적중률</div></div>
+        <div class="cs"><div class="csv">8.1K</div><div class="csl">서포터</div></div>
+        <div class="cs"><div class="csv">156K</div><div class="csl">누적 골</div></div>
+        <div class="cs"><div class="csv">389</div><div class="csl">캐스트 횟수</div></div>
+      </div>
+      <div class="caster-actions">
+        <button class="btn mint">⚽ 골 후원</button>
+        <button class="btn mint">구독 · ₩3,900/월</button>
+        <button class="btn ghost">🔔 알림 설정</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="page-tabs">
+  <div class="ptab active" onclick="showTab('predictions')">📊 경기 예측</div>
+  <div class="ptab" onclick="showTab('reactions')">🎬 리액션 하이라이트</div>
+  <div class="ptab" onclick="showTab('upcoming')">📅 예정 캐스트</div>
+</div>
+
+<div class="section" id="tab-predictions">
+  <div class="pred-card">
+    <div class="pred-header"><span class="pred-league">⚽ UCL 준결승 1차전</span><span class="pred-date">04.29 수 04:00</span><span class="pred-status pending">⏳ 경기 전</span></div>
+    <div class="pred-body"><div class="pred-label">📋 소피의 분석</div><div class="pred-text">PSG 홈이지만 이번 경기는 수비적으로 흘러갈 전망. 바이에른의 높은 프레스를 PSG가 로우블록으로 대응할 가능성 높음. 음바페 역습 한 방이 승부를 가를 것.<br><br>양 팀 모두 실점을 줄이려는 전략이 예상되며, 후반 종료 직전 결정적 장면이 나올 듯!</div></div>
+    <div class="pred-detail">
+      <div class="pd-item"><div class="pdl">스코어 예측</div><div class="pdv">PSG 1 : 0</div></div>
+      <div class="pd-item"><div class="pdl">경기 전망</div><div class="pdv">수비적 경기</div></div>
+      <div class="pd-item"><div class="pdl">승부 예측</div><div class="pdv">PSG 승</div></div>
+    </div>
+    <div class="pred-engagement"><span>👍 987</span><span>💬 213 댓글</span><span>🔗 공유</span></div>
+  </div>
+  <div class="pred-card">
+    <div class="pred-header"><span class="pred-league">⚽ EPL 34라운드</span><span class="pred-date">04.20</span><span class="pred-status hit">✅ 적중</span></div>
+    <div class="pred-body"><div class="pred-label">📋 경기 후 리뷰</div><div class="pred-text">리버풀 2:0 웨스트햄 — 예측대로 리버풀 홈 완승! 살라가 선제골을 넣으며 분위기를 잡았고, 후반 추가골로 쐐기. 안필드의 힘을 다시 한번 확인한 경기.</div></div>
+    <div class="pred-detail">
+      <div class="pd-item"><div class="pdl">승부 예측</div><div class="pdv hit">리버풀 승 ✓</div></div>
+      <div class="pd-item"><div class="pdl">스코어</div><div class="pdv hit">2:0 ✓</div></div>
+      <div class="pd-item"><div class="pdl">선제골</div><div class="pdv hit">살라 ✓</div></div>
+    </div>
+    <div class="pred-engagement"><span>👍 1,823</span><span>💬 412 댓글</span><span>🔗 공유</span></div>
+  </div>
+</div>
+
+<div class="section" id="tab-reactions" style="display:none">
+  <div class="review-card"><span class="rc-tag" style="background:rgba(42,255,204,.1);color:var(--mint)">리액션</span><h3>🔥 음바페 골 순간 소피 반응 모음</h3><p class="rc-excerpt">UCL 8강~준결승 음바페 골 장면마다 소피의 감정 폭발 리액션 총정리. 소리 지르고, 울고, 춤추는 소피의 진짜 축구 사랑.</p><div class="rc-meta"><span>📅 04.25</span><span>👁️ 14,320 조회</span><span>💬 567 댓글</span></div></div>
+  <div class="review-card"><span class="rc-tag" style="background:rgba(42,255,204,.1);color:var(--mint)">리액션</span><h3>😱 UCL 8강 리액션 베스트</h3><p class="rc-excerpt">UCL 8강 전 경기 소피 리액션 하이라이트. 역전골, 자책골, VAR 판정까지 — 소피와 함께하면 축구가 두 배로 재밌다!</p><div class="rc-meta"><span>📅 04.18</span><span>👁️ 9,876 조회</span><span>💬 321 댓글</span></div></div>
+</div>
+
+<div class="section" id="tab-upcoming" style="display:none">
+  <div class="sched-card"><div class="date"><strong>04.29</strong> 수 04:00</div><div class="teams"><span class="tname">파리 생제르맹 vs 바이에른 뮌헨</span></div><div class="venue">UCL 준결승 1차전</div><div class="tags"><span class="tag cast">🎙️ 캐스트 예정</span><span class="tag predict">📊 예측 등록 완료</span></div></div>
+  <div class="sched-card"><div class="date"><strong>04.30</strong> 목 04:00</div><div class="teams"><span class="tname">AT. 마드리드 vs 아스날</span></div><div class="venue">UCL 준결승 1차전</div><div class="tags"><span class="tag cast">🎙️ 캐스트 예정</span><span class="tag predict">📊 예측 등록 완료</span></div></div>
+</div>
+
+<footer class="site-footer"><div class="footer-inner"><div class="left"><img src="https://cdn.spotvnow.co.kr/dist/asset/now-logo-for-sns.png" alt="SPOTV NOW"><p>SPOTV NOW CAST · 데모<br>© 2026 SPOTV</p></div><div class="right"><a href="casters.html" style="color:var(--mint)">← 캐스터 목록</a></div></div></footer>
+<script>if(window.self!==window.top)document.body.classList.add("in-iframe");function showTab(id){document.querySelectorAll('[id^="tab-"]').forEach(el=>el.style.display='none');document.getElementById('tab-'+id).style.display='block';document.querySelectorAll('.ptab').forEach(t=>t.classList.remove('active'));event.target.classList.add('active')}</script>
+</body></html>

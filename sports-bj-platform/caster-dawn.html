@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>새벽축구단장 — NOW CAST</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css"><link rel="stylesheet" href="caster-page.css">
+</head>
+<body>
+<header class="gnb"><div class="gnb-logo"><img src="https://cdn.spotvnow.co.kr/dist/asset/now-logo-for-sns.png" alt="SPOTV NOW"><span class="cast-badge">CAST</span></div><nav class="gnb-nav"><a href="index.html#live">LIVE</a><a href="index.html#schedule">경기 일정</a><a href="index.html#ranking">캐스터 랭킹</a><a href="index.html#how">이용 방법</a><a href="casters.html">캐스터 샘플</a><a href="apply.html">캐스터 지원</a><a href="proposal.html">기획서</a></nav><div class="gnb-right"><button class="gnb-btn primary" onclick="alert('⚽ NOW CAST Coming Soon!')">시작하기</button></div></header>
+
+<div class="caster-hero">
+  <div class="caster-profile">
+    <div class="caster-avatar-lg" style="border-color:var(--blue)">😎</div>
+    <div class="caster-meta">
+      <span class="tier-badge" style="background:rgba(0,123,255,.12);color:#007bff">🥈 프로</span>
+      <h1>새벽축구단장</h1>
+      <p class="bio">새벽 4시 축구를 사랑하는 직장인. 새벽 경기 전문 캐스터.<br>'새벽에 축구 보는 사람들의 아지트'를 만들고 싶다.</p>
+      <div class="caster-stats">
+        <div class="cs"><div class="csv">68%</div><div class="csl">예측 적중률</div></div>
+        <div class="cs"><div class="csv">4.2K</div><div class="csl">서포터</div></div>
+        <div class="cs"><div class="csv">87K</div><div class="csl">누적 골</div></div>
+        <div class="cs"><div class="csv">201</div><div class="csl">캐스트 횟수</div></div>
+      </div>
+      <div class="caster-actions">
+        <button class="btn mint">⚽ 골 후원</button>
+        <button class="btn mint">구독 · ₩3,900/월</button>
+        <button class="btn ghost">🔔 알림 설정</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="page-tabs">
+  <div class="ptab active" onclick="showTab('predictions')">📊 경기 예측</div>
+  <div class="ptab" onclick="showTab('talk')">🌙 새벽 토크</div>
+  <div class="ptab" onclick="showTab('upcoming')">📅 예정 캐스트</div>
+</div>
+
+<div class="section" id="tab-predictions">
+  <div class="pred-card">
+    <div class="pred-header"><span class="pred-league">⚽ UCL 준결승 1차전</span><span class="pred-date">04.30 목 04:00</span><span class="pred-status pending">⏳ 경기 전</span></div>
+    <div class="pred-body"><div class="pred-label">📋 새벽단장의 분석</div><div class="pred-text">AT마드리드 홈에서 시메오네의 수비 조직력은 여전히 건재. 아스날도 원정에서 단단한 수비를 보여주고 있어 팽팽한 접전 예상.<br><br>양 팀 모두 선제골을 내주지 않으려 할 것이고, 세트피스가 승부를 가를 가능성이 높음. 무승부가 가장 유력한 시나리오.</div></div>
+    <div class="pred-detail">
+      <div class="pd-item"><div class="pdl">스코어 예측</div><div class="pdv">AT마드리드 1 : 1 아스날</div></div>
+      <div class="pd-item"><div class="pdl">경기 전망</div><div class="pdv">팽팽한 수비전</div></div>
+      <div class="pd-item"><div class="pdl">승부 예측</div><div class="pdv">무승부</div></div>
+    </div>
+    <div class="pred-engagement"><span>👍 534</span><span>💬 128 댓글</span><span>🔗 공유</span></div>
+  </div>
+  <div class="pred-card">
+    <div class="pred-header"><span class="pred-league">⚽ UCL 8강 2차전</span><span class="pred-date">04.16</span><span class="pred-status hit">✅ 적중</span></div>
+    <div class="pred-body"><div class="pred-label">📋 경기 후 리뷰</div><div class="pred-text">아스날 2:1 인테르 — 예측대로 아스날 홈 승리! 사카의 결승골이 터지며 아스날이 4강 진출. 새벽 4시에 본 보람이 있었던 경기.</div></div>
+    <div class="pred-detail">
+      <div class="pd-item"><div class="pdl">승부 예측</div><div class="pdv hit">아스날 승 ✓</div></div>
+      <div class="pd-item"><div class="pdl">스코어</div><div class="pdv miss">2:0 예측 ✗</div></div>
+    </div>
+    <div class="pred-engagement"><span>👍 876</span><span>💬 198 댓글</span><span>🔗 공유</span></div>
+  </div>
+  <div class="pred-card">
+    <div class="pred-header"><span class="pred-league">⚽ UCL 8강 1차전</span><span class="pred-date">04.09</span><span class="pred-status miss">❌ 실패</span></div>
+    <div class="pred-body"><div class="pred-label">📋 경기 후 리뷰</div><div class="pred-text">인테르 1:0 아스날 — 아스날 원정 승리를 예측했지만 인테르의 홈 저력을 과소평가. 라우타로의 결승골에 무릎을 꿇었다. 새벽에 허탈했던 경기...</div></div>
+    <div class="pred-detail">
+      <div class="pd-item"><div class="pdl">승부 예측</div><div class="pdv miss">아스날 승 ✗</div></div>
+      <div class="pd-item"><div class="pdl">스코어</div><div class="pdv miss">0:1 아스날 예측 ✗</div></div>
+    </div>
+    <div class="pred-engagement"><span>👍 432</span><span>💬 156 댓글</span><span>🔗 공유</span></div>
+  </div>
+</div>
+
+<div class="section" id="tab-talk" style="display:none">
+  <div class="review-card"><span class="rc-tag" style="background:rgba(42,255,204,.1);color:var(--mint)">새벽 토크</span><h3>🌙 새벽축구 생존기 — 직장인이 새벽 4시에 축구 보는 법</h3><p class="rc-excerpt">알람 3개 세팅, 커피 미리 내리기, 다음 날 회의 체크... 10년차 새벽축구 직장인의 생존 노하우를 공개합니다. 새벽 동지들 모여라!</p><div class="rc-meta"><span>📅 04.26</span><span>👁️ 6,543 조회</span><span>💬 287 댓글</span></div></div>
+  <div class="review-card"><span class="rc-tag" style="background:rgba(42,255,204,.1);color:var(--mint)">가이드</span><h3>📋 이번 주 새벽 경기 가이드</h3><p class="rc-excerpt">이번 주 새벽에 볼 만한 경기 총정리. UCL 준결승 일정, 꼭 봐야 할 경기, 수면 전략까지. 새벽 축구 팬이라면 필독!</p><div class="rc-meta"><span>📅 04.27</span><span>👁️ 4,321 조회</span><span>💬 176 댓글</span></div></div>
+</div>
+
+<div class="section" id="tab-upcoming" style="display:none">
+  <div class="sched-card"><div class="date"><strong>04.30</strong> 목 04:00</div><div class="teams"><span class="tname">AT. 마드리드 vs 아스날</span></div><div class="venue">UCL 준결승 1차전</div><div class="tags"><span class="tag cast">🎙️ 캐스트 예정</span><span class="tag predict">📊 예측 등록 완료</span></div></div>
+</div>
+
+<footer class="site-footer"><div class="footer-inner"><div class="left"><img src="https://cdn.spotvnow.co.kr/dist/asset/now-logo-for-sns.png" alt="SPOTV NOW"><p>SPOTV NOW CAST · 데모<br>© 2026 SPOTV</p></div><div class="right"><a href="casters.html" style="color:var(--mint)">← 캐스터 목록</a></div></div></footer>
+<script>if(window.self!==window.top)document.body.classList.add("in-iframe");function showTab(id){document.querySelectorAll('[id^="tab-"]').forEach(el=>el.style.display='none');document.getElementById('tab-'+id).style.display='block';document.querySelectorAll('.ptab').forEach(t=>t.classList.remove('active'));event.target.classList.add('active')}</script>
+</body></html>

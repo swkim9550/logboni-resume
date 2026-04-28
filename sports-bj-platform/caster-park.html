@@ -353,7 +353,7 @@
   </div>
 </footer>
 
-<script>
+<script>if(window.self!==window.top)document.body.classList.add("in-iframe");
 function showTab(id){
   document.querySelectorAll('[id^="tab-"]').forEach(el=>el.style.display='none');
   document.getElementById('tab-'+id).style.display='block';

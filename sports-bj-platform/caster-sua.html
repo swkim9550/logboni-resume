@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>한강러닝 수아 — NOW CAST 캐스터</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="caster-page.css">
+</head>
+<body>
+<header class="gnb">
+  <div class="gnb-logo"><img src="https://cdn.spotvnow.co.kr/dist/asset/now-logo-for-sns.png" alt="SPOTV NOW"><span class="cast-badge">CAST</span></div>
+  <nav class="gnb-nav">
+    <a href="index.html#live">LIVE</a><a href="index.html#schedule">경기 일정</a><a href="index.html#ranking">캐스터 랭킹</a><a href="index.html#how">이용 방법</a><a href="casters.html">캐스터 샘플</a><a href="apply.html">캐스터 지원</a><a href="proposal.html">기획서</a>
+  </nav>
+  <div class="gnb-right"><button class="gnb-btn primary" onclick="alert('⚽ NOW CAST Coming Soon!')">시작하기</button></div>
+</header>
+
+<div class="caster-hero">
+  <div class="caster-profile">
+    <div class="caster-avatar-lg" style="border-color:#ff9500">🏃‍♀️</div>
+    <div class="caster-meta">
+      <span class="tier-badge" style="background:rgba(59,130,246,.12);color:#3b82f6">🥈 프로</span>
+      <h1>한강러닝 수아</h1>
+      <p class="bio">한강 러닝 크루 리더. 하프마라톤 1시간 32분. 퇴근 후 저녁 러닝 전문.<br>'혼자 뛰기 싫은 날, 수아와 함께'</p>
+      <div class="caster-stats">
+        <div class="cs"><div class="csv" style="color:#ff9500">4.7⭐</div><div class="csl">평점</div></div>
+        <div class="cs"><div class="csv" style="color:#ff9500">2.8K</div><div class="csl">서포터</div></div>
+        <div class="cs"><div class="csv" style="color:#ff9500">1,234km</div><div class="csl">누적 거리</div></div>
+        <div class="cs"><div class="csv" style="color:#ff9500">156</div><div class="csl">캐스트 횟수</div></div>
+        <div class="cs"><div class="csv" style="color:#ff9500">85%</div><div class="csl">참여자 완주율</div></div>
+      </div>
+      <div class="caster-actions">
+        <button class="btn mint" style="background:#ff9500">⚽ 골 후원</button>
+        <button class="btn mint" style="background:#ff9500">구독 · ₩3,900/월</button>
+        <button class="btn ghost">🔔 알림 설정</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="page-tabs">
+  <div class="ptab active" onclick="showTab('schedule')">📅 러닝 일정</div>
+  <div class="ptab" onclick="showTab('records')">🏃 러닝 기록</div>
+  <div class="ptab" onclick="showTab('tips')">📝 러닝 팁</div>
+</div>
+
+<div class="section" id="tab-schedule">
+  <div class="pred-card" style="border-color:rgba(255,149,0,.15)">
+    <div class="pred-header">
+      <span class="pred-league" style="color:#ff9500">🏃‍♀️ 저녁 러닝 5km</span>
+      <span class="pred-date">매일 19:00</span>
+      <span class="pred-status pending">🔁 매일 진행</span>
+    </div>
+    <div class="pred-body">
+      <div class="pred-label">📋 오늘의 러닝</div>
+      <div class="pred-text">
+        <strong>코스:</strong> 한강 반포 ~ 잠원 왕복 5km<br>
+        <strong>페이스:</strong> 6:30/km (초보자 환영)<br>
+        <strong>목표:</strong> 퇴근 후 가볍게 완주<br><br>
+        저녁 바람 맞으며 한강을 달려요. 혼자 뛰기 싫은 날, 수아와 함께 🏃‍♀️
+      </div>
+    </div>
+    <div class="pred-detail">
+      <div class="pd-item"><div class="pdl">오늘 참여</div><div class="pdv" style="color:#ff9500">83명</div></div>
+      <div class="pd-item"><div class="pdl">평균 거리</div><div class="pdv" style="color:#ff9500">4.6km</div></div>
+      <div class="pd-item"><div class="pdl">완주율</div><div class="pdv" style="color:#ff9500">85%</div></div>
+    </div>
+    <div class="pred-engagement"><span>👍 645</span><span>💬 178 댓글</span><span>🔗 공유</span></div>
+  </div>
+
+  <div class="pred-card" style="border-color:rgba(255,149,0,.15)">
+    <div class="pred-header">
+      <span class="pred-league" style="color:#ff9500">🏃‍♀️ 주말 한강 10km</span>
+      <span class="pred-date">매주 토요일 08:00</span>
+      <span class="pred-status pending">📅 이번 주 토요일</span>
+    </div>
+    <div class="pred-body">
+      <div class="pred-label">📋 주말 장거리</div>
+      <div class="pred-text">
+        <strong>코스:</strong> 한강 반포 → 여의도 왕복 10km<br>
+        <strong>페이스:</strong> 6:00/km<br>
+        <strong>목표:</strong> 1시간 내 완주<br><br>
+        평일 5km에 익숙해졌다면 주말엔 10km 도전! 중간 급수 포인트에서 쉬어가도 됩니다.
+      </div>
+    </div>
+    <div class="pred-engagement"><span>👍 423</span><span>💬 112 댓글</span><span>🔗 공유</span></div>
+  </div>
+
+  <div class="pred-card" style="border-color:rgba(255,149,0,.15)">
+    <div class="pred-header">
+      <span class="pred-league" style="color:#ff9500">🌙 한강 야경 러닝</span>
+      <span class="pred-date">금요일 20:30</span>
+      <span class="pred-status hit" style="background:rgba(255,149,0,.12);color:#ff9500">✨ 특별 캐스트</span>
+    </div>
+    <div class="pred-body">
+      <div class="pred-label">📋 한강 야경 러닝</div>
+      <div class="pred-text">
+        금요일 밤, 한강 야경을 보며 달리는 특별 캐스트!<br>
+        반포대교 달빛무지개분수 → 잠원한강공원 코스.<br><br>
+        야경 포인트에서 인증샷 타임도 있어요 📸
+      </div>
+    </div>
+    <div class="pred-detail">
+      <div class="pd-item"><div class="pdl">참여 인원</div><div class="pdv" style="color:#ff9500">56명</div></div>
+      <div class="pd-item"><div class="pdl">거리</div><div class="pdv" style="color:#ff9500">7km</div></div>
+      <div class="pd-item"><div class="pdl">난이도</div><div class="pdv" style="color:#ff9500">중급</div></div>
+    </div>
+    <div class="pred-engagement"><span>👍 891</span><span>💬 267 댓글</span><span>🔗 공유</span></div>
+  </div>
+</div>
+
+<div class="section" id="tab-records" style="display:none">
+  <div class="review-card"><span class="rc-tag" style="background:rgba(255,149,0,.1);color:#ff9500">이번 주 기록</span><h3>🏃 이번 주 참여자 TOP 10</h3><p class="rc-excerpt">1위 한강여신 — 32.5km · 2위 저녁러너 — 28.7km · 3위 반포달리기 — 26.3km<br>이번 주 총 참여자 412명 · 총 누적 거리 1,847km</p><div class="rc-meta"><span>📅 04.21~04.27</span><span>🏃 412명 참여</span></div></div>
+  <div class="review-card"><span class="rc-tag" style="background:rgba(255,149,0,.1);color:#ff9500">월간 리포트</span><h3>📊 4월 러닝 리포트</h3><p class="rc-excerpt">4월 총 참여자 1,567명 · 총 누적 거리 7,234km · 평균 페이스 6:12/km<br>완주율 85% · 신규 참여자 312명</p><div class="rc-meta"><span>📅 2026년 4월</span><span>🏃 1,567명</span></div></div>
+</div>
+
+<div class="section" id="tab-tips" style="display:none">
+  <div class="review-card"><span class="rc-tag" style="background:rgba(255,149,0,.1);color:#ff9500">러닝 팁</span><h3>🌙 저녁 러닝의 장점 5가지</h3><p class="rc-excerpt">1. 하루의 스트레스 해소 2. 수면 질 향상 3. 퇴근 후 루틴 형성 4. 한강 야경 힐링 5. 저녁 식사 전 칼로리 소모. 퇴근 후 30분이면 충분합니다!</p><div class="rc-meta"><span>📅 04.24</span><span>👁️ 2,345 조회</span><span>💬 67 댓글</span></div></div>
+  <div class="review-card"><span class="rc-tag" style="background:rgba(255,149,0,.1);color:#ff9500">스트레칭</span><h3>🧘 러닝 후 스트레칭 루틴</h3><p class="rc-excerpt">러닝 후 5분 스트레칭으로 부상을 예방하세요. 종아리 스트레칭 → 허벅지 앞/뒤 → 고관절 → 발목 돌리기. 영상과 함께 따라해보세요!</p><div class="rc-meta"><span>📅 04.20</span><span>👁️ 3,891 조회</span><span>💬 123 댓글</span></div></div>
+</div>
+
+<footer class="site-footer"><div class="footer-inner"><div class="left"><img src="https://cdn.spotvnow.co.kr/dist/asset/now-logo-for-sns.png" alt="SPOTV NOW"><p>SPOTV NOW CAST · 아이디어 컨셉 데모<br>© 2026 SPOTV</p></div><div class="right"><p><a href="index.html" style="color:var(--mint)">← 메인으로</a></p></div></div></footer>
+<script>if(window.self!==window.top)document.body.classList.add("in-iframe");function showTab(id){document.querySelectorAll('[id^="tab-"]').forEach(el=>el.style.display='none');document.getElementById('tab-'+id).style.display='block';document.querySelectorAll('.ptab').forEach(t=>t.classList.remove('active'));event.target.classList.add('active')}</script>
+</body>
+</html>

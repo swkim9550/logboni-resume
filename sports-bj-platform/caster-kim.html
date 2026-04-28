@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>축구왕 김캐스터 — NOW CAST</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css"><link rel="stylesheet" href="caster-page.css">
+</head>
+<body>
+<header class="gnb"><div class="gnb-logo"><img src="https://cdn.spotvnow.co.kr/dist/asset/now-logo-for-sns.png" alt="SPOTV NOW"><span class="cast-badge">CAST</span></div><nav class="gnb-nav"><a href="index.html#live">LIVE</a><a href="index.html#schedule">경기 일정</a><a href="index.html#ranking">캐스터 랭킹</a><a href="index.html#how">이용 방법</a><a href="casters.html">캐스터 샘플</a><a href="apply.html">캐스터 지원</a><a href="proposal.html">기획서</a></nav><div class="gnb-right"><button class="gnb-btn primary" onclick="alert('⚽ NOW CAST Coming Soon!')">시작하기</button></div></header>
+
+<div class="caster-hero">
+  <div class="caster-profile">
+    <div class="caster-avatar-lg">🎙️</div>
+    <div class="caster-meta">
+      <span class="tier-badge" style="background:rgba(255,215,0,.12);color:#ffd700">🏆 레전드 캐스터</span>
+      <h1>축구왕 김캐스터</h1>
+      <p class="bio">UCL·EPL 전문 해설. 전직 스포츠 기자 출신으로 10년간 유럽 축구를 취재.<br>"경기를 보는 눈이 다르면, 축구가 다르게 보입니다." 예측 적중률 1위.</p>
+      <div class="caster-stats">
+        <div class="cs"><div class="csv">78%</div><div class="csl">예측 적중률</div></div>
+        <div class="cs"><div class="csv">12.3K</div><div class="csl">서포터</div></div>
+        <div class="cs"><div class="csv">284K</div><div class="csl">누적 골</div></div>
+        <div class="cs"><div class="csv">512</div><div class="csl">캐스트 횟수</div></div>
+      </div>
+      <div class="caster-actions">
+        <button class="btn mint">⚽ 골 후원</button>
+        <button class="btn mint">구독 · ₩3,900/월</button>
+        <button class="btn ghost">🔔 알림 설정</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="page-tabs">
+  <div class="ptab active" onclick="showTab('predictions')">📊 경기 예측</div>
+  <div class="ptab" onclick="showTab('reviews')">📝 프리뷰 & 리뷰</div>
+  <div class="ptab" onclick="showTab('upcoming')">📅 예정 캐스트</div>
+</div>
+
+<div class="section" id="tab-predictions">
+  <div class="pred-card">
+    <div class="pred-header"><span class="pred-league">⚽ UCL 준결승 1차전</span><span class="pred-date">04.29 수 04:00</span><span class="pred-status pending">⏳ 경기 전</span></div>
+    <div class="pred-body"><div class="pred-label">📋 김캐스터의 분석</div><div class="pred-text">PSG 홈에서 이번 시즌 UCL 무패. 음바페 컨디션 급상승 중. 바이에른 원정 약세 감안하면 PSG 2:1 승리 예상. 후반 60분 이후 역습이 터질 타이밍.<br><br>키 매치업: 음바페 vs 킴미히. 킴미히가 음바페를 막지 못하면 PSG가 2골 이상 넣을 수 있음.</div></div>
+    <div class="pred-detail">
+      <div class="pd-item"><div class="pdl">스코어 예측</div><div class="pdv">PSG 2 : 1</div></div>
+      <div class="pd-item"><div class="pdl">첫 득점자</div><div class="pdv">음바페</div></div>
+      <div class="pd-item"><div class="pdl">승부 예측</div><div class="pdv">PSG 승</div></div>
+    </div>
+    <div class="pred-engagement"><span>👍 1,247</span><span>💬 342 댓글</span><span>🔗 공유</span></div>
+  </div>
+  <div class="pred-card">
+    <div class="pred-header"><span class="pred-league">⚽ UCL 8강 2차전</span><span class="pred-date">04.16</span><span class="pred-status hit">✅ 적중</span></div>
+    <div class="pred-body"><div class="pred-label">📋 경기 후 리뷰</div><div class="pred-text">바이에른 3:1 레알 마드리드 — 예측대로 바이에른 홈 승리. 무시알라가 2골로 맹활약. 레알의 미드필드가 바이에른 프레스에 무너졌음. 다만 예상보다 점수 차가 컸음.</div></div>
+    <div class="pred-detail">
+      <div class="pd-item"><div class="pdl">승부 예측</div><div class="pdv hit">바이에른 승 ✓</div></div>
+      <div class="pd-item"><div class="pdl">스코어</div><div class="pdv miss">2:1 예측 ✗</div></div>
+      <div class="pd-item"><div class="pdl">MVP</div><div class="pdv hit">무시알라 ✓</div></div>
+    </div>
+    <div class="pred-engagement"><span>👍 2,341</span><span>💬 567 댓글</span><span>🔗 공유</span></div>
+  </div>
+</div>
+
+<div class="section" id="tab-reviews" style="display:none">
+  <div class="review-card"><span class="rc-tag" style="background:rgba(42,255,204,.1);color:var(--mint)">프리뷰</span><h3>🔥 PSG vs 바이에른 준결승 완벽 프리뷰</h3><p class="rc-excerpt">양 팀 8강 퍼포먼스, 키플레이어 컨디션, 전술 매치업 총정리. 파르크 데 프랭스 홈 어드밴티지 분석.</p><div class="rc-meta"><span>📅 04.28</span><span>👁️ 8,923 조회</span><span>💬 234 댓글</span></div></div>
+  <div class="review-card"><span class="rc-tag" style="background:rgba(42,255,204,.1);color:var(--mint)">리뷰</span><h3>⚽ 바이에른 vs 레알 8강 2차전 총평</h3><p class="rc-excerpt">무시알라의 폭발, 레알 미드필드의 붕괴. 바이에른이 왜 이겼는지 전술적으로 분석합니다.</p><div class="rc-meta"><span>📅 04.17</span><span>👁️ 6,234 조회</span><span>💬 189 댓글</span></div></div>
+</div>
+
+<div class="section" id="tab-upcoming" style="display:none">
+  <div class="sched-card"><div class="date"><strong>04.29</strong> 수 04:00</div><div class="teams"><span class="tname">파리 생제르맹 vs 바이에른 뮌헨</span></div><div class="venue">UCL 준결승 1차전</div><div class="tags"><span class="tag cast">🎙️ 캐스트 예정</span><span class="tag predict">📊 예측 등록 완료</span></div></div>
+  <div class="sched-card"><div class="date"><strong>04.30</strong> 목 04:00</div><div class="teams"><span class="tname">AT. 마드리드 vs 아스날</span></div><div class="venue">UCL 준결승 1차전</div><div class="tags"><span class="tag cast">🎙️ 캐스트 예정</span><span class="tag predict">📊 예측 등록 완료</span></div></div>
+</div>
+
+<footer class="site-footer"><div class="footer-inner"><div class="left"><img src="https://cdn.spotvnow.co.kr/dist/asset/now-logo-for-sns.png" alt="SPOTV NOW"><p>SPOTV NOW CAST · 데모<br>© 2026 SPOTV</p></div><div class="right"><a href="casters.html" style="color:var(--mint)">← 캐스터 목록</a></div></div></footer>
+<script>if(window.self!==window.top)document.body.classList.add("in-iframe");function showTab(id){document.querySelectorAll('[id^="tab-"]').forEach(el=>el.style.display='none');document.getElementById('tab-'+id).style.display='block';document.querySelectorAll('.ptab').forEach(t=>t.classList.remove('active'));event.target.classList.add('active')}</script>
+</body></html>
