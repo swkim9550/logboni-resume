@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>캐스터 샘플 — NOW CAST</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<style>
+.sample-layout{display:flex;max-width:1400px;margin:0 auto;min-height:calc(100vh - 60px)}
+.sample-sidebar{width:280px;flex-shrink:0;border-right:1px solid var(--border);padding:24px 0;overflow-y:auto;position:sticky;top:60px;height:calc(100vh - 60px)}
+.sample-sidebar .sb-title{font-size:11px;color:var(--t5);font-weight:700;text-transform:uppercase;letter-spacing:2px;padding:0 20px;margin-bottom:16px}
+.sb-cat{font-size:10px;color:var(--t4);font-weight:700;padding:16px 20px 6px;text-transform:uppercase;letter-spacing:1px}
+.sb-item{display:flex;align-items:center;gap:12px;padding:12px 20px;cursor:pointer;transition:all .15s;border-left:3px solid transparent}
+.sb-item:hover{background:rgba(255,255,255,.03)}
+.sb-item.active{background:var(--mint-dim);border-left-color:var(--mint)}
+.sb-item .sb-avatar{font-size:24px;flex-shrink:0}
+.sb-item .sb-info{flex:1;min-width:0}
+.sb-item .sb-name{font-size:13px;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.sb-item .sb-desc{font-size:11px;color:var(--t4);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.sb-item .sb-tier{font-size:9px;padding:2px 6px;border-radius:8px;flex-shrink:0}
+.sb-tier.legend{background:rgba(255,215,0,.12);color:#ffd700}
+.sb-tier.allstar{background:rgba(255,165,0,.12);color:#ffa500}
+.sb-tier.pro{background:rgba(39,113,255,.12);color:var(--blue)}
+.sample-content{flex:1;min-width:0}
+.sample-content iframe{width:100%;height:calc(100vh - 60px);border:none}
+@media(max-width:768px){
+  .sample-sidebar{width:220px}
+}
+@media(max-width:640px){
+  .sample-layout{flex-direction:column}
+  .sample-sidebar{width:100%;height:auto;position:static;border-right:none;border-bottom:1px solid var(--border);display:flex;overflow-x:auto;padding:12px 0}
+  .sb-cat{display:none}
+  .sb-title{display:none}
+  .sb-item{flex-direction:column;min-width:80px;text-align:center;padding:8px 12px;border-left:none;border-bottom:3px solid transparent}
+  .sb-item.active{border-bottom-color:var(--mint);border-left:none}
+  .sb-item .sb-desc{display:none}
+  .sb-item .sb-tier{display:none}
+  .sample-content iframe{height:70vh}
+}
+</style>
+</head>
+<body>
+
+<header class="gnb">
+  <div class="gnb-logo"><img src="https://cdn.spotvnow.co.kr/dist/asset/now-logo-for-sns.png" alt="SPOTV NOW"><span class="cast-badge">CAST</span></div>
+  <nav class="gnb-nav">
+    <a href="index.html#live">LIVE</a>
+    <a href="index.html#schedule">경기 일정</a>
+    <a href="index.html#ranking">캐스터 랭킹</a>
+    <a href="index.html#how">이용 방법</a>
+    <a href="casters.html" class="active">캐스터 샘플</a>
+    <a href="apply.html">캐스터 지원</a>
+    <a href="proposal.html">기획서</a>
+  </nav>
+  <div class="gnb-right"><button class="gnb-btn primary" onclick="alert('⚽ NOW CAST Coming Soon!')">시작하기</button></div>
+</header>
+
+<div class="sample-layout">
+  <nav class="sample-sidebar">
+    <div class="sb-title">캐스터 목록</div>
+
+    <div class="sb-cat">⚽ 해외축구</div>
+    <div class="sb-item active" onclick="loadCaster(this,'caster-park.html')">
+      <span class="sb-avatar">🎙️</span>
+      <div class="sb-info"><div class="sb-name">축구왕 김캐스터</div><div class="sb-desc">적중률 78% · 서포터 12.3K</div></div>
+      <span class="sb-tier legend">🏆</span>
+    </div>
+    <div class="sb-item" onclick="loadCaster(this,'caster-park.html')">
+      <span class="sb-avatar">👩‍🎤</span>
+      <div class="sb-info"><div class="sb-name">유로퀸 소피</div><div class="sb-desc">적중률 72% · 서포터 8.1K</div></div>
+      <span class="sb-tier allstar">🥇</span>
+    </div>
+    <div class="sb-item" onclick="loadCaster(this,'caster-park.html')">
+      <span class="sb-avatar">🧔</span>
+      <div class="sb-info"><div class="sb-name">전술분석관 박프로</div><div class="sb-desc">적중률 71% · 서포터 6.7K</div></div>
+      <span class="sb-tier allstar">🥇</span>
+    </div>
+    <div class="sb-item" onclick="loadCaster(this,'caster-park.html')">
+      <span class="sb-avatar">😎</span>
+      <div class="sb-info"><div class="sb-name">새벽축구단장</div><div class="sb-desc">적중률 68% · 서포터 4.2K</div></div>
+      <span class="sb-tier pro">🥈</span>
+    </div>
+
+    <div class="sb-cat">🏃 러닝</div>
+    <div class="sb-item" onclick="loadCaster(this,'caster-running.html')">
+      <span class="sb-avatar">🏃</span>
+      <div class="sb-info"><div class="sb-name">새벽런 코치 민수</div><div class="sb-desc">평점 4.9 · 참여자 9.2K</div></div>
+      <span class="sb-tier allstar">🥇</span>
+    </div>
+    <div class="sb-item" onclick="loadCaster(this,'caster-running.html')">
+      <span class="sb-avatar">🏃‍♀️</span>
+      <div class="sb-info"><div class="sb-name">한강러닝 수아</div><div class="sb-desc">평점 4.7 · 참여자 2.8K</div></div>
+      <span class="sb-tier pro">🥈</span>
+    </div>
+
+    <div class="sb-cat">🧘 요가</div>
+    <div class="sb-item" onclick="loadCaster(this,'caster-yoga.html')">
+      <span class="sb-avatar">🧘</span>
+      <div class="sb-info"><div class="sb-name">모닝요가 지은</div><div class="sb-desc">평점 4.9 · 참여자 5.8K</div></div>
+      <span class="sb-tier allstar">🥇</span>
+    </div>
+    <div class="sb-item" onclick="loadCaster(this,'caster-yoga.html')">
+      <span class="sb-avatar">🧘‍♂️</span>
+      <div class="sb-info"><div class="sb-name">명상요가 태윤</div><div class="sb-desc">평점 4.8 · 참여자 3.1K</div></div>
+      <span class="sb-tier pro">🥈</span>
+    </div>
+
+    <div class="sb-cat">💪 피트니스</div>
+    <div class="sb-item" onclick="loadCaster(this,'caster-running.html')">
+      <span class="sb-avatar">💪</span>
+      <div class="sb-info"><div class="sb-name">점심홈트 현우</div><div class="sb-desc">평점 4.8 · 참여자 4.1K</div></div>
+      <span class="sb-tier pro">🥈</span>
+    </div>
+
+    <div class="sb-cat">🥊 복싱</div>
+    <div class="sb-item" onclick="loadCaster(this,'caster-running.html')">
+      <span class="sb-avatar">🥊</span>
+      <div class="sb-info"><div class="sb-name">복싱핏 수진</div><div class="sb-desc">평점 4.7 · 참여자 3.2K</div></div>
+      <span class="sb-tier pro">🥈</span>
+    </div>
+
+    <div class="sb-cat">⚾ 야구</div>
+    <div class="sb-item" onclick="loadCaster(this,'caster-park.html')">
+      <span class="sb-avatar">⚾</span>
+      <div class="sb-info"><div class="sb-name">MLB데이터 준호</div><div class="sb-desc">적중률 65% · 서포터 3.5K</div></div>
+      <span class="sb-tier pro">🥈</span>
+    </div>
+  </nav>
+
+  <div class="sample-content">
+    <iframe id="caster-frame" src="caster-park.html"></iframe>
+  </div>
+</div>
+
+<script>
+function loadCaster(el, url) {
+  document.querySelectorAll('.sb-item').forEach(i => i.classList.remove('active'));
+  el.classList.add('active');
+  document.getElementById('caster-frame').src = url;
+}
+</script>
+</body>
+</html>
