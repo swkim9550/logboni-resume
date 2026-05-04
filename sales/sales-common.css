@@ -235,6 +235,19 @@ tr.mismatch td{background:#fafafa}
 .sparkline{display:flex;align-items:flex-end;gap:3px;height:72px;margin-top:10px}
 .sparkline span{flex:1;min-width:4px;background:#111;border-radius:999px 999px 0 0}
 .insight-card .sparkline span{background:#fff}
+.report-hero{background:#111;color:#fff;border-radius:12px;padding:18px;margin-bottom:12px}
+.report-hero .card-title{color:rgba(255,255,255,.68)}
+.report-total{font-size:34px;line-height:1.05;font-weight:900;font-variant-numeric:tabular-nums}
+.report-sub{font-size:12px;line-height:1.45;color:rgba(255,255,255,.72);margin-top:8px}
+.metric-row{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:11px 0;border-bottom:1px solid var(--line)}
+.metric-row:last-child{border-bottom:none}
+.metric-row span{font-size:13px;color:var(--sub);font-weight:700}
+.metric-row strong{font-size:14px;font-variant-numeric:tabular-nums;text-align:right}
+.progress-row{display:grid;grid-template-columns:74px 1fr 54px;gap:8px;align-items:center;min-height:28px;font-size:12px}
+.progress-row span:first-child{color:var(--sub);font-weight:750}
+.progress-row strong{text-align:right;font-variant-numeric:tabular-nums}
+.progress-track{height:10px;border-radius:999px;background:var(--surface-muted);overflow:hidden;border:1px solid var(--line)}
+.progress-fill{height:100%;background:#111;border-radius:999px}
 .donut{
   --p:50;
   width:76px;

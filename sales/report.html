@@ -1,0 +1,140 @@
+<!DOCTYPE html><html lang="ko"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>운영 보고서</title>
+<link rel="stylesheet" href="sales-common.css">
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="sales-app.js"></script>
+</head><body>
+<h1>운영 보고서</h1>
+
+<div class="card">
+  <div class="store-select-title"><strong>보고서 선택</strong><span>월간 손익</span></div>
+  <div class="card-grid">
+    <div><label>매장</label><select id="store" onchange="changeStore()"></select></div>
+    <div><label>월</label><input type="month" id="month" onchange="load()"></div>
+  </div>
+</div>
+
+<div id="reportContent"></div>
+
+<script>
+async function init(){
+  await initSupabase();
+  SalesApp.nav('report.html');
+  document.getElementById('month').value=SalesApp.currentMonth();
+  const stores=await SalesApp.getStores();
+  SalesApp.fillStoreSelect(document.getElementById('store'),stores);
+  const latest=await SalesApp.getLatestSaleMonth(document.getElementById('store').value);
+  if(latest)document.getElementById('month').value=latest;
+  await load();
+}
+
+async function changeStore(){
+  SalesApp.saveStore(document.getElementById('store').value);
+  const latest=await SalesApp.getLatestSaleMonth(document.getElementById('store').value);
+  if(latest)document.getElementById('month').value=latest;
+  await load();
+}
+
+async function load(){
+  const storeId=document.getElementById('store').value;
+  const month=document.getElementById('month').value;
+  if(!storeId||!month)return;
+  const{data:report,error}=await sb.from('monthly_reports')
+    .select('*')
+    .eq('store_id',storeId)
+    .eq('report_month',month+'-01')
+    .maybeSingle();
+  if(error){SalesApp.toast('조회 오류: '+error.message);return}
+  if(!report){document.getElementById('reportContent').innerHTML='<div class="empty">선택한 월의 보고서가 없습니다</div>';return}
+
+  const[{data:labor},{data:expenses}]=await Promise.all([
+    sb.from('monthly_labor_costs').select('*').eq('monthly_report_id',report.id).order('total_cost',{ascending:false}),
+    sb.from('monthly_report_expenses').select('*').eq('monthly_report_id',report.id).order('category')
+  ]);
+  render(report,labor||[],expenses||[]);
+}
+
+function pct(n){return n==null?'-':Math.round(Number(n)*1000)/10+'%'}
+function money(n){return SalesApp.fmt(n)}
+
+function render(report,labor,expenses){
+  const costItems=[
+    ['재료비',report.material_cost,report.material_cost_rate],
+    ['노무비',report.labor_cost,report.labor_cost_rate],
+    ['수도광열비',report.utility_cost,report.utility_cost_rate],
+    ['임대료',report.rent_cost,report.rent_cost_rate],
+    ['기타 경비',report.other_expense,report.sales_total?report.other_expense/report.sales_total:0]
+  ];
+  const maxCost=Math.max(...costItems.map(i=>i[1]||0),1);
+  const expenseGroups=groupExpenses(expenses);
+
+  document.getElementById('reportContent').innerHTML=`
+    <div class="report-hero">
+      <div class="card-title">세후 영업이익</div>
+      <div class="report-total">${money(report.after_tax_operating_profit)}</div>
+      <div class="report-sub">매출 ${money(report.sales_total)} · 순이익 ${money(report.net_profit)} · 세후 이익률 ${pct(report.after_tax_profit_rate)}</div>
+    </div>
+
+    <div class="insight-grid">
+      <div class="insight-card">
+        <div class="insight-label">Prime Cost</div>
+        <div class="insight-number">${money(report.prime_cost)}</div>
+        <div class="insight-note">재료비 + 노무비 · ${pct(report.prime_cost_rate)}</div>
+      </div>
+      <div class="insight-card light">
+        <div class="insight-label">손익분기점</div>
+        <div class="insight-number">${money(report.bep_sales)}</div>
+        <div class="insight-note">${Math.round(report.bep_count||0).toLocaleString('ko-KR')}건 기준</div>
+      </div>
+    </div>
+
+    <h2>손익 요약</h2>
+    <div class="card">
+      ${metric('매출',money(report.sales_total))}
+      ${metric('영업비용',money(report.operating_cost))}
+      ${metric('EBITDA',money(report.ebitda))}
+      ${metric('세금/감가상각 적립',money(report.tax_depreciation_reserve))}
+      ${metric('영업외비용',money(report.non_operating_expense))}
+      ${metric('순이익',money(report.net_profit))}
+    </div>
+
+    <h2>비용 구조</h2>
+    <div class="card">
+      ${costItems.map(([name,amount,rate])=>progress(name,amount,rate,maxCost)).join('')}
+    </div>
+
+    <h2>노무비 상세</h2>
+    <div class="card">
+      ${labor.map(r=>metric(r.employee_name,money(r.total_cost))).join('')||'<div class="empty">노무비 데이터가 없습니다</div>'}
+    </div>
+
+    <h2>월간 비용 상세</h2>
+    <div class="card">
+      ${Object.entries(expenseGroups).map(([cat,total])=>metric(cat,money(total))).join('')||'<div class="empty">비용 상세가 없습니다</div>'}
+    </div>
+
+    <h2>메모</h2>
+    <div class="card"><div class="help-note">${(report.memo||'메모가 없습니다').replaceAll('\\n','<br>')}</div></div>
+  `;
+}
+
+function metric(label,value){
+  return`<div class="metric-row"><span>${label}</span><strong>${value}</strong></div>`;
+}
+
+function progress(label,amount,rate,max){
+  const p=Math.round((amount||0)/max*100);
+  return`<div class="progress-row"><span>${label}</span><div class="progress-track"><div class="progress-fill" style="width:${p}%"></div></div><strong>${pct(rate)}</strong></div>`;
+}
+
+function groupExpenses(rows){
+  return rows.reduce((acc,r)=>{
+    acc[r.category]=(acc[r.category]||0)+(r.amount||0);
+    return acc;
+  },{});
+}
+
+init();
+</script>
+</body></html>
