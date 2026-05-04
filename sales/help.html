@@ -1,0 +1,70 @@
+<!DOCTYPE html><html lang="ko"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>입력 도움말</title>
+<link rel="stylesheet" href="sales-common.css">
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="sales-app.js"></script>
+</head><body>
+<h1>입력 도움말</h1>
+
+<div class="card">
+  <div class="card-title">하루 마감 입력 순서</div>
+  <div class="help-step">
+    <b>1</b>
+    <div><strong>매장과 날짜 확인</strong><p>기본 매장은 세모두부입니다. 다른 매장을 입력할 때는 상단 매장 선택을 먼저 바꿉니다.</p></div>
+  </div>
+  <div class="help-step">
+    <b>2</b>
+    <div><strong>총 매출과 건수 입력</strong><p>점심 매출/건수, 저녁 매출/건수를 입력하면 총 건수와 테이블 단가는 자동 계산됩니다.</p></div>
+  </div>
+  <div class="help-step">
+    <b>3</b>
+    <div><strong>판매 분류 입력</strong><p>식사, 코스, 포장, 단품 매출을 입력합니다. 합계가 총 매출과 크게 다르면 마감 전에 다시 확인합니다.</p></div>
+  </div>
+  <div class="help-step">
+    <b>4</b>
+    <div><strong>메뉴와 주류·음료 입력</strong><p>매장관리에서 등록한 항목이 매출 등록 화면에 표시됩니다. 없는 항목은 매장관리에서 먼저 추가합니다.</p></div>
+  </div>
+  <div class="help-step">
+    <b>5</b>
+    <div><strong>재료비와 경비 입력</strong><p>재료비는 기본적으로 변동비입니다. 경비는 고정비와 변동비를 구분해서 입력합니다.</p></div>
+  </div>
+  <div class="help-step">
+    <b>6</b>
+    <div><strong>통장 금액 대조</strong><p>통장입력 탭에서 보고 매출과 입금 금액을 대조합니다. 불일치 라벨이 보이면 차액을 확인합니다.</p></div>
+  </div>
+</div>
+
+<h2>비용 구분 기준</h2>
+<div class="card">
+  <div class="help-note">고정비는 매출과 관계없이 일정하게 나가는 비용입니다. 변동비는 매출 또는 영업량에 따라 같이 움직이는 비용입니다.</div>
+  <div class="card-grid mt-8">
+    <div><div class="card-title">변동비 예시</div><div class="amount">재료비, 주류, 식자재</div></div>
+    <div><div class="card-title">고정비 예시</div><div class="amount">소모품, 수수료, 기타 경비</div></div>
+  </div>
+</div>
+
+<h2>입력 전 확인</h2>
+<div class="card">
+  <div class="help-step">
+    <b>A</b>
+    <div><strong>거래처명은 동일하게</strong><p>같은 거래처는 같은 이름으로 입력해야 월별 거래처 비용 집계가 안정적으로 나옵니다.</p></div>
+  </div>
+  <div class="help-step">
+    <b>B</b>
+    <div><strong>빈 값은 0으로 처리</strong><p>입력하지 않은 금액은 0원으로 저장됩니다. 실제 매출이 있다면 반드시 숫자를 입력합니다.</p></div>
+  </div>
+  <div class="help-step">
+    <b>C</b>
+    <div><strong>같은 날짜 재등록</strong><p>이미 등록한 날짜를 다시 저장하면 기존 일자 데이터가 새 값으로 갱신됩니다.</p></div>
+  </div>
+</div>
+
+<script>
+async function init(){
+  await initSupabase();
+  SalesApp.nav('help.html');
+}
+init();
+</script>
+</body></html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html><html lang="ko"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>통장 입력</title>
+<link rel="stylesheet" href="sales-common.css">
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="sales-app.js"></script>
+</head><body>
+<h1>통장 금액 입력</h1>
+
+<div class="card card-grid">
+  <div><label>매장</label><select id="store" onchange="load()"></select></div>
+  <div><label>월</label><input type="month" id="month" onchange="load()"></div>
+</div>
+
+<div class="card card-grid" id="summary">
+  <div><div class="card-title">보고 매출</div><div class="card-value small" id="sumSales">-</div></div>
+  <div><div class="card-title">통장 합계</div><div class="card-value small" id="sumBank">-</div></div>
+  <div><div class="card-title">불일치</div><div class="card-value small" style="color:var(--red)" id="sumMismatch">-</div></div>
+  <div><div class="card-title">미입력</div><div class="card-value small" style="color:var(--yellow)" id="sumPending">-</div></div>
+</div>
+
+<div style="overflow-x:auto">
+<table>
+  <thead><tr><th>날짜</th><th>요일</th><th style="text-align:right">보고매출</th><th style="text-align:right">통장금액</th><th>상태</th></tr></thead>
+  <tbody id="tbody"></tbody>
+</table>
+</div>
+
+<script>
+async function init(){
+  await initSupabase();
+  SalesApp.nav('bank.html');
+  document.getElementById('month').value=SalesApp.currentMonth();
+  const stores=await SalesApp.getStores();
+  SalesApp.fillStoreSelect(document.getElementById('store'),stores);
+  await load();
+}
+
+async function load(){
+  const storeId=document.getElementById('store').value;
+  const month=document.getElementById('month').value;
+  if(!storeId||!month)return;
+  SalesApp.saveStore(storeId);
+  const start=month+'-01';
+  const end=month+'-31';
+  const{data}=await sb.from('daily_sales').select('*').eq('store_id',storeId).gte('sale_date',start).lte('sale_date',end).order('sale_date');
+  const rows=data||[];
+  let sumS=0,sumB=0,mis=0,pen=0;
+  document.getElementById('tbody').innerHTML=rows.map(r=>{
+    sumS+=r.total_sales||0;
+    const hasBank=r.bank_amount!=null;
+    if(hasBank)sumB+=r.bank_amount;
+    const matched=hasBank?(r.total_sales===r.bank_amount):null;
+    if(hasBank&&!matched)mis++;
+    if(!hasBank)pen++;
+    const diff=hasBank?r.bank_amount-r.total_sales:null;
+    const cls=hasBank&&!matched?'mismatch':'';
+    const badge=!hasBank?'<span class="badge badge-wait">미입력</span>':matched?'<span class="badge badge-ok">일치</span>':`<span class="badge badge-fail">${SalesApp.fmtNum(diff)}</span>`;
+    return`<tr class="${cls}">
+      <td>${r.sale_date.slice(5)}</td><td>${r.day_of_week||''}</td>
+      <td style="text-align:right" class="amount">${SalesApp.fmtNum(r.total_sales)}</td>
+      <td style="text-align:right"><input data-id="${r.id}" value="${hasBank?r.bank_amount.toLocaleString('ko-KR'):''}" inputmode="numeric" placeholder="입력" style="width:100px;text-align:right;margin:0;padding:6px" onchange="save(this)"></td>
+      <td>${badge}</td></tr>`;
+  }).join('');
+  document.getElementById('sumSales').textContent=SalesApp.fmtNum(sumS);
+  document.getElementById('sumBank').textContent=SalesApp.fmtNum(sumB);
+  document.getElementById('sumMismatch').textContent=mis+'건';
+  document.getElementById('sumPending').textContent=pen+'건';
+}
+
+async function save(el){
+  const id=el.dataset.id;
+  const bank=SalesApp.parseMoney(el.value);
+  const{data}=await sb.from('daily_sales').select('total_sales').eq('id',id).single();
+  const matched=data.total_sales===bank;
+  await sb.from('daily_sales').update({bank_amount:bank,is_matched:matched,difference:bank-data.total_sales}).eq('id',id);
+  SalesApp.toast(matched?'일치':'차액: '+SalesApp.fmtNum(bank-data.total_sales));
+  await load();
+}
+init();
+</script>
+</body></html>

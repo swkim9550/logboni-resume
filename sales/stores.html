@@ -1,0 +1,129 @@
+<!DOCTYPE html><html lang="ko"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>매장관리</title>
+<link rel="stylesheet" href="sales-common.css">
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="sales-app.js"></script>
+</head><body>
+<h1>매장 관리</h1>
+<div class="card">
+  <label>매장 이름</label>
+  <div style="display:flex;gap:8px">
+    <input id="storeName" placeholder="예: 세모두부">
+    <button class="btn btn-sm" onclick="addStore()" style="white-space:nowrap">추가</button>
+  </div>
+</div>
+<h2>등록된 매장</h2>
+<div id="storeList"></div>
+
+<h2>판매 항목 관리</h2>
+<div class="card">
+  <label>관리 매장</label>
+  <select id="itemStore" onchange="loadItems()"></select>
+  <div class="card-grid mt-8">
+    <div>
+      <label>메뉴명</label>
+      <div class="item-admin">
+        <input id="menuName" placeholder="예: 들기름두부구이">
+        <button class="btn btn-sm" onclick="addItem('menu')">추가</button>
+      </div>
+    </div>
+    <div>
+      <label>주류·음료명</label>
+      <div class="item-admin">
+        <input id="drinkName" placeholder="예: 아마구치">
+        <button class="btn btn-sm" onclick="addItem('drink')">추가</button>
+      </div>
+    </div>
+  </div>
+  <button class="btn btn-outline mt-8" onclick="seedDefaults()">기본 항목 채우기</button>
+</div>
+
+<div class="card-grid">
+  <div class="card">
+    <div class="card-title">메뉴</div>
+    <div id="menuItems" class="item-list"></div>
+  </div>
+  <div class="card">
+    <div class="card-title">주류·음료</div>
+    <div id="drinkItems" class="item-list"></div>
+  </div>
+</div>
+
+<script>
+async function init(){
+  await initSupabase();
+  SalesApp.nav('stores.html');
+  await loadStores();
+  await refreshItemStores();
+}
+async function loadStores(){
+  const stores=await SalesApp.getStores();
+  const el=document.getElementById('storeList');
+  if(!stores.length){el.innerHTML='<div class="empty">등록된 매장이 없습니다</div>';return}
+  el.innerHTML=stores.map(s=>`
+    <div class="card card-row">
+      <div><strong>${s.name}</strong><br><span style="font-size:12px;color:var(--sub)">${new Date(s.created_at).toLocaleDateString('ko-KR')} 등록</span></div>
+      <button class="btn btn-sm btn-danger" onclick="delStore(${s.id},'${s.name}')">삭제</button>
+    </div>`).join('');
+}
+async function refreshItemStores(){
+  const stores=await SalesApp.getStores();
+  SalesApp.fillStoreSelect(document.getElementById('itemStore'),stores);
+  await loadItems();
+}
+async function loadItems(){
+  const storeId=document.getElementById('itemStore').value;
+  if(!storeId)return;
+  SalesApp.saveStore(storeId);
+  const [menus,drinks]=await Promise.all([SalesApp.getSalesItems(storeId,'menu'),SalesApp.getSalesItems(storeId,'drink')]);
+  renderItems('menuItems',menus);
+  renderItems('drinkItems',drinks);
+}
+function renderItems(target,items){
+  const el=document.getElementById(target);
+  if(!items.length){el.innerHTML='<div class="empty">등록된 항목이 없습니다</div>';return}
+  el.innerHTML=items.map(i=>`<div class="item-pill"><span>${i.name}</span>${i.id?`<button class="btn btn-sm btn-danger" onclick="delItem(${i.id})">삭제</button>`:'<span class="badge badge-wait">기본</span>'}</div>`).join('');
+}
+async function addItem(type){
+  const storeId=document.getElementById('itemStore').value;
+  const input=document.getElementById(type==='menu'?'menuName':'drinkName');
+  const{error}=await SalesApp.addSalesItem(storeId,type,input.value);
+  if(error){SalesApp.toast('오류: '+error.message);return}
+  input.value='';
+  SalesApp.toast('항목 추가 완료');
+  await loadItems();
+}
+async function delItem(id){
+  const{error}=await SalesApp.archiveSalesItem(id);
+  if(error){SalesApp.toast('오류: '+error.message);return}
+  SalesApp.toast('항목 삭제 완료');
+  await loadItems();
+}
+async function seedDefaults(){
+  const storeId=document.getElementById('itemStore').value;
+  const{error}=await SalesApp.seedDefaultSalesItems(storeId);
+  if(error){SalesApp.toast('오류: '+error.message);return}
+  SalesApp.toast('기본 항목 등록 완료');
+  await loadItems();
+}
+async function addStore(){
+  const name=document.getElementById('storeName').value.trim();
+  if(!name){SalesApp.toast('매장 이름을 입력하세요');return}
+  const{error}=await sb.from('stores').insert({name});
+  if(error){SalesApp.toast('오류: '+error.message);return}
+  document.getElementById('storeName').value='';
+  SalesApp.toast(name+' 등록 완료');
+  await loadStores();
+  await refreshItemStores();
+}
+async function delStore(id,name){
+  if(!confirm(name+' 매장을 삭제하시겠습니까?\n관련 매출 데이터도 모두 삭제됩니다.'))return;
+  await sb.from('stores').delete().eq('id',id);
+  SalesApp.toast(name+' 삭제 완료');
+  await loadStores();
+  await refreshItemStores();
+}
+init();
+</script>
+</body></html>

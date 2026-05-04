@@ -1,0 +1,181 @@
+<!DOCTYPE html><html lang="ko"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>매출 등록</title>
+<link rel="stylesheet" href="sales-common.css">
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="sales-app.js"></script>
+</head><body>
+<h1>매출 등록</h1>
+
+<div class="card">
+  <div class="card-grid">
+    <div><label>매장</label><select id="store"></select></div>
+    <div><label>날짜</label><input type="date" id="saleDate"></div>
+  </div>
+</div>
+
+<h2>매출</h2>
+<div class="card">
+  <label>총 매출</label><input id="totalSales" inputmode="numeric" placeholder="0">
+  <div class="card-grid">
+    <div><label>점심 매출</label><input id="lunchSales" inputmode="numeric" placeholder="0"></div>
+    <div><label>점심 건수</label><input id="lunchCount" inputmode="numeric" placeholder="0"></div>
+    <div><label>저녁 매출</label><input id="dinnerSales" inputmode="numeric" placeholder="0"></div>
+    <div><label>저녁 건수</label><input id="dinnerCount" inputmode="numeric" placeholder="0"></div>
+  </div>
+</div>
+
+<h2>판매 분류</h2>
+<div class="card card-grid">
+  <div><label>식사</label><input id="mealSales" inputmode="numeric" placeholder="0"></div>
+  <div><label>코스</label><input id="courseSales" inputmode="numeric" placeholder="0"></div>
+  <div><label>포장</label><input id="takeoutSales" inputmode="numeric" placeholder="0"></div>
+  <div><label>단품</label><input id="singleSales" inputmode="numeric" placeholder="0"></div>
+</div>
+
+<h2>주류·음료 매출</h2>
+<div class="card" id="drinkSection"></div>
+
+<h2>메뉴별 매출</h2>
+<div class="card" id="menuSection"></div>
+
+<h2>재료비</h2>
+<div class="card">
+  <div id="costRows"></div>
+  <button class="btn btn-outline btn-sm mt-8" onclick="addCostRow('costRows')">+ 재료비 추가</button>
+</div>
+
+<h2>경비</h2>
+<div class="card">
+  <div id="expRows"></div>
+  <button class="btn btn-outline btn-sm mt-8" onclick="addCostRow('expRows')">+ 경비 추가</button>
+</div>
+
+<div class="mt-16">
+  <label>메모</label>
+  <textarea id="note" rows="2" placeholder="특이사항"></textarea>
+</div>
+
+<button class="btn mt-16" onclick="submit()">등록하기</button>
+
+<script>
+const SUPPLIERS=['식봄','쿠팡','하람F&B','얼스와인','케이엘쓰리','단지F&B','지평막걸리','복순도가','신동주류','케이엘푸드(보경유통)','매장카드','강원도콩','버크셔세상','웅진산업','비네센','기타'];
+let costIdx=0;
+
+async function init(){
+  await initSupabase();
+  SalesApp.nav('register.html');
+  document.getElementById('saleDate').value=SalesApp.today();
+  const stores=await SalesApp.getStores();
+  SalesApp.fillStoreSelect(document.getElementById('store'),stores);
+  document.getElementById('store').addEventListener('change',async()=>{
+    SalesApp.saveStore(document.getElementById('store').value);
+    await renderSaleItems();
+  });
+  await renderSaleItems();
+  // 금액 자동 포맷
+  document.querySelectorAll('#totalSales,#lunchSales,#lunchCount,#dinnerSales,#dinnerCount,#mealSales,#courseSales,#takeoutSales,#singleSales').forEach(el=>{
+    SalesApp.moneyInput(el);
+  });
+  addCostRow('costRows');
+  addCostRow('expRows');
+}
+
+async function renderSaleItems(){
+  const storeId=document.getElementById('store').value;
+  if(!storeId)return;
+  const menus=await SalesApp.getSalesItems(storeId,'menu');
+  const drinks=await SalesApp.getSalesItems(storeId,'drink');
+  document.getElementById('menuSection').innerHTML=menus.map(m=>`<div class="list-input-row"><span>${m.name}</span><input data-menu="${m.name}" data-item-id="${m.id||''}" inputmode="numeric" placeholder="0"></div>`).join('');
+  document.getElementById('drinkSection').innerHTML=drinks.map(d=>`<div class="list-input-row"><span>${d.name}</span><input data-drink="${d.name}" data-item-id="${d.id||''}" inputmode="numeric" placeholder="0"></div>`).join('')+'<div class="section-total"><strong>합계</strong><strong id="drinkTotal">0원</strong></div>';
+  document.querySelectorAll('#menuSection input[inputmode="numeric"],#drinkSection input[inputmode="numeric"]').forEach(el=>{
+    SalesApp.moneyInput(el);
+    if(el.dataset.drink)el.addEventListener('input',calcDrinkTotal);
+  });
+}
+
+function calcDrinkTotal(){
+  let t=0;document.querySelectorAll('[data-drink]').forEach(el=>t+=SalesApp.parseMoney(el.value));
+  document.getElementById('drinkTotal').textContent=SalesApp.fmtNum(t)+'원';
+}
+
+function addCostRow(containerId){
+  const id=costIdx++;
+  const div=document.createElement('div');div.className='cost-row';div.id='cost-'+id;
+  const isExp=containerId==='expRows';
+  div.innerHTML=`<select data-cost-supplier>${SUPPLIERS.map(s=>`<option>${s}</option>`).join('')}</select><input data-cost-amount inputmode="numeric" placeholder="금액"><select data-cost-type class="cost-type"><option${!isExp?' selected':''}>변동비</option><option${isExp?' selected':''}>고정비</option></select><button class="btn btn-sm btn-danger" aria-label="삭제" onclick="document.getElementById('cost-${id}').remove()">×</button>`;
+  document.getElementById(containerId).appendChild(div);
+  div.querySelector('[data-cost-amount]').addEventListener('input',function(){let v=this.value.replace(/[^0-9]/g,'');if(v)this.value=Number(v).toLocaleString('ko-KR')});
+}
+
+function gv(id){return SalesApp.parseMoney(document.getElementById(id).value)}
+
+async function submit(){
+  const storeId=document.getElementById('store').value;
+  const date=document.getElementById('saleDate').value;
+  if(!storeId||!date){SalesApp.toast('매장과 날짜를 선택하세요');return}
+
+  const totalCount=(gv('lunchCount')||0)+(gv('dinnerCount')||0);
+  const totalSales=gv('totalSales');
+  // 주류 합산
+  let drinkTotal=0;document.querySelectorAll('[data-drink]').forEach(el=>drinkTotal+=SalesApp.parseMoney(el.value));
+  const row={
+    store_id:parseInt(storeId),sale_date:date,
+    day_of_week:SalesApp.dayName(date),
+    total_sales:totalSales,total_count:totalCount,
+    table_unit_price:totalCount?Math.round(totalSales/totalCount):0,
+    lunch_sales:gv('lunchSales'),lunch_count:gv('lunchCount'),
+    dinner_sales:gv('dinnerSales'),dinner_count:gv('dinnerCount'),
+    meal_sales:gv('mealSales'),course_sales:gv('courseSales'),
+    takeout_sales:gv('takeoutSales'),single_sales:gv('singleSales'),
+    drink_sales:drinkTotal,note:document.getElementById('note').value
+  };
+
+  // 재료비 + 경비 수집
+  const allCostRows=[...document.querySelectorAll('#costRows .cost-row'),...document.querySelectorAll('#expRows .cost-row')];
+  let matCost=0,expCost=0,varCost=0,fixCost=0;
+  const costs=allCostRows.map(r=>{
+    const amt=SalesApp.parseMoney(r.querySelector('[data-cost-amount]').value);
+    const type=r.querySelector('[data-cost-type]').value;
+    const isExpense=r.closest('#expRows')!==null;
+    if(type==='변동비')varCost+=amt; else fixCost+=amt;
+    if(isExpense)expCost+=amt;
+    matCost+=amt;
+    return{supplier_name:r.querySelector('[data-cost-supplier]').value,amount:amt,cost_type:type};
+  }).filter(c=>c.amount>0);
+  row.total_cost=matCost;row.material_cost=matCost-expCost;row.expense_cost=expCost;row.variable_cost=varCost;row.fixed_cost=fixCost;
+
+  // upsert daily_sales
+  const{data,error}=await sb.from('daily_sales').upsert(row,{onConflict:'store_id,sale_date'}).select();
+  if(error){SalesApp.toast('오류: '+error.message);return}
+  const dsId=data[0].id;
+
+  // 메뉴별 매출
+  await sb.from('menu_sales').delete().eq('daily_sale_id',dsId);
+  const menus=[...document.querySelectorAll('[data-menu]')].map(el=>({
+    daily_sale_id:dsId,
+    sales_item_id:el.dataset.itemId||null,
+    menu_name:el.dataset.menu,
+    amount:SalesApp.parseMoney(el.value)
+  })).filter(m=>m.amount>0);
+  if(menus.length)await sb.from('menu_sales').insert(menus);
+
+  // 주류·음료별 매출
+  await sb.from('drink_sales').delete().eq('daily_sale_id',dsId);
+  const drinks=[...document.querySelectorAll('[data-drink]')].map(el=>({
+    daily_sale_id:dsId,
+    sales_item_id:el.dataset.itemId||null,
+    drink_name:el.dataset.drink,
+    amount:SalesApp.parseMoney(el.value)
+  })).filter(d=>d.amount>0);
+  if(drinks.length)await sb.from('drink_sales').insert(drinks);
+
+  // 거래처 비용
+  await sb.from('supplier_costs').delete().eq('daily_sale_id',dsId);
+  if(costs.length)await sb.from('supplier_costs').insert(costs.map(c=>({...c,daily_sale_id:dsId})));
+
+  SalesApp.toast('등록 완료!');
+}
+init();
+</script>
+</body></html>

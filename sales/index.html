@@ -1,0 +1,260 @@
+<!DOCTYPE html><html lang="ko"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>매출 대시보드</title>
+<link rel="stylesheet" href="sales-common.css">
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="sales-app.js"></script>
+</head><body>
+<div class="brand-hero" id="brandHero"></div>
+
+<h1>매장 대시보드</h1>
+
+<div class="store-switch">
+  <div class="card">
+    <div class="store-select-title"><strong>매장 선택</strong><span>기본값 세모두부</span></div>
+    <div class="card-grid">
+      <div><label>매장</label><select id="store" onchange="changeStore()"></select></div>
+      <div><label>월</label><input type="month" id="month" onchange="load()"></div>
+    </div>
+  </div>
+  <a class="map-card" id="mapCard" target="_blank" rel="noopener"></a>
+</div>
+
+<!-- 요약 카드 -->
+<div class="card">
+  <div class="card-title">이번 달 총 매출</div>
+  <div class="card-value" id="totalSales">-</div>
+  <div class="card-title mt-8" id="avgInfo"></div>
+</div>
+
+<div class="card-grid">
+  <div class="card"><div class="card-title">총 건수</div><div class="card-value small" id="totalCount">-</div></div>
+  <div class="card"><div class="card-title">평균 단가</div><div class="card-value small" id="avgPrice">-</div></div>
+</div>
+
+<div class="card-grid">
+  <div class="card"><div class="card-title">점심 매출</div><div class="card-value small" id="lunchTotal">-</div></div>
+  <div class="card"><div class="card-title">저녁 매출</div><div class="card-value small" id="dinnerTotal">-</div></div>
+</div>
+
+<div class="insight-grid">
+  <div class="insight-card">
+    <div class="insight-label">일별 흐름</div>
+    <div class="insight-number" id="bestDay">-</div>
+    <div class="insight-note" id="bestDayInfo">가장 높은 매출일</div>
+    <div class="sparkline" id="salesSpark"></div>
+  </div>
+  <div class="insight-card light">
+    <div class="insight-label">원가 압력</div>
+    <div class="insight-number" id="costRate">-</div>
+    <div class="donut" id="costDonut" data-label="0%" style="--p:0"></div>
+  </div>
+</div>
+
+<!-- 점심 vs 저녁 비율 -->
+<div class="card">
+  <div class="card-title">점심 vs 저녁</div>
+  <div class="ratio-bar" id="lunchDinnerBar"></div>
+</div>
+
+<!-- 판매분류 비율 -->
+<div class="card">
+  <div class="card-title">판매 분류</div>
+  <div id="categoryBars" class="mt-8"></div>
+</div>
+
+<div class="card-grid">
+  <div class="card">
+    <div class="card-title">상위 메뉴</div>
+    <div id="topMenus" class="mt-8"></div>
+  </div>
+  <div class="card">
+    <div class="card-title">상위 주류·음료</div>
+    <div id="topDrinks" class="mt-8"></div>
+  </div>
+</div>
+
+<!-- 통장 대조 -->
+<div class="card">
+  <div class="card-title">통장 대조 현황</div>
+  <div class="card-grid mt-8">
+    <div><span class="badge badge-ok" id="matchOk">일치 0</span></div>
+    <div><span class="badge badge-fail" id="matchFail">불일치 0</span></div>
+    <div><span class="badge badge-wait" id="matchWait">미확인 0</span></div>
+  </div>
+</div>
+
+<!-- 비용 요약 -->
+<div class="card">
+  <div class="card-title">비용 요약</div>
+  <div class="card-grid mt-8">
+    <div><div class="card-title">총 비용</div><div class="amount" id="costTotal">-</div></div>
+    <div><div class="card-title">변동비</div><div class="amount" id="costVar">-</div></div>
+    <div><div class="card-title">고정비</div><div class="amount" id="costFix">-</div></div>
+    <div><div class="card-title">영업이익</div><div class="amount" id="profit">-</div></div>
+  </div>
+</div>
+
+<!-- 일별 매출 차트 -->
+<h2>일별 매출 추이</h2>
+<div class="card">
+  <div class="bar-chart" id="dailyChart"></div>
+</div>
+
+<!-- 최근 매출 리스트 -->
+<h2>최근 매출</h2>
+<div id="recentList"></div>
+
+<script>
+async function init(){
+  await initSupabase();
+  SalesApp.nav('index.html');
+  document.getElementById('month').value=SalesApp.currentMonth();
+  const stores=await SalesApp.getStores();
+  window.salesStores=stores;
+  SalesApp.fillStoreSelect(document.getElementById('store'),stores);
+  await load();
+}
+
+async function changeStore(){
+  SalesApp.saveStore(document.getElementById('store').value);
+  await load();
+}
+
+async function load(){
+  const storeId=document.getElementById('store').value;
+  const month=document.getElementById('month').value;
+  if(!storeId||!month)return;
+  updateStoreBrand();
+  const{data}=await sb.from('daily_sales').select('*').eq('store_id',storeId).gte('sale_date',month+'-01').lte('sale_date',month+'-31').order('sale_date');
+  const rows=data||[];
+  if(!rows.length){renderEmpty();return}
+
+  const sum=(k)=>rows.reduce((a,r)=>a+(r[k]||0),0);
+  const ts=sum('total_sales'),tc=sum('total_count');
+  const ls=sum('lunch_sales'),ds=sum('dinner_sales');
+  const ms=sum('meal_sales'),cs=sum('course_sales'),tk=sum('takeout_sales'),sg=sum('single_sales');
+  const costT=sum('total_cost'),costV=sum('variable_cost'),costF=sum('fixed_cost');
+
+  document.getElementById('totalSales').textContent=SalesApp.fmt(ts);
+  document.getElementById('avgInfo').textContent=`일평균 ${SalesApp.fmt(Math.round(ts/rows.length))} · ${rows.length}일 영업`;
+  document.getElementById('totalCount').textContent=SalesApp.fmtNum(tc)+'건';
+  document.getElementById('avgPrice').textContent=tc?SalesApp.fmt(Math.round(ts/tc)):'-';
+  document.getElementById('lunchTotal').textContent=SalesApp.fmt(ls);
+  document.getElementById('dinnerTotal').textContent=SalesApp.fmt(ds);
+
+  // 점심 vs 저녁 바
+  const lp=ls+ds>0?Math.round(ls/(ls+ds)*100):50;
+  document.getElementById('lunchDinnerBar').innerHTML=`<span style="width:${lp}%;background:#111;color:#fff">점심 ${lp}%</span><span style="width:${100-lp}%;background:#e8e8e4;color:#111">저녁 ${100-lp}%</span>`;
+
+  // 판매분류
+  const catTotal=ms+cs+tk+sg||1;
+  const cats=[{n:'식사',v:ms},{n:'코스',v:cs},{n:'포장',v:tk},{n:'단품',v:sg}];
+  document.getElementById('categoryBars').innerHTML=cats.map(c=>{
+    const p=Math.round(c.v/catTotal*100);
+    return`<div class="bar-row"><span class="bar-label">${c.n}</span><div class="bar-track"><div class="bar-fill" style="width:${p}%"></div></div><span class="bar-val">${SalesApp.fmtNum(c.v)}</span></div>`;
+  }).join('');
+
+  // 통장 대조
+  let ok=0,fail=0,wait=0;
+  rows.forEach(r=>{if(r.bank_amount==null)wait++;else if(r.is_matched)ok++;else fail++});
+  document.getElementById('matchOk').textContent='일치 '+ok;
+  document.getElementById('matchFail').textContent='불일치 '+fail;
+  document.getElementById('matchWait').textContent='미확인 '+wait;
+
+  // 비용
+  document.getElementById('costTotal').textContent=SalesApp.fmt(costT);
+  document.getElementById('costVar').textContent=SalesApp.fmt(costV);
+  document.getElementById('costFix').textContent=SalesApp.fmt(costF);
+  document.getElementById('profit').textContent=SalesApp.fmt(ts-costT);
+  renderInsights(rows,ts,costT);
+  await renderTopItems(rows);
+
+  // 일별 차트
+  const maxS=Math.max(...rows.map(r=>r.total_sales||0));
+  document.getElementById('dailyChart').innerHTML=rows.map(r=>{
+    const p=maxS?Math.round((r.total_sales||0)/maxS*100):0;
+    return`<div class="bar-row"><span class="bar-label">${r.sale_date.slice(8)}</span><div class="bar-track"><div class="bar-fill" style="width:${p}%"></div></div><span class="bar-val">${SalesApp.fmtNum(r.total_sales)}</span></div>`;
+  }).join('');
+
+  // 최근 리스트
+  document.getElementById('recentList').innerHTML=rows.slice(-7).reverse().map(r=>{
+    const badge=r.bank_amount==null?'<span class="badge badge-wait">미확인</span>':r.is_matched?'<span class="badge badge-ok">일치</span>':'<span class="badge badge-fail">불일치</span>';
+    return`<div class="card card-row"><div><strong>${r.sale_date.slice(5)}</strong> ${r.day_of_week||''}<br><span style="font-size:12px;color:var(--sub)">건수 ${r.total_count||0} · 단가 ${SalesApp.fmtNum(r.table_unit_price)}</span></div><div style="text-align:right"><div class="amount">${SalesApp.fmtNum(r.total_sales)}</div>${badge}</div></div>`;
+  }).join('');
+}
+
+function updateStoreBrand(){
+  const store=(window.salesStores||[]).find(s=>String(s.id)===String(document.getElementById('store').value));
+  const p=SalesApp.profile(store);
+  const hero=document.getElementById('brandHero');
+  hero.innerHTML=`<div class="brand-kicker">${p.kicker}</div><div class="brand-title">${p.name}</div><div class="brand-meta">${p.address} · ${p.description}</div><div class="brand-actions">${p.mapUrl?`<a class="brand-link" href="${p.mapUrl}" target="_blank" rel="noopener">네이버지도</a>`:''}<a class="brand-link secondary" href="register.html">오늘 등록</a></div>`;
+  const map=document.getElementById('mapCard');
+  map.href=p.mapUrl||'#';
+  map.innerHTML=`<div class="map-pin"></div><div class="map-copy"><strong>${p.name}</strong><span>${p.address}</span><span>${p.description}</span></div><div class="map-tags">${p.tags.map(t=>`<span>${t}</span>`).join('')}</div>`;
+}
+
+function renderInsights(rows,totalSales,totalCost){
+  const best=rows.reduce((a,r)=>(r.total_sales||0)>(a.total_sales||0)?r:a,rows[0]);
+  document.getElementById('bestDay').textContent=best.sale_date.slice(5);
+  document.getElementById('bestDayInfo').textContent=`${SalesApp.fmt(best.total_sales)} · ${best.day_of_week||''}`;
+  const maxS=Math.max(...rows.map(r=>r.total_sales||0),1);
+  document.getElementById('salesSpark').innerHTML=rows.map(r=>`<span style="height:${Math.max(8,Math.round((r.total_sales||0)/maxS*100))}%"></span>`).join('');
+  const rate=totalSales?Math.round(totalCost/totalSales*100):0;
+  document.getElementById('costRate').textContent=rate+'%';
+  const donut=document.getElementById('costDonut');
+  donut.style.setProperty('--p',Math.min(rate,100));
+  donut.dataset.label=rate+'%';
+}
+
+async function renderTopItems(rows){
+  const ids=rows.map(r=>r.id).filter(Boolean);
+  if(!ids.length)return;
+  const [menuRes,drinkRes]=await Promise.all([
+    sb.from('menu_sales').select('menu_name,amount').in('daily_sale_id',ids),
+    sb.from('drink_sales').select('drink_name,amount').in('daily_sale_id',ids)
+  ]);
+  renderRank('topMenus',sumItems(menuRes.data||[],'menu_name'));
+  renderRank('topDrinks',sumItems(drinkRes.data||[],'drink_name'));
+}
+
+function sumItems(rows,key){
+  const map=new Map();
+  rows.forEach(r=>map.set(r[key],(map.get(r[key])||0)+(r.amount||0)));
+  return [...map.entries()].sort((a,b)=>b[1]-a[1]).slice(0,4);
+}
+
+function renderRank(id,items){
+  const el=document.getElementById(id);
+  if(!items.length){el.innerHTML='<div class="empty">데이터 없음</div>';return}
+  const max=Math.max(...items.map(i=>i[1]),1);
+  el.innerHTML=items.map(([name,amount])=>{
+    const p=Math.round(amount/max*100);
+    return`<div class="bar-row"><span class="bar-label wide">${name}</span><div class="bar-track"><div class="bar-fill" style="width:${p}%"></div></div><span class="bar-val">${SalesApp.fmtNum(amount)}</span></div>`;
+  }).join('');
+}
+
+function renderEmpty(){
+  const dash='-';
+  ['totalCount','avgPrice','lunchTotal','dinnerTotal','costTotal','costVar','costFix','profit'].forEach(id=>document.getElementById(id).textContent=dash);
+  document.getElementById('totalSales').textContent='데이터 없음';
+  document.getElementById('avgInfo').textContent='선택한 월에 등록된 매출이 없습니다';
+  document.getElementById('lunchDinnerBar').innerHTML='<span style="width:100%;background:#e8e8e4;color:#6b6b66">데이터 없음</span>';
+  document.getElementById('categoryBars').innerHTML='<div class="empty">판매 분류 데이터가 없습니다</div>';
+  document.getElementById('matchOk').textContent='일치 0';
+  document.getElementById('matchFail').textContent='불일치 0';
+  document.getElementById('matchWait').textContent='미확인 0';
+  document.getElementById('dailyChart').innerHTML='<div class="empty">일별 매출 데이터가 없습니다</div>';
+  document.getElementById('recentList').innerHTML='<div class="empty">최근 매출이 없습니다</div>';
+  document.getElementById('bestDay').textContent='-';
+  document.getElementById('bestDayInfo').textContent='가장 높은 매출일';
+  document.getElementById('salesSpark').innerHTML='';
+  document.getElementById('costRate').textContent='-';
+  document.getElementById('costDonut').style.setProperty('--p',0);
+  document.getElementById('costDonut').dataset.label='0%';
+  document.getElementById('topMenus').innerHTML='<div class="empty">데이터 없음</div>';
+  document.getElementById('topDrinks').innerHTML='<div class="empty">데이터 없음</div>';
+}
+init();
+</script>
+</body></html>
