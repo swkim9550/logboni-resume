@@ -9,11 +9,15 @@ sales/
 ├── bank.html           # 통장 금액 입력 (관리자용)
 ├── stores.html         # 매장 등록/관리
 ├── help.html           # 매장 직원용 입력 도움말
+├── assets/
+│   ├── semodubu-hero.png # 세모두부 대표 사진
+│   └── semodubu-hero.svg # 대체 대표 비주얼
 ├── sales-common.css    # 공통 스타일 (화이트/블랙, 모바일 최적화)
 ├── sales-app.js        # Supabase 연결 + 공통 유틸
 ├── SUPABASE_TABLES.md  # 전체 테이블 생성 SQL
 ├── SUPABASE_ADD_MENU_DRINK_QUERIES.md # 메뉴/주류 추가 쿼리
 ├── SUPABASE_IMPORT_APRIL_2026_FULL.md # 엑셀 2026년 4월 전체 데이터 적재 SQL
+├── SUPABASE_IMPORT_REPORT_APRIL_2026.md # 보고서 시트 월간 손익/노무비 적재 SQL
 ├── UI_UX_REDESIGN.md   # UI/UX 개편 계획과 우선순위
 └── README.md           # 이 파일
 ```
@@ -78,6 +82,9 @@ sales/
 | `menu_sales` | 메뉴별 매출 상세 (daily_sale_id, menu_name, amount) |
 | `drink_sales` | 주류·음료별 매출 상세 (daily_sale_id, drink_name, amount) |
 | `supplier_costs` | 거래처별 비용 상세 (daily_sale_id, supplier_name, amount, cost_type) |
+| `monthly_reports` | 보고서 시트의 월간 손익/노무비/BEP 요약 |
+| `monthly_labor_costs` | 보고서 시트의 직원별 노무비 상세 |
+| `monthly_report_expenses` | 4대보험, 수도광열비, 영업외비용 등 월간 비용 상세 |
 
 ## 셋업 순서
 

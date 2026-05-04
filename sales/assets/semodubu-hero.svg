@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760" role="img" aria-label="세모두부 대표 이미지">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f8f4eb"/>
+      <stop offset="0.55" stop-color="#e7ddca"/>
+      <stop offset="1" stop-color="#151515"/>
+    </linearGradient>
+    <linearGradient id="table" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#333"/>
+      <stop offset="1" stop-color="#0f0f0f"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="18" stdDeviation="22" flood-color="#000" flood-opacity=".28"/>
+    </filter>
+  </defs>
+  <rect width="1200" height="760" fill="url(#bg)"/>
+  <g opacity=".18" fill="none" stroke="#111" stroke-width="2">
+    <path d="M0 180h1200M0 310h1200M0 440h1200M0 570h1200"/>
+    <path d="M160 0v760M340 0v760M520 0v760M700 0v760M880 0v760M1060 0v760"/>
+  </g>
+  <rect x="0" y="520" width="1200" height="240" fill="url(#table)"/>
+  <g filter="url(#shadow)">
+    <ellipse cx="610" cy="505" rx="355" ry="115" fill="#f8f8f3"/>
+    <ellipse cx="610" cy="498" rx="315" ry="88" fill="#dfd5c2"/>
+    <ellipse cx="610" cy="482" rx="286" ry="72" fill="#fff"/>
+  </g>
+  <g filter="url(#shadow)">
+    <rect x="416" y="302" width="385" height="205" rx="42" fill="#f5f0e7"/>
+    <rect x="438" y="322" width="341" height="164" rx="30" fill="#fffaf0"/>
+    <path d="M438 395h341" stroke="#dfd6c5" stroke-width="3"/>
+    <path d="M522 322v164M608 322v164M694 322v164" stroke="#e5ddcf" stroke-width="3"/>
+    <circle cx="508" cy="384" r="13" fill="#111"/>
+    <circle cx="706" cy="430" r="11" fill="#111"/>
+  </g>
+  <g fill="#111">
+    <rect x="328" y="468" width="118" height="18" rx="9"/>
+    <rect x="780" y="468" width="102" height="18" rx="9"/>
+    <rect x="320" y="486" width="152" height="16" rx="8" opacity=".65"/>
+    <rect x="766" y="486" width="136" height="16" rx="8" opacity=".65"/>
+  </g>
+  <g transform="translate(94 84)">
+    <rect x="0" y="0" width="360" height="174" rx="22" fill="#111"/>
+    <text x="30" y="57" fill="#f2eadb" font-family="-apple-system,BlinkMacSystemFont,'Apple SD Gothic Neo','Noto Sans KR',sans-serif" font-size="24" font-weight="700">세상의 모든 두부</text>
+    <text x="30" y="122" fill="#fff" font-family="-apple-system,BlinkMacSystemFont,'Apple SD Gothic Neo','Noto Sans KR',sans-serif" font-size="62" font-weight="900">세모두부</text>
+  </g>
+  <g transform="translate(812 96)" fill="#111">
+    <circle cx="78" cy="78" r="78" fill="#111"/>
+    <circle cx="78" cy="78" r="51" fill="#f7f1e6"/>
+    <path d="M78 38v80M38 78h80" stroke="#111" stroke-width="10" stroke-linecap="round"/>
+  </g>
+</svg>

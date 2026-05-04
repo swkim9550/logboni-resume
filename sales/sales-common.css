@@ -33,9 +33,9 @@ h2{font-size:15px;line-height:1.35;margin:22px 0 10px;color:var(--text);font-wei
   background:#111;
   color:#fff;
   border-radius:12px;
-  padding:20px;
+  padding:0;
   margin-bottom:16px;
-  min-height:148px;
+  min-height:276px;
 }
 .brand-hero:after{
   content:"";
@@ -47,6 +47,8 @@ h2{font-size:15px;line-height:1.35;margin:22px 0 10px;color:var(--text);font-wei
   border-radius:50%;
   box-shadow:inset 0 0 0 28px rgba(255,255,255,.05), inset 0 0 0 54px rgba(255,255,255,.04);
 }
+.brand-image{display:block;width:100%;height:170px;object-fit:cover;background:#222}
+.brand-content{position:relative;z-index:1;padding:18px 20px 20px;background:linear-gradient(180deg,rgba(17,17,17,.74),#111)}
 .brand-kicker{font-size:12px;color:#c9c9c2;font-weight:750;margin-bottom:8px}
 .brand-title{font-size:31px;line-height:1.05;font-weight:900;letter-spacing:0;margin-bottom:10px}
 .brand-meta{font-size:12px;line-height:1.5;color:#e6e6df;max-width:280px}
@@ -62,7 +64,7 @@ h2{font-size:15px;line-height:1.35;margin:22px 0 10px;color:var(--text);font-wei
   display:block;
   position:relative;
   overflow:hidden;
-  min-height:128px;
+  min-height:152px;
   border:1px solid var(--line);
   border-radius:10px;
   background:
@@ -71,16 +73,24 @@ h2{font-size:15px;line-height:1.35;margin:22px 0 10px;color:var(--text);font-wei
     linear-gradient(0deg,#ede7d8,#f7f4ec);
   color:#111;
   text-decoration:none;
-  padding:14px;
+  padding:0;
 }
 .map-card:before{content:"";position:absolute;left:18px;right:18px;top:54px;height:2px;background:rgba(17,17,17,.16);transform:rotate(-8deg)}
+.map-card.has-image{background:#111;color:#fff}
+.map-card.has-image:before{display:none}
+.map-card img{display:block;width:100%;height:152px;object-fit:cover;opacity:.82}
+.map-card.has-image:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(0,0,0,.72),rgba(0,0,0,.18) 55%,rgba(0,0,0,.02))}
 .map-pin{position:absolute;right:26px;top:24px;width:34px;height:34px;border-radius:50% 50% 50% 0;background:#111;transform:rotate(-45deg)}
 .map-pin:after{content:"";position:absolute;inset:10px;border-radius:50%;background:#fff}
-.map-copy{position:relative;z-index:1;max-width:250px}
+.map-card.has-image .map-pin{background:#fff;z-index:2}
+.map-card.has-image .map-pin:after{background:#111}
+.map-copy{position:absolute;left:14px;right:14px;bottom:14px;z-index:2;max-width:270px}
 .map-copy strong{display:block;font-size:16px;margin-bottom:6px}
 .map-copy span{display:block;font-size:12px;line-height:1.45;color:#555}
-.map-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:14px;position:relative;z-index:1}
+.map-card.has-image .map-copy span{color:rgba(255,255,255,.82)}
+.map-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px;position:relative;z-index:1}
 .map-tags span{padding:4px 7px;border-radius:999px;background:rgba(255,255,255,.74);border:1px solid rgba(17,17,17,.1);font-size:11px;font-weight:750}
+.map-card.has-image .map-tags span{background:rgba(255,255,255,.18);border-color:rgba(255,255,255,.18);color:#fff}
 .card{
   background:var(--surface);
   border:1px solid var(--line);

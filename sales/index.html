@@ -51,6 +51,16 @@
   </div>
 </div>
 
+<div class="card" id="monthlyReportCard" style="display:none">
+  <div class="card-title">월간 운영 보고서</div>
+  <div class="card-grid mt-8">
+    <div><div class="card-title">노무비</div><div class="amount" id="reportLabor">-</div></div>
+    <div><div class="card-title">순이익</div><div class="amount" id="reportNetProfit">-</div></div>
+    <div><div class="card-title">Prime Cost</div><div class="amount" id="reportPrimeCost">-</div></div>
+    <div><div class="card-title">BEP 매출</div><div class="amount" id="reportBep">-</div></div>
+  </div>
+</div>
+
 <!-- 점심 vs 저녁 비율 -->
 <div class="card">
   <div class="card-title">점심 vs 저녁</div>
@@ -113,12 +123,20 @@ async function init(){
   const stores=await SalesApp.getStores();
   window.salesStores=stores;
   SalesApp.fillStoreSelect(document.getElementById('store'),stores);
+  await setLatestMonth();
   await load();
 }
 
 async function changeStore(){
   SalesApp.saveStore(document.getElementById('store').value);
+  await setLatestMonth();
   await load();
+}
+
+async function setLatestMonth(){
+  const storeId=document.getElementById('store').value;
+  const latest=await SalesApp.getLatestSaleMonth(storeId);
+  document.getElementById('month').value=latest||SalesApp.currentMonth();
 }
 
 async function load(){
@@ -126,7 +144,13 @@ async function load(){
   const month=document.getElementById('month').value;
   if(!storeId||!month)return;
   updateStoreBrand();
-  const{data}=await sb.from('daily_sales').select('*').eq('store_id',storeId).gte('sale_date',month+'-01').lte('sale_date',month+'-31').order('sale_date');
+  const{data,error}=await sb.from('daily_sales')
+    .select('*')
+    .eq('store_id',storeId)
+    .gte('sale_date',month+'-01')
+    .lt('sale_date',SalesApp.nextMonth(month))
+    .order('sale_date');
+  if(error){SalesApp.toast('조회 오류: '+error.message);renderEmpty();return}
   const rows=data||[];
   if(!rows.length){renderEmpty();return}
 
@@ -168,6 +192,7 @@ async function load(){
   document.getElementById('costFix').textContent=SalesApp.fmt(costF);
   document.getElementById('profit').textContent=SalesApp.fmt(ts-costT);
   renderInsights(rows,ts,costT);
+  await renderMonthlyReport(storeId,month);
   await renderTopItems(rows);
 
   // 일별 차트
@@ -184,14 +209,30 @@ async function load(){
   }).join('');
 }
 
+async function renderMonthlyReport(storeId,month){
+  const card=document.getElementById('monthlyReportCard');
+  const{data,error}=await sb.from('monthly_reports')
+    .select('labor_cost,net_profit,prime_cost,bep_sales')
+    .eq('store_id',storeId)
+    .eq('report_month',month+'-01')
+    .maybeSingle();
+  if(error||!data){card.style.display='none';return}
+  card.style.display='block';
+  document.getElementById('reportLabor').textContent=SalesApp.fmt(data.labor_cost);
+  document.getElementById('reportNetProfit').textContent=SalesApp.fmt(data.net_profit);
+  document.getElementById('reportPrimeCost').textContent=SalesApp.fmt(data.prime_cost);
+  document.getElementById('reportBep').textContent=SalesApp.fmt(data.bep_sales);
+}
+
 function updateStoreBrand(){
   const store=(window.salesStores||[]).find(s=>String(s.id)===String(document.getElementById('store').value));
   const p=SalesApp.profile(store);
   const hero=document.getElementById('brandHero');
-  hero.innerHTML=`<div class="brand-kicker">${p.kicker}</div><div class="brand-title">${p.name}</div><div class="brand-meta">${p.address} · ${p.description}</div><div class="brand-actions">${p.mapUrl?`<a class="brand-link" href="${p.mapUrl}" target="_blank" rel="noopener">네이버지도</a>`:''}<a class="brand-link secondary" href="register.html">오늘 등록</a></div>`;
+  hero.innerHTML=`<img class="brand-image" src="${p.imageUrl}" alt="${p.name} 대표 이미지"><div class="brand-content"><div class="brand-kicker">${p.kicker}</div><div class="brand-title">${p.name}</div><div class="brand-meta">${p.address} · ${p.description}</div><div class="brand-actions">${p.mapUrl?`<a class="brand-link" href="${p.mapUrl}" target="_blank" rel="noopener">네이버지도</a>`:''}<a class="brand-link secondary" href="register.html">오늘 등록</a></div></div>`;
   const map=document.getElementById('mapCard');
   map.href=p.mapUrl||'#';
-  map.innerHTML=`<div class="map-pin"></div><div class="map-copy"><strong>${p.name}</strong><span>${p.address}</span><span>${p.description}</span></div><div class="map-tags">${p.tags.map(t=>`<span>${t}</span>`).join('')}</div>`;
+  map.className='map-card has-image';
+  map.innerHTML=`<img src="${p.imageUrl}" alt="${p.name} 위치 이미지"><div class="map-pin"></div><div class="map-copy"><strong>${p.name}</strong><span>${p.address}</span><span>${p.description}</span><div class="map-tags">${p.tags.map(t=>`<span>${t}</span>`).join('')}</div></div>`;
 }
 
 function renderInsights(rows,totalSales,totalCost){
@@ -254,6 +295,7 @@ function renderEmpty(){
   document.getElementById('costDonut').dataset.label='0%';
   document.getElementById('topMenus').innerHTML='<div class="empty">데이터 없음</div>';
   document.getElementById('topDrinks').innerHTML='<div class="empty">데이터 없음</div>';
+  document.getElementById('monthlyReportCard').style.display='none';
 }
 init();
 </script>

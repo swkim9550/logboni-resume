@@ -33,6 +33,8 @@ async function init(){
   document.getElementById('month').value=SalesApp.currentMonth();
   const stores=await SalesApp.getStores();
   SalesApp.fillStoreSelect(document.getElementById('store'),stores);
+  const latest=await SalesApp.getLatestSaleMonth(document.getElementById('store').value);
+  if(latest)document.getElementById('month').value=latest;
   await load();
 }
 
@@ -42,8 +44,14 @@ async function load(){
   if(!storeId||!month)return;
   SalesApp.saveStore(storeId);
   const start=month+'-01';
-  const end=month+'-31';
-  const{data}=await sb.from('daily_sales').select('*').eq('store_id',storeId).gte('sale_date',start).lte('sale_date',end).order('sale_date');
+  const end=SalesApp.nextMonth(month);
+  const{data,error}=await sb.from('daily_sales')
+    .select('*')
+    .eq('store_id',storeId)
+    .gte('sale_date',start)
+    .lt('sale_date',end)
+    .order('sale_date');
+  if(error){SalesApp.toast('조회 오류: '+error.message);return}
   const rows=data||[];
   let sumS=0,sumB=0,mis=0,pen=0;
   document.getElementById('tbody').innerHTML=rows.map(r=>{

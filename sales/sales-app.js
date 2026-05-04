@@ -26,6 +26,13 @@ const SalesApp={
   },
   today(){return this.localDate()},
   currentMonth(){return this.localDate().slice(0,7)},
+  nextMonth(month){
+    const [y,m]=month.split('-').map(Number);
+    const d=new Date(y,m,1);
+    const yy=d.getFullYear();
+    const mm=String(d.getMonth()+1).padStart(2,'0');
+    return `${yy}-${mm}-01`;
+  },
   toast(msg){
     let t=document.getElementById('toast');
     if(!t){t=document.createElement('div');t.id='toast';t.className='toast';document.body.appendChild(t)}
@@ -35,6 +42,7 @@ const SalesApp={
   nav(active){
     const items=[
       {href:'index.html',label:'대시보드',icon:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>'},
+      {href:'report.html',label:'보고서',icon:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19V5"/><path d="M4 19h16"/><rect x="7" y="11" width="3" height="5"/><rect x="12" y="7" width="3" height="9"/><rect x="17" y="9" width="3" height="7"/></svg>'},
       {href:'register.html',label:'매출등록',icon:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>'},
       {href:'bank.html',label:'통장입력',icon:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg>'},
       {href:'stores.html',label:'매장관리',icon:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg>'},
@@ -53,6 +61,17 @@ const SalesApp={
     const{data}=await sb.from('stores').select('*').order('id');
     return data||[];
   },
+  async getLatestSaleMonth(storeId){
+    if(!storeId)return '';
+    const{data,error}=await sb.from('daily_sales')
+      .select('sale_date')
+      .eq('store_id',storeId)
+      .order('sale_date',{ascending:false})
+      .limit(1)
+      .maybeSingle();
+    if(error||!data||!data.sale_date)return '';
+    return data.sale_date.slice(0,7);
+  },
   profile(store){
     const name=store&&store.name?store.name:'세모두부';
     if(name.includes('세모두부')){
@@ -62,6 +81,7 @@ const SalesApp={
         address:'서울 마포구 삼개로5길 4-3 1층',
         description:'매일 갓 만든 두부와 솥밥 중심의 매출 정산',
         mapUrl:'https://map.naver.com/p/search/%EC%84%B8%EB%AA%A8%EB%91%90%EB%B6%80',
+        imageUrl:'assets/semodubu-hero.png',
         tags:['두부요리','마포역','솥밥','정산']
       };
     }
@@ -71,6 +91,7 @@ const SalesApp={
       address:'등록된 매장',
       description:'매출, 비용, 통장 대조를 한 곳에서 관리',
       mapUrl:'',
+      imageUrl:'assets/semodubu-hero.png',
       tags:['매출','비용','대조','관리']
     };
   },
