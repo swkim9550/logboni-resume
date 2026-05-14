@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+<title>영종도 여행 🏖️ 5/15~16</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Noto Sans KR',sans-serif;background:#f8fafc;color:#1e293b;line-height:1.6}
+.container{max-width:480px;margin:0 auto;padding-bottom:40px}
+.hero{background:linear-gradient(135deg,#0ea5e9,#0284c7);color:#fff;padding:48px 24px 36px;text-align:center;position:relative;overflow:hidden}
+.hero::after{content:'';position:absolute;bottom:-1px;left:0;right:0;height:24px;background:#f8fafc;border-radius:24px 24px 0 0}
+.hero h1{font-size:28px;font-weight:900;margin-bottom:4px}
+.hero p{font-size:14px;opacity:.85}
+.hero .date{display:inline-block;background:rgba(255,255,255,.2);padding:4px 14px;border-radius:20px;font-size:12px;font-weight:700;margin-top:12px}
+.section{padding:20px 20px 0}
+.section-title{font-size:13px;font-weight:700;color:#0ea5e9;letter-spacing:1px;margin-bottom:12px;display:flex;align-items:center;gap:6px}
+.card{background:#fff;border-radius:16px;padding:16px;margin-bottom:12px;box-shadow:0 1px 4px rgba(0,0,0,.04);border:1px solid #f1f5f9}
+.card h3{font-size:15px;font-weight:700;margin-bottom:4px}
+.card p{font-size:13px;color:#64748b}
+.card .tag{display:inline-block;font-size:10px;font-weight:700;padding:2px 8px;border-radius:10px;margin-right:4px;margin-top:6px}
+.tag-food{background:#fef3c7;color:#92400e}
+.tag-cafe{background:#ede9fe;color:#5b21b6}
+.tag-spot{background:#dcfce7;color:#166534}
+.tag-run{background:#e0f2fe;color:#0369a1}
+.card .addr{font-size:11px;color:#94a3b8;margin-top:4px}
+.card .map-link{display:inline-block;font-size:11px;color:#0ea5e9;text-decoration:none;margin-top:6px;font-weight:600}
+.timeline{position:relative;padding-left:20px}
+.timeline::before{content:'';position:absolute;left:6px;top:8px;bottom:8px;width:2px;background:#e2e8f0}
+.tl-item{position:relative;margin-bottom:16px}
+.tl-item::before{content:'';position:absolute;left:-18px;top:6px;width:10px;height:10px;border-radius:50%;background:#0ea5e9;border:2px solid #fff;box-shadow:0 0 0 2px #0ea5e9}
+.tl-item.rest::before{background:#f59e0b;box-shadow:0 0 0 2px #f59e0b}
+.tl-item.run::before{background:#10b981;box-shadow:0 0 0 2px #10b981}
+.tl-time{font-size:11px;font-weight:700;color:#0ea5e9}
+.tl-title{font-size:14px;font-weight:600}
+.tl-desc{font-size:12px;color:#64748b}
+.day-header{background:linear-gradient(135deg,#0ea5e9,#0284c7);color:#fff;padding:12px 20px;border-radius:12px;margin-bottom:16px;font-weight:700;font-size:15px}
+.info-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:12px}
+.info-item{background:#fff;border-radius:12px;padding:14px;text-align:center;border:1px solid #f1f5f9}
+.info-item .label{font-size:10px;color:#94a3b8;margin-bottom:2px}
+.info-item .value{font-size:14px;font-weight:700}
+.accommodation{background:#fff;border-radius:16px;overflow:hidden;margin-bottom:12px;border:1px solid #f1f5f9;box-shadow:0 1px 4px rgba(0,0,0,.04)}
+.accommodation .img-placeholder{height:160px;background:linear-gradient(135deg,#0ea5e9,#38bdf8);display:flex;align-items:center;justify-content:center;font-size:48px}
+.accommodation .info{padding:16px}
+.accommodation .info h3{font-size:16px;font-weight:700;margin-bottom:4px}
+.accommodation .info p{font-size:12px;color:#64748b}
+.run-card{background:linear-gradient(135deg,#ecfdf5,#d1fae5);border:1px solid #a7f3d0;border-radius:16px;padding:16px;margin-bottom:12px}
+.run-card h3{color:#065f46;font-size:15px;font-weight:700;margin-bottom:6px}
+.run-card p{font-size:13px;color:#047857}
+.run-stats{display:flex;gap:16px;margin-top:10px}
+.run-stat{text-align:center}
+.run-stat .num{font-size:20px;font-weight:900;color:#059669}
+.run-stat .sl{font-size:10px;color:#6ee7b7}
+.footer{text-align:center;padding:30px 20px;font-size:11px;color:#94a3b8}
+</style>
+</head>
+<body>
+<div class="container">
+<div class="hero">
+<h1>🏖️ 영종도 여행</h1>
+<p>바다, 러닝, 맛집 — 1박 2일</p>
+<div class="date">2026. 5. 15(금) ~ 16(토)</div>
+</div>
+
+<div class="section">
+<div class="section-title">📌 기본 정보</div>
+<div class="info-grid">
+<div class="info-item"><div class="label">인원</div><div class="value">2명</div></div>
+<div class="info-item"><div class="label">이동</div><div class="value">영종역 → 택시</div></div>
+<div class="info-item"><div class="label">체크인</div><div class="value">16:00</div></div>
+<div class="info-item"><div class="label">체크아웃</div><div class="value">11:00</div></div>
+</div>
+</div>
+
+<div class="section">
+<div class="section-title">🏨 숙소</div>
+<div class="accommodation">
+<div class="img-placeholder">🌊</div>
+<div class="info">
+<h3>오션솔레뷰호텔</h3>
+<p>인천 중구 영종진광장로 32 · 구읍뱃터 근처</p>
+<p style="margin-top:6px;font-size:12px;color:#64748b">짐 보관 12~13시 가능 · 얼리체크인 호스트 확인 예정</p>
+<a class="card map-link" href="https://map.naver.com/v5/search/인천 중구 영종진광장로 32" target="_blank" style="border:none;padding:0;box-shadow:none">📍 네이버 지도에서 보기</a>
+</div>
+</div>
+</div>
+
+<div class="section">
+<div class="section-title">🏃 러닝 코스</div>
+<div class="run-card">
+<h3>영종 씨사이드파크 해안도로</h3>
+<p>숙소에서 도보 접근 → 해안 따라 평탄한 코스. 바다 뷰 러닝!</p>
+<div class="run-stats">
+<div class="run-stat"><div class="num">5km</div><div class="sl">거리</div></div>
+<div class="run-stat"><div class="num">30~35분</div><div class="sl">예상 시간</div></div>
+<div class="run-stat"><div class="num">평탄</div><div class="sl">난이도</div></div>
+</div>
+<a class="card map-link" href="https://map.naver.com/v5/search/영종씨사이드파크" target="_blank" style="border:none;padding:0;box-shadow:none;margin-top:10px;display:inline-block">📍 지도에서 보기</a>
+</div>
+</div>
+
+<div class="section">
+<div class="section-title">📅 DAY 1 — 5/15(금)</div>
+<div class="day-header">금요일 · 도착 → 러닝 → 저녁</div>
+<div class="timeline">
+<div class="tl-item"><div class="tl-time">12:00~13:00</div><div class="tl-title">영종역 도착 → 택시 → 숙소 짐 보관</div><div class="tl-desc">공항철도 영종역 하차, 택시 약 10분</div></div>
+<div class="tl-item"><div class="tl-time">13:00~14:00</div><div class="tl-title">🍽️ 점심</div><div class="tl-desc">구읍뱃터 근처 해산물 or 칼국수</div></div>
+<div class="tl-item rest"><div class="tl-time">14:00~16:00</div><div class="tl-title">☕ 구읍뱃터 산책 + 카페</div><div class="tl-desc">포구 감성 산책, 체크인 전 여유 시간</div></div>
+<div class="tl-item"><div class="tl-time">16:00</div><div class="tl-title">🏨 체크인</div><div class="tl-desc">오션솔레뷰호텔</div></div>
+<div class="tl-item run"><div class="tl-time">16:30~17:30</div><div class="tl-title">🏃 러닝 5km</div><div class="tl-desc">씨사이드파크 해안도로 · 바다 뷰 러닝</div></div>
+<div class="tl-item rest"><div class="tl-time">17:30~18:30</div><div class="tl-title">🚿 샤워 + 준비</div><div class="tl-desc"></div></div>
+<div class="tl-item"><div class="tl-time">18:30~20:00</div><div class="tl-title">🍽️ 저녁</div><div class="tl-desc">해산물 or 횟집</div></div>
+<div class="tl-item rest"><div class="tl-time">20:00~</div><div class="tl-title">🌙 해변 야경 / 편의점 맥주</div><div class="tl-desc">숙소 근처 해안에서 마무리</div></div>
+</div>
+</div>
+
+<div class="section">
+<div class="section-title">📅 DAY 2 — 5/16(토)</div>
+<div class="day-header">토요일 · 브런치 → 해변 → 복귀</div>
+<div class="timeline">
+<div class="tl-item rest"><div class="tl-time">~09:00</div><div class="tl-title">☀️ 기상</div><div class="tl-desc"></div></div>
+<div class="tl-item"><div class="tl-time">09:00~10:00</div><div class="tl-title">🍳 조식 / 브런치 카페</div><div class="tl-desc">숙소 근처 or 카페</div></div>
+<div class="tl-item"><div class="tl-time">10:00~11:00</div><div class="tl-title">🏨 체크아웃</div><div class="tl-desc">짐 정리 후 이동</div></div>
+<div class="tl-item"><div class="tl-time">11:00~12:30</div><div class="tl-title">🏖️ 을왕리/왕산 해변</div><div class="tl-desc">택시 이동 10분 · 해변 산책 or 카페</div></div>
+<div class="tl-item"><div class="tl-time">12:30~14:00</div><div class="tl-title">🍽️ 점심</div><div class="tl-desc">을왕리 맛집</div></div>
+<div class="tl-item"><div class="tl-time">14:00~</div><div class="tl-title">🚆 복귀</div><div class="tl-desc">택시 → 영종역 → 공항철도</div></div>
+</div>
+</div>
+
+<div class="section">
+<div class="section-title">🍽️ 맛집</div>
+<div class="card">
+<h3>조개구이마을 (구읍뱃터)</h3>
+<p>구읍뱃터 포구 앞 조개구이/해산물 식당 밀집 지역. 바지락칼국수, 조개구이 추천.</p>
+<span class="tag tag-food">해산물</span><span class="tag tag-food">점심 추천</span>
+<div class="addr">구읍뱃터 도보 2분</div>
+<a class="map-link" href="https://map.naver.com/v5/search/영종도 구읍뱃터 조개구이" target="_blank">📍 지도</a>
+</div>
+<div class="card">
+<h3>영종 해신탕/해물칼국수</h3>
+<p>영종진광장로 근처 칼국수 맛집. 바지락 칼국수, 해물파전 인기.</p>
+<span class="tag tag-food">칼국수</span><span class="tag tag-food">가성비</span>
+<div class="addr">숙소 도보 5~10분</div>
+<a class="map-link" href="https://map.naver.com/v5/search/영종도 영종진광장로 칼국수" target="_blank">📍 지도</a>
+</div>
+<div class="card">
+<h3>을왕리 횟집거리</h3>
+<p>을왕리 해수욕장 앞 횟집/해산물 식당 밀집. 회, 조개구이, 매운탕.</p>
+<span class="tag tag-food">회</span><span class="tag tag-food">저녁/DAY2 점심</span>
+<div class="addr">택시 10분</div>
+<a class="map-link" href="https://map.naver.com/v5/search/을왕리 횟집" target="_blank">📍 지도</a>
+</div>
+</div>
+
+<div class="section">
+<div class="section-title">☕ 카페</div>
+<div class="card">
+<h3>구읍뱃터 해안 카페</h3>
+<p>포구 근처 소규모 카페들. 바다 보면서 커피 한 잔. 체크인 전 시간 활용.</p>
+<span class="tag tag-cafe">오션뷰</span><span class="tag tag-cafe">DAY1 오후</span>
+<div class="addr">숙소 도보 5분</div>
+<a class="map-link" href="https://map.naver.com/v5/search/영종도 구읍뱃터 카페" target="_blank">📍 지도</a>
+</div>
+<div class="card">
+<h3>을왕리 카페거리</h3>
+<p>을왕리 해변 따라 오션뷰 카페 밀집. 브런치, 디저트 카페 다양.</p>
+<span class="tag tag-cafe">오션뷰</span><span class="tag tag-cafe">DAY2 추천</span>
+<div class="addr">택시 10분</div>
+<a class="map-link" href="https://map.naver.com/v5/search/을왕리 카페" target="_blank">📍 지도</a>
+</div>
+</div>
+
+<div class="section">
+<div class="section-title">📸 가볼 만한 곳</div>
+<div class="card">
+<h3>구읍뱃터</h3>
+<p>작은 포구 감성. 어선, 갈매기, 바다 냄새. 숙소 바로 근처.</p>
+<span class="tag tag-spot">도보</span><span class="tag tag-spot">포토스팟</span>
+<a class="map-link" href="https://map.naver.com/v5/search/영종도 구읍뱃터" target="_blank">📍 지도</a>
+</div>
+<div class="card">
+<h3>영종 씨사이드파크</h3>
+<p>해안 산책로 + 러닝 코스. 일몰 시간대 추천.</p>
+<span class="tag tag-spot">러닝</span><span class="tag tag-spot">일몰</span>
+<a class="map-link" href="https://map.naver.com/v5/search/영종씨사이드파크" target="_blank">📍 지도</a>
+</div>
+<div class="card">
+<h3>을왕리 해수욕장</h3>
+<p>영종도 대표 해변. 석양 맛집. 카페/식당 밀집.</p>
+<span class="tag tag-spot">해변</span><span class="tag tag-spot">석양</span>
+<a class="map-link" href="https://map.naver.com/v5/search/을왕리해수욕장" target="_blank">📍 지도</a>
+</div>
+<div class="card">
+<h3>왕산해수욕장</h3>
+<p>을왕리 옆, 좀 더 한적한 해변. 여유롭게 산책하기 좋음.</p>
+<span class="tag tag-spot">한적</span><span class="tag tag-spot">산책</span>
+<a class="map-link" href="https://map.naver.com/v5/search/왕산해수욕장" target="_blank">📍 지도</a>
+</div>
+</div>
+
+<div class="footer">
+🏖️ 영종도 1박 2일 · 2026.05.15~16<br>
+좋은 여행 되세요! 🌊
+</div>
+</div>
+</body>
+</html>
